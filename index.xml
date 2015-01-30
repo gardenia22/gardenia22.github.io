@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title> on Nanshu&#39;s blog </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://nanshu.wang/</link>
+    <language>en-us</language>
+    <author>Nanshu Wang</author>
+    <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
+    <updated>Sat, 31 Jan 2015 00:30:03 CST</updated>
+    
+    <item>
+      <title>用Hugo搭建个人博客</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 31 Jan 2015 00:30:03 CST</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>
+
+&lt;h1 id=&#34;安装hugo:d605f9890f3528aea462ac7515ece633&#34;&gt;安装Hugo&lt;/h1&gt;
+
+&lt;p&gt;1.安装brew&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.安装pip
+下载 &lt;a href=&#34;https://bootstrap.pypa.io/get-pip.py&#34;&gt;https://bootstrap.pypa.io/get-pip.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$python get-pip.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.安装Pygments&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$pip install Pygments
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;4.安装Hugo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$brew new Hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;started:d605f9890f3528aea462ac7515ece633&#34;&gt;Started&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a site&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$Hugo new site sitepath
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.Create page&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$Hugo new about.me
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a post&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$Hugo new post/first.me
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;选择主题:d605f9890f3528aea462ac7515ece633&#34;&gt;选择主题&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;download thems&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone --recursive https://github.com/spf13/hugoThemes themes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;run Hugo&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo server --theme=hyde --buildDraft
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;选择主题
+直接选择了Hugo 作者博客的主题，先将他的博客全部fork下来&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/spf13/hugo.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;其他功能:d605f9890f3528aea462ac7515ece633&#34;&gt;其他功能&lt;/h1&gt;
+
+&lt;h2 id=&#34;rss订阅:d605f9890f3528aea462ac7515ece633&#34;&gt;rss订阅&lt;/h2&gt;
+
+&lt;h2 id=&#34;代码高亮:d605f9890f3528aea462ac7515ece633&#34;&gt;代码高亮&lt;/h2&gt;
+
+&lt;p&gt;安装pygments，在代码两头加上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ &amp;lt; highlight python&amp;gt;}}
+your code here.
+{{ /highlight }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;图片管理:d605f9890f3528aea462ac7515ece633&#34;&gt;图片管理&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ % img src=&amp;quot;/media/spf13-responsive.jpg&amp;quot; alt=&amp;quot;spf13 responsive website&amp;quot; %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原文件放入media文件夹内&lt;/p&gt;
+
+&lt;h2 id=&#34;mathjax支持:d605f9890f3528aea462ac7515ece633&#34;&gt;Mathjax支持&lt;/h2&gt;
+
+&lt;h2 id=&#34;采用github-pages:d605f9890f3528aea462ac7515ece633&#34;&gt;采用github pages&lt;/h2&gt;
+
+&lt;p&gt;内核恐慌关于静态网站生成器 &lt;a href=&#34;http://ipn.li/kernelpanic/3/&#34;&gt;http://ipn.li/kernelpanic/3/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>http://nanshu.wang/about/</link>
+      <pubDate>Fri, 30 Jan 2015 15:33:51 CST</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/about/</guid>
+      <description>
+
+&lt;h2 id=&#34;关于我:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;关于我&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2010  HR@RUC&lt;/li&gt;
+&lt;li&gt;2014  CS@ICT, CAS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;坐标北京，90后，女。&lt;/p&gt;
+
+&lt;p&gt;本科的时候开始写博客，缘由是下定决心转CS专业，记录一下自己的学习和生活。现在看来，学习的内容有点太少了，生活的吐槽倒是一大堆。所以为了当一个好的程序媛，干脆弃掉原来的点点博客，折腾一个属于自己的地盘，记录一些学习笔记和自己的想法，就当督促自己吧。&lt;/p&gt;
+
+&lt;p&gt;电邮: nanshu.wang@gmail.com&lt;/p&gt;
+
+&lt;h2 id=&#34;喜欢:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;喜欢：&lt;/h2&gt;
+
+&lt;p&gt;过山车 童话 Modern Family 刘慈欣 羽毛球 凉面 马尔克斯 Wes Anderson 恋爱的犀牛 安房直子 栀子花 22 42 GEEK笑点 三重镇 郑渊洁 Battlestar Galactica 抹茶味八喜冰淇淋 关东煮的蟹粉包 茄子 滑滑梯 Pixar 宫崎骏 智力游戏 Dixit 德州扑克 搜索引擎 豆瓣 油茶 粤菜 回锅肉 排骨香肠 番茄鸡蛋炒饭 小吊梨汤 咖啡厅 苏格拉底 Markdown Manictime 纪念碑谷 Popcap 红楼梦 Shameless Mac 东区全日早餐 早茶 三明治 滑雪 长跑 Sublime Text 鱼豆腐 油泼面 王小波 蒋勋 Python 卜东波老师 李钟硕 Running man 颜文字 韩语 Aaron Swartz Wunderlist 番茄土豆 Wikipedia 集邮&lt;/p&gt;
+
+&lt;h2 id=&#34;不喜欢:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;不喜欢：&lt;/h2&gt;
+
+&lt;p&gt;大部分肉类 过分亲密 用office工作 恐怖片 孤独感 话不投机&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scikit-Learn机器学习介绍（中文翻译）</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</link>
+      <pubDate>Tue, 02 Dec 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</guid>
+      <description>
+
+&lt;p&gt;翻译自：&lt;a href=&#34;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&#34;&gt;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以后可能会根据自己的学习慢慢翻译其他的章节，水平有限，不足之处请指正。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;本章内容
+在本章中，我们会介绍在使用scikit-learn中遇到的&lt;a href=&#34;http://en.wikipedia.org/wiki/Machine_learning&#34;&gt;机器学习&lt;/a&gt;(machine learning)术语，以及一个简单的机器学习例子。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;机器学习-问题设定:935e1a74f960fd04b26b502f6058f057&#34;&gt;机器学习：问题设定&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一般来说，机器学习问题可以这样来理解：我们有n个&lt;a href=&#34;http://en.wikipedia.org/wiki/Sample_(statistics)&#34;&gt;样本&lt;/a&gt;(sample)的数据集，想要预测未知数据的属性。
+如果描述每个样本的数字不只一个，比如一个多维的条目（也叫做&lt;a href=&#34;http://en.wikipedia.org/wiki/Multivariate_random_variable&#34;&gt;多变量数据&lt;/a&gt;(multivariate data)），那么这个样本就有多个属性或者&lt;strong&gt;特征&lt;/strong&gt;。
+我们可以将学习问题分为以下几类：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Supervised_learning&#34;&gt;有监督学习&lt;/a&gt;(unsupervised learning)是指数据中包括了我们想预测的属性，有监督学习问题有以下两类：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Classification_in_machine_learning&#34;&gt;分类&lt;/a&gt;（classification）:样本属于两个或多个类别，我们希望通过从已标记类别的数据学习，来预测未标记数据的分类。例如，识别手写数字就是一个分类问题，其目标是将每个输入向量对应到有穷的数字类别。从另一种角度来思考，分类是一种有监督学习的离散（相对于连续）形式，对于n个样本，一方有对应的有限个类别数量，另一方则试图标记样本并分配到正确的类别。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Regression_analysis&#34;&gt;回归&lt;/a&gt;(regression):如果希望的输出是一个或多个连续的变量，那么这项任务被称作*回归*，比如用年龄和体重的函数来预测三文鱼的长度。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Unsupervised_learning&#34;&gt;无监督学习&lt;/a&gt;(unsupervised learning)的训练数据包括了输入向量X的集合，但没有相对应的目标变量。这类问题的目标可以是发掘数据中相似样本的分组，被称作&lt;a href=&#34;http://en.wikipedia.org/wiki/Cluster_analysis&#34;&gt;聚类&lt;/a&gt;(Clustering)；也可以是确定输入样本空间中的数据分布，被称作&lt;a href=&#34;http://en.wikipedia.org/wiki/Density_estimation&#34;&gt;密度估计&lt;/a&gt;（density estimation）;还可以是将数据从高维空间投射到两维或三维空间，以便进行数据可视化。&lt;a href=&#34;http://scikit-learn.org/stable/unsupervised_learning.html#unsupervised-learning&#34;&gt;这里&lt;/a&gt;是Scikit-Learn的无监督学习主页。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;训练集和测试集
+机器学习是关于如何从数据学习到一些属性并且用于新的数据集。这也是为什么机器学习中评估算法的一个习惯做法是将手头已有的数据集分成两部分：一部分我们称作&lt;strong&gt;训练集&lt;/strong&gt;（training set），用来学习数据的属性；另一部分叫做&lt;strong&gt;测试集&lt;/strong&gt;（testing set），用来测试这些属性。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;加载样例数据集:935e1a74f960fd04b26b502f6058f057&#34;&gt;加载样例数据集&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;scikit-learn有一些标准数据集，比如用于分类的&lt;a href=&#34;http://en.wikipedia.org/wiki/Iris_flower_data_set&#34;&gt;iris&lt;/a&gt;和&lt;a href=&#34;http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits&#34;&gt;digits&lt;/a&gt;数据集，和用于回归的&lt;a href=&#34;http://archive.ics.uci.edu/ml/datasets/Housing&#34;&gt;波士顿房价&lt;/a&gt;(boston house prices)数据集。
+下面，我们会用shell里的Python解释器来加载&lt;code&gt;iris&lt;/code&gt;和&lt;code&gt;digits&lt;/code&gt;数据集。&lt;code&gt;$&lt;/code&gt;表示shell提示符，&lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;表示Python解释器提示符：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ python
+  &amp;gt;&amp;gt;&amp;gt; from sklearn import datasets
+  &amp;gt;&amp;gt;&amp;gt; iris = datasets.load_iris()
+  &amp;gt;&amp;gt;&amp;gt; digits = datasets.load_digits()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;数据集类似字典对象，包括了所有的数据和关于数据的元数据（metadata）。数据被存储在&lt;code&gt;.data&lt;/code&gt;成员内，是一个&lt;code&gt;n_samples*n_features&lt;/code&gt;的数组。在有监督问题的情形下，一个或多个因变量（response variables）被储存在&lt;code&gt;.target&lt;/code&gt;成员中。有关不同数据集的更多细节可以在&lt;a href=&#34;http://scikit-learn.org/stable/datasets/index.html#datasets&#34;&gt;这里&lt;/a&gt;被找到。
+例如，在digits数据集中，&lt;code&gt;digits.data&lt;/code&gt;是可以用来分类数字样本的特征：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; print(digits.data)  # doctest: +NORMALIZE_WHITESPACE
+  [[  0.   0.   5. ...,   0.   0.   0.]
+   [  0.   0.   0. ...,  10.   0.   0.]
+   [  0.   0.   0. ...,  16.   9.   0.]
+   ...,
+   [  0.   0.   1. ...,   6.   0.   0.]
+   [  0.   0.   2. ...,  12.   0.   0.]
+   [  0.   0.  10. ...,  12.   1.   0.]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;digits.target&lt;/code&gt;给出了digits数据集的真实值，即每个数字图案对应的我们想预测的真实数字：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; digits.target
+  array([0, 1, 2, ..., 8, 9, 8])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;数据数组的形式
+数据是一个2维&lt;code&gt;n_samples*n_features&lt;/code&gt;的数组，尽管原始数据集可能会有不同的形式。在digits数据集中，每个原始样本是一个8*8的数组，可以用以下方式访问：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;gt;&amp;gt;&amp;gt; digits.images[0]
+    array([[  0.,   0.,   5.,  13.,   9.,   1.,   0.,   0.],
+         [  0.,   0.,  13.,  15.,  10.,  15.,   5.,   0.],
+         [  0.,   3.,  15.,   2.,   0.,  11.,   8.,   0.],
+         [  0.,   4.,  12.,   0.,   0.,   8.,   8.,   0.],
+         [  0.,   5.,   8.,   0.,   0.,   9.,   8.,   0.],
+         [  0.,   4.,  11.,   0.,   1.,  12.,   7.,   0.],
+         [  0.,   2.,  14.,   5.,  10.,  12.,   0.,   0.],
+         [  0.,   0.,   6.,  13.,  10.,   0.,   0.,   0.]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://scikit-learn.org/stable/auto_examples/plot_digits_classification.html#example-plot-digits-classification-py&#34;&gt;这个简单的例子&lt;/a&gt;说明了如何从原始问题里将数据形式化，以便scikit-learn使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;学习和预测:935e1a74f960fd04b26b502f6058f057&#34;&gt;学习和预测&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;在digits数据集中，我们的任务是给定一个图案，预测其表示的数字是什么。我们的样本有10个可能的分类（数字0到9)，我们将拟合一个&lt;a href=&#34;http://en.wikipedia.org/wiki/Estimator&#34;&gt;预测器&lt;/a&gt;(estimator)来&lt;strong&gt;预测&lt;/strong&gt;(predict)未知样本所属的分类。
+在scikit-learn中，分类的预测器是一个Python对象，来实现&lt;code&gt;fit(X, y)&lt;/code&gt;和 &lt;code&gt;predict(T)&lt;/code&gt;方法。
+下面这个预测器的例子是class&lt;code&gt;sklearn.svm.SVC&lt;/code&gt;，实现了&lt;a href=&#34;http://en.wikipedia.org/wiki/Support_vector_machine&#34;&gt;支持向量机分类&lt;/a&gt;。创建分类器需要模型参数，但现在，我们暂时先将预测器看作是一个黑盒：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; from sklearn import svm
+  &amp;gt;&amp;gt;&amp;gt; clf = svm.SVC(gamma=0.001, C=100.)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;选择模型参数
+在这个例子里我们手动设置了&lt;code&gt;gamma&lt;/code&gt;值。可以通过这些工具例如&lt;a href=&#34;http://scikit-learn.org/stable/modules/grid_search.html#grid-search&#34;&gt;网格搜索&lt;/a&gt;（grid search）和&lt;a href=&#34;http://scikit-learn.org/stable/modules/cross_validation.html#cross-validation&#34;&gt;交叉验证&lt;/a&gt;（cross validation）来自动找到参数的最佳取值。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;给预测器取个名字叫做&lt;code&gt;clf&lt;/code&gt;（claasifier）。现在预测器必须来&lt;strong&gt;拟合&lt;/strong&gt;（fit）模型，也就是说，它必须从模型中&lt;strong&gt;学习&lt;/strong&gt;（learn）。这个过程是通过将训练集传递给&lt;code&gt;fit&lt;/code&gt;方法来实现的。我们将除了最后一个样本的数据全部作为训练集。通过Python语法&lt;code&gt;[:-1]&lt;/code&gt;来选择训练集，这会生成一个新的数组，包含了除最后一个条目的&lt;code&gt;digits.data&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; clf.fit(digits.data[:-1], digits.target[:-1])  # doctest: +NORMALIZE_WHITESPACE
+  SVC(C=100.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+    gamma=0.001, kernel=&#39;rbf&#39;, max_iter=-1, probability=False,
+    random_state=None, shrinking=True, tol=0.001, verbose=False)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在你可以预测新值了，具体来说，我们可以询问分类器，&lt;code&gt;digits&lt;/code&gt;数据集里最后一个图案所代表的数字是什么，我们并没有用最后一个数据来训练分类器。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; clf.predict(digits.data[-1])
+  array([8])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最一个图案如下：
+&lt;img src=&#34;http://scikit-learn.org/stable/_images/plot_digits_last_image_0011.png&#34; alt=&#34;此处输入图片的描述&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;如你所见，这项任务很具有挑战性：这个图案的分辨率很差。你能和分类器得到一致结果吗？
+一个更复杂的分类问题的例子在这里:&lt;a href=&#34;http://scikit-learn.org/stable/auto_examples/plot_digits_classification.html#example-plot-digits-classification-py&#34;&gt;识别手写数字&lt;/a&gt;（Recognizing hand-written digits），供学习参考。&lt;/p&gt;
+
+&lt;h2 id=&#34;模型持久性-model-persistence:935e1a74f960fd04b26b502f6058f057&#34;&gt;模型持久性（Model persistence）&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;可以采用Python内建的持久性模型&lt;a href=&#34;http://docs.python.org/library/pickle.html&#34;&gt;pickle&lt;/a&gt;来保存scikit的模型:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; from sklearn import svm
+  &amp;gt;&amp;gt;&amp;gt; from sklearn import datasets
+  &amp;gt;&amp;gt;&amp;gt; clf = svm.SVC()
+  &amp;gt;&amp;gt;&amp;gt; iris = datasets.load_iris()
+  &amp;gt;&amp;gt;&amp;gt; X, y = iris.data, iris.target
+  &amp;gt;&amp;gt;&amp;gt; clf.fit(X, y)  # doctest: +NORMALIZE_WHITESPACE
+  SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+    kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=None,
+    shrinking=True, tol=0.001, verbose=False)
+
+  &amp;gt;&amp;gt;&amp;gt; import pickle
+  &amp;gt;&amp;gt;&amp;gt; s = pickle.dumps(clf)
+  &amp;gt;&amp;gt;&amp;gt; clf2 = pickle.loads(s)
+  &amp;gt;&amp;gt;&amp;gt; clf2.predict(X[0])
+  array([0])
+  &amp;gt;&amp;gt;&amp;gt; y[0]
+  0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在scikit的特定情形下，用joblib&amp;rsquo;s来代替pickle（&lt;code&gt;joblib.dump&lt;/code&gt; &amp;amp; &lt;code&gt;joblib.load&lt;/code&gt;）会更吸引人，在大数据下效率更高，但只能pickle到磁盘而不是字符串：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; from sklearn.externals import joblib
+  &amp;gt;&amp;gt;&amp;gt; joblib.dump(clf, &#39;filename.pkl&#39;) # doctest: +SKIP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你可以在之后重新加载pickled模型（可以在另一个Python程序里）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; clf = joblib.load(&#39;filename.pkl&#39;) # doctest:+SKIP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意：
+joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code&gt;对象中独立的numpy数组是在文件系统中是按顺序排列的一个独立文件。当用joblib.load重新加载模型时，所有文件必须在同一个目录下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;注意pickle有一些安全性和维护性问题。请参考&lt;a href=&#34;http://scikit-learn.org/stable/modules/model_persistence.html#model-persistence&#34;&gt;模型持久性&lt;/a&gt;章节获得更多关于scikit-learn模型持久性的信息。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>孤独的反思</title>
+      <link>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E5%AD%A4%E7%8B%AC%E7%9A%84%E5%8F%8D%E6%80%9D/</link>
+      <pubDate>Mon, 15 Sep 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E5%AD%A4%E7%8B%AC%E7%9A%84%E5%8F%8D%E6%80%9D/</guid>
+      <description>&lt;p&gt;第一次知道蒋勋，是默存同学送给我的一本《蒋勋的卢浮宫》。我对西方美术完全没有了解，这本书一开始我也很不以为然。蒋勋用他自己的美学视角，写的一本卢浮宫导游书。读一遍下来我一直以为蒋勋是一位年轻的艺术家，因为他的文字就像是一个人在你身旁慢慢说话，没有任何艰深难懂的地方，把我所以为很难懂的美术讲成了一个个平常的故事，不夸张也不造作，有一种原来美术是这样来理解的恍然大悟。
+后来，开始慢慢听《蒋勋说红楼梦》，才知道他原来主要是研究文学。也多亏他，我才意识到《红楼梦》是多么精彩而伟大的小说，以前走马观花的阅读失去了多少趣味。他讲话，总是觉察不出他的年龄，常常诧异怎么年轻人的心态他这么懂。我几乎和上一辈的人没有过深入的交谈和对话，但读蒋勋的文字就常常很高兴，觉得上一辈的也有有趣的，懂我们的人。
+毕业旅行去了台北，在诚品书店找到了《孤独六讲》，便买回来读。陌生的竖排繁体的排版，读起来却没有什么障碍。我记得一个大学同学，常常在地铁上读竖排的漫画书，他说竖排最适合在地铁里看，因为可以一只手拿书左右滚着看，另一只手可以去扶扶手。
+书的开头一段是坐在诚品书店里读的，里面写到他常常看到报上的新闻，会想到当事人的心里的孤独，全世界都在谈论你，却没有人愿意去你的心底看一看的感受，是多么巨大的孤独。当时我特别惊讶，因为我也有过同样的感觉，会想要去理解别人内心的孤独感，我从来没对人说过，却在这本书里读到了。这本从头读到尾，这样的感觉都一直伴随着我。
+蒋勋是赞颂孤独的，他一开头就说&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“孤独没有什么不好。使孤独变得不好，是因为你害怕孤独。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在情欲孤独里，他认为青少年时期必须经过一个孤独的阶段，必须在这个阶段里感受到完整的自我，才能发展出完整的感情。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“当你在暗恋一个人时，你的生命正在转换，从中发现出完美的自我。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;他提到，儒家文化一直以来是阻挡孤独和完整自我形成的最大障碍，这种集体主义的思想抹杀了独立个体的感情，不允许孤独存在。我接受我的情欲孤独，是因为我的感情要代表我的自我，而不要去代表社会所认同的我。
+语言孤独让我感到害怕，你看见一千张嘴在那里说话，却没有一只耳朵在听。你发出了声音，却永远地消失在无尽的黑暗里。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“看一本小说，不要看它写了什么，要看他没有写什么。如同你听朋友说话，不要听他讲了什么，要听他没有讲什么。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我每次放假回家，都不愿意和父母去饭后散步，不是因为我懒也不是因为不愿意陪伴父母，而是我不愿意每次遇到父母的朋友我都必须毕恭毕敬地打声毫无意义的招呼。语言的孤独在于我们嘴里的话都没有了意义，只有马斯洛需求层次最低一层的寒暄。最近班级聚餐时，邻座坐着一个和我气味相投的男生，和他很有话聊的时候，语言仿佛才有了意义，不是室友碎碎念周末进城见了谁吃了什么的话，而是平时的孤独感仿佛有人可以理解。
+革命孤独对于我是全新的话题。大概是被应试教育荼毒的原因，一提起革命我就老是想起高中的历史课本，里面一本正经告诉你革命伟大在哪里，我们该如何感恩，却从没有提起过革命者的思想，他们为何会在年轻时为革命献身，他们理解的革命是什么？读了秋瑾的故事，理解她的内心，才会体会其中的感人，才会觉得会掉下泪来。他们从时代走出，将生命置之度外的超脱，是他们背负的巨大的孤独。蒋勋提到了托尔斯泰临终前留下的一封信，信上说：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“我决定放弃我的爵位，我决定放弃我的土地，我决定要土地上所有的农奴恢复自由人身份。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;他写到：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“我觉得这是托尔斯泰最了不起的作品，他让我们看到革命是对自己的革命，他所要颠覆的不是外在的体制和阶级，而是颠覆内在的道德不安感。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这时我才反应过来，这些作品之所以令我着迷，是因为它在颠覆一些我不认同的东西，说出了我想说出的话。
+暴力孤独说的不仅仅是字面上的暴力，因为暴力的形式有很多，语言可以是暴力，感情可以是暴力，爱也可能是暴力。暴力是一种美学，因为暴力的源自于我们生存的本能，在弱肉强食，优胜劣汰中保存在了我们基因里。蒋勋用他的一篇小说《妇人明月的手指》的创作来说明文明社会中的暴力，这本小说读来让人不寒而栗，手指被砍断的暴力反而并没有大学生，出租车司机，警察的表现更让人害怕。而这是法律所不能管辖的暴力，也是我们所有人无时无刻无意识会施加的暴力。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“当你强势到某一个程度时，你不会意识到强势到了某个程度，不管是阶级，国家或是族群，本身就会构成暴力。但要产生这些自觉，并不是那么容易。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;蒋勋认为思维孤独是最大的一个孤独，因为思维孤独是最难以坚持和保留的。我们的儒家文化里没有哲学的思辨，只有已经规定好的是非伦理。我常常会质疑很多周围朋友的观点：比如女生不用太努力，比如什么年龄一定要结婚要有小孩，还有些是我还不敢说出来的观点。而这样的讨论往往会归总到一句大家耳熟能详的熟语，放佛几千年传来下的话一定没错似的，我竟然找不到反驳的理由。我佩服那些敢作那0.01%的人，害怕永远只做99.99%的人，就像书里说到在某个特殊时期，&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“有人讲说要怎么样怎么样的时候，你先不要动，先观察，然后发现有一半以上的人都这样讲的话，你就开始这样子讲，然后你千万不要变成那样最后的几个和最前面的几个，因为可能倒霉，靠错边就不好了。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;不知道这一段在大陆出版的书里有没有被删去呢？还有一段很喜欢的话：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“孤独一定要慢，当你急迫地从A点到B点时，所有的思考都停止。生命很简单，也是从A点到B点，由生到死。如果你一生都很忙碌，就表示你一生什么都没有看到，快速地从A点到了B点。难道生命的开始就是为了死亡吗？还是为了活着的每一分每一秒。与孤独相处的时候，可以多一点思维的空间，生命的过程会不会更细腻一点？”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;伦理孤独是很多时候让我感到痛苦的部分，因为我对这个社会的伦理划分的方式并不满意，或者我认为我们应该可以有自己的伦理选择，才能谈得上个人的完整。蒋勋是这样说的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“我一直期盼我们的社会能建立一个新的伦理，是以独立的个人为单位，先成为一个可以充分思考，完整的个人，再进而谈其他的相对伦理的关系。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我明白了我为什么会对《霍乱时期的爱情》里费尔明娜和《归来》里冯婉瑜抛开子女的爱情感到伟大，是因为我认为的爱情，是纯粹的，抛开伦理的，甚至是最重要的亲子观的。我向往的是不带有伦理的感情，那种自由，透明，没有束缚的表达，而不是伦理关系下迎合社会的结合。&lt;/p&gt;
+
+&lt;p&gt;这本书谈论的是个人，个人的思想，个人的孤独。同样是谈论人，却比上课学的那些心理学，组织行为学更有用，更打动人。作为社会人，我们通常关注的和在社会关系网中和别人的连系的那些表示关系的边，却忽略了人首先是作为独立的点的存在，才会发展出边。我们忽略了自己的和别人的独立性，忽略了在社会中我们的孤独，让孤独变成不可以谈论，不可以表现，不可以赞颂的东西。但我们需要孤独，需要它来使自己更完美。整本书讲到的是我们作为社会人的悲哀，作为社会人的孤独。情欲，革命，暴力等的本质都是孤独。必须承认孤独，才能成为社会人。蒋勋在伦理孤独的最后说：
+&amp;gt; &amp;ldquo;期盼每个人都能在破碎重整的过程中找回自己的伦理孤独。&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;希望我能在破碎重整的过程中找回自我。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>离开学还有十一天</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E7%A6%BB%E5%BC%80%E5%AD%A6%E8%BF%98%E6%9C%89%E5%8D%81%E4%B8%80%E5%A4%A9/</link>
+      <pubDate>Tue, 19 Aug 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E7%A6%BB%E5%BC%80%E5%AD%A6%E8%BF%98%E6%9C%89%E5%8D%81%E4%B8%80%E5%A4%A9/</guid>
+      <description>&lt;p&gt;最近过着一种十分规律的生活：早睡早起，早午晚都去同样的地方吃饭，走同样上下班的路，进同样的电梯，按下同样的7楼，和同样的同伴说同样的话题。头回开始觉得，重复同样的生活并没有什么不好，甚至有点不想离开，去面对新学期新课程新同学新宿舍的新鲜劲。毕业已经有快2个月了，朋友圈里充斥着大家新生活的状态，或兴奋或无奈或沮丧或否极泰来，总之都带有一种move on的气氛。而面对我的新生活，我却更愿意待在回忆里不肯走出来。大概是因为心中还有郁结堆在那里，没有和珍惜的人好好道别，更是被自己的话一语中的，像是karma一样，明明是高中的翻版，我的角色对调了而已。&lt;/p&gt;
+
+&lt;p&gt;好几个夜晚陷入了回忆而失眠，耳机里是将勋娓娓道来的红楼梦，再也回不去的曾经的美好如潮水般涌来。似乎人生的每个阶段都在惋惜上个阶段，初中惋惜童年，高中惋惜初中朋友，大学惋惜高中同学，大学毕业又开始惋惜大学最好的朋友。&lt;/p&gt;
+
+&lt;p&gt;想像黛玉那样活，偏执，极致，宁为玉碎，不为瓦全。&lt;/p&gt;
+
+&lt;p&gt;却只能像宝钗那样，失去立场，周全，说不出真心话。&lt;/p&gt;
+
+&lt;p&gt;在家里说“自由的灵魂”这样的话，也会被妈妈取笑。只好抓住妈妈回忆自己年轻时是如何摆脱被安排的命运的时机，把自己的想法类比着全倒出来。妹妹说看我高中的日记本，突然就不想读书了。我却也只有模仿大人的语气，告诉她世俗价值观的对错。
+果然多了好多长大了才有的想法，可是我还是想拒绝长大啊。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;新学期课程不管怎么学，拿好成绩&lt;/li&gt;
+&lt;li&gt;自己充电的计划不放松&lt;/li&gt;
+&lt;li&gt;不间断看csapp&lt;/li&gt;
+&lt;li&gt;下个月之内搞定GRE3000&lt;/li&gt;
+&lt;li&gt;每天一道算法题&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>大学42句</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%A4%A7%E5%AD%A642%E5%8F%A5/</link>
+      <pubDate>Sat, 29 Mar 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%A4%A7%E5%AD%A642%E5%8F%A5/</guid>
+      <description>&lt;p&gt;3年前在这个学姐的博客里看到反映我大学经历的50句话。，就想着等我快毕业时，也要写这么一篇。最近失眠得厉害，必须到深夜大家都沉沉睡去时，才慢慢回忆起这些闪在脑海中的话。我一向觉得我长期记忆能力好差，要想凑够数量足够多的句子还要费上很长一段时间。但昨天的脑洞一开，这些句子简直是自己长了翅膀飞出来的一样，闭上眼睛，仿佛说话的人就在耳边。这些句子的主人，有最亲密的好友，也有仅一面之缘的陌生人，有老师，有同学，有父母，有朋友，有恋人，也有我自己。有的话恐怕当事人已经不再记得，只有我知道这些句子在当时是如何惊起心中的波澜，对我多么宝贵。本来也想凑够50句，但第42句已经是前几天毕业采访的时候了，况且42是一个多么符合GEEK气质的数字啊，凑不够也就作罢。&lt;/p&gt;
+
+&lt;p&gt;1.Carpe diem.
+2.精神使人活。
+3.曾经我因为看《红楼梦》太入迷，抑郁了好几年。
+4.你们组的时间已经到了，余下的不用讲了。
+5.我们家的一个时代结束了，有你二妈的时代永远不会回来了。
+6.当然记得你的声音啊。
+7.彩虹扣子，只送给你的呀。
+8.少年，你的生活已经足够好了。
+9.这是我的保留节目。
+10.我也有些醉了，说最后一句话。
+11.我签一下字，剩下的你自己写吧。
+12.送你一对耳钉，美丽的背后都有疼痛。
+13.留下吧，我们都留下吧。
+14.即使所有人都不行，你还有我呢。
+15.应该早一点认识你的。
+16.这一切的理论和论点都不成立的话，为什么我们要生活在一个巨大的谎言之下。
+17.我最大的梦想就是等赚够了钱，就回四川开一家饭馆。
+18.你还年轻，应该去闯，去经历。爸爸妈妈都支持你。
+19.你为什么总是这样奇怪，考虑下我的感受。
+20.我只是一台会哭的机器。
+21.舒舒姐姐生日快乐。
+22.果然经历过地震心态都不一样。
+23.这都没什么所谓。
+24.每天晚上要读一点《黄金时代》才能睡着。
+25.每次到这种时候我才知道自己真的是有多爱你。
+26.小姑娘怎么想的，你们院专业多好啊。
+27.这是我婚礼上讲过的故事。
+28.你现在就该玩。
+29.如果有一天他回头，我也不知道会怎么做。
+30.字我已经签了，跟我来有几句话要说。
+31.第一次这样称呼你，总之谢谢。
+32.为了我女朋友，就该拼命去奋斗。
+33.街上一个人都没有，我就把耳机开到最大，跑调非常严重的唱歌。
+34.大学能遇到一个可以交心的朋友，真庆幸。
+35.我没什么目标，不知道要干嘛。
+36.因为你们说都来过青岛了，我很感动。
+37.分开的想法大于复合吧。
+38.Qualified or not, merely depends on time, just make sure that you are right on the track.
+39.原来你并没有我想像的那样独立。
+40.我觉得我还有好多没有经历。
+41.Thank You Letter
+42.我从一个怀疑生活的人变成了一个相信命运的人。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>近期计划</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E8%BF%91%E6%9C%9F%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Fri, 21 Mar 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E8%BF%91%E6%9C%9F%E8%AE%A1%E5%88%92/</guid>
+      <description>&lt;p&gt;说来惭愧，尘埃落定之后便抛弃了记录学习过程的习惯。最近实在是有点颓废，记一下好勉励自己。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;搞定毕业论文&lt;/li&gt;
+&lt;li&gt;edX的课程跟上，不要拖过deadline&lt;/li&gt;
+&lt;li&gt;找暑期实习&lt;/li&gt;
+&lt;li&gt;不要看闲书，看正经书&lt;/li&gt;
+&lt;li&gt;背GRE单词&lt;/li&gt;
+&lt;li&gt;学习《韩国语》第一册&lt;/li&gt;
+&lt;li&gt;少刷微博少逛淘宝&lt;/li&gt;
+&lt;li&gt;第二次去青岛，girls&amp;rsquo; spring break, 深夜啤酒！&lt;/li&gt;
+&lt;li&gt;从开学以来保持了记账的好习惯，果然开支控制得很好，但是天气好起来就想买小裙子的心情无法抑制&lt;/li&gt;
+&lt;li&gt;第二个习惯是听电台，IT公论简直是涨姿势的好途径，好喜欢Rio&lt;/li&gt;
+&lt;li&gt;最近想追的：Ellen show巨好笑， 简直要爱上Ellen Degeneres了T T；韩国版的爸爸我们去哪儿也好好看&amp;gt;&amp;lt;&lt;/li&gt;
+&lt;li&gt;每天刷instagram也要爱上Jesse Tyler了星星眼&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>恋爱的犀牛</title>
+      <link>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E6%81%8B%E7%88%B1%E7%9A%84%E7%8A%80%E7%89%9B/</link>
+      <pubDate>Thu, 09 Jan 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E6%81%8B%E7%88%B1%E7%9A%84%E7%8A%80%E7%89%9B/</guid>
+      <description>&lt;p&gt;看现场的话剧比书本上的对话明朗了许多，说到最后这也不过是一个“我爱你，你不爱我”的故事。用最近从《程序员的数学》上学来的分组方法，爱情的分组不外乎是一下三种：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;我爱你，你也爱我&lt;/li&gt;
+&lt;li&gt;我爱你，你不爱我&lt;/li&gt;
+&lt;li&gt;你爱我，我也爱你&lt;/li&gt;
+&lt;li&gt;你爱我，我不爱你&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;其中，1,3都是Happy ending（如果没有婆媳矛盾，身世之谜种种阻挠），然而大部分陷入爱情的迷阵里的青年，都在2,4里苦苦挣扎：有的有幸在2,4的循环里进入了1,3的接口，终止了自己的不幸；有的却在这个循环里咒骂爱情的无情，不得逃脱。&lt;/p&gt;
+
+&lt;p&gt;以前我总觉得，聪明的人一定会冲着2,4move on：要么从2到1，积极努力不行再换个人；要么从4到3，自己的信再铁石心肠也会有被打动的一天吧。然而《恋爱的犀牛》却不是讲着完全相反的故事，爱着明明的马路不停得重复这句告白：
+&amp;gt; 一切白的东西和你相比都成了黑墨水而自惭形秽，一切无知的鸟兽因为不能说出你的名字而绝望万分。&lt;/p&gt;
+
+&lt;p&gt;爱着成飞的明明在受伤时说：
+&amp;gt; 我还要对他顺从到哪一天，我真不知道我还有什么事不能为他做！这个可恨的人！我要是不爱他了，该多好。我眼睛里带着爱情就像是脑门上带着奴隶的印记，他走到哪儿我就要跟到哪儿！你能想象吗？只要跟着他我就满足了。真是发疯，怎么样才能不再爱他呢？嗯？这样下去我会受不了的！可我要是不爱他了，活着还有什么意思呢？我从来没见过像他这样的男人，我下了多少次决心，可一看见他，完蛋了…….&lt;/p&gt;
+
+&lt;p&gt;他们两人固执得不肯从2,4里跳出死循环，死死抓住那句“我爱你”或“我不爱你”，其余什么都不要。大概大部分人都是自私而愚蠢的，才会造成怎么多爱情悲剧的存在：“我”是自私的，“爱”或“不爱”是愚蠢的，“你”和“我”都是悲剧的。没有一个好下场的故事，为什么又要死死把自己扣进那个循环呢。&lt;/p&gt;
+
+&lt;p&gt;大概“爱的伟大”可以解释这个现象。“爱”是人类最纯洁，最无私，最高尚的一种情感，在柏拉图的《会饮》里，Agathon对爱神进行了最美妙的赞美：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Therefore, Phaedrus, I say of Love that he is the fairest and best in himself, and the cause of what is fairest and best in all other things. And there comes into my mind a line of poetry in which he is said to be the god who&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Gives peace on earth and calms the stormy deep,&lt;/p&gt;
+
+&lt;p&gt;Who stills the winds and bids the sufferer sleep.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is he who empties men of disaffection and fills them with affection, who makes them to meet together at banquets such as these: in sacrifices, feasts, dances, he is our lord-who sends courtesy and sends away discourtesy, who gives kindness ever and never gives unkindness; the friend of the good, the wonder of the wise, the amazement of the gods; desired by those who have no part in him, and precious to those who have the better part in him; parent of delicacy, luxury, desire, fondness, softness, grace; regardful of the good, regardless of the evil: in every word, work, wish, fear-saviour, pilot, comrade, helper; glory of gods and men, leader best and brightest: in whose footsteps let every man follow, sweetly singing in his honour and joining in that sweet strain with which love charms the souls of gods and men. Such is the speech, Phaedrus, half-playful, yet having a certain measure of seriousness, which, according to my ability, I dedicate to the god.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;既然古希腊的这位伟大的喜剧家都对爱进行了这样的最高赞誉，那爱一定是没错的，是会带来美德和幸福的。爱既然没错，我的“爱”也一定没错，我的“爱”驱使我做的事也一定没错。爱是多么正确和美妙啊，大部分人一定是这样想的，因为我们老能听见电视里不肯放手的男二悲催的台词：&lt;em&gt;我爱你难道有错吗？&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;奇怪的是，《恋爱的犀牛》里，明明出场时却是这样一段质疑爱的话：
+&amp;gt; 我是说“爱”！那感觉是从哪来的？从心脏、肝脾、血管，哪一处内脏里来的？也许那一天月亮靠近了地球，太阳直射北回归线，季风送来海洋的湿气使你皮肤润滑，蒙古形成的低气压让你心跳加快。或者只是你来自你心里的渴望，月经周期带来的骚动，他房间里刚换的灯泡，他刚吃过的橙子留在手指上的清香，他忘了刮的胡子刺痛了你的脸……这一切作用下神经末梢麻酥酥的感觉，就是所说的爱情……&lt;/p&gt;
+
+&lt;p&gt;倘若爱情的产生仅仅是周围环境而引起的内啡肽的化学变化，爱的本质似乎就没有Agathon说的那样高尚。一瞬间而且大部分紧靠外貌被吸引的异性，慢慢作用催生出的那个东西，被称之为爱。既然爱可以慢慢滋长，它也必然可以慢慢消退。由此永远陷入爱情2,4的死循环的判断是不靠谱的。世上一定要这样的人，《霍乱时期的爱情》里阿里萨就是这样，等待了几十年的爱情，而且非得等到心爱人老公死掉了才有机会，这样的浪漫主义其实是可悲的。&lt;/p&gt;
+
+&lt;p&gt;《恋爱的犀牛》里大仙说：
+&amp;gt; 爱情跟喜剧、体育、流行音乐没什么不同，是为了让人活得轻松愉快的。&lt;/p&gt;
+
+&lt;p&gt;这话听上去又轻浮又没责任心，然而比起那些陷入循环要死要活的爱情来说，我宁愿轻松一点，也不愿把原本应该被歌颂的爱变成我的苦难。&lt;/p&gt;
+
+&lt;p&gt;《会饮》里还说了，
+&amp;gt; Love is simply the name for the desire and pursuit of the whole.&lt;/p&gt;
+
+&lt;p&gt;Whole是需要两人在一起的，别固执也别强求。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Count Down</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/Count%20Down/</link>
+      <pubDate>Tue, 31 Dec 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/Count%20Down/</guid>
+      <description>&lt;p&gt;直到昨晚东方突然问我“你记得去年的最后一天我们在干什么吗？”，我才发现一年的时间在记忆里的印象是如此短暂。2012年最后一天，是我大学第一次参加班级活动，在教室里玩游戏，随后去聚餐吃饭。那天是默存同学在经历了电脑包被偷之后，从遥远的哥本哈根机场飞回北京的日子。去吃晚餐的路上我还清楚地记得我们说到了MDF和Alan show。下午的游戏我们还得到了一套很豪华的三国杀，吃过饭便和几个同学一起去知四玩三国杀到凌晨，在明亮的图书馆前愈显黑暗的路上，讲着恐怖的悬疑推理故事。&lt;/p&gt;
+
+&lt;p&gt;和一群小伙伴hang out的情节总是清晰，我甚至记得那天谁点了芒果绵绵冰，谁拍了一张大合照说新年快乐，谁后来走了又来了，谁坐在我的旁边我的对面。但如果不是东方的那一句话，我可能永远不会再回忆起那天的细节。在这个快毕业的关头想起这些无忧无虑的瞬间总是有些伤感，就像昨天去澡堂的路上对璇琦说以后毕业了我们肯定会慢慢不联系，我是那种从来不主动的人，所以你一定要主动联系我啊。璇琦却很无奈地回答我，可我也是那种从来不主动人啊……人际关系是一件很奇妙却也很自然的一件事，多亏朋友圈和点赞，好久不联系的朋友最近又恢复了互动，也经常能大洋彼岸的朋友说上几句话聊以安慰。&lt;/p&gt;
+
+&lt;p&gt;自己曾经说过，享受独处，不享受孤独。然而许久的独处会慢慢变成孤独，不知道是不是因为大四毕业这些词语让我们整天神经紧张，还是因为最终在意料之外自己settle down下来不用为未来发愁的空虚，我越来越感到自己是一个孤岛，就像无法搜索找到的长微博图片，虽然存在，却主动了断了一切连接。Epic里说，我们就像是一颗大树上的树叶，互相独立，却又息息相关。所以，好像时刻能够Proactive一点都不是坏事，对于自己和别人都不是坏事，要是毕业之后像我和璇琦估计的那样都不主动的话，不是就太可悲了吗，别人在等待你的行动时，就不要犹犹豫豫畏手畏脚了。至少心理学的实证研究告诉我们，Proactive的人在各种时机都更有绩效……&lt;/p&gt;
+
+&lt;p&gt;2013年的意义是开始做自己，慢慢开始独立思考，独立决策。这里的思考和决策的动力大部分来自于毕业的压力，但很庆幸的是没有在这个过程中失去自我。这一年也开始理解，要去接受自认为无意义的事物，要去接受不合理，接受却不要妥协。&lt;/p&gt;
+
+&lt;p&gt;一年前的我不会知道现在心中的无奈和妥协是什么，也不知道一年后的年末最后一天，我那时的Mindset又是怎样。不管是正还是负，都值得小小期待一下。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;做完导师给的任务&lt;/li&gt;
+&lt;li&gt;去香港澳门&lt;/li&gt;
+&lt;li&gt;加油看Networking&lt;/li&gt;
+&lt;li&gt;学习jekyll和github&lt;/li&gt;
+&lt;li&gt;学习ruby&lt;/li&gt;
+&lt;li&gt;保持刷techcrunch和quora的习惯&lt;/li&gt;
+&lt;li&gt;坚持sit ups&lt;/li&gt;
+&lt;li&gt;读完手头剩下的书&lt;/li&gt;
+&lt;li&gt;学习如何放松却依然有生产力&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>软件自定义网络Software-Definded Networking</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/SDN%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Tue, 22 Oct 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/SDN%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C/</guid>
+      <description>
+
+&lt;p&gt;译自：&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking&#34;&gt;https://en.wikipedia.org/wiki/Software-defined_networking&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;软件定义网络（Software-Definded Networking, SDN）最初来源于2008年左右在加州大学伯克利分校和斯坦福大学的研究工作，而后演化成为一种新型的计算机网络。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-1&#34;&gt;1&lt;/a&gt; SDN允许网络管理员通过对低层功能的抽象来管理网络服务。具体实现是通过将决定流量从如何发送的系统（控制平面）从底层转发流量到指定目的的系统（数据平面）分离开来。这项技术的发明者们和系统的供应商们认为SDN可以达到简化网络的目的。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-white-2&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;SDN需要引入一些方法来实现控制平面与数据平面的通信。OpenFlow的作为其中的一种实现机制 ，经常被人误解为等同于SDN，实际上其他机制也可以实现SDN的概念。开放网络基金会的创立促进了SDN和OpenFlow市场的发展，云计算这一概念也开始流行。&lt;/p&gt;
+
+&lt;h2 id=&#34;背景:9256170d87d1564859db31c49448ee70&#34;&gt;背景：&lt;/h2&gt;
+
+&lt;p&gt;控制器充当的物理网络和SDN层的之间的界面基于互联网协议 （IP）的网络最初是建立在自治系统 （Autonomous Systems, AS）的概念基础上的。这一概念允许网络进行扩展和延伸，连接节点知道部分必须的路由信息，根据这些信息找到合理的下一跳，并转发数据包到下一跳。这种网络连接方法是简单的，并已被证明是有弹性的和可扩展的。考虑到报文递交的服务，AS的原则不允许指定转发目的在不改变自己标识的情况下移动。转发目的之间的拓扑位置正是它们所连接的网络接口，即它们的标识。此外，只使用基本的AS是很难得到其他标识的质量，比如逻辑分组，访问控制， 服务质量 ，中间的网络处理，也难以确定涉及到成为网络流或网络对话的数据包序列方面的内容。&lt;/p&gt;
+
+&lt;p&gt;互联网工程任务组 (Internet Engineering Task Force,IETF)实行了许多补充标准来扩大标识特定化的需求，如虚拟局域网和虚拟专用网络。这些增加的标准提高了网络元件规格和网络供应商配置接口的复杂度。&lt;/p&gt;
+
+&lt;p&gt;随着弹性的云架构和动态资源分配的发展，以及移动电脑操作系统和虚拟机使用的增长，软件定义网络（SDN）这一额外的分层需求出现了。这一额外分层允许网络运营商指定网络服务，而不用去耦合网络接口的规格。这使得实体之间可以在不改变标识也不违反规格的情况下移动。它也可以简化网络操作，因为每个标识的全局定义不必与每一个接口位置相匹配。这样一层也可以通过将标识和流量特征控制逻辑从基本的基于拓扑转发、桥接及路由中分离出来，从而重建网络元素内部的复杂设计。&lt;/p&gt;
+
+&lt;p&gt;全局软件定义控制还会基于源和目标识别来跟踪特定内容的流量。关于驱动网络硬件的一种机制已经被网络设备制造商采纳，目的是共享在软件定义边缘和供应商特定的桥接及路由之间运行的边缘。OpenFlow协议定义了一组关于转发的开放命令。OpenFlow协议运用全球感知软件控制器（集中式或分布式）来驱动网络边缘硬件，以便创造一个易编程的、基于标识的、覆盖在传统的IP核心上的网络。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-white-2&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;SDN是实现可编程化 主动互联网进程中的一步。SDN允许网络管理员通过控制器来实现对网络流量的可编程中央控制，而不需要访问物理层的网络交换机 。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-4&#34;&gt;3&lt;/a&gt; SDN的配置可以创建起一个逻辑网络控制平面，其中硬件与数据转发平台硬件在物理上是分离的，即网络交换机可以转发数据包并且一个单独的服务器可以这个运行网络控制平面。 这种分离允许控制平面与数据平面在实现中使用不同的分布模型。控制平面的开发和运行环境的任务可以在不同的平台上运行（而不是硬件交换机和路由器上的低功率管理处理器）。&lt;/p&gt;
+
+&lt;p&gt;##SDN部署模型&lt;/p&gt;
+
+&lt;p&gt;###对称与非对称&lt;/p&gt;
+
+&lt;p&gt;在非对称模型中，SDN全局信息尽可能地集中化，边缘驱动时尽可能地分布化。这样做背后的考虑是清晰的，集中化使得全局整合轻松了许多，和分布化降低了SDN流量汇聚-封装的压力。然而，针对不同类型的SDN元素之间的确切关系，这种模型又产生了一系列问题，包括一致性，向外扩展的简化，多位置的高可用性，而在传统的基于AS的网络模型中，这些问题是不存在的。在对称分布的SDN模式中，需要增加全球的信息发布能力，提高SDN汇聚性能，使SDN元素基本上是一种类型的组件。只要在任意元素的子集中网络是可达的，在这样一组元素就可以在之上形成一个SDN覆盖网络。&lt;/p&gt;
+
+&lt;p&gt;###非泛洪与泛洪&lt;/p&gt;
+
+&lt;p&gt;在泛洪模型中，全局信息共享的相当一部分是通过广播和组播机制实现。这可以帮助SDN模型更加对称，它利用现有的透明桥接动态封装的原则，以实现全局意识和标识学习。这种方法的缺点之一是，随着越来越多的位置的加入，每个位置相应负载增加，从而降低了可扩展性。在非泛洪模型中，所有的转发是基于对全局的精确匹配，这通常采用分布式哈希和分布式缓存SDN查找表来实现。&lt;/p&gt;
+
+&lt;p&gt;###基于主机与网络中心化&lt;/p&gt;
+
+&lt;p&gt;在基于主机的模型中，关于SDN的数据中心中，假设很多的虚拟机通过可以移动来便增加弹性。在这个假设下，主机的虚拟机监视器代表本地虚拟机完成SDN封装。这种设计减少了SDN边缘的流量压力，并且根据每个主机上的空闲核心能力来“自由”处理。在网络中心化的设计中，一个更清晰的划分是在网络边缘和终端之间。这种SDN边缘与机柜设备顶端(TopOfRack)接口相连，并在主机端点之外。这是一种更传统的方法，网络互联并不依靠终端去执行任何路由的功能。&lt;/p&gt;
+
+&lt;p&gt;这些设计模型之间的界限划分并不明确。例如，在数据中心使用具有很多CPU“大型”主机计算结构有很多的CPU插件同样执行一些TopOfRack的接入功能，并可以代替一个机箱中所有的CPU插件，集中SDN边缘功能。这既是基于主机的设计，也是网络中心化的设计。也有可能是这些设计变量之间存在依赖关系，例如基于主机的实现通常会委托一个非对称集中查找或业务流程服务来协助组织庞大的分布。对称和非泛洪的模型通常会委托网络SDN汇聚来实现合理边缘点数量的查找分布。这样的集中度依赖于本地的OpenFlow的接口，以维持流量封装压力。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>安安静静</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%AE%89%E5%AE%89%E9%9D%99%E9%9D%99/</link>
+      <pubDate>Mon, 15 Jul 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%AE%89%E5%AE%89%E9%9D%99%E9%9D%99/</guid>
+      <description>&lt;p&gt;寝室只剩下了3个姑娘，一个准备出国，两个准备考研。每天大家早出晚归，话也不多，在闷热的宿舍里干着各自的事情，安安静静。偶尔有什么声音，也是窗外北京八月从没有间断的淅淅沥沥的雨。每天去图书馆选一层375附近的位置，遇到几个同考研的同学，打声招呼互相勉励一下，便把头埋进厚厚的数学全书和英语阅读里去。其实是不习惯这样安安静静的生活，总觉得几天没人说话没人一起笑就会把人逼疯，所以要隔三差五还是得邀上狐朋狗友去撮一顿或者玩桌游。能坚持考研下来的人，应该都会花上好一阵来适应安安静静吧，没适应下来的像我一样的不确定玩家怎么感觉都是要玩砸的样子。&lt;/p&gt;
+
+&lt;p&gt;6月末7月初去跑了很多个寺庙做调研，寺庙其实真是都市里的一片净土。寺庙藏在吵闹的地铁站旁的胡同深处，周围有的是居民区，有的是商业化的地段。无论外面如何，扣开朱门，时光好像静止了，好像是去到10年前、100年前或者是未来的随便哪一天，因为这里的一切好像原本如此，从未改变。佛事年复一年贴在入口处，日日修行，吃斋饭，打水浇花，肥胖的白猫和栽在盆里的水仙，供取阅的佛学书籍……一切事物和日常都是安安静静的，没有吵闹，就连气温都比围墙外降了好多度。不过好遗憾没有去成万寿寺，也没有去谭嗣同故居，今天和男朋友提想去一次被断然拒绝了好桑心。&lt;/p&gt;
+
+&lt;p&gt;最近四天是人大的夏令营，组织有点奇怪，本来想让大家在一种熟悉亲近的氛围来开展的活动都变成了奇怪的不忍直视的结果。不过大家也不在乎，真正在乎的是来考个试取一个推免的资格。笔试、面试和上机，上机考得不如意，以至于当天心情很糟糕，于是展开了自我否定的情绪，和男朋友吐了一个小时的槽。不过自己真的是有人格缺陷，莫名的因为一点小事都会陷入不可自拔的自我否定的深渊。按照男朋友的话说，是因为之前没有受过什么挫折，所有的事情都太轻松了太顺利了，偶尔遭受一点不如意的事情其实也是件好事，锻炼自己的抗打击能力。不过自己和大神之间的差距啊好恐怖，笨一点的人要先努力啊脚踏实地吧。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C176采访依然没弄&lt;/li&gt;
+&lt;li&gt;翻译的一篇关于苏格拉底的文章还没有发到译言上去&lt;/li&gt;
+&lt;li&gt;操作系统和计网最后都是4.0&lt;/li&gt;
+&lt;li&gt;Proactive Personality不继续弄了&lt;/li&gt;
+&lt;li&gt;搜索引擎进了前6，8月底去微软夏令营继续比&lt;/li&gt;
+&lt;li&gt;还在看《奇思妙想》《越暗越弱越美丽》，期间接触了下数据库，信息检索，复习了一遍数据结构，水了28道题。&lt;/li&gt;
+&lt;li&gt;高数在看第二章，英语做了5组阅读，对解题思路依然迷茫中&lt;/li&gt;
+&lt;li&gt;人大夏令营告一段落，中科院过了21号参加&lt;/li&gt;
+&lt;li&gt;明天开始上小学期的课程，台湾的老师讲Information System，要好好听。&lt;/li&gt;
+&lt;li&gt;最近作息：&lt;/li&gt;
+&lt;li&gt;无小学期的时间和平时考研复习一样，&lt;/li&gt;
+&lt;li&gt;有小学期的时间上午和考研复习一样做数学，英语不做了，下午去上课反正也是英语。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Summery</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/Summery/</link>
+      <pubDate>Wed, 15 May 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/Summery/</guid>
+      <description>&lt;p&gt;这其实是一篇暑期总结。&lt;/p&gt;
+
+&lt;p&gt;R大开学特别晚，现在离开学也还有两周的时间，但对于大四的学姐来说，开学不开学的确实没有什么区别。暑假的三个夏令营一结束，假期也就随之结束了，就好像上学期期末考完最后一科并没有真正松懈下来，而是连写了两天比赛的代码才算过完了大三。&lt;/p&gt;
+
+&lt;p&gt;于是攒了3件T恤，3个姓名牌，收获却几乎为0。R大本身就是去酱油的，深知自己反正也拿不到自己学院内保的资格；CAS被拒，10月则会再去面一次；MS的就是纯玩，比赛悲剧了，拿了些奖品结识了一群丧尸的小伙伴。&lt;/p&gt;
+
+&lt;p&gt;其实都不意外，好处是加起来蹭吃蹭喝了接近半个月多月，从夏令营的举办也着实能看出一些主办方的情怀。&lt;/p&gt;
+
+&lt;p&gt;余下的日子有一周在上小学期，讲Innovation；有一周花在了大创的调研上，满北京跑寺庙；还有一周花在了陪弟弟妹妹逛北京，大出血；剩下不多的时间则是在上自习，看高数和英语。&lt;/p&gt;
+
+&lt;p&gt;虽然在北京待了3年，这却是第一次经历北京的7月和8月。要么是烈日、要么是暴雨、要么是闷到快要窒息的阴热，四川虽然热，但好歹热的痛快，没有北京这么多热死人的花招。在最热的这两个月，我却比任何时候都要多得呆在户外，要么骑着车，要么逛着景点，要么照着无聊的集体大合照。&lt;/p&gt;
+
+&lt;p&gt;天气还不是最让我崩溃的因素，太多的选择是让我不堪一击的罪魁祸首。无数次的自我否定，对未来充满怀疑，痛恨自己不够努力，眼瞅着别人都实习/申请/考验准备得尚好更是难受，直到被CAS拒的那天晚上，坐在求是园的木凳上大哭着给男友打电话，不停得骂自己做出的每一个愚蠢的决定，然后每个路过的人都投来“这个姑娘失恋了吧”的目光。&lt;/p&gt;
+
+&lt;p&gt;于是开始了郁郁寡欢的生活态度，什么都做不好，复习没办法集中，出去玩也闷着脸，恶性循环得不到开解。&lt;/p&gt;
+
+&lt;p&gt;直到高中好友来北京，那一晚我们一直聊到深夜，我的所有不开心的情绪都烟消云散，倒不是因为不懊悔，而是我意识到我这样一个健忘的人，不开心早忘掉早解脱，元气满满得面对明天比什么都重要。&lt;/p&gt;
+
+&lt;p&gt;Carpe diem.&lt;/p&gt;
+
+&lt;p&gt;后来接到一个网站的面试邀请，开始学习Ruby和其他CS的内容，明白自己从来都没有好好沉下心来，没有脚踏实地，却只想着给自己贴上牛逼的Tag。别想每一步都能走对，人生那么多种可能，要是都走对了，还有什么意思呢？&lt;/p&gt;
+
+&lt;p&gt;八月末已经有了秋凉的味道，夜幕降临时的气温刚刚好，心情也刚刚好。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;夏令营都告一段落，准备10月份的CAS面试笔试&lt;/li&gt;
+&lt;li&gt;要读的书：奇思妙想，Programing pearls，Ruby元编程，数据结构&lt;/li&gt;
+&lt;li&gt;数学英语任务每天定量定时完成，不能再拖&lt;/li&gt;
+&lt;li&gt;锻炼的计划继续，仰卧起坐游泳跑步整起来&lt;/li&gt;
+&lt;li&gt;调整作息，坚持做面膜，皮肤达到有史以来最差状态这就是码农的代价么T T&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>微软面试酱油小记</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%BE%AE%E8%BD%AF%E9%9D%A2%E8%AF%95%E9%85%B1%E6%B2%B9%E5%B0%8F%E8%AE%B0/</link>
+      <pubDate>Wed, 15 May 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%BE%AE%E8%BD%AF%E9%9D%A2%E8%AF%95%E9%85%B1%E6%B2%B9%E5%B0%8F%E8%AE%B0/</guid>
+      <description>&lt;p&gt;周天中午正在给高中的学弟学妹拍很傻气的高考加油的照片，突然接到电话，说让下周三去微软总部报道面试。当时想我没有进决赛啊于是就很傻兮兮得问为什么我可以去面，那边悠悠得来了句编程之美前100的选手都有一个面试机会，于是在电话里哦了一声，然后很淡定得说了声谢谢把电话挂了。挂掉电话就激动得跳了起来，心想运气真好90+的名次还可以去面一发，要知道之前投暑期PM的实习交简历就直接被刷了连面试机会都木有啊。和我一起的高中同学实在看不下去我这么激动，说又不是面试过了这么兴奋干啥？Whatever，我这种渣渣得到一个面试机会就谢天谢地感动到哭了。&lt;/p&gt;
+
+&lt;p&gt;之后的几天都在想一个问题，要该怎么给面试官解释我这个奇葩的毫不相干的专业呢，想到最后其实千说万说到就剩下两个词语：passion 和interest。事实证明面试官还是很满意这个回答，因为他们基本上就看你的passion和potential大不大。然后这两天看了看《编程之美》这本书，以及看了下C#的东西，因为在简历上写了，防止被问道什么也说不出来，事实证明其实都没啥用，还不如好好看看C和数据结构。所以，人生的第一次面试经历证明了面试之前的准备其实毫无用处……&lt;/p&gt;
+
+&lt;p&gt;不过，还是想吐槽一下微软的HR工作，本以为像微软这种IT行业里排top的公司会非常专业非常有行业素养，没想到还是让人蛮失望。面试通知的邮件说好下午发，结果到晚上9点才发，而且要求晚上12点就发过去，各种仓促。今天早上9点钟就到了微软总部（好近啊，居然就在欧美汇旁边之前一直没注意orz），总部十分霸气，整整两栋大楼，中间用天桥连了起来。在2号楼的大厅里等的时候，外面一直有上班的人刷卡进去，看上去都很年轻，基本都背一个双肩书包，最奇怪的一个人是拿着书边看边走。&lt;/p&gt;
+
+&lt;p&gt;去了先是邹欣老师讲了一个关于创新的讲座，大概说了30分钟，不过在我听起来各种都戳到心里去了。还是很有收获，关于idea和innovation以后还是要慎重对待，切忌不能ego boost，而且还提到了先发优势，后发优势，利基市场这种专业课上的东西，顿觉亲切，讲义在这里。之前一直不知道邹老师写了《编程之美》这本书，然后突然PPT上有一页个人介绍跳出来才知道他就是作者啊，我之前一直以为这本书是好多微软的人一起编的。有个小插曲是邹老师发现在场的人居然没有一个人看过他的博客，顿时好受挫，还特意广告了一下。后来提问的时候，我问了一下待会面试有没有职位信息，然后邹老师问我学啥的，我说人大HR，全场就哗然了……邹老师说那今天应该是你把我们组织起来面试才对吧？然后瞎白唬了一阵，最后还问我你是不是觉得我在忽悠你，我只好说老师好像都这样。本来最后想找邹老师要个签名什么的，结果他走得太快没来得及。&lt;/p&gt;
+
+&lt;p&gt;接着吐槽HR的工作，讲座完了之后就一直在等，由于我大概是倒数第二个面试的，所以一直等到了1点过，虽然在微软吃了顿午饭，还是很不爽啊一上午写论文的时间就这么没了，难道就不能先排个表出来，让我1点去不就好了。在等面试的时候认识了一个北大的童鞋，情况和我一样，然后他就说了句安排的有问题，结果被安排面试的HRmm听见了，当时就把她惹生气了，说了一大通什么我们很忙也在努力弄请理解不要对我发牢骚的话。在场的人都无语了，一个不知道哪里的硕士学长赶紧出来打圆场。我悄悄跟北大的童鞋说，看吧HR就是这样所以我一万个不愿意做这种工作啊。北大童鞋还说，HR不是应该很能做好情绪控制才对嘛，微软HR也不过如此云云。&lt;/p&gt;
+
+&lt;p&gt;总之在微软总部消磨了几个小时终于该到我的时候，奇葩的事情又发生了。本来应该面试我的面试官跑过来说他要马上去开会，没时间了，说剩下一个不是计算机背景的同学排给别人吧。他说的时候完全没有人意识到我就在场，我当然听见了他那句话，心情一下就很糟糕，不是计算机背景的你就这么不care么？然后就在候场室生闷气，跟在帮忙面试的中山大学的一个实习生mm吐槽了一下说那人一看我不是计算机背景的就不想面了。实习生mm（其实她就是编程之美的人人微博主页君……）尴尬得说啊哪有哪有他是真的要开会。&lt;/p&gt;
+
+&lt;p&gt;我继续等，过了一会又有一个本来应该面试我的面试官跑来，背着双肩包，说我老板叫我赶紧去开会，剩下的面不了了，然后就走人了……我在一旁看得各种无语。后来活动负责人大约也看不下去了，问现在还有哪个面试官在面，结果剩下的一个面试官在面一个已经拿到offer的童鞋！……我又各种无语，然后负责人跑去跟面试官说那个人不用面了，已经拿到offer了，于是我终于被插进去了……&lt;/p&gt;
+
+&lt;p&gt;进去等了一会面试官进来了，什么都没问然后给了一道链表题，大意是写一个函数把链表反转。我小心得问了句，你有我的简历吗？他说我当然有啊，面试时间20分钟，你慢慢做这道题吧。鉴于我学会编程到现在以来重来没有使用过链表这种数据结构，虽然这道题看上去很简单。也只有开始硬着头皮写了。第一次我新开了一个链表，然后新开的链表是原来链表倒过来的样子。写了大概几分钟，再抬起头来给面试官看的时候，发现，尼玛啊，怎么不是刚刚那个人了！&amp;hellip;.来了一个看上去像是学长的人，他说我同事有事回不来，我来帮他面。于是乎我忍住心里的我擦勒，跟他讲我的方法，然后他说题目要求是在原来链表上修改，不是新开一个链表。我又囧了，说哦，又开始怨念刚刚那个面试官没有讲清楚。又想了几分钟，重写了一个很复杂的要靠递归完成的算法，这个算法显然把面试官雷到了，说啊你这个时间复杂度有点高啊，逻辑好像有点不对……这个时候估计这个面试官也急着要走，然后说其实很简单啊，你就把每个指针……指……回……来……就对了……好吧顿时我觉得我真是傻逼……&lt;/p&gt;
+
+&lt;p&gt;插一句在我写代码的时候，突然刚刚第一个开会的面试官回来了，看见我说他让你在做题吗，我说是的，然后问他人呢，我说不知道。心想你不是去开会了没有时间面我了现在回来是伤我的心么T T……&lt;/p&gt;
+
+&lt;p&gt;总之很无语的没能做完这道题，以为面试就结束了，负责人又跑过来说你先别急着走你还要面试一次。然后不知道从哪里临时抓来了个面试官，我又跟着去了另一个房间。这个面试官果真的临时抓来的，因为他第一句话是“我还没有你的简历，他们还没发给我，你先介绍一下自己吧”……其实我当时心里是一万头草泥马在奔跑，表面上还是很淡定简单介绍了下，说了自己的专业和以后打算换专业的想法以及参加比赛的动机等等。果然他开始各种问人力资源怎么不喜欢之类的问题，女孩子想你这样的很少啊你是怎么想的。我就开始怒表自己对计算机的passion有多么多么大，为了换专业做了很多努力blabla。说了一会他终于收到了我的简历，然后问了几个简历上的提到的活动，显然这些活动和计算机都没关，就没有继续问下去。反正就一个劲得瞎聊，介绍了下微软的组织结构，问我有什么职位的方向，我说PM和搜索都想去。我问他这个面试的结果是怎么判断的给我们什么职位，他表示……他神马都不知道。我……无语已经不能形容我的心情了………最后他问我之后有什么打算，我说考研申请香港，然后他说大陆和香港的研究生培养方式不太一样，要慎重，然后说你现在可以和教授多多联系，增加录取的概率。&lt;/p&gt;
+
+&lt;p&gt;混乱的面试就是这样，前后一共大概换了5个面试官…真的面我的有2个半…国际化大公司的HR真是让我长姿势。最后我大概是最后一个出来的，那个负责人还把我送到门口，说结果下周应该会出来。然后说了好多客套话，神马常联系。……常联系？……我%&amp;amp;……&amp;amp;%……×…………×&amp;amp;……&lt;/p&gt;
+
+&lt;p&gt;走回寝室已经快3点，好累于是大睡了2个小时……&lt;/p&gt;
+
+&lt;p&gt;小结一下吧：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;HR是费力不讨好的工作，别想做个HR还很开心，即使是微软的HR；&lt;/li&gt;
+&lt;li&gt;面试前的准备都是浮云；&lt;/li&gt;
+&lt;li&gt;I know I have chosen the hard path, because I know that is the right thing to do.&lt;/li&gt;
+&lt;li&gt;这次酱油打得一般，如果有下次希望打得漂亮一点&amp;gt;&amp;lt;。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>临琼楼</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E4%B8%B4%E7%90%BC%E6%A5%BC/</link>
+      <pubDate>Fri, 19 Apr 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E4%B8%B4%E7%90%BC%E6%A5%BC/</guid>
+      <description>&lt;p&gt;在这个古色古香充满体制内部气息的院子里，想起来万寿寺里的王二。当然我更幸运，既没有车祸失忆，也不用想操蛋的科研课题，更没有书稿里跳出来的薛嵩fucked up my mind. 然而我却比王二更加无奈，并且无聊，做着这份不用面试也没有薪水的实习。正和来之前脑补的一样，无非是用Office软件就能handle的工作，再打上几个电话，无事之余，还能写点题看点论文再接半天导师打来验收repo的越洋电话。抛开无聊的工作内容，也还是有那么几件满有趣的事情，比如北海公园的白塔在多云的白天根本看不清，8点的四号线也并不那么拥挤，事实上每次都能找到座位，事业单位国家机关都坐落在绿荫匆匆古朴幽静的院子里，搞技术的中年人里100%男性+50%胖子+100%不好看，办公室的整洁程度和办公室里的女性比例呈正相关，坐几年办公室整天对着电脑必然皮肤会变得无比黄，Sherlock的魅力老少通吃，每天的疲劳程度和上下班的拥挤程度以及挎包的重量呈正相关&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;除了这些无聊的生活细节，还明白了一件很重要的事：转专业是人生里做的最正确的决定之一。&lt;/p&gt;
+
+&lt;p&gt;想起在微软看见过的那个不会情绪控制的HR，她在大半夜里用Excel整理好面试名单，结果弄错几项内容搞得第二天手忙脚乱，只能趁着午餐时间边啃汉堡边make各种call，bore to death是我能想到的唯一的形容。原来脑补过这样的工作，觉得受不了，现在真正做样的工作，发现比脑补的更无聊100倍。不知道王二在万寿寺里闷头憋研究计划时会不会有同样的感觉。&lt;/p&gt;
+
+&lt;p&gt;当一天的24小时里有8小时都不属于自己时，其余的时间就像漏了一半气的气球，没精打采。开始理解那些工作后变得无趣的人，因为实在是没有这个闲暇去做有趣的事情，不如放空大脑什么也不想。不再关心热门微博，时常忘记妹妹10点30的短信，甚至忘记了生病的亲人，也忘记打回给爸妈视频电话，临近的生日也从庆祝也变成了一种负担。&lt;/p&gt;
+
+&lt;p&gt;Shameless看多了忍不住在脑袋里各种飙脏话，当然也只是在脑袋里而已。自从同学会彻底喝醉过之后，开始理解alcoholics的想法。When life is a piece of shit, you just need something to help you say out the truth. 和他们相反，我的生活处在正得不能再正得正轨上，安稳如同北京雾霾天气的概率，有那么一点小厌倦。&lt;/p&gt;
+
+&lt;p&gt;记忆里的四月好像都是忙碌的、朝气蓬勃的，充满了每天都想买新裙子穿出去的不安分的小心情。今年的四月也一样，不同的是也许真有个薛嵩等我去寻找。&lt;/p&gt;
+
+&lt;p&gt;以上，胡言乱语而已。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;放弃了韩语计划&lt;/li&gt;
+&lt;li&gt;放弃了edX里pardigm of programming的课&lt;/li&gt;
+&lt;li&gt;写完毕业论文，大创结项，也许要答辩&lt;/li&gt;
+&lt;li&gt;GRE背了又扔&lt;/li&gt;
+&lt;li&gt;记账的习惯还在&lt;/li&gt;
+&lt;li&gt;在看《人人都是产品经理》&lt;/li&gt;
+&lt;li&gt;坚持做算法题&lt;/li&gt;
+&lt;li&gt;追完了前三季的shameless，新追了believe，冰火回归小乔之死大快人心，得少看点剧&lt;/li&gt;
+&lt;li&gt;用Heyday记录每天荒废的时光&lt;/li&gt;
+&lt;li&gt;有早睡早起+多喝水+吃早餐（上班的好处？）&lt;/li&gt;
+&lt;li&gt;想学的太多找不到重心，看到一篇讲拖延症的文章说最好是想做的事情分解为2周的工作量，争取试一试看有效果没&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>国家图书馆</title>
+      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%9B%BD%E5%AE%B6%E5%9B%BE%E4%B9%A6%E9%A6%86/</link>
+      <pubDate>Sun, 31 Mar 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%9B%BD%E5%AE%B6%E5%9B%BE%E4%B9%A6%E9%A6%86/</guid>
+      <description>
+
+&lt;p&gt;前段时间删除了一个记录自己负面情绪的博客，原因大概是当时写下那些文字的人让自己感觉无比陌生且恐惧。但其实在删除那个博客的后几天，里面记录的熟悉的讨厌某个人的感觉又重新出现了。唉，不管我是有多么不愿意面对自己阴暗的一面，就算删掉了所有的证据，那种感觉也会悄悄在心里滋生。所以，如果吐槽星真的存在的话，我想我可能还是有30%的意愿移居到那里去的。&lt;/p&gt;
+
+&lt;p&gt;昨天是上个月里生活最丰富的一天。上午考完托福，除了口语答的异常紧张外，其他的部分也没有什么感觉。去年这个时候，一脸沮丧得从考场出来，搭上从大钟寺到明光桥的公交，在心中幻想了无数次扯头发抓狂的情形。现在想起来当时一副世界末日的心情就觉得很好笑，果然所有事情在时间的面前都显得好无力。这次考完托福之后，坐上地铁去了表哥家各种取经。下午讲了些关于没事的话拿ubuntu来干什么的事情，表哥让我弄一个小型的搜索引擎出来，后来我想了想，其实这可以是一个很好的点子，把与人大咨询有关的站点整合到一起，能够大大提高搜索效率，比如人大官网、bt站、贴吧、各学院网站、人人日志、百度问题&amp;hellip;，可以很大程度上提高搜索相关度和搜索质量的。晚上和表哥还有表嫂一起吃饭，其实觉得“嫂子”这个称呼会把人叫得显老，所以现在也还是叫姐姐。姐姐真是CS女的理想型，现在是我未来的奋斗目标&amp;hellip;吃完饭之后回到寝室，又被寝室姑娘拖去看电影，15分钟之内狂奔到电影院，买到了最后两张票，撞见了一个大八卦，回来的路上喝到了梦寐以求的格瓦斯。&lt;/p&gt;
+
+&lt;h2 id=&#34;昨天的疲劳以至于今天睡过了头-错过了和同学约好去国图的时间-国图比想象中还要霸气-中间一圈圈的座位好赞-其实学校图书馆占不到座位的话-国图的选择真的是大好-期间又何同学聊到-最近大家都是各种不安的情绪-本来坚定想走的道路又变得各种不坚定等等-前几天自己也是陷入了慌乱-给爸爸打了很长的电话-用自己也理不清的思路讲了各种可能性和错过的机会-其实大人们对于我们烦恼的理解应该是-想不通是正常的-反正还年轻-多试试就拨开乌云了-可能这才真的是现在生活状态的迷人之处么-不管怎么样-还是希望各种大姨妈大姨夫快快走掉得好:f9cf8c2ec2392475c4730c089e006079&#34;&gt;昨天的疲劳以至于今天睡过了头，错过了和同学约好去国图的时间。国图比想象中还要霸气，中间一圈圈的座位好赞……其实学校图书馆占不到座位的话，国图的选择真的是大好。期间又何同学聊到，最近大家都是各种不安的情绪，本来坚定想走的道路又变得各种不坚定等等。前几天自己也是陷入了慌乱，给爸爸打了很长的电话，用自己也理不清的思路讲了各种可能性和错过的机会。其实大人们对于我们烦恼的理解应该是，想不通是正常的，反正还年轻，多试试就拨开乌云了。可能这才真的是现在生活状态的迷人之处么？不管怎么样，还是希望各种大姨妈大姨夫快快走掉得好。&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C176目前是停滞状态，现在可以邮件联系某个师姐，但后恢复网站的更新&lt;/li&gt;
+&lt;li&gt;把之前翻译的一篇关于苏格拉底的文章改了发到译言上去&lt;/li&gt;
+&lt;li&gt;做操作系统的实验作业&lt;/li&gt;
+&lt;li&gt;做计网第三章作业&lt;/li&gt;
+&lt;li&gt;开始准备期中考试&lt;/li&gt;
+&lt;li&gt;查关于proactive人格的中文文献&lt;/li&gt;
+&lt;li&gt;有空的时候想想怎么做那个小型的搜索引擎&lt;/li&gt;
+&lt;li&gt;有空的时候玩玩javascript&lt;/li&gt;
+&lt;li&gt;可以允许看一本书，暂定《基督山伯爵》&lt;/li&gt;
+&lt;li&gt;开始复习高数，考研英语&lt;/li&gt;
+&lt;li&gt;关注下中科院夏令营的消息&lt;/li&gt;
+&lt;li&gt;关注下暑期实习的消息&lt;/li&gt;
+&lt;li&gt;生日礼物开始准备了&lt;/li&gt;
+&lt;li&gt;PS：写完近期计划就感觉自己好忙的……以及保佑托福有个心理好过的分数&amp;gt;&amp;lt; !!!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

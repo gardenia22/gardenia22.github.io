@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>翻译 on Nanshu&#39;s blog </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://nanshu.wang/tags/%E7%BF%BB%E8%AF%91/</link>
+    <language>en-us</language>
+    <author>Nanshu Wang</author>
+    <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
+    <updated>Tue, 02 Dec 2014 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Scikit-Learn机器学习介绍（中文翻译）</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</link>
+      <pubDate>Tue, 02 Dec 2014 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</guid>
+      <description>
+
+&lt;p&gt;翻译自：&lt;a href=&#34;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&#34;&gt;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以后可能会根据自己的学习慢慢翻译其他的章节，水平有限，不足之处请指正。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;本章内容
+在本章中，我们会介绍在使用scikit-learn中遇到的&lt;a href=&#34;http://en.wikipedia.org/wiki/Machine_learning&#34;&gt;机器学习&lt;/a&gt;(machine learning)术语，以及一个简单的机器学习例子。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;机器学习-问题设定:935e1a74f960fd04b26b502f6058f057&#34;&gt;机器学习：问题设定&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一般来说，机器学习问题可以这样来理解：我们有n个&lt;a href=&#34;http://en.wikipedia.org/wiki/Sample_(statistics)&#34;&gt;样本&lt;/a&gt;(sample)的数据集，想要预测未知数据的属性。
+如果描述每个样本的数字不只一个，比如一个多维的条目（也叫做&lt;a href=&#34;http://en.wikipedia.org/wiki/Multivariate_random_variable&#34;&gt;多变量数据&lt;/a&gt;(multivariate data)），那么这个样本就有多个属性或者&lt;strong&gt;特征&lt;/strong&gt;。
+我们可以将学习问题分为以下几类：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Supervised_learning&#34;&gt;有监督学习&lt;/a&gt;(unsupervised learning)是指数据中包括了我们想预测的属性，有监督学习问题有以下两类：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Classification_in_machine_learning&#34;&gt;分类&lt;/a&gt;（classification）:样本属于两个或多个类别，我们希望通过从已标记类别的数据学习，来预测未标记数据的分类。例如，识别手写数字就是一个分类问题，其目标是将每个输入向量对应到有穷的数字类别。从另一种角度来思考，分类是一种有监督学习的离散（相对于连续）形式，对于n个样本，一方有对应的有限个类别数量，另一方则试图标记样本并分配到正确的类别。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Regression_analysis&#34;&gt;回归&lt;/a&gt;(regression):如果希望的输出是一个或多个连续的变量，那么这项任务被称作*回归*，比如用年龄和体重的函数来预测三文鱼的长度。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Unsupervised_learning&#34;&gt;无监督学习&lt;/a&gt;(unsupervised learning)的训练数据包括了输入向量X的集合，但没有相对应的目标变量。这类问题的目标可以是发掘数据中相似样本的分组，被称作&lt;a href=&#34;http://en.wikipedia.org/wiki/Cluster_analysis&#34;&gt;聚类&lt;/a&gt;(Clustering)；也可以是确定输入样本空间中的数据分布，被称作&lt;a href=&#34;http://en.wikipedia.org/wiki/Density_estimation&#34;&gt;密度估计&lt;/a&gt;（density estimation）;还可以是将数据从高维空间投射到两维或三维空间，以便进行数据可视化。&lt;a href=&#34;http://scikit-learn.org/stable/unsupervised_learning.html#unsupervised-learning&#34;&gt;这里&lt;/a&gt;是Scikit-Learn的无监督学习主页。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;训练集和测试集
+机器学习是关于如何从数据学习到一些属性并且用于新的数据集。这也是为什么机器学习中评估算法的一个习惯做法是将手头已有的数据集分成两部分：一部分我们称作&lt;strong&gt;训练集&lt;/strong&gt;（training set），用来学习数据的属性；另一部分叫做&lt;strong&gt;测试集&lt;/strong&gt;（testing set），用来测试这些属性。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;加载样例数据集:935e1a74f960fd04b26b502f6058f057&#34;&gt;加载样例数据集&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;scikit-learn有一些标准数据集，比如用于分类的&lt;a href=&#34;http://en.wikipedia.org/wiki/Iris_flower_data_set&#34;&gt;iris&lt;/a&gt;和&lt;a href=&#34;http://archive.ics.uci.edu/ml/datasets/Pen-Based+Recognition+of+Handwritten+Digits&#34;&gt;digits&lt;/a&gt;数据集，和用于回归的&lt;a href=&#34;http://archive.ics.uci.edu/ml/datasets/Housing&#34;&gt;波士顿房价&lt;/a&gt;(boston house prices)数据集。
+下面，我们会用shell里的Python解释器来加载&lt;code&gt;iris&lt;/code&gt;和&lt;code&gt;digits&lt;/code&gt;数据集。&lt;code&gt;$&lt;/code&gt;表示shell提示符，&lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;表示Python解释器提示符：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  $ python
+  &amp;gt;&amp;gt;&amp;gt; from sklearn import datasets
+  &amp;gt;&amp;gt;&amp;gt; iris = datasets.load_iris()
+  &amp;gt;&amp;gt;&amp;gt; digits = datasets.load_digits()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;数据集类似字典对象，包括了所有的数据和关于数据的元数据（metadata）。数据被存储在&lt;code&gt;.data&lt;/code&gt;成员内，是一个&lt;code&gt;n_samples*n_features&lt;/code&gt;的数组。在有监督问题的情形下，一个或多个因变量（response variables）被储存在&lt;code&gt;.target&lt;/code&gt;成员中。有关不同数据集的更多细节可以在&lt;a href=&#34;http://scikit-learn.org/stable/datasets/index.html#datasets&#34;&gt;这里&lt;/a&gt;被找到。
+例如，在digits数据集中，&lt;code&gt;digits.data&lt;/code&gt;是可以用来分类数字样本的特征：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; print(digits.data)  # doctest: +NORMALIZE_WHITESPACE
+  [[  0.   0.   5. ...,   0.   0.   0.]
+   [  0.   0.   0. ...,  10.   0.   0.]
+   [  0.   0.   0. ...,  16.   9.   0.]
+   ...,
+   [  0.   0.   1. ...,   6.   0.   0.]
+   [  0.   0.   2. ...,  12.   0.   0.]
+   [  0.   0.  10. ...,  12.   1.   0.]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;digits.target&lt;/code&gt;给出了digits数据集的真实值，即每个数字图案对应的我们想预测的真实数字：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; digits.target
+  array([0, 1, 2, ..., 8, 9, 8])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;数据数组的形式
+数据是一个2维&lt;code&gt;n_samples*n_features&lt;/code&gt;的数组，尽管原始数据集可能会有不同的形式。在digits数据集中，每个原始样本是一个8*8的数组，可以用以下方式访问：&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;gt;&amp;gt;&amp;gt; digits.images[0]
+    array([[  0.,   0.,   5.,  13.,   9.,   1.,   0.,   0.],
+         [  0.,   0.,  13.,  15.,  10.,  15.,   5.,   0.],
+         [  0.,   3.,  15.,   2.,   0.,  11.,   8.,   0.],
+         [  0.,   4.,  12.,   0.,   0.,   8.,   8.,   0.],
+         [  0.,   5.,   8.,   0.,   0.,   9.,   8.,   0.],
+         [  0.,   4.,  11.,   0.,   1.,  12.,   7.,   0.],
+         [  0.,   2.,  14.,   5.,  10.,  12.,   0.,   0.],
+         [  0.,   0.,   6.,  13.,  10.,   0.,   0.,   0.]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://scikit-learn.org/stable/auto_examples/plot_digits_classification.html#example-plot-digits-classification-py&#34;&gt;这个简单的例子&lt;/a&gt;说明了如何从原始问题里将数据形式化，以便scikit-learn使用。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;学习和预测:935e1a74f960fd04b26b502f6058f057&#34;&gt;学习和预测&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;在digits数据集中，我们的任务是给定一个图案，预测其表示的数字是什么。我们的样本有10个可能的分类（数字0到9)，我们将拟合一个&lt;a href=&#34;http://en.wikipedia.org/wiki/Estimator&#34;&gt;预测器&lt;/a&gt;(estimator)来&lt;strong&gt;预测&lt;/strong&gt;(predict)未知样本所属的分类。
+在scikit-learn中，分类的预测器是一个Python对象，来实现&lt;code&gt;fit(X, y)&lt;/code&gt;和 &lt;code&gt;predict(T)&lt;/code&gt;方法。
+下面这个预测器的例子是class&lt;code&gt;sklearn.svm.SVC&lt;/code&gt;，实现了&lt;a href=&#34;http://en.wikipedia.org/wiki/Support_vector_machine&#34;&gt;支持向量机分类&lt;/a&gt;。创建分类器需要模型参数，但现在，我们暂时先将预测器看作是一个黑盒：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; from sklearn import svm
+  &amp;gt;&amp;gt;&amp;gt; clf = svm.SVC(gamma=0.001, C=100.)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;选择模型参数
+在这个例子里我们手动设置了&lt;code&gt;gamma&lt;/code&gt;值。可以通过这些工具例如&lt;a href=&#34;http://scikit-learn.org/stable/modules/grid_search.html#grid-search&#34;&gt;网格搜索&lt;/a&gt;（grid search）和&lt;a href=&#34;http://scikit-learn.org/stable/modules/cross_validation.html#cross-validation&#34;&gt;交叉验证&lt;/a&gt;（cross validation）来自动找到参数的最佳取值。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;给预测器取个名字叫做&lt;code&gt;clf&lt;/code&gt;（claasifier）。现在预测器必须来&lt;strong&gt;拟合&lt;/strong&gt;（fit）模型，也就是说，它必须从模型中&lt;strong&gt;学习&lt;/strong&gt;（learn）。这个过程是通过将训练集传递给&lt;code&gt;fit&lt;/code&gt;方法来实现的。我们将除了最后一个样本的数据全部作为训练集。通过Python语法&lt;code&gt;[:-1]&lt;/code&gt;来选择训练集，这会生成一个新的数组，包含了除最后一个条目的&lt;code&gt;digits.data&lt;/code&gt;：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; clf.fit(digits.data[:-1], digits.target[:-1])  # doctest: +NORMALIZE_WHITESPACE
+  SVC(C=100.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
+    gamma=0.001, kernel=&#39;rbf&#39;, max_iter=-1, probability=False,
+    random_state=None, shrinking=True, tol=0.001, verbose=False)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;现在你可以预测新值了，具体来说，我们可以询问分类器，&lt;code&gt;digits&lt;/code&gt;数据集里最后一个图案所代表的数字是什么，我们并没有用最后一个数据来训练分类器。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; clf.predict(digits.data[-1])
+  array([8])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最一个图案如下：
+&lt;img src=&#34;http://scikit-learn.org/stable/_images/plot_digits_last_image_0011.png&#34; alt=&#34;此处输入图片的描述&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;如你所见，这项任务很具有挑战性：这个图案的分辨率很差。你能和分类器得到一致结果吗？
+一个更复杂的分类问题的例子在这里:&lt;a href=&#34;http://scikit-learn.org/stable/auto_examples/plot_digits_classification.html#example-plot-digits-classification-py&#34;&gt;识别手写数字&lt;/a&gt;（Recognizing hand-written digits），供学习参考。&lt;/p&gt;
+
+&lt;h2 id=&#34;模型持久性-model-persistence:935e1a74f960fd04b26b502f6058f057&#34;&gt;模型持久性（Model persistence）&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;可以采用Python内建的持久性模型&lt;a href=&#34;http://docs.python.org/library/pickle.html&#34;&gt;pickle&lt;/a&gt;来保存scikit的模型:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; from sklearn import svm
+  &amp;gt;&amp;gt;&amp;gt; from sklearn import datasets
+  &amp;gt;&amp;gt;&amp;gt; clf = svm.SVC()
+  &amp;gt;&amp;gt;&amp;gt; iris = datasets.load_iris()
+  &amp;gt;&amp;gt;&amp;gt; X, y = iris.data, iris.target
+  &amp;gt;&amp;gt;&amp;gt; clf.fit(X, y)  # doctest: +NORMALIZE_WHITESPACE
+  SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+    kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=None,
+    shrinking=True, tol=0.001, verbose=False)
+
+  &amp;gt;&amp;gt;&amp;gt; import pickle
+  &amp;gt;&amp;gt;&amp;gt; s = pickle.dumps(clf)
+  &amp;gt;&amp;gt;&amp;gt; clf2 = pickle.loads(s)
+  &amp;gt;&amp;gt;&amp;gt; clf2.predict(X[0])
+  array([0])
+  &amp;gt;&amp;gt;&amp;gt; y[0]
+  0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在scikit的特定情形下，用joblib&amp;rsquo;s来代替pickle（&lt;code&gt;joblib.dump&lt;/code&gt; &amp;amp; &lt;code&gt;joblib.load&lt;/code&gt;）会更吸引人，在大数据下效率更高，但只能pickle到磁盘而不是字符串：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; from sklearn.externals import joblib
+  &amp;gt;&amp;gt;&amp;gt; joblib.dump(clf, &#39;filename.pkl&#39;) # doctest: +SKIP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;你可以在之后重新加载pickled模型（可以在另一个Python程序里）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; clf = joblib.load(&#39;filename.pkl&#39;) # doctest:+SKIP
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;注意：
+joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code&gt;对象中独立的numpy数组是在文件系统中是按顺序排列的一个独立文件。当用joblib.load重新加载模型时，所有文件必须在同一个目录下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;注意pickle有一些安全性和维护性问题。请参考&lt;a href=&#34;http://scikit-learn.org/stable/modules/model_persistence.html#model-persistence&#34;&gt;模型持久性&lt;/a&gt;章节获得更多关于scikit-learn模型持久性的信息。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>软件自定义网络Software-Definded Networking</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/SDN%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Tue, 22 Oct 2013 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/SDN%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C/</guid>
+      <description>
+
+&lt;p&gt;译自：&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking&#34;&gt;https://en.wikipedia.org/wiki/Software-defined_networking&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;软件定义网络（Software-Definded Networking, SDN）最初来源于2008年左右在加州大学伯克利分校和斯坦福大学的研究工作，而后演化成为一种新型的计算机网络。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-1&#34;&gt;1&lt;/a&gt; SDN允许网络管理员通过对低层功能的抽象来管理网络服务。具体实现是通过将决定流量从如何发送的系统（控制平面）从底层转发流量到指定目的的系统（数据平面）分离开来。这项技术的发明者们和系统的供应商们认为SDN可以达到简化网络的目的。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-white-2&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;SDN需要引入一些方法来实现控制平面与数据平面的通信。OpenFlow的作为其中的一种实现机制 ，经常被人误解为等同于SDN，实际上其他机制也可以实现SDN的概念。开放网络基金会的创立促进了SDN和OpenFlow市场的发展，云计算这一概念也开始流行。&lt;/p&gt;
+
+&lt;h2 id=&#34;背景:9256170d87d1564859db31c49448ee70&#34;&gt;背景：&lt;/h2&gt;
+
+&lt;p&gt;控制器充当的物理网络和SDN层的之间的界面基于互联网协议 （IP）的网络最初是建立在自治系统 （Autonomous Systems, AS）的概念基础上的。这一概念允许网络进行扩展和延伸，连接节点知道部分必须的路由信息，根据这些信息找到合理的下一跳，并转发数据包到下一跳。这种网络连接方法是简单的，并已被证明是有弹性的和可扩展的。考虑到报文递交的服务，AS的原则不允许指定转发目的在不改变自己标识的情况下移动。转发目的之间的拓扑位置正是它们所连接的网络接口，即它们的标识。此外，只使用基本的AS是很难得到其他标识的质量，比如逻辑分组，访问控制， 服务质量 ，中间的网络处理，也难以确定涉及到成为网络流或网络对话的数据包序列方面的内容。&lt;/p&gt;
+
+&lt;p&gt;互联网工程任务组 (Internet Engineering Task Force,IETF)实行了许多补充标准来扩大标识特定化的需求，如虚拟局域网和虚拟专用网络。这些增加的标准提高了网络元件规格和网络供应商配置接口的复杂度。&lt;/p&gt;
+
+&lt;p&gt;随着弹性的云架构和动态资源分配的发展，以及移动电脑操作系统和虚拟机使用的增长，软件定义网络（SDN）这一额外的分层需求出现了。这一额外分层允许网络运营商指定网络服务，而不用去耦合网络接口的规格。这使得实体之间可以在不改变标识也不违反规格的情况下移动。它也可以简化网络操作，因为每个标识的全局定义不必与每一个接口位置相匹配。这样一层也可以通过将标识和流量特征控制逻辑从基本的基于拓扑转发、桥接及路由中分离出来，从而重建网络元素内部的复杂设计。&lt;/p&gt;
+
+&lt;p&gt;全局软件定义控制还会基于源和目标识别来跟踪特定内容的流量。关于驱动网络硬件的一种机制已经被网络设备制造商采纳，目的是共享在软件定义边缘和供应商特定的桥接及路由之间运行的边缘。OpenFlow协议定义了一组关于转发的开放命令。OpenFlow协议运用全球感知软件控制器（集中式或分布式）来驱动网络边缘硬件，以便创造一个易编程的、基于标识的、覆盖在传统的IP核心上的网络。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-white-2&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;SDN是实现可编程化 主动互联网进程中的一步。SDN允许网络管理员通过控制器来实现对网络流量的可编程中央控制，而不需要访问物理层的网络交换机 。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-4&#34;&gt;3&lt;/a&gt; SDN的配置可以创建起一个逻辑网络控制平面，其中硬件与数据转发平台硬件在物理上是分离的，即网络交换机可以转发数据包并且一个单独的服务器可以这个运行网络控制平面。 这种分离允许控制平面与数据平面在实现中使用不同的分布模型。控制平面的开发和运行环境的任务可以在不同的平台上运行（而不是硬件交换机和路由器上的低功率管理处理器）。&lt;/p&gt;
+
+&lt;p&gt;##SDN部署模型&lt;/p&gt;
+
+&lt;p&gt;###对称与非对称&lt;/p&gt;
+
+&lt;p&gt;在非对称模型中，SDN全局信息尽可能地集中化，边缘驱动时尽可能地分布化。这样做背后的考虑是清晰的，集中化使得全局整合轻松了许多，和分布化降低了SDN流量汇聚-封装的压力。然而，针对不同类型的SDN元素之间的确切关系，这种模型又产生了一系列问题，包括一致性，向外扩展的简化，多位置的高可用性，而在传统的基于AS的网络模型中，这些问题是不存在的。在对称分布的SDN模式中，需要增加全球的信息发布能力，提高SDN汇聚性能，使SDN元素基本上是一种类型的组件。只要在任意元素的子集中网络是可达的，在这样一组元素就可以在之上形成一个SDN覆盖网络。&lt;/p&gt;
+
+&lt;p&gt;###非泛洪与泛洪&lt;/p&gt;
+
+&lt;p&gt;在泛洪模型中，全局信息共享的相当一部分是通过广播和组播机制实现。这可以帮助SDN模型更加对称，它利用现有的透明桥接动态封装的原则，以实现全局意识和标识学习。这种方法的缺点之一是，随着越来越多的位置的加入，每个位置相应负载增加，从而降低了可扩展性。在非泛洪模型中，所有的转发是基于对全局的精确匹配，这通常采用分布式哈希和分布式缓存SDN查找表来实现。&lt;/p&gt;
+
+&lt;p&gt;###基于主机与网络中心化&lt;/p&gt;
+
+&lt;p&gt;在基于主机的模型中，关于SDN的数据中心中，假设很多的虚拟机通过可以移动来便增加弹性。在这个假设下，主机的虚拟机监视器代表本地虚拟机完成SDN封装。这种设计减少了SDN边缘的流量压力，并且根据每个主机上的空闲核心能力来“自由”处理。在网络中心化的设计中，一个更清晰的划分是在网络边缘和终端之间。这种SDN边缘与机柜设备顶端(TopOfRack)接口相连，并在主机端点之外。这是一种更传统的方法，网络互联并不依靠终端去执行任何路由的功能。&lt;/p&gt;
+
+&lt;p&gt;这些设计模型之间的界限划分并不明确。例如，在数据中心使用具有很多CPU“大型”主机计算结构有很多的CPU插件同样执行一些TopOfRack的接入功能，并可以代替一个机箱中所有的CPU插件，集中SDN边缘功能。这既是基于主机的设计，也是网络中心化的设计。也有可能是这些设计变量之间存在依赖关系，例如基于主机的实现通常会委托一个非对称集中查找或业务流程服务来协助组织庞大的分布。对称和非泛洪的模型通常会委托网络SDN汇聚来实现合理边缘点数量的查找分布。这样的集中度依赖于本地的OpenFlow的接口，以维持流量封装压力。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

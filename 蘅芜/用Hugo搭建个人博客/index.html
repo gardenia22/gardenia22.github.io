@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="keywords" content="">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content="用Hugo搭建个人博客 : nanshu.wang"/>
+<meta property="og:site_name" content="nanshu wang blog"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-01-31"/>
+<meta property="article:modified_time" content="2015-01-31"/>
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+
+<meta name="twitter:site" content="@spf13">
+<meta name="twitter:title" content="用Hugo搭建个人博客 : spf13.com">
+<meta name="twitter:creator" content="@spf13">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="spf13.com">
+
+
+
+    <base href="http://nanshu.wang">
+    <title> 用Hugo搭建个人博客 - nanshu.wang </title>
+    <link rel="canonical" href="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+    
+
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/css/style.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+	<figure>
+	</figure>
+    <nav id="nav">
+    <div id="title"><a href="/">Nanshu Wang</a></div>
+            <ul id="mainnav">
+            <li>
+                <a href="/蘅芜/">
+                <span class="icon"> <i aria-hidden="true" class="icon-pencil"></i></span>
+                <span> 蘅芜 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/潇湘/">
+                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
+                <span> 潇湘 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/观叹/">
+                <span class="icon"> <i aria-hidden="true" class="icon-leaf"></i></span>
+                <span> 观叹 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/about">
+                <span class="icon"> <i aria-hidden="true" class="icon-heart"></i></span>
+                <span> 关于我 </span>
+            </a>
+            </li>
+        </ul>
+
+            <ul id="social">
+            
+            <li id="share">
+                <span class="title"> 友链 </span>
+                <div class="dropdown share">
+                    <ul class="social">
+                      <li> <a href="http://xgezhang.com" target="_blank" title="xge技术博客" class="twitter">xge</a> </li>
+                      <li> <a href="http://spf13.com" target="_blank" title="spf13 is Steve Francis" class="facebook">spf13</a> </li>
+                      <li> <a href="http://libaier.net" target="_blank" title="Libaier" class="rss">Libaier</a> </li>
+                      <li> <a href="http://read.douban.com/column/195295/" target="_blank" title="100个故事" class="douban">一百个故事</a></li>
+                    </ul>
+                <span class="icon icon-bubbles"> </span> <span class="subcount"></span> </div>
+            </li>
+    
+            <li id="follow">
+                <span class="title"> 驻留地 </span>
+                <div class="dropdown follow">
+                    <ul class="social">
+                        
+
+                        <li> <a href="http://weibo.com/gardenia22/" target="_blank" title="微博" class="weibo">微博</a> </li>
+                        <li> <a href="http://www.douban.com/people/gardenia22" target="_blank"
+                        title="豆瓣" class="douban">豆瓣</a> </li>
+                        <li> <a href="http://www.zhihu.com/people/gardenia" target="_blank" title="知乎" class="zhihu">知乎</a> </li>
+                        <li> <a href="http://github.com/gardenia22" target="_blank" title="GitHub" class="github">GitHub</a> </li>                         
+                        <li> <a href="http://www.facebook.com/stevefrancia" target="_blank" title="Facebook" class="facebook"> Facebook</a></li>
+                        <li> <a href="http://instagram.com/ainedrag22" target="_blank" title="Instagram" class="instagram">Instagram</a> </li>
+                                                                       
+                        
+                    </ul>
+                <span class="icon icon-rocket"> </span> <span class="subcount"></span> </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+
+
+
+<section id="main">
+  <h1 itemprop="name" >用Hugo搭建个人博客</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Sat Jan 31, 2015 </h4>
+          
+        </section>
+        
+        <ul id="tags">
+          
+        </ul>
+    </div>
+
+</aside>
+
+<meta itemprop="wordCount" content="91">
+<meta itemprop="datePublished" content="2015-01-31">
+<meta itemprop="url" content="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           
+
+<h1 id="安装hugo:d605f9890f3528aea462ac7515ece633">安装Hugo</h1>
+
+<p>1.安装brew</p>
+
+<pre><code>$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<p>2.安装pip
+下载 <a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a></p>
+
+<pre><code>$python get-pip.py
+</code></pre>
+
+<p>3.安装Pygments</p>
+
+<pre><code>$pip install Pygments
+</code></pre>
+
+<p>4.安装Hugo</p>
+
+<pre><code>$brew new Hugo
+</code></pre>
+
+<h1 id="started:d605f9890f3528aea462ac7515ece633">Started</h1>
+
+<ol>
+<li>Create a site</li>
+</ol>
+
+<pre><code>$Hugo new site sitepath
+</code></pre>
+
+<p>2.Create page</p>
+
+<pre><code>$Hugo new about.me
+</code></pre>
+
+<ol>
+<li>Create a post</li>
+</ol>
+
+<pre><code>$Hugo new post/first.me
+</code></pre>
+
+<h1 id="选择主题:d605f9890f3528aea462ac7515ece633">选择主题</h1>
+
+<ol>
+<li>download thems</li>
+</ol>
+
+<pre><code>$ git clone --recursive https://github.com/spf13/hugoThemes themes
+</code></pre>
+
+<ol>
+<li>run Hugo</li>
+</ol>
+
+<pre><code>$ hugo server --theme=hyde --buildDraft
+</code></pre>
+
+<ol>
+<li>选择主题
+直接选择了Hugo 作者博客的主题，先将他的博客全部fork下来</li>
+</ol>
+
+<pre><code>$ git clone https://github.com/spf13/hugo.git
+</code></pre>
+
+<h1 id="其他功能:d605f9890f3528aea462ac7515ece633">其他功能</h1>
+
+<h2 id="rss订阅:d605f9890f3528aea462ac7515ece633">rss订阅</h2>
+
+<h2 id="代码高亮:d605f9890f3528aea462ac7515ece633">代码高亮</h2>
+
+<p>安装pygments，在代码两头加上</p>
+
+<pre><code>{{ &lt; highlight python&gt;}}
+your code here.
+{{ /highlight }}
+</code></pre>
+
+<h2 id="图片管理:d605f9890f3528aea462ac7515ece633">图片管理</h2>
+
+<pre><code>{{ % img src=&quot;/media/spf13-responsive.jpg&quot; alt=&quot;spf13 responsive website&quot; %}}
+</code></pre>
+
+<p>原文件放入media文件夹内</p>
+
+<h2 id="mathjax支持:d605f9890f3528aea462ac7515ece633">Mathjax支持</h2>
+
+<h2 id="采用github-pages:d605f9890f3528aea462ac7515ece633">采用github pages</h2>
+
+<p>内核恐慌关于静态网站生成器 <a href="http://ipn.li/kernelpanic/3/">http://ipn.li/kernelpanic/3/</a></p>
+
+        </article>
+  </div>
+</section>
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'nanshuwang';
+    var disqus_identifier = 'http:\/\/nanshu.wang\/%E8%98%85%E8%8A%9C\/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/';
+    var disqus_title = '用Hugo搭建个人博客';
+    var disqus_url = 'http:\/\/nanshu.wang\/%E8%98%85%E8%8A%9C\/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
+
+<footer>
+  <div>
+    <p>
+    &copy; 2015 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nanshu Wang.</span></span>
+        Powered by <a href="http://hugo.spf13.com">Hugo</a>.
+        Theme by <a href="http://spf13.com">Steve Francia</a>.
+    </p>
+  </div>
+</footer>
+<script type="text/javascript">
+(function(){var j=function(a,b){return window.getComputedStyle?getComputedStyle(a).getPropertyValue(b):a.currentStyle[b]};var k=function(a,b,c){if(a.addEventListener)a.addEventListener(b,c,false);else a.attachEvent('on'+b,c)};var l=function(a,b){for(key in b)if(b.hasOwnProperty(key))a[key]=b[key];return a};window.fitText=function(d,e,f){var g=l({'minFontSize':-1/0,'maxFontSize':1/0},f);var h=function(a){var b=e||1;var c=function(){a.style.fontSize=Math.max(Math.min(a.clientWidth/(b*10),parseFloat(g.maxFontSize)),parseFloat(g.minFontSize))+'px'};c();k(window,'resize',c)};if(d.length)for(var i=0;i<d.length;i++)h(d[i]);else h(d);return d}})();
+fitText(document.getElementById('title'), 1)
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-7131036-1', 'spf13.com');
+  ga('require', 'linkid', 'linkid.js');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+</body>
+</html>
+
