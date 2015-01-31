@@ -15,26 +15,28 @@
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="考研 : nanshu.wang"/>
+<meta property="og:title" content="用Hugo搭建个人博客 : nanshu.wang"/>
 <meta property="og:site_name" content="nanshu wang blog"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://nanshu.wang/tags/e88083e7a094/">
+<meta property="og:url" content="http://localhost:1313/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2013-07-15"/>
-<meta property="article:modified_time" content="2013-07-15"/>
+<meta property="article:published_time" content="2015-01-31"/>
+<meta property="article:modified_time" content="2015-01-31"/>
 
 
 
 
 
 
-    <base href="http://nanshu.wang">
-    <title> 考研 - nanshu.wang </title>
-    <link rel="canonical" href="http://nanshu.wang/tags/e88083e7a094/">
-    <link href="http://nanshu.wang/tags/%E8%80%83%E7%A0%94/index.xml" rel="alternate" type="application/rss+xml" title="考研" />
+
+
+    <base href="http://localhost:1313">
+    <title> 用Hugo搭建个人博客 - nanshu.wang </title>
+    <link rel="canonical" href="http://localhost:1313/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+    
 
     <link href='http://fonts.useso.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -53,7 +55,7 @@
 
 </head>
 
-<body lang="en">
+<body lang="en" itemscope itemtype="http://schema.org/Article">
 <header id="header">
 	<figure>
 	</figure>
@@ -126,67 +128,155 @@
 </header>
 
 
+
 <section id="main">
+  <h1 itemprop="name" >用Hugo搭建个人博客</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Sat Jan 31, 2015 </h4>
+          
+        </section>
+        
+        <ul id="tags">
+          
+        </ul>
+    </div>
+
+</aside>
+
+<meta itemprop="wordCount" content="93">
+<meta itemprop="datePublished" content="2015-01-31">
+<meta itemprop="url" content="http://localhost:1313/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+
   <div>
-   <h1 id="title">考研</h1>
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%AE%89%E5%AE%89%E9%9D%99%E9%9D%99/">安安静静 </a> </h2>
-      <div class="post-meta">Mon, Jul 15, 2013 </div>
-    </header>
-    <article itemprop="articleBody" id="content">
-    	<p>寝室只剩下了3个姑娘，一个准备出国，两个准备考研。每天大家早出晚归，话也不多，在闷热的宿舍里干着各自的事情，安安静静。偶尔有什么声音，也是窗外北京八月从没有间断的淅淅沥沥的雨。每天去图书馆选一层375附近的位置，遇到几个同考研的同学，打声招呼互相勉励一下，便把头埋进厚厚的数学全书和英语阅读里去。其实是不习惯这样安安静静的生活，总觉得几天没人说话没人一起笑就会把人逼疯，所以要隔三差五还是得邀上狐朋狗友去撮一顿或者玩桌游。能坚持考研下来的人，应该都会花上好一阵来适应安安静静吧，没适应下来的像我一样的不确定玩家怎么感觉都是要玩砸的样子。</p>
+        <article itemprop="articleBody" id="content">
+           
 
-	</article>
-    <footer>
-        <a href='http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%AE%89%E5%AE%89%E9%9D%99%E9%9D%99/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
+<h1 id="安装hugo:d605f9890f3528aea462ac7515ece633">安装Hugo</h1>
 
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://nanshu.wang/%E6%BD%87%E6%B9%98/Summery/">Summery </a> </h2>
-      <div class="post-meta">Wed, May 15, 2013 </div>
-    </header>
-    <article itemprop="articleBody" id="content">
-    	<p>这其实是一篇暑期总结。</p>
+<p>1.安装brew</p>
 
-<p>R大开学特别晚，现在离开学也还有两周的时间，但对于大四的学姐来说，开学不开学的确实没有什么区别。暑假的三个夏令营一结束，假期也就随之结束了，就好像上学期期末考完最后一科并没有真正松懈下来，而是连写了两天比赛的代码才算过完了大三。</p>
+<pre><code>$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
 
-<p>于是攒了3件T恤，3个姓名牌，收获却几乎为0。R大本身就是去酱油的，深知自己反正也拿不到自己学院内保的资格；CAS被拒，10月则会再去面一次；MS的就是纯玩，比赛悲剧了，拿了些奖品结识了一群丧尸的小伙伴。</p>
+<p>2.安装pip
+下载 <a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a></p>
 
-	</article>
-    <footer>
-        <a href='http://nanshu.wang/%E6%BD%87%E6%B9%98/Summery/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
+<pre><code>$python get-pip.py
+</code></pre>
 
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://nanshu.wang/%E6%BD%87%E6%B9%98/%E4%BB%80%E4%B9%88%E9%83%BD%E6%98%AF%E5%8F%A0%E5%8A%A0%E6%80%81/">什么都是叠加态 </a> </h2>
-      <div class="post-meta">Mon, Nov 26, 2012 </div>
-    </header>
-    <article itemprop="articleBody" id="content">
-    	<p>点开看这里发现居然有一个月没有更新了，原来又过了一个月熬夜晚起，毫无成效的生活。</p>
+<p>3.安装Pygments</p>
 
-<p>和高中同学说到以后打算干嘛，又一次提到我奇葩的考研决定，对方唏嘘不已，尔后又感叹了句生活的无常。想到高中的日子，真是简单快乐得可怕，当然得先抛开大山一样的学习压力。那时候是什么都敢憧憬，什么都敢幻想，打打闹闹，一晃就过了三年。</p>
+<pre><code>$pip install Pygments
+</code></pre>
 
-<p>不过现在二十来岁的年龄，其实内心也没有长大，相比于十五六岁，也只是为未来多了一份可有可无的担心而已。但奇怪的是，所有人都希望自己看起来能独当一面，是足够qualified做任何事的，而这样的形象却让我联想到小时候眼中无所不能的爸妈。</p>
+<p>4.安装Hugo</p>
 
-	</article>
-    <footer>
-        <a href='http://nanshu.wang/%E6%BD%87%E6%B9%98/%E4%BB%80%E4%B9%88%E9%83%BD%E6%98%AF%E5%8F%A0%E5%8A%A0%E6%80%81/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
+<pre><code>$brew new Hugo
+</code></pre>
 
-    
+<h1 id="started:d605f9890f3528aea462ac7515ece633">Started</h1>
+
+<ol>
+<li>Create a site</li>
+</ol>
+
+<pre><code>$Hugo new site sitepath
+</code></pre>
+
+<p>2.Create page</p>
+
+<pre><code>$Hugo new about.me
+</code></pre>
+
+<ol>
+<li>Create a post</li>
+</ol>
+
+<pre><code>$Hugo new post/first.me
+</code></pre>
+
+<h1 id="选择主题:d605f9890f3528aea462ac7515ece633">选择主题</h1>
+
+<ol>
+<li>download thems</li>
+</ol>
+
+<pre><code>$ git clone --recursive https://github.com/spf13/hugoThemes themes
+</code></pre>
+
+<ol>
+<li>run Hugo</li>
+</ol>
+
+<pre><code>$ hugo server --theme=hyde --buildDraft
+</code></pre>
+
+<ol>
+<li>选择主题
+直接选择了Hugo 作者博客的主题，先将他的博客全部fork下来</li>
+</ol>
+
+<pre><code>$ git clone https://github.com/spf13/hugo.git
+</code></pre>
+
+<h1 id="其他功能:d605f9890f3528aea462ac7515ece633">其他功能</h1>
+
+<h2 id="rss订阅:d605f9890f3528aea462ac7515ece633">rss订阅</h2>
+
+<h2 id="代码高亮:d605f9890f3528aea462ac7515ece633">代码高亮</h2>
+
+<p>安装pygments，在代码两头加上</p>
+
+<pre><code>{{ &lt; highlight python&gt;}}
+your code here.
+{{ /highlight }}
+</code></pre>
+
+<h2 id="图片管理:d605f9890f3528aea462ac7515ece633">图片管理</h2>
+
+<pre><code>{{ % img src=&quot;/media/spf13-responsive.jpg&quot; alt=&quot;spf13 responsive website&quot; %}}
+</code></pre>
+
+<p>原文件放入media文件夹内</p>
+
+<h2 id="mathjax支持:d605f9890f3528aea462ac7515ece633">Mathjax支持</h2>
+
+<h2 id="采用github-pages:d605f9890f3528aea462ac7515ece633">采用github pages</h2>
+
+<h2 id="域名绑定:d605f9890f3528aea462ac7515ece633">域名绑定</h2>
+
+<h2 id="更改字体服务商:d605f9890f3528aea462ac7515ece633">更改字体服务商</h2>
+
+<p>内核恐慌关于静态网站生成器 <a href="http://ipn.li/kernelpanic/3/">http://ipn.li/kernelpanic/3/</a></p>
+
+        </article>
   </div>
 </section>
 
-<aside id="meta"> </aside>
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'nanshuwang';
+    var disqus_identifier = 'http:\/\/localhost:1313\/%E8%98%85%E8%8A%9C\/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/';
+    var disqus_title = '用Hugo搭建个人博客';
+    var disqus_url = 'http:\/\/localhost:1313\/%E8%98%85%E8%8A%9C\/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
 
 <footer>
   <div>
@@ -203,6 +293,42 @@
 fitText(document.getElementById('title'), 1)
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>
 
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
