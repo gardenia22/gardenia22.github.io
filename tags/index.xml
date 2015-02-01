@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title> on Nanshu&#39;s blog </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://localhost:1313/tags/</link>
+    <language>en-us</language>
+    <author>Nanshu Wang</author>
+    <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
+    <updated>Sat, 31 Jan 2015 00:30:03 CST</updated>
+    
+    <item>
+      <title>用Hugo静态网站生成器搭建个人博客</title>
+      <link>http://localhost:1313/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 31 Jan 2015 00:30:03 CST</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://localhost:1313/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>
+
+&lt;h1 id=&#34;前言:d605f9890f3528aea462ac7515ece633&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;是什么？官方文档是这样介绍它的：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Hugo是一种通用的网站框架。严格来说，Hugo应该被称作静态网站生成器。&lt;/p&gt;
+
+&lt;p&gt;静态网站生成器从字面上来理解，就是将你的内容生成静态网站。所谓“静态”的含义其实反映在网站页面的生成的时间。一般的web服务器（WordPress, Ghost, Drupal等等）在收到页面请求时，需要调用数据库生成页面（也就是HTML代码），再返回给用户请求。而静态网站则不需要在收到请求后生成页面，而是在整个网站建立起之前就将所有的页面全部生成完成，页面一经生成便称为静态文件，访问时直接返回现成的静态页面，不需要数据库的参与。&lt;/p&gt;
+
+&lt;p&gt;采用静态网站的维护也相当简单，实际上你根本不需要什么维护，完全不用考虑复杂的运行时间，依赖和数据库的问题。再有也不用担心安全性的问题，没有数据库，网站注入什么的也无从下手。&lt;/p&gt;
+
+&lt;p&gt;静态网站最大好处就是访问快速，不用每次重新生成页面。当然，一旦网站有任何更改，静态网站生成器需要重新生成所有的与更改相关的页面。然而对于小型的个人网站，项目主页等等，网站规模很小，重新生成整个网站也是非常快的。Hugo在速度方面做得非常好，Dan Hersam在他这个&lt;a href=&#34;https://www.udemy.com/build-static-sites-in-seconds-with-hugo/&#34;&gt;Hugo教程&lt;/a&gt;里提到，5000篇文章的博客，Hugo生成整个网站只花了6秒，而很多其他的静态网站生成器则需要几分钟的时间。我的博客目前文章只有几十篇，用Hugo生成整个网站只需要0.1秒。官方文档提供的数据是每篇页面的生成时间不到1ms。&lt;/p&gt;
+
+&lt;p&gt;我认为对于个人博客来说，应该将时间花在内容上而不是各种折腾网站。Hugo会将Markdown格式的内容和设置好模版一起，生成漂亮干净的页面。挑选折腾好一个喜爱的模版，在Sublime Text里用Markdown写博客，再敲一行命令生成同步到服务器就OK了。整个体验是不是非常优雅简单还有点geek的味道呢？&lt;/p&gt;
+
+&lt;p&gt;Hugo是用&lt;a href=&#34;http://golang.org/&#34;&gt;Go语言&lt;/a&gt;写的，为什么使用Go，作者&lt;a href=&#34;http://spf13.com&#34;&gt;Steve Francis&lt;/a&gt;的原话是：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I looked at existing static site generators like Jekyll, Middleman and nanoc. All had complicated dependencies to install and took far longer to render my blog with hundreds of posts than I felt was acceptable. I wanted a framework to be able to get rapid feedback while making changes to the templates, and the 5+-minute render times was just too slow. In general, they were also very blog minded and didn’t have the ability to have different content types and flexible URLs.&lt;/p&gt;
+
+&lt;p&gt;I wanted to develop a fast and full-featured website framework without dependencies. The Go language seemed to have all of the features I needed in a language. I began developing Hugo in Go and fell in love with the language. I hope you will enjoy using (and contributing to) Hugo as much as I have writing it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;总结他的一下大意：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;吐槽：Jekyll以及那一堆静态网站生成器安装麻烦（依赖多），速度又慢，内容类型单一，url死板&lt;/li&gt;
+&lt;li&gt;挽袖子状：Go挺萌的符合我对语言的一切幻想，就用它重写一个吧&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我为啥用Hugo？除了以上提到的原因，很重要的一点是&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo主页&lt;/a&gt;很漂亮，看了一圈静态网站生成器的主页，一眼就被Hugo的美到了，首页的照片里的那个格子小本子应该是&lt;a href=&#34;http://www.paperthinks.com&#34;&gt;Paperthinks&lt;/a&gt;，我正好也在用，有种刚好看到自己桌面的感觉。&lt;/p&gt;
+
+&lt;h1 id=&#34;安装:d605f9890f3528aea462ac7515ece633&#34;&gt;安装&lt;/h1&gt;
+
+&lt;p&gt;如果说速度快是Hugo的第一大优点，那么安装简单应该就是Hugo的第二大优点。对于Mac用户，没有brew的话先安装brew，在命令行里敲：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后再敲一行安装Hugo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$brew new Hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然你也可以在&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;这里&lt;/a&gt;直接下载对应系统的binary文件，解压就行了。&lt;/p&gt;
+
+&lt;h1 id=&#34;基本使用:d605f9890f3528aea462ac7515ece633&#34;&gt;基本使用&lt;/h1&gt;
+
+&lt;p&gt;首先建立自己的网站，sitepath是网站的路径&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$hugo new site sitepath
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后进入该路径&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$cd sitepath
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在该目录下你可以看到以下几个目录和config.toml文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ▸ archetypes/ #包括内容类型，在创建新内容时自动生成内容的配置
+ ▸ content/ #包括网站内容，全部使用markdown格式
+ ▸ layouts/ #包括了网站的模版，决定content的内容如何呈现
+ ▸ static/ #包括了css,js,fonts,media等，决定网站的外观
+   config.toml #网站的配置文件，包括baseurl,title,copyright等等网站参数
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.安装pip
+下载 &lt;a href=&#34;https://bootstrap.pypa.io/get-pip.py&#34;&gt;https://bootstrap.pypa.io/get-pip.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$python get-pip.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.安装Pygments&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$pip install Pygments
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;started:d605f9890f3528aea462ac7515ece633&#34;&gt;Started&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a site&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$Hugo new site sitepath
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.Create page&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$Hugo new about.me
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Create a post&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$Hugo new post/first.me
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;了解hugo:d605f9890f3528aea462ac7515ece633&#34;&gt;了解Hugo&lt;/h1&gt;
+
+&lt;p&gt;folders
+/layout 包括了网站的模版，决定content的内容如何呈现
+/static 包括了css,js,fonts,media等，决定网站的外观
+/public hugo生成的静态网站&lt;/p&gt;
+
+&lt;h1 id=&#34;选择主题:d605f9890f3528aea462ac7515ece633&#34;&gt;选择主题&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;download thems&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone --recursive https://github.com/spf13/hugoThemes themes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;run Hugo&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo server --theme=hyde --buildDraft
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;选择主题
+直接选择了Hugo 作者博客的主题，先将他的博客全部fork下来&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/spf13/hugo.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;其他功能:d605f9890f3528aea462ac7515ece633&#34;&gt;其他功能&lt;/h1&gt;
+
+&lt;h2 id=&#34;rss订阅:d605f9890f3528aea462ac7515ece633&#34;&gt;rss订阅&lt;/h2&gt;
+
+&lt;h2 id=&#34;代码高亮:d605f9890f3528aea462ac7515ece633&#34;&gt;代码高亮&lt;/h2&gt;
+
+&lt;p&gt;安装pygments，在代码两头加上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ &amp;lt; highlight python&amp;gt;}}
+your code here.
+{{ /highlight }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;图片管理:d605f9890f3528aea462ac7515ece633&#34;&gt;图片管理&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ % img src=&amp;quot;/media/spf13-responsive.jpg&amp;quot; alt=&amp;quot;spf13 responsive website&amp;quot; %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原文件放入media文件夹内&lt;/p&gt;
+
+&lt;h2 id=&#34;mathjax支持:d605f9890f3528aea462ac7515ece633&#34;&gt;Mathjax支持&lt;/h2&gt;
+
+&lt;p&gt;不在主页显示&lt;/p&gt;
+
+&lt;h2 id=&#34;采用github-pages:d605f9890f3528aea462ac7515ece633&#34;&gt;采用github pages&lt;/h2&gt;
+
+&lt;h2 id=&#34;域名绑定:d605f9890f3528aea462ac7515ece633&#34;&gt;域名绑定&lt;/h2&gt;
+
+&lt;h2 id=&#34;更改字体服务商:d605f9890f3528aea462ac7515ece633&#34;&gt;更改字体服务商&lt;/h2&gt;
+
+&lt;p&gt;内核恐慌关于静态网站生成器 &lt;a href=&#34;http://ipn.li/kernelpanic/3/&#34;&gt;http://ipn.li/kernelpanic/3/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
