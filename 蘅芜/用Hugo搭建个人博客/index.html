@@ -165,7 +165,7 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="392">
+<meta itemprop="wordCount" content="531">
 <meta itemprop="datePublished" content="2015-01-31">
 <meta itemprop="url" content="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
@@ -244,8 +244,9 @@
    config.toml
 </code></pre>
 
-<p><code>config.toml</code>是网站的配置文件，包括<code>baseurl</code>, <code>title</code>, <code>copyright</code>等等网站参数
-这几个文件夹的作用分别是：</p>
+<p><code>config.toml</code>是网站的配置文件，包括<code>baseurl</code>, <code>title</code>, <code>copyright</code>等等网站参数。</p>
+
+<p>这几个文件夹的作用分别是：</p>
 
 <ul>
 <li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
@@ -344,7 +345,7 @@ title = &quot;about&quot;
 
 </p>
 
-<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了。</p>
+<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css,html。</p>
 
 <p>
 <figure >
@@ -384,7 +385,7 @@ title = &quot;about&quot;
 
 <h1 id="代码高亮:d605f9890f3528aea462ac7515ece633">代码高亮</h1>
 
-<p>作为码农，代码高亮当然必不可少。有两种方法：第一种是在生成页面时就生成好代码高亮过的页面；第二种是使用js，用户加载页面时浏览器再进行渲染。</p>
+<p>作为码农，代码高亮对于写博客来说当然必不可少。有两种方法：第一种是在生成页面时就生成好代码高亮过的页面；第二种是使用js，用户加载页面时浏览器再进行渲染。</p>
 
 <p>第一种方法需要使用<a href="http://pygments.org/">Pygments</a>，一个python写的工具。</p>
 
@@ -457,13 +458,99 @@ your code here.
 
 <p>Mathjax和Markdown会有冲突问题，<a href="http://doswa.com/2011/07/20/mathjax-in-markdown.html">这里</a>提供了解决方案。</p>
 
-<h1 id="采用github-pages:d605f9890f3528aea462ac7515ece633">采用github pages</h1>
+<h1 id="用github-pages作为网站的host:d605f9890f3528aea462ac7515ece633">用github pages作为网站的Host</h1>
 
-<h1 id="域名绑定:d605f9890f3528aea462ac7515ece633">域名绑定</h1>
+<p>Github pages分为两种，一种是项目主页，每个项目都可以有一个；另一种是用户主页，一个用户只能有一个。</p>
+
+<p>因为用户主页只能有一个，所以建议使用项目主页托管，不过我这里采用了用户主页，反正我也只用一个博客，使用个人主页作为Host也相对更简单一点。</p>
+
+<p>我们需要创建两个单独的repo，一个用于放Hugo的输入文件，即除了<code>public/</code>文件夹之外的所有文件，另一个放我们生成的静态网站，也就是<code>public/</code>的内容。</p>
+
+<p>步骤如下：</p>
+
+<ol>
+<li>在Github上创建repo <code>&lt;your-project&gt;-hugo</code>，托管Hugo的输入文件。</li>
+<li>创建repo <code>&lt;username&gt;.github.io</code>，用于托管<code>public/</code>文件夹，注意这里的repo名字一定要用自己的用户名，才会被当作是个人主页。</li>
+<li>git clone &lt;<your-project>-hugo-url</li>
+<li>cd <your-project>-hugo</li>
+<li>rm -rf public，删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）</li>
+<li>git submodule add git@github.com:<username>/<username>.github.io.git public</li>
+<li>下面是写好的一个deploy.sh，拷过去直接就能用，记得chmod +x deploy.sh加上运行权限。</li>
+</ol>
+
+<p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">&lt;p&gt;#!/bin/bash
+<span style="color: #f8f8f2">echo</span> -e “<span style="color: #ae81ff">\0</span>33<span style="color: #f92672">[</span>0<span style="color: #f8f8f2">;</span>32mDeploying updates to GitHub…<span style="color: #ae81ff">\0</span>33<span style="color: #f92672">[</span>0m”&lt;/p&gt;
+
+&lt;p&gt;msg<span style="color: #f92672">=</span>“rebuilding site &lt;code&gt;date&lt;/code&gt;“
+<span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$# </span>-eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]</span>
+  <span style="color: #66d9ef">then</span> <span style="color: #f8f8f2">msg</span><span style="color: #f92672">=</span>“<span style="color: #f8f8f2">$1</span>”
+<span style="color: #66d9ef">fi</span>&lt;/p&gt;
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;push-hugo-content:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Push Hugo content&lt;/h1&gt;
+
+&lt;p&gt;git add -A
+git commit -m “<span style="color: #f8f8f2">$msg</span>”
+git push origin master&lt;/p&gt;
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;build-the-project:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Build the project.&lt;/h1&gt;
+
+&lt;p&gt;hugo <span style="color: #75715e"># if using a theme, replace by &lt;code&gt;hugo -t &lt;yourtheme&gt;&lt;/code&gt;&lt;/p&gt;</span>
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;go-to-public-folder:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Go To Public folder&lt;/h1&gt;
+
+&lt;p&gt;cd public&lt;/p&gt;
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;add-changes-to-git:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Add changes to git.&lt;/h1&gt;
+
+&lt;p&gt;git add -A&lt;/p&gt;
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;commit-changes:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Commit changes.&lt;/h1&gt;
+
+&lt;p&gt;git commit -m “<span style="color: #f8f8f2">$msg</span>”&lt;/p&gt;
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;push-source-and-build-repos:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Push <span style="color: #f8f8f2">source </span>and build repos.&lt;/h1&gt;
+
+&lt;p&gt;git push origin master&lt;/p&gt;
+
+&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;come-back:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Come Back&lt;/h1&gt;
+
+&lt;p&gt;cd ..&lt;/p&gt;
+</pre></div>
+
+</p>
+
+<p>等一小会儿（10分钟左右），你就能在<a href="http://username.github.io/">http://username.github.io/</a> 这个页面看到你的网站了！每次更新网站或者写了新文章，只需要运行./deploy.sh 发布就搞定了，简单吧？</p>
+
+<p>Github pages还支持域名绑定，三个步骤：</p>
+
+<ol>
+<li>在<code>&lt;username&gt;.github.io</code> repo的跟目录下添加<code>CNAME</code>文件，文件里写上你的域名，不用加http://的开头。</li>
+<li>ping <a href="http://username.github.io/，记下ip地址。">http://username.github.io/，记下ip地址。</a></li>
+<li>在你的域名管理中加上两条A记录，分别是www和@，记录指向<a href="http://username.github.io/">http://username.github.io/</a> 的ip地址，也需要等一小会儿生效。</li>
+</ol>
 
 <h1 id="更改字体服务商:d605f9890f3528aea462ac7515ece633">更改字体服务商</h1>
 
-<p>内核恐慌关于静态网站生成器 <a href="http://ipn.li/kernelpanic/3/">http://ipn.li/kernelpanic/3/</a></p>
+<p>我的博客模版里用的字体是从googleapis里获取的，国内访问会下载失败，把字体库改成360的。
+找到<code>layouts/partials/head_includes.html</code>文件：</p>
+
+<p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;p&gt;&lt;link</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&#39;http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300&#39;</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&#39;stylesheet&#39;</span> <span style="color: #a6e22e">type=</span><span style="color: #e6db74">&#39;text/css&#39;</span><span style="color: #f92672">&gt;&lt;/p&gt;</span>
+</pre></div>
+
+</p>
+
+<p>将其中的googleapis替换为useso就行了。</p>
+
+<h1 id="参考:d605f9890f3528aea462ac7515ece633">参考</h1>
+
+<ol>
+<li><a href="http://gohugo.io/overview/introduction/">Hugo docs</a></li>
+<li><a href="http://ipn.li/kernelpanic/3/">《内核恐慌》静态网站生成器</a></li>
+<li><a href="https://www.udemy.com/build-static-sites-in-seconds-with-hugo/">Build Static Sites in Seconds with Hugo</a></li>
+<li>[github pages]()</li>
+</ol>
 
         </article>
   </div>
