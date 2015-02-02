@@ -95,7 +95,7 @@
 &lt;li&gt;archetypes：包括内容类型，在创建新内容时自动生成内容的配置&lt;/li&gt;
 &lt;li&gt;content：包括网站内容，全部使用markdown格式&lt;/li&gt;
 &lt;li&gt;layouts：包括了网站的模版，决定内容如何呈现&lt;/li&gt;
-&lt;li&gt;static：包括了css,js,fonts,media等，决定网站的外观&lt;/li&gt;
+&lt;li&gt;static：包括了css, js, fonts, media等，决定网站的外观&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Hugo提供了一些完整的主题可以使用，下载这些主题：&lt;/p&gt;
@@ -130,7 +130,7 @@ title = &amp;quot;about&amp;quot;
 &lt;pre&gt;&lt;code&gt;$Hugo server -t hyde --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;-t 参数的意思是使用hyde主题渲染我们的页面，注意到&lt;code&gt;about.md&lt;/code&gt;目前是作为草稿，即draft参数设置为true，运行Hugo时要加上&amp;ndash;buildDrafts参数才会生成被标记为草稿的页面。
+&lt;p&gt;&lt;code&gt;-t&lt;/code&gt;参数的意思是使用hyde主题渲染我们的页面，注意到&lt;code&gt;about.md&lt;/code&gt;目前是作为草稿，即&lt;code&gt;draft&lt;/code&gt;参数设置为&lt;code&gt;true&lt;/code&gt;，运行Hugo时要加上&lt;code&gt;--buildDrafts&lt;/code&gt;参数才会生成被标记为草稿的页面。
 在浏览器输入localhost:1313，就可以看到我们刚刚创建的页面。&lt;/p&gt;
 
 &lt;p&gt;
@@ -147,19 +147,19 @@ title = &amp;quot;about&amp;quot;
 
 &lt;h1 id=&#34;主题选择:d605f9890f3528aea462ac7515ece633&#34;&gt;主题选择&lt;/h1&gt;
 
-&lt;p&gt;进入&lt;code&gt;themes/hyde&lt;/code&gt;文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在&lt;code&gt;layouts/&lt;/code&gt;和&lt;code&gt;static/&lt;/code&gt;这两个文件内，选择好一个主题后，可以将themes中的文件夹直接复制到&lt;code&gt;mysite/&lt;/code&gt;目录下，覆盖原来的&lt;code&gt;layouts/&lt;/code&gt;, &lt;code&gt;static/&lt;/code&gt;文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css,js,html等文件。&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;themes/hyde&lt;/code&gt;文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在&lt;code&gt;layouts/&lt;/code&gt;和&lt;code&gt;static/&lt;/code&gt;这两个文件内，选择好一个主题后，可以将&lt;code&gt;themes/&lt;/code&gt;中的文件夹直接复制到&lt;code&gt;mysite/&lt;/code&gt;目录下，覆盖原来的&lt;code&gt;layouts/&lt;/code&gt;, &lt;code&gt;static/&lt;/code&gt;文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css, js, html等文件。&lt;/p&gt;
 
 &lt;p&gt;我的博客模版是在Hugo作者spf13的&lt;a href=&#34;http://spf13.com&#34;&gt;博客&lt;/a&gt;基础上修改的。第一步，先去他的博客网站源码&lt;a href=&#34;https://github.com/spf13/spf13.com&#34;&gt;主页&lt;/a&gt;把整个项目clone下来&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ git clone git@github.com:spf13/spf13.com.git
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;把项目中的static和layouts文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:&lt;/p&gt;
+&lt;p&gt;把项目中的&lt;code&gt;static/&lt;/code&gt;和&lt;code&gt;layouts/&lt;/code&gt;文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$Hugo server --buildDrafts -w
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
+&lt;p&gt;这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数&lt;code&gt;-w&lt;/code&gt;意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
 
 &lt;p&gt;
 &lt;figure &gt;
@@ -188,7 +188,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;/p&gt;
 
-&lt;p&gt;将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css,html。&lt;/p&gt;
+&lt;p&gt;将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css, html。&lt;/p&gt;
 
 &lt;p&gt;
 &lt;figure &gt;
@@ -207,14 +207,14 @@ title = &amp;quot;about&amp;quot;
 &lt;pre&gt;&lt;code&gt;{{ template &amp;quot;_internal/disqus.html&amp;quot; . }}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;spf13在/layouts/partials/disqus.html中已经添加好了。&lt;/p&gt;
+&lt;p&gt;spf13在&lt;code&gt;/layouts/partials/disqus.html&lt;/code&gt;中已经添加好了。&lt;/p&gt;
 
-&lt;p&gt;只需要去Disqus注册一个账号，然后在config.toml里加上：&lt;/p&gt;
+&lt;p&gt;只需要去Disqus注册一个账号，然后在&lt;code&gt;config.toml&lt;/code&gt;里加上：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;disqusShortname = &amp;quot;yourdisqusShortname&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;注意-w参数是不能监测&lt;code&gt;config.toml&lt;/code&gt;里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。&lt;/p&gt;
+&lt;p&gt;注意&lt;code&gt;-w&lt;/code&gt;参数是不能监测&lt;code&gt;config.toml&lt;/code&gt;里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。&lt;/p&gt;
 
 &lt;p&gt;
 &lt;figure &gt;
@@ -303,7 +303,7 @@ your code here.
 
 &lt;h1 id=&#34;用github-pages作为网站的host:d605f9890f3528aea462ac7515ece633&#34;&gt;用github pages作为网站的Host&lt;/h1&gt;
 
-&lt;p&gt;Github pages分为两种，一种是项目主页，每个项目都可以有一个；另一种是用户主页，一个用户只能有一个。&lt;/p&gt;
+&lt;p&gt;Github pages分为两种：一种是项目主页，每个项目都可以有一个；另一种是用户主页，一个用户只能有一个。&lt;/p&gt;
 
 &lt;p&gt;因为用户主页只能有一个，所以建议使用项目主页托管，不过我这里采用了用户主页，反正我也只用一个博客，使用个人主页作为Host也相对更简单一点。&lt;/p&gt;
 
@@ -314,54 +314,71 @@ your code here.
 &lt;ol&gt;
 &lt;li&gt;在Github上创建repo &lt;code&gt;&amp;lt;your-project&amp;gt;-hugo&lt;/code&gt;，托管Hugo的输入文件。&lt;/li&gt;
 &lt;li&gt;创建repo &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt;，用于托管&lt;code&gt;public/&lt;/code&gt;文件夹，注意这里的repo名字一定要用自己的用户名，才会被当作是个人主页。&lt;/li&gt;
-&lt;li&gt;git clone &amp;lt;&lt;your-project&gt;-hugo-url&lt;/li&gt;
-&lt;li&gt;cd &lt;your-project&gt;-hugo&lt;/li&gt;
-&lt;li&gt;rm -rf public，删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）&lt;/li&gt;
-&lt;li&gt;git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public&lt;/li&gt;
-&lt;li&gt;下面是写好的一个deploy.sh，拷过去直接就能用，记得chmod +x deploy.sh加上运行权限。&lt;/li&gt;
+&lt;li&gt;clone your-project&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&amp;lt;p&amp;gt;#!/bin/bash
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;echo&lt;/span&gt; -e “&lt;span style=&#34;color: #ae81ff&#34;&gt;\0&lt;/span&gt;33&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;32mDeploying updates to GitHub…&lt;span style=&#34;color: #ae81ff&#34;&gt;\0&lt;/span&gt;33&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;0m”&amp;lt;/p&amp;gt;
+&lt;pre&gt;&lt;code&gt;git clone &amp;lt;&amp;lt;your-project&amp;gt;-hugo-url&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&amp;lt;p&amp;gt;msg&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;“rebuilding site &amp;lt;code&amp;gt;date&amp;lt;/code&amp;gt;“
-&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;$# &lt;/span&gt;-eq &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt;
-  &lt;span style=&#34;color: #66d9ef&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;“&lt;span style=&#34;color: #f8f8f2&#34;&gt;$1&lt;/span&gt;”
-&lt;span style=&#34;color: #66d9ef&#34;&gt;fi&lt;/span&gt;&amp;lt;/p&amp;gt;
+&lt;ol&gt;
+&lt;li&gt;进入your-project 目录&lt;/li&gt;
+&lt;/ol&gt;
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;push-hugo-content:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Push Hugo content&amp;lt;/h1&amp;gt;
+&lt;pre&gt;&lt;code&gt;cd &amp;lt;your-project&amp;gt;-hugo
+&lt;/code&gt;&lt;/pre&gt;
 
-&amp;lt;p&amp;gt;git add -A
-git commit -m “&lt;span style=&#34;color: #f8f8f2&#34;&gt;$msg&lt;/span&gt;”
-git push origin master&amp;lt;/p&amp;gt;
+&lt;ol&gt;
+&lt;li&gt;删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）&lt;/li&gt;
+&lt;/ol&gt;
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;build-the-project:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Build the project.&amp;lt;/h1&amp;gt;
+&lt;pre&gt;&lt;code&gt;rm -rf public
+&lt;/code&gt;&lt;/pre&gt;
 
-&amp;lt;p&amp;gt;hugo &lt;span style=&#34;color: #75715e&#34;&gt;# if using a theme, replace by &amp;lt;code&amp;gt;hugo -t &amp;lt;yourtheme&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;ol&gt;
+&lt;li&gt;把public/目录添加为submodule 与&lt;username&gt;.github.io同步&lt;/li&gt;
+&lt;/ol&gt;
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;go-to-public-folder:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Go To Public folder&amp;lt;/h1&amp;gt;
+&lt;pre&gt;&lt;code&gt;git submodule add git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
+&lt;/code&gt;&lt;/pre&gt;
 
-&amp;lt;p&amp;gt;cd public&amp;lt;/p&amp;gt;
+&lt;ol&gt;
+&lt;li&gt;添加.gitignore文件，文件中写&lt;code&gt;public/&lt;/code&gt;，在同步&lt;code&gt;&amp;lt;your-project&amp;gt;-hugo&lt;/code&gt;时会忽略public文件夹&lt;/li&gt;
+&lt;li&gt;下面是写好的一个script &lt;code&gt;deploy.sh&lt;/code&gt;，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。&lt;/li&gt;
+&lt;/ol&gt;
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;add-changes-to-git:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Add changes to git.&amp;lt;/h1&amp;gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
 
-&amp;lt;p&amp;gt;git add -A&amp;lt;/p&amp;gt;
+msg=&amp;quot;rebuilding site `date`&amp;quot;
+if [ $# -eq 1 ]
+  then msg=&amp;quot;$1&amp;quot;
+fi
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;commit-changes:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Commit changes.&amp;lt;/h1&amp;gt;
+# Push Hugo content 
+git add -A
+git commit -m &amp;quot;$msg&amp;quot;
+git push origin master
 
-&amp;lt;p&amp;gt;git commit -m “&lt;span style=&#34;color: #f8f8f2&#34;&gt;$msg&lt;/span&gt;”&amp;lt;/p&amp;gt;
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;push-source-and-build-repos:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Push &lt;span style=&#34;color: #f8f8f2&#34;&gt;source &lt;/span&gt;and build repos.&amp;lt;/h1&amp;gt;
+# Build the project. 
+hugo # if using a theme, replace by `hugo -t &amp;lt;yourtheme&amp;gt;`
 
-&amp;lt;p&amp;gt;git push origin master&amp;lt;/p&amp;gt;
+# Go To Public folder
+cd public
+# Add changes to git.
+git add -A
 
-&amp;lt;h1 &lt;span style=&#34;color: #f8f8f2&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;come-back:d605f9890f3528aea462ac7515ece633&amp;quot;&lt;/span&gt;&amp;gt;Come Back&amp;lt;/h1&amp;gt;
+# Commit changes.
 
-&amp;lt;p&amp;gt;cd ..&amp;lt;/p&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;
+git commit -m &amp;quot;$msg&amp;quot;
 
-&lt;/p&gt;
+# Push source and build repos.
+git push origin master
+
+# Come Back
+cd ..
+
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;等一小会儿（10分钟左右），你就能在&lt;a href=&#34;http://username.github.io/&#34;&gt;http://username.github.io/&lt;/a&gt; 这个页面看到你的网站了！每次更新网站或者写了新文章，只需要运行./deploy.sh 发布就搞定了，简单吧？&lt;/p&gt;
 
@@ -369,7 +386,13 @@ git push origin master&amp;lt;/p&amp;gt;
 
 &lt;ol&gt;
 &lt;li&gt;在&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; repo的跟目录下添加&lt;code&gt;CNAME&lt;/code&gt;文件，文件里写上你的域名，不用加http://的开头。&lt;/li&gt;
-&lt;li&gt;ping &lt;a href=&#34;http://username.github.io/，记下ip地址。&#34;&gt;http://username.github.io/，记下ip地址。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;记下&lt;a href=&#34;http://username.github.io/&#34;&gt;http://username.github.io/&lt;/a&gt; 的ip地址。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;$ping username.github.io
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
 &lt;li&gt;在你的域名管理中加上两条A记录，分别是www和@，记录指向&lt;a href=&#34;http://username.github.io/&#34;&gt;http://username.github.io/&lt;/a&gt; 的ip地址，也需要等一小会儿生效。&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -386,13 +409,15 @@ git push origin master&amp;lt;/p&amp;gt;
 
 &lt;p&gt;将其中的googleapis替换为useso就行了。&lt;/p&gt;
 
+&lt;p&gt;教程会根据我的博客遇到的问题继续更新。&lt;/p&gt;
+
 &lt;h1 id=&#34;参考:d605f9890f3528aea462ac7515ece633&#34;&gt;参考&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;http://gohugo.io/overview/introduction/&#34;&gt;Hugo docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://ipn.li/kernelpanic/3/&#34;&gt;《内核恐慌》静态网站生成器&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.udemy.com/build-static-sites-in-seconds-with-hugo/&#34;&gt;Build Static Sites in Seconds with Hugo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;[github pages]()&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&#34;&gt;Setting up a custom domain with GitHub Pages&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

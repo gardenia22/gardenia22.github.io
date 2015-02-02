@@ -165,7 +165,7 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="531">
+<meta itemprop="wordCount" content="555">
 <meta itemprop="datePublished" content="2015-01-31">
 <meta itemprop="url" content="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
@@ -252,7 +252,7 @@
 <li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
 <li>content：包括网站内容，全部使用markdown格式</li>
 <li>layouts：包括了网站的模版，决定内容如何呈现</li>
-<li>static：包括了css,js,fonts,media等，决定网站的外观</li>
+<li>static：包括了css, js, fonts, media等，决定网站的外观</li>
 </ul>
 
 <p>Hugo提供了一些完整的主题可以使用，下载这些主题：</p>
@@ -287,7 +287,7 @@ title = &quot;about&quot;
 <pre><code>$Hugo server -t hyde --buildDrafts
 </code></pre>
 
-<p>-t 参数的意思是使用hyde主题渲染我们的页面，注意到<code>about.md</code>目前是作为草稿，即draft参数设置为true，运行Hugo时要加上&ndash;buildDrafts参数才会生成被标记为草稿的页面。
+<p><code>-t</code>参数的意思是使用hyde主题渲染我们的页面，注意到<code>about.md</code>目前是作为草稿，即<code>draft</code>参数设置为<code>true</code>，运行Hugo时要加上<code>--buildDrafts</code>参数才会生成被标记为草稿的页面。
 在浏览器输入localhost:1313，就可以看到我们刚刚创建的页面。</p>
 
 <p>
@@ -304,19 +304,19 @@ title = &quot;about&quot;
 
 <h1 id="主题选择:d605f9890f3528aea462ac7515ece633">主题选择</h1>
 
-<p>进入<code>themes/hyde</code>文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在<code>layouts/</code>和<code>static/</code>这两个文件内，选择好一个主题后，可以将themes中的文件夹直接复制到<code>mysite/</code>目录下，覆盖原来的<code>layouts/</code>, <code>static/</code>文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css,js,html等文件。</p>
+<p>进入<code>themes/hyde</code>文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在<code>layouts/</code>和<code>static/</code>这两个文件内，选择好一个主题后，可以将<code>themes/</code>中的文件夹直接复制到<code>mysite/</code>目录下，覆盖原来的<code>layouts/</code>, <code>static/</code>文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css, js, html等文件。</p>
 
 <p>我的博客模版是在Hugo作者spf13的<a href="http://spf13.com">博客</a>基础上修改的。第一步，先去他的博客网站源码<a href="https://github.com/spf13/spf13.com">主页</a>把整个项目clone下来</p>
 
 <pre><code>$ git clone git@github.com:spf13/spf13.com.git
 </code></pre>
 
-<p>把项目中的static和layouts文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:</p>
+<p>把项目中的<code>static/</code>和<code>layouts/</code>文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:</p>
 
 <pre><code>$Hugo server --buildDrafts -w
 </code></pre>
 
-<p>这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，方便我们进行修改。这是采用了spf13主题的页面：</p>
+<p>这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数<code>-w</code>意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：</p>
 
 <p>
 <figure >
@@ -345,7 +345,7 @@ title = &quot;about&quot;
 
 </p>
 
-<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css,html。</p>
+<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css, html。</p>
 
 <p>
 <figure >
@@ -364,14 +364,14 @@ title = &quot;about&quot;
 <pre><code>{{ template &quot;_internal/disqus.html&quot; . }}
 </code></pre>
 
-<p>spf13在/layouts/partials/disqus.html中已经添加好了。</p>
+<p>spf13在<code>/layouts/partials/disqus.html</code>中已经添加好了。</p>
 
-<p>只需要去Disqus注册一个账号，然后在config.toml里加上：</p>
+<p>只需要去Disqus注册一个账号，然后在<code>config.toml</code>里加上：</p>
 
 <pre><code>disqusShortname = &quot;yourdisqusShortname&quot;
 </code></pre>
 
-<p>注意-w参数是不能监测<code>config.toml</code>里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。</p>
+<p>注意<code>-w</code>参数是不能监测<code>config.toml</code>里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。</p>
 
 <p>
 <figure >
@@ -460,7 +460,7 @@ your code here.
 
 <h1 id="用github-pages作为网站的host:d605f9890f3528aea462ac7515ece633">用github pages作为网站的Host</h1>
 
-<p>Github pages分为两种，一种是项目主页，每个项目都可以有一个；另一种是用户主页，一个用户只能有一个。</p>
+<p>Github pages分为两种：一种是项目主页，每个项目都可以有一个；另一种是用户主页，一个用户只能有一个。</p>
 
 <p>因为用户主页只能有一个，所以建议使用项目主页托管，不过我这里采用了用户主页，反正我也只用一个博客，使用个人主页作为Host也相对更简单一点。</p>
 
@@ -471,54 +471,71 @@ your code here.
 <ol>
 <li>在Github上创建repo <code>&lt;your-project&gt;-hugo</code>，托管Hugo的输入文件。</li>
 <li>创建repo <code>&lt;username&gt;.github.io</code>，用于托管<code>public/</code>文件夹，注意这里的repo名字一定要用自己的用户名，才会被当作是个人主页。</li>
-<li>git clone &lt;<your-project>-hugo-url</li>
-<li>cd <your-project>-hugo</li>
-<li>rm -rf public，删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）</li>
-<li>git submodule add git@github.com:<username>/<username>.github.io.git public</li>
-<li>下面是写好的一个deploy.sh，拷过去直接就能用，记得chmod +x deploy.sh加上运行权限。</li>
+<li>clone your-project</li>
 </ol>
 
-<p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">&lt;p&gt;#!/bin/bash
-<span style="color: #f8f8f2">echo</span> -e “<span style="color: #ae81ff">\0</span>33<span style="color: #f92672">[</span>0<span style="color: #f8f8f2">;</span>32mDeploying updates to GitHub…<span style="color: #ae81ff">\0</span>33<span style="color: #f92672">[</span>0m”&lt;/p&gt;
+<pre><code>git clone &lt;&lt;your-project&gt;-hugo-url&gt;
+</code></pre>
 
-&lt;p&gt;msg<span style="color: #f92672">=</span>“rebuilding site &lt;code&gt;date&lt;/code&gt;“
-<span style="color: #66d9ef">if</span> <span style="color: #f92672">[</span> <span style="color: #f8f8f2">$# </span>-eq <span style="color: #ae81ff">1</span> <span style="color: #f92672">]</span>
-  <span style="color: #66d9ef">then</span> <span style="color: #f8f8f2">msg</span><span style="color: #f92672">=</span>“<span style="color: #f8f8f2">$1</span>”
-<span style="color: #66d9ef">fi</span>&lt;/p&gt;
+<ol>
+<li>进入your-project 目录</li>
+</ol>
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;push-hugo-content:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Push Hugo content&lt;/h1&gt;
+<pre><code>cd &lt;your-project&gt;-hugo
+</code></pre>
 
-&lt;p&gt;git add -A
-git commit -m “<span style="color: #f8f8f2">$msg</span>”
-git push origin master&lt;/p&gt;
+<ol>
+<li>删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）</li>
+</ol>
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;build-the-project:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Build the project.&lt;/h1&gt;
+<pre><code>rm -rf public
+</code></pre>
 
-&lt;p&gt;hugo <span style="color: #75715e"># if using a theme, replace by &lt;code&gt;hugo -t &lt;yourtheme&gt;&lt;/code&gt;&lt;/p&gt;</span>
+<ol>
+<li>把public/目录添加为submodule 与<username>.github.io同步</li>
+</ol>
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;go-to-public-folder:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Go To Public folder&lt;/h1&gt;
+<pre><code>git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public
+</code></pre>
 
-&lt;p&gt;cd public&lt;/p&gt;
+<ol>
+<li>添加.gitignore文件，文件中写<code>public/</code>，在同步<code>&lt;your-project&gt;-hugo</code>时会忽略public文件夹</li>
+<li>下面是写好的一个script <code>deploy.sh</code>，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。</li>
+</ol>
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;add-changes-to-git:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Add changes to git.&lt;/h1&gt;
+<pre><code>#!/bin/bash
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
 
-&lt;p&gt;git add -A&lt;/p&gt;
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;commit-changes:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Commit changes.&lt;/h1&gt;
+# Push Hugo content 
+git add -A
+git commit -m &quot;$msg&quot;
+git push origin master
 
-&lt;p&gt;git commit -m “<span style="color: #f8f8f2">$msg</span>”&lt;/p&gt;
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;push-source-and-build-repos:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Push <span style="color: #f8f8f2">source </span>and build repos.&lt;/h1&gt;
+# Build the project. 
+hugo # if using a theme, replace by `hugo -t &lt;yourtheme&gt;`
 
-&lt;p&gt;git push origin master&lt;/p&gt;
+# Go To Public folder
+cd public
+# Add changes to git.
+git add -A
 
-&lt;h1 <span style="color: #f8f8f2">id</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;come-back:d605f9890f3528aea462ac7515ece633&quot;</span>&gt;Come Back&lt;/h1&gt;
+# Commit changes.
 
-&lt;p&gt;cd ..&lt;/p&gt;
-</pre></div>
+git commit -m &quot;$msg&quot;
 
-</p>
+# Push source and build repos.
+git push origin master
+
+# Come Back
+cd ..
+
+</code></pre>
 
 <p>等一小会儿（10分钟左右），你就能在<a href="http://username.github.io/">http://username.github.io/</a> 这个页面看到你的网站了！每次更新网站或者写了新文章，只需要运行./deploy.sh 发布就搞定了，简单吧？</p>
 
@@ -526,7 +543,13 @@ git push origin master&lt;/p&gt;
 
 <ol>
 <li>在<code>&lt;username&gt;.github.io</code> repo的跟目录下添加<code>CNAME</code>文件，文件里写上你的域名，不用加http://的开头。</li>
-<li>ping <a href="http://username.github.io/，记下ip地址。">http://username.github.io/，记下ip地址。</a></li>
+<li>记下<a href="http://username.github.io/">http://username.github.io/</a> 的ip地址。</li>
+</ol>
+
+<pre><code>$ping username.github.io
+</code></pre>
+
+<ol>
 <li>在你的域名管理中加上两条A记录，分别是www和@，记录指向<a href="http://username.github.io/">http://username.github.io/</a> 的ip地址，也需要等一小会儿生效。</li>
 </ol>
 
@@ -543,13 +566,15 @@ git push origin master&lt;/p&gt;
 
 <p>将其中的googleapis替换为useso就行了。</p>
 
+<p>教程会根据我的博客遇到的问题继续更新。</p>
+
 <h1 id="参考:d605f9890f3528aea462ac7515ece633">参考</h1>
 
 <ol>
 <li><a href="http://gohugo.io/overview/introduction/">Hugo docs</a></li>
 <li><a href="http://ipn.li/kernelpanic/3/">《内核恐慌》静态网站生成器</a></li>
 <li><a href="https://www.udemy.com/build-static-sites-in-seconds-with-hugo/">Build Static Sites in Seconds with Hugo</a></li>
-<li>[github pages]()</li>
+<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/">Setting up a custom domain with GitHub Pages</a></li>
 </ol>
 
         </article>
