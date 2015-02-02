@@ -78,7 +78,7 @@
 &lt;pre&gt;&lt;code&gt;$cd mysite
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;在该目录下你可以看到以下几个目录和config.toml文件&lt;/p&gt;
+&lt;p&gt;在该目录下你可以看到以下几个目录和&lt;code&gt;config.toml&lt;/code&gt;文件&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt; ▸ archetypes/ 
  ▸ content/
@@ -87,13 +87,13 @@
    config.toml
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;config.toml是网站的配置文件，包括baseurl,title,copyright等等网站参数
+&lt;p&gt;&lt;code&gt;config.toml&lt;/code&gt;是网站的配置文件，包括&lt;code&gt;baseurl&lt;/code&gt;, &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;copyright&lt;/code&gt;等等网站参数
 这几个文件夹的作用分别是：&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;archetypes：包括内容类型，在创建新内容时自动生成内容的配置&lt;/li&gt;
 &lt;li&gt;content：包括网站内容，全部使用markdown格式&lt;/li&gt;
-&lt;li&gt;layouts：包括了网站的模版，决定content的内容如何呈现&lt;/li&gt;
+&lt;li&gt;layouts：包括了网站的模版，决定内容如何呈现&lt;/li&gt;
 &lt;li&gt;static：包括了css,js,fonts,media等，决定网站的外观&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -102,14 +102,14 @@
 &lt;pre&gt;&lt;code&gt;$ git clone --recursive https://github.com/spf13/hugoThemes themes
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;此时现成的主题存放在themes文件夹中。&lt;/p&gt;
+&lt;p&gt;此时现成的主题存放在&lt;code&gt;themes/&lt;/code&gt;文件夹中。&lt;/p&gt;
 
 &lt;p&gt;现在我们先熟悉一下Hugo，创建新页面：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ Hugo new about.md
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;进入content文件夹可以看到，此时多了一个markdown格式的文件about.me，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;content/&lt;/code&gt;文件夹可以看到，此时多了一个markdown格式的文件&lt;code&gt;about.md&lt;/code&gt;，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;---
 +++
@@ -129,16 +129,24 @@ title = &amp;quot;about&amp;quot;
 &lt;pre&gt;&lt;code&gt;$Hugo server -t hyde --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;-t 参数的意思是使用hyde主题渲染我们的页面，注意到about.md目前是作为草稿draf设置为true，运行Hugo时要加上&amp;ndash;buildDrafts参数才会生成被标记为草稿的页面。
+&lt;p&gt;-t 参数的意思是使用hyde主题渲染我们的页面，注意到&lt;code&gt;about.md&lt;/code&gt;目前是作为草稿，即draft参数设置为true，运行Hugo时要加上&amp;ndash;buildDrafts参数才会生成被标记为草稿的页面。
 在浏览器输入localhost:1313，就可以看到我们刚刚创建的页面。&lt;/p&gt;
 
-&lt;p&gt;{{ % img src=&amp;ldquo;/media/hugo-server-1.png&amp;rdquo; alt=&amp;ldquo;hugo-server-1&amp;rdquo; %}}&lt;/p&gt;
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://nanshu.wang/media/hugo-server-1.png&#34; alt=&#34;hugo-server-1&#34; /&gt;
+    
+    
+&lt;/figure&gt;
 
-&lt;p&gt;注意观察当前目录下多了一个文件夹public，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将public里的文件上传就可以，public相当于是Hugo的输出。&lt;/p&gt;
+&lt;/p&gt;
+
+&lt;p&gt;注意观察当前目录下多了一个文件夹&lt;code&gt;public/&lt;/code&gt;，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将&lt;code&gt;public/&lt;/code&gt;里的文件上传就可以，这相当于是Hugo的输出。&lt;/p&gt;
 
 &lt;h1 id=&#34;主题选择:d605f9890f3528aea462ac7515ece633&#34;&gt;主题选择&lt;/h1&gt;
 
-&lt;p&gt;进入themes/hyde文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在layouts和static这两个文件内，选择好一个主题后，可以将themes中的文件夹直接复制到mysite/目录下，覆盖原来的layouts,static文件，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css,js,html等文件。&lt;/p&gt;
+&lt;p&gt;进入&lt;code&gt;themes/hyde&lt;/code&gt;文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在&lt;code&gt;layouts/&lt;/code&gt;和&lt;code&gt;static/&lt;/code&gt;这两个文件内，选择好一个主题后，可以将themes中的文件夹直接复制到&lt;code&gt;mysite/&lt;/code&gt;目录下，覆盖原来的&lt;code&gt;layouts/&lt;/code&gt;, &lt;code&gt;static/&lt;/code&gt;文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css,js,html等文件。&lt;/p&gt;
 
 &lt;p&gt;我的博客模版是在Hugo作者spf13的&lt;a href=&#34;http://spf13.com&#34;&gt;博客&lt;/a&gt;基础上修改的。第一步，先去他的博客网站源码&lt;a href=&#34;https://github.com/spf13/spf13.com&#34;&gt;主页&lt;/a&gt;把整个项目clone下来&lt;/p&gt;
 
@@ -150,30 +158,46 @@ title = &amp;quot;about&amp;quot;
 &lt;pre&gt;&lt;code&gt;$Hugo server --buildDrafts -w
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;这次没有选择主题，如果选择了主题会将原本的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
+&lt;p&gt;这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
 
-&lt;p&gt;{{ % img src=&amp;ldquo;/media/hugo-server-2.png&amp;rdquo; alt=&amp;ldquo;hugo-server-2&amp;rdquo; %}}&lt;/p&gt;
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://nanshu.wang/media/hugo-server-2.png&#34; alt=&#34;hugo-server-2&#34; /&gt;
+    
+    
+&lt;/figure&gt;
 
-&lt;p&gt;我们尝试在他的主题基础上修改，找到/layouts/partials/subheader.html文件:&lt;/p&gt;
+&lt;/p&gt;
 
-&lt;p&gt;{{ &amp;lt; highlight python&amp;gt;}}&lt;/p&gt;
+&lt;p&gt;我们尝试在他的主题基础上修改，找到&lt;code&gt;/layouts/partials/subheader.html&lt;/code&gt;文件:&lt;/p&gt;
 
-&lt;header id=&#34;header&#34;&gt;
-    &lt;figure&gt;
-      &lt;a href=&#34;http://nanshu.wang/&#34; border=0 id=&#34;logolink&#34;&gt;&lt;div class=&#34;icon-spf13-3&#34; id=&#34;logo&#34;&gt; &lt;/div&gt;&lt;/a&gt;
-    &lt;/figure&gt;
-    &lt;div id=&#34;byline&#34;&gt;by Steve Francia&lt;/div&gt;
-    &lt;nav id=&#34;nav&#34;&gt;
-    {{ partial &#34;nav.html&#34; . }}
-    {{ partial &#34;social.html&#34; . }}
-    &lt;/nav&gt;
-&lt;/header&gt;
+&lt;p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;header&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
+      &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;border=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;logolink&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;class=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;icon-spf13-3&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;logo&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/div&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;byline&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;by Steve Francia&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;nav&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;nav&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+    {{ partial &amp;quot;nav.html&amp;quot; . }}
+    {{ partial &amp;quot;social.html&amp;quot; . }}
+    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;{{ ／highlight }}&lt;/p&gt;
+&lt;/p&gt;
 
-&lt;p&gt;将by Steve Francia换成by myname，再次回到浏览器，可以看到页面已经发生变化了。&lt;/p&gt;
+&lt;p&gt;将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了。&lt;/p&gt;
 
-&lt;p&gt;{{ % img src=&amp;ldquo;/media/hugo-server-2.png&amp;rdquo; alt=&amp;ldquo;hugo-server-2&amp;rdquo; %}}&lt;/p&gt;
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://nanshu.wang/media/hugo-server-change.png&#34; alt=&#34;hugo-server-change&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+&lt;/p&gt;
 
 &lt;h1 id=&#34;评论功能:d605f9890f3528aea462ac7515ece633&#34;&gt;评论功能&lt;/h1&gt;
 
@@ -189,9 +213,17 @@ title = &amp;quot;about&amp;quot;
 &lt;pre&gt;&lt;code&gt;disqusShortname = &amp;quot;yourdisqusShortname&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;注意-w参数是不能监测config.toml里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。&lt;/p&gt;
+&lt;p&gt;注意-w参数是不能监测&lt;code&gt;config.toml&lt;/code&gt;里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。&lt;/p&gt;
 
-&lt;p&gt;{{ % img src=&amp;ldquo;/media/comments.png&amp;rdquo; alt=&amp;ldquo;hugo-server-2&amp;rdquo; %}}&lt;/p&gt;
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://nanshu.wang/media/comments.png&#34; alt=&#34;comments&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+&lt;/p&gt;
 
 &lt;h1 id=&#34;代码高亮:d605f9890f3528aea462ac7515ece633&#34;&gt;代码高亮&lt;/h1&gt;
 
@@ -209,7 +241,7 @@ title = &amp;quot;about&amp;quot;
 &lt;pre&gt;&lt;code&gt;$python get-pip.py
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Pygments的调用采用shortcodes实现，spf13里也写好了，在/layouts/shortcode/highlight.html里&lt;/p&gt;
+&lt;p&gt;Pygments的调用采用shortcodes实现，spf13里也写好了，在&lt;code&gt;/layouts/shortcode/highlight.html&lt;/code&gt;里&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;{{ $lang := index .Params 0 }}
 {{ highlight .Inner $lang }}
@@ -217,22 +249,26 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;要使代码高亮，在你的代码外面加上：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{{ &amp;lt; highlight python &amp;gt; }}
+&lt;pre&gt;&lt;code&gt;{{ % highlight python %}}
 your code here.
-{{ /highlight }}
+{{ % /highlight %}}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;第二种方法比较简单，在layouts/partials/header_includes.html中加上：&lt;/p&gt;
+&lt;p&gt;这里为了避免以上两行被识别为代码高亮的标示，在&lt;code&gt;{{&lt;/code&gt;和&lt;code&gt;%&lt;/code&gt;之间多加了一个空格，实际使用的时候需要把空格去掉。&lt;/p&gt;
 
-&lt;p&gt;{{ &amp;lt; highlight python &amp;gt; }}
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://yandex.st/highlightjs/8.0/styles/default.min.css&#34;&gt;
-&lt;script src=&#34;https://yandex.st/highlightjs/8.0/highlight.min.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
-{{ /highlight }}&lt;/p&gt;
+&lt;p&gt;第二种方法比较简单，在&lt;code&gt;layouts/partials/header_includes.html&lt;/code&gt;中加上：&lt;/p&gt;
+
+&lt;p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script &lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;src=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://yandex.st/highlightjs/8.0/highlight.min.js&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;link&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;rel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;hljs&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;initHighlightingOnLoad&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;();&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/p&gt;
 
 &lt;p&gt;这里使用了&lt;a href=&#34;http://yandex.ru/&#34;&gt;Yandex&lt;/a&gt;的&lt;a href=&#34;http://highlightjs.org/&#34;&gt;Highlight.js&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;其他的可以实现高亮的js库还有：&lt;/p&gt;
+&lt;p&gt;其他的可以实现代码高亮的js库还有：&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://highlightjs.org/&#34;&gt;Highlight.js&lt;/a&gt;&lt;/li&gt;
@@ -243,20 +279,24 @@ your code here.
 
 &lt;h1 id=&#34;插入图片:d605f9890f3528aea462ac7515ece633&#34;&gt;插入图片&lt;/h1&gt;
 
-&lt;p&gt;图片文件放在static/media文件中，插入图片：&lt;/p&gt;
+&lt;p&gt;图片文件放在&lt;code&gt;static/media&lt;/code&gt;文件中，插入图片：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;{{ % img src=&amp;quot;/media/example.jpg&amp;quot; alt=&amp;quot;example&amp;quot; %}}
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;注意这里的&lt;code&gt;{{&lt;/code&gt;和&lt;code&gt;%&lt;/code&gt;之间也加上了空格，避免这行代码起作用，实际使用也需要把空格去掉。&lt;/p&gt;
+
 &lt;h1 id=&#34;使用mathjax:d605f9890f3528aea462ac7515ece633&#34;&gt;使用Mathjax&lt;/h1&gt;
 
-&lt;p&gt;在需要渲染公式的页面加入以下代码，比如layouts/_default/single.html文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入layouts/partials/footer.html文件里，保证所有生成的页面都有这几行代码。&lt;/p&gt;
+&lt;p&gt;在需要渲染公式的页面加入以下代码，比如&lt;code&gt;layouts/_default/single.html&lt;/code&gt;文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入&lt;code&gt;layouts/partials/footer.html&lt;/code&gt;文件里，保证所有生成的页面都有这几行代码。&lt;/p&gt;
 
-&lt;p&gt;{{ &amp;lt; highlight python &amp;gt; }}
-&lt;script type=&#34;text/javascript&#34;
-  src=&#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;&gt;
-&lt;/script&gt;
-{{ /highlight}}&lt;/p&gt;
+&lt;p&gt;
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script &lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;type=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;
+  &lt;span style=&#34;color: #a6e22e&#34;&gt;src=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/p&gt;
 
 &lt;p&gt;Mathjax和Markdown会有冲突问题，&lt;a href=&#34;http://doswa.com/2011/07/20/mathjax-in-markdown.html&#34;&gt;这里&lt;/a&gt;提供了解决方案。&lt;/p&gt;
 

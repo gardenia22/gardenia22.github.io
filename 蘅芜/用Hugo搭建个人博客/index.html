@@ -165,7 +165,7 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="410">
+<meta itemprop="wordCount" content="392">
 <meta itemprop="datePublished" content="2015-01-31">
 <meta itemprop="url" content="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
@@ -235,7 +235,7 @@
 <pre><code>$cd mysite
 </code></pre>
 
-<p>在该目录下你可以看到以下几个目录和config.toml文件</p>
+<p>在该目录下你可以看到以下几个目录和<code>config.toml</code>文件</p>
 
 <pre><code> ▸ archetypes/ 
  ▸ content/
@@ -244,13 +244,13 @@
    config.toml
 </code></pre>
 
-<p>config.toml是网站的配置文件，包括baseurl,title,copyright等等网站参数
+<p><code>config.toml</code>是网站的配置文件，包括<code>baseurl</code>, <code>title</code>, <code>copyright</code>等等网站参数
 这几个文件夹的作用分别是：</p>
 
 <ul>
 <li>archetypes：包括内容类型，在创建新内容时自动生成内容的配置</li>
 <li>content：包括网站内容，全部使用markdown格式</li>
-<li>layouts：包括了网站的模版，决定content的内容如何呈现</li>
+<li>layouts：包括了网站的模版，决定内容如何呈现</li>
 <li>static：包括了css,js,fonts,media等，决定网站的外观</li>
 </ul>
 
@@ -259,14 +259,14 @@
 <pre><code>$ git clone --recursive https://github.com/spf13/hugoThemes themes
 </code></pre>
 
-<p>此时现成的主题存放在themes文件夹中。</p>
+<p>此时现成的主题存放在<code>themes/</code>文件夹中。</p>
 
 <p>现在我们先熟悉一下Hugo，创建新页面：</p>
 
 <pre><code>$ Hugo new about.md
 </code></pre>
 
-<p>进入content文件夹可以看到，此时多了一个markdown格式的文件about.me，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。</p>
+<p>进入<code>content/</code>文件夹可以看到，此时多了一个markdown格式的文件<code>about.md</code>，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。</p>
 
 <pre><code>---
 +++
@@ -286,16 +286,24 @@ title = &quot;about&quot;
 <pre><code>$Hugo server -t hyde --buildDrafts
 </code></pre>
 
-<p>-t 参数的意思是使用hyde主题渲染我们的页面，注意到about.md目前是作为草稿draf设置为true，运行Hugo时要加上&ndash;buildDrafts参数才会生成被标记为草稿的页面。
+<p>-t 参数的意思是使用hyde主题渲染我们的页面，注意到<code>about.md</code>目前是作为草稿，即draft参数设置为true，运行Hugo时要加上&ndash;buildDrafts参数才会生成被标记为草稿的页面。
 在浏览器输入localhost:1313，就可以看到我们刚刚创建的页面。</p>
 
-<p>{{ % img src=&ldquo;/media/hugo-server-1.png&rdquo; alt=&ldquo;hugo-server-1&rdquo; %}}</p>
+<p>
+<figure >
+    
+        <img src="/media/hugo-server-1.png" alt="hugo-server-1" />
+    
+    
+</figure>
 
-<p>注意观察当前目录下多了一个文件夹public，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将public里的文件上传就可以，public相当于是Hugo的输出。</p>
+</p>
+
+<p>注意观察当前目录下多了一个文件夹<code>public/</code>，这里面是Hugo生成的整个静态网站，如果使用Github pages来作为博客的Host，你只需要将<code>public/</code>里的文件上传就可以，这相当于是Hugo的输出。</p>
 
 <h1 id="主题选择:d605f9890f3528aea462ac7515ece633">主题选择</h1>
 
-<p>进入themes/hyde文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在layouts和static这两个文件内，选择好一个主题后，可以将themes中的文件夹直接复制到mysite/目录下，覆盖原来的layouts,static文件，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css,js,html等文件。</p>
+<p>进入<code>themes/hyde</code>文件夹，可以看到熟悉的文件夹名，和主题相关的文件主要是在<code>layouts/</code>和<code>static/</code>这两个文件内，选择好一个主题后，可以将themes中的文件夹直接复制到<code>mysite/</code>目录下，覆盖原来的<code>layouts/</code>, <code>static/</code>文件夹，此时直接使用\$Hugo server就可以看到主题效果，修改主题也可以直接修改其中的css,js,html等文件。</p>
 
 <p>我的博客模版是在Hugo作者spf13的<a href="http://spf13.com">博客</a>基础上修改的。第一步，先去他的博客网站源码<a href="https://github.com/spf13/spf13.com">主页</a>把整个项目clone下来</p>
 
@@ -307,30 +315,46 @@ title = &quot;about&quot;
 <pre><code>$Hugo server --buildDrafts -w
 </code></pre>
 
-<p>这次没有选择主题，如果选择了主题会将原本的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，方便我们进行修改。这是采用了spf13主题的页面：</p>
+<p>这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数-w意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，方便我们进行修改。这是采用了spf13主题的页面：</p>
 
-<p>{{ % img src=&ldquo;/media/hugo-server-2.png&rdquo; alt=&ldquo;hugo-server-2&rdquo; %}}</p>
+<p>
+<figure >
+    
+        <img src="/media/hugo-server-2.png" alt="hugo-server-2" />
+    
+    
+</figure>
 
-<p>我们尝试在他的主题基础上修改，找到/layouts/partials/subheader.html文件:</p>
+</p>
 
-<p>{{ &lt; highlight python&gt;}}</p>
+<p>我们尝试在他的主题基础上修改，找到<code>/layouts/partials/subheader.html</code>文件:</p>
 
-<header id="header">
-    <figure>
-      <a href="/" border=0 id="logolink"><div class="icon-spf13-3" id="logo"> </div></a>
-    </figure>
-    <div id="byline">by Steve Francia</div>
-    <nav id="nav">
-    {{ partial "nav.html" . }}
-    {{ partial "social.html" . }}
-    </nav>
-</header>
+<p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;header</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;header&quot;</span><span style="color: #f92672">&gt;</span>
+    <span style="color: #f92672">&lt;figure&gt;</span>
+      <span style="color: #f92672">&lt;a</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;/&quot;</span> <span style="color: #a6e22e">border=</span><span style="color: #e6db74">0</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;logolink&quot;</span><span style="color: #f92672">&gt;&lt;div</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;icon-spf13-3&quot;</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;logo&quot;</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;/div&gt;&lt;/a&gt;</span>
+    <span style="color: #f92672">&lt;/figure&gt;</span>
+    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;byline&quot;</span><span style="color: #f92672">&gt;</span>by Steve Francia<span style="color: #f92672">&lt;/div&gt;</span>
+    <span style="color: #f92672">&lt;nav</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;nav&quot;</span><span style="color: #f92672">&gt;</span>
+    {{ partial &quot;nav.html&quot; . }}
+    {{ partial &quot;social.html&quot; . }}
+    <span style="color: #f92672">&lt;/nav&gt;</span>
+<span style="color: #f92672">&lt;/header&gt;</span>
+</pre></div>
 
-<p>{{ ／highlight }}</p>
+</p>
 
-<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到页面已经发生变化了。</p>
+<p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了。</p>
 
-<p>{{ % img src=&ldquo;/media/hugo-server-2.png&rdquo; alt=&ldquo;hugo-server-2&rdquo; %}}</p>
+<p>
+<figure >
+    
+        <img src="/media/hugo-server-change.png" alt="hugo-server-change" />
+    
+    
+</figure>
+
+</p>
 
 <h1 id="评论功能:d605f9890f3528aea462ac7515ece633">评论功能</h1>
 
@@ -346,9 +370,17 @@ title = &quot;about&quot;
 <pre><code>disqusShortname = &quot;yourdisqusShortname&quot;
 </code></pre>
 
-<p>注意-w参数是不能监测config.toml里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。</p>
+<p>注意-w参数是不能监测<code>config.toml</code>里参数变化的，因此需要重新运行Hugo，进入localhost:1313/about，可以看到评论功能。</p>
 
-<p>{{ % img src=&ldquo;/media/comments.png&rdquo; alt=&ldquo;hugo-server-2&rdquo; %}}</p>
+<p>
+<figure >
+    
+        <img src="/media/comments.png" alt="comments" />
+    
+    
+</figure>
+
+</p>
 
 <h1 id="代码高亮:d605f9890f3528aea462ac7515ece633">代码高亮</h1>
 
@@ -366,7 +398,7 @@ title = &quot;about&quot;
 <pre><code>$python get-pip.py
 </code></pre>
 
-<p>Pygments的调用采用shortcodes实现，spf13里也写好了，在/layouts/shortcode/highlight.html里</p>
+<p>Pygments的调用采用shortcodes实现，spf13里也写好了，在<code>/layouts/shortcode/highlight.html</code>里</p>
 
 <pre><code>{{ $lang := index .Params 0 }}
 {{ highlight .Inner $lang }}
@@ -374,22 +406,26 @@ title = &quot;about&quot;
 
 <p>要使代码高亮，在你的代码外面加上：</p>
 
-<pre><code>{{ &lt; highlight python &gt; }}
+<pre><code>{{ % highlight python %}}
 your code here.
-{{ /highlight }}
+{{ % /highlight %}}
 </code></pre>
 
-<p>第二种方法比较简单，在layouts/partials/header_includes.html中加上：</p>
+<p>这里为了避免以上两行被识别为代码高亮的标示，在<code>{{</code>和<code>%</code>之间多加了一个空格，实际使用的时候需要把空格去掉。</p>
 
-<p>{{ &lt; highlight python &gt; }}
-<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
-<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-{{ /highlight }}</p>
+<p>第二种方法比较简单，在<code>layouts/partials/header_includes.html</code>中加上：</p>
+
+<p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;https://yandex.st/highlightjs/8.0/highlight.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+<span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&quot;</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f92672">&lt;script&gt;</span><span style="color: #a6e22e">hljs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">initHighlightingOnLoad</span><span style="color: #f8f8f2">();</span><span style="color: #f92672">&lt;/script&gt;</span>
+</pre></div>
+
+</p>
 
 <p>这里使用了<a href="http://yandex.ru/">Yandex</a>的<a href="http://highlightjs.org/">Highlight.js</a>。</p>
 
-<p>其他的可以实现高亮的js库还有：</p>
+<p>其他的可以实现代码高亮的js库还有：</p>
 
 <ul>
 <li><a href="http://highlightjs.org/">Highlight.js</a></li>
@@ -400,20 +436,24 @@ your code here.
 
 <h1 id="插入图片:d605f9890f3528aea462ac7515ece633">插入图片</h1>
 
-<p>图片文件放在static/media文件中，插入图片：</p>
+<p>图片文件放在<code>static/media</code>文件中，插入图片：</p>
 
 <pre><code>{{ % img src=&quot;/media/example.jpg&quot; alt=&quot;example&quot; %}}
 </code></pre>
 
+<p>注意这里的<code>{{</code>和<code>%</code>之间也加上了空格，避免这行代码起作用，实际使用也需要把空格去掉。</p>
+
 <h1 id="使用mathjax:d605f9890f3528aea462ac7515ece633">使用Mathjax</h1>
 
-<p>在需要渲染公式的页面加入以下代码，比如layouts/_default/single.html文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入layouts/partials/footer.html文件里，保证所有生成的页面都有这几行代码。</p>
+<p>在需要渲染公式的页面加入以下代码，比如<code>layouts/_default/single.html</code>文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入<code>layouts/partials/footer.html</code>文件里，保证所有生成的页面都有这几行代码。</p>
 
-<p>{{ &lt; highlight python &gt; }}
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-{{ /highlight}}</p>
+<p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">type=</span><span style="color: #e6db74">&quot;text/javascript&quot;</span>
+  <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span style="color: #f92672">&gt;</span>
+<span style="color: #f92672">&lt;/script&gt;</span>
+</pre></div>
+
+</p>
 
 <p>Mathjax和Markdown会有冲突问题，<a href="http://doswa.com/2011/07/20/mathjax-in-markdown.html">这里</a>提供了解决方案。</p>
 
