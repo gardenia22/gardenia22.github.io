@@ -7,19 +7,126 @@
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
-    <updated>Tue, 10 Feb 2015 00:00:00 UTC</updated>
+    <updated>Wed, 11 Feb 2015 00:00:00 UTC</updated>
     
     <item>
-      <title>机器学习笔记1 有监督学习 线性回归 LMS算法</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95/</link>
-      <pubDate>Tue, 10 Feb 2015 00:00:00 UTC</pubDate>
+      <title>机器学习笔记2 有监督学习 线性回归 局部加权回归 概率解释</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92_%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</link>
+      <pubDate>Wed, 11 Feb 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95/</guid>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92_%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
 
-&lt;h1 id=&#34;有监督学习:22afb6460e169e48624696f7ca033436&#34;&gt;有监督学习&lt;/h1&gt;
+&lt;h1 id=&#34;有监督学习:a41c550b5852f048f913986db76cdf89&#34;&gt;有监督学习&lt;/h1&gt;
+
+&lt;h2 id=&#34;局部加权线性回归-locally-weighted-linear-regression:a41c550b5852f048f913986db76cdf89&#34;&gt;局部加权线性回归(Locally weighted linear regression)&lt;/h2&gt;
+
+&lt;p&gt;参数学习算法(parametric learning algorithm)：参数个数固定&lt;/p&gt;
+
+&lt;p&gt;非参数学习算法(non-parametric learning algorithm)：参数个数随样本增加&lt;/p&gt;
+
+&lt;p&gt;特征选择对参数学习算法非常重要，否则会出现下面的问题：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;欠拟合(underfitting)：特征过少，模型过于简单&lt;/li&gt;
+&lt;li&gt;过拟合(overfitting)：特征过多，模型过于复杂&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于非参数学习算法来说，并不需要进行精心的特征选择，局部加权线性回归就是这样。&lt;/p&gt;
+
+&lt;p&gt;局部加权回归又叫做Loess，其成本函数为：&lt;/p&gt;
+
+&lt;div&gt;
+$$\sum_iw^{(i)}(y^{(i)}-\theta^Tx^{(i)})^2$$
+&lt;/div&gt;
+
+&lt;p&gt;$w^{(i)}$是非负权重，通常定义$w^{(i)}$如下：&lt;/p&gt;
+
+&lt;div&gt;
+$$w^{(i)}=exp(- \frac{(x^{(i)}-x)^2}{2\tau^2})$$
+&lt;/div&gt;
+
+&lt;p&gt;权值取决于用于预测的输入变量$x$的值：离$x$越近的样本，权值越接近1；越远的样本，越接近0。$\tau$被称为带宽(bandwidth)参数，决定了以$x$为中心，样本权重递减的速度。$\tau$越大，递减速度越慢；$\tau$越小，递减速度越快。&lt;/p&gt;
+
+&lt;p&gt;参数学习算法的参数是固定的，一经学习得到不再改变。而非参数学习算法的参数并不固定，每次预测都要重新学习一组新的参数，并且要一直保留完整的训练样本集。当样本集很大时，局部加权回归的计算开销会很大，Andrew Moore提出的KD-tree方法可以在大数据集上的计算更高效。&lt;/p&gt;
+
+&lt;h2 id=&#34;回归模型的概率解释:a41c550b5852f048f913986db76cdf89&#34;&gt;回归模型的概率解释&lt;/h2&gt;
+
+&lt;p&gt;遇到一个回归问题，为什么采用线性回归，又为什么采用最小二乘作为成本函数？其实最小二乘回归中蕴含了非常自然的概率假设。假设目标值和输入值之间满足以下关系：&lt;/p&gt;
+
+&lt;div&gt;
+$$y^{(i)}=\theta^Tx^{(i)}+\epsilon^{(i)}$$
+&lt;/div&gt;
+
+&lt;p&gt;其中，$\epsilon^{(i)}$是误差项，包含了模型未考虑到的影响目标值的因素和随机噪声。假设误差项独立同分布，服从均值为0，方差为$\sigma^2$的高斯分布（正态分布），即$\epsilon^{(i)}\sim N(0,\sigma^2)$。$\epsilon^{(i)}$的密度函数为：&lt;/p&gt;
+
+&lt;div&gt;
+$$p(\epsilon^{(i)})=\frac1{\sqrt{2\pi}\sigma}exp(-\frac{(\epsilon^{(i)})^2}{2\sigma^2})$$
+&lt;/div&gt;
+
+&lt;p&gt;也就是说：&lt;/p&gt;
+
+&lt;div&gt;
+$$p(y^{(i)}|x^{(i)};\theta)=\frac1{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})$$
+&lt;/div&gt;
+
+&lt;p&gt;或者也可以这样写：$(y^{(i)}|x^{(i)};\theta) \sim N(\theta^Tx^{(i)},\sigma^2)$。&lt;/p&gt;
+
+&lt;p&gt;为什么采用正态分布？一种原因是数学上处理起来比较便利，二是因为根据中心极限定理，独立的随机变量的和，即多种随机误差的累积，其总的影响是接近正态分布的。&lt;/p&gt;
+
+&lt;p&gt;$p(y^{(i)}|x^{(i)};\theta)$的含义是给定条件$x^{(i)}$，参数设定为$\theta$时，$y^{(i)}$的分布值。不能将$\theta$看作是概率条件，因为$\theta$不是随机变量，而是实际存在的真实值，虽然我们不知道真实值到底是多少。因此在以上的式子中，用了分号而不是逗号来区分$x^{(i)}$和$\theta$。&lt;/p&gt;
+
+&lt;p&gt;定义$\theta$的似然(likelihood)函数：&lt;/p&gt;
+
+&lt;div&gt;
+$$\begin{equation}
+\begin{split}
+L(\theta)=&amp; p(y|X;\theta)\\
+=&amp; \Pi_{i=1}^m p(y^{(i)}|x^{(i)};\theta)\\
+=&amp; \Pi_{i=1}^m \frac1{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})
+\end{split}
+\end{equation}$$
+&lt;/div&gt;
+
+&lt;p&gt;似然(likelihood)和概率(probability)实际上是一个东西，但是似然函数是对参数$\theta$定义的，为了加以区分，使用了似然这一术语。我们可以说参数的似然，数据的概率，但不能说数据的似然，参数的概率。&lt;/p&gt;
+
+&lt;p&gt;极大似然估计的含义是选择参数$\theta$，使参数的似然函数最大化，也就是说选择参数使得已有样本数据出现的概率最大。&lt;/p&gt;
+
+&lt;p&gt;为方便求解，再定义函数$l(\theta)$：&lt;/p&gt;
+
+&lt;div&gt;
+$$\begin{equation}
+\begin{split}
+l(\theta) =&amp; \log L(\theta) \\
+=&amp; \sum_{i=1}^m \log \frac1{\sqrt{2\pi}\sigma}exp(-\frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2})\\
+=&amp; m\log (\frac1{\sqrt{2\pi}\sigma}-\frac1{\sigma^2}\frac12\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2)
+\end{split}
+\end{equation}$$
+&lt;/div&gt;
+
+&lt;p&gt;可得，要最大化似然函数$L(\theta)$，也就是最大化$l(\theta)$，也就是最小化：&lt;/p&gt;
+
+&lt;div&gt;
+$$\frac12\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$$
+&lt;/div&gt;
+
+&lt;p&gt;这个式子刚好是最小二乘法中定义的成本函数$J(\theta)$。总结一下，最小二乘回归模型刚好就是在假设了误差独立同服从正态分布后，得到的最大似然估计。注意到，正态分布中的方差$\sigma^2$的取值对模型并没有影响。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>机器学习笔记1 有监督学习 线性回归 LMS算法 正规方程</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95_%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</link>
+      <pubDate>Tue, 10 Feb 2015 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95_%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</guid>
+      <description>
+
+&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
+
+&lt;h1 id=&#34;有监督学习:b33d274e87081502d65882ed2d51cd57&#34;&gt;有监督学习&lt;/h1&gt;
 
 &lt;p&gt;先理清几个概念：&lt;/p&gt;
 
@@ -45,7 +152,7 @@
 &lt;li&gt;当预测值y为连续值时，则有监督学习问题是回归(regression)问题；预测值y为离散值时，则为分类(classification)问题。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;线性回归-linear-regression:22afb6460e169e48624696f7ca033436&#34;&gt;线性回归(Linear Regression)&lt;/h2&gt;
+&lt;h2 id=&#34;线性回归-linear-regression:b33d274e87081502d65882ed2d51cd57&#34;&gt;线性回归(Linear Regression)&lt;/h2&gt;
 
 &lt;p&gt;先简单将y表示为x的线性函数：&lt;/p&gt;
 
@@ -68,7 +175,7 @@ $$J(\theta) = \frac12\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$$
 
 &lt;p&gt;这实际上就是最小二乘成本函数，我们把这个回归模型叫做普通最小二乘回归模型(ordinary least squares regression model)。&lt;/p&gt;
 
-&lt;h2 id=&#34;lms算法:22afb6460e169e48624696f7ca033436&#34;&gt;LMS算法&lt;/h2&gt;
+&lt;h2 id=&#34;lms算法:b33d274e87081502d65882ed2d51cd57&#34;&gt;LMS算法&lt;/h2&gt;
 
 &lt;p&gt;为了找到使成本函数$J(\theta)$最小的参数$\theta$，采用搜索算法：给定一个$\theta$的初值，然后不断改进，每次改进都使$J(\theta)$更小，直到最小化$J(\theta)$的$\theta$的值收敛。&lt;/p&gt;
 
@@ -126,6 +233,34 @@ $$\theta_j:=\theta_j+\alpha(y^{(i)}-h_{\theta}(x^{(i)}))*x_j^{(i)}$$
 &lt;p&gt;}&lt;/p&gt;
 
 &lt;p&gt;随机梯度下降和批量梯度下降不同点在于，批量梯度下降每一步更新$\theta$值，都需要遍历全部的训练样本，而随机梯度下降在遇到每个训练样本时，更新$\theta$之后继续处理下一个样本，每个样本只遍历一次，算法的学习时间比批量梯度下降快很多。但是，随机梯度下降可能永远不会收敛到全局最优值，而是在成本函数$J(\theta)$最优值周围附近摇摆。但是在实际问题中，接近最优值的参数值可能已经是足够好的结果了，特别是对于数据量非常大的训练集来说，随机梯度下降是比批量梯度下降更好的选择。&lt;/p&gt;
+
+&lt;h2 id=&#34;正规方程-the-normal-equations:b33d274e87081502d65882ed2d51cd57&#34;&gt;正规方程(The normal equations)&lt;/h2&gt;
+
+&lt;p&gt;梯度下降是最小化$J(\theta)$的一种方式，正规方程是另一种求解参数$\theta$的方法，这种方法可以直接求出最优值参数结果，不需要迭代更新。这种方法实际上是直接求出$J(\theta)$的导数，并令其为0。&lt;/p&gt;
+
+&lt;div&gt;
+$$J(\theta)=\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)}))^2=\frac12(X\theta-\overrightarrow y)^T(X\theta-\overrightarrow y)$$
+
+$$\nabla_{\theta}J(\theta)=0$$ 
+&lt;/div&gt;
+
+&lt;p&gt;解之，&lt;/p&gt;
+
+&lt;div&gt;
+$$\nabla_{\theta}J(\theta) = X^TX\theta-X^T\overrightarrow y=0$$
+&lt;/div&gt;
+
+&lt;p&gt;得到正规方程：&lt;/p&gt;
+
+&lt;div&gt;
+$$X^TX\theta=X^T\overrightarrow y$$
+&lt;/div&gt;
+
+&lt;p&gt;求解$\theta$：&lt;/p&gt;
+
+&lt;div&gt;
+$$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
+&lt;/div&gt;
 </description>
     </item>
     
@@ -1207,44 +1342,6 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
 &lt;li&gt;I know I have chosen the hard path, because I know that is the right thing to do.&lt;/li&gt;
 &lt;li&gt;这次酱油打得一般，如果有下次希望打得漂亮一点&amp;gt;&amp;lt;。&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>临琼楼</title>
-      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E4%B8%B4%E7%90%BC%E6%A5%BC/</link>
-      <pubDate>Fri, 19 Apr 2013 00:00:00 UTC</pubDate>
-      <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E4%B8%B4%E7%90%BC%E6%A5%BC/</guid>
-      <description>&lt;p&gt;在这个古色古香充满体制内部气息的院子里，想起来万寿寺里的王二。当然我更幸运，既没有车祸失忆，也不用想操蛋的科研课题，更没有书稿里跳出来的薛嵩fucked up my mind. 然而我却比王二更加无奈，并且无聊，做着这份不用面试也没有薪水的实习。正和来之前脑补的一样，无非是用Office软件就能handle的工作，再打上几个电话，无事之余，还能写点题看点论文再接半天导师打来验收repo的越洋电话。抛开无聊的工作内容，也还是有那么几件满有趣的事情，比如北海公园的白塔在多云的白天根本看不清，8点的四号线也并不那么拥挤，事实上每次都能找到座位，事业单位国家机关都坐落在绿荫匆匆古朴幽静的院子里，搞技术的中年人里100%男性+50%胖子+100%不好看，办公室的整洁程度和办公室里的女性比例呈正相关，坐几年办公室整天对着电脑必然皮肤会变得无比黄，Sherlock的魅力老少通吃，每天的疲劳程度和上下班的拥挤程度以及挎包的重量呈正相关&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;除了这些无聊的生活细节，还明白了一件很重要的事：转专业是人生里做的最正确的决定之一。&lt;/p&gt;
-
-&lt;p&gt;想起在微软看见过的那个不会情绪控制的HR，她在大半夜里用Excel整理好面试名单，结果弄错几项内容搞得第二天手忙脚乱，只能趁着午餐时间边啃汉堡边make各种call，bore to death是我能想到的唯一的形容。原来脑补过这样的工作，觉得受不了，现在真正做样的工作，发现比脑补的更无聊100倍。不知道王二在万寿寺里闷头憋研究计划时会不会有同样的感觉。&lt;/p&gt;
-
-&lt;p&gt;当一天的24小时里有8小时都不属于自己时，其余的时间就像漏了一半气的气球，没精打采。开始理解那些工作后变得无趣的人，因为实在是没有这个闲暇去做有趣的事情，不如放空大脑什么也不想。不再关心热门微博，时常忘记妹妹10点30的短信，甚至忘记了生病的亲人，也忘记打回给爸妈视频电话，临近的生日也从庆祝也变成了一种负担。&lt;/p&gt;
-
-&lt;p&gt;Shameless看多了忍不住在脑袋里各种飙脏话，当然也只是在脑袋里而已。自从同学会彻底喝醉过之后，开始理解alcoholics的想法。When life is a piece of shit, you just need something to help you say out the truth. 和他们相反，我的生活处在正得不能再正得正轨上，安稳如同北京雾霾天气的概率，有那么一点小厌倦。&lt;/p&gt;
-
-&lt;p&gt;记忆里的四月好像都是忙碌的、朝气蓬勃的，充满了每天都想买新裙子穿出去的不安分的小心情。今年的四月也一样，不同的是也许真有个薛嵩等我去寻找。&lt;/p&gt;
-
-&lt;p&gt;以上，胡言乱语而已。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;放弃了韩语计划&lt;/li&gt;
-&lt;li&gt;放弃了edX里pardigm of programming的课&lt;/li&gt;
-&lt;li&gt;写完毕业论文，大创结项，也许要答辩&lt;/li&gt;
-&lt;li&gt;GRE背了又扔&lt;/li&gt;
-&lt;li&gt;记账的习惯还在&lt;/li&gt;
-&lt;li&gt;在看《人人都是产品经理》&lt;/li&gt;
-&lt;li&gt;坚持做算法题&lt;/li&gt;
-&lt;li&gt;追完了前三季的shameless，新追了believe，冰火回归小乔之死大快人心，得少看点剧&lt;/li&gt;
-&lt;li&gt;用Heyday记录每天荒废的时光&lt;/li&gt;
-&lt;li&gt;有早睡早起+多喝水+吃早餐（上班的好处？）&lt;/li&gt;
-&lt;li&gt;想学的太多找不到重心，看到一篇讲拖延症的文章说最好是想做的事情分解为2周的工作量，争取试一试看有效果没&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

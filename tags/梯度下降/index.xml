@@ -10,16 +10,16 @@
     <updated>Tue, 10 Feb 2015 00:00:00 UTC</updated>
     
     <item>
-      <title>机器学习笔记1 有监督学习 线性回归 LMS算法</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95/</link>
+      <title>机器学习笔记1 有监督学习 线性回归 LMS算法 正规方程</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95_%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95/</guid>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95_%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
 
-&lt;h1 id=&#34;有监督学习:22afb6460e169e48624696f7ca033436&#34;&gt;有监督学习&lt;/h1&gt;
+&lt;h1 id=&#34;有监督学习:b33d274e87081502d65882ed2d51cd57&#34;&gt;有监督学习&lt;/h1&gt;
 
 &lt;p&gt;先理清几个概念：&lt;/p&gt;
 
@@ -45,7 +45,7 @@
 &lt;li&gt;当预测值y为连续值时，则有监督学习问题是回归(regression)问题；预测值y为离散值时，则为分类(classification)问题。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;线性回归-linear-regression:22afb6460e169e48624696f7ca033436&#34;&gt;线性回归(Linear Regression)&lt;/h2&gt;
+&lt;h2 id=&#34;线性回归-linear-regression:b33d274e87081502d65882ed2d51cd57&#34;&gt;线性回归(Linear Regression)&lt;/h2&gt;
 
 &lt;p&gt;先简单将y表示为x的线性函数：&lt;/p&gt;
 
@@ -68,7 +68,7 @@ $$J(\theta) = \frac12\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$$
 
 &lt;p&gt;这实际上就是最小二乘成本函数，我们把这个回归模型叫做普通最小二乘回归模型(ordinary least squares regression model)。&lt;/p&gt;
 
-&lt;h2 id=&#34;lms算法:22afb6460e169e48624696f7ca033436&#34;&gt;LMS算法&lt;/h2&gt;
+&lt;h2 id=&#34;lms算法:b33d274e87081502d65882ed2d51cd57&#34;&gt;LMS算法&lt;/h2&gt;
 
 &lt;p&gt;为了找到使成本函数$J(\theta)$最小的参数$\theta$，采用搜索算法：给定一个$\theta$的初值，然后不断改进，每次改进都使$J(\theta)$更小，直到最小化$J(\theta)$的$\theta$的值收敛。&lt;/p&gt;
 
@@ -126,6 +126,34 @@ $$\theta_j:=\theta_j+\alpha(y^{(i)}-h_{\theta}(x^{(i)}))*x_j^{(i)}$$
 &lt;p&gt;}&lt;/p&gt;
 
 &lt;p&gt;随机梯度下降和批量梯度下降不同点在于，批量梯度下降每一步更新$\theta$值，都需要遍历全部的训练样本，而随机梯度下降在遇到每个训练样本时，更新$\theta$之后继续处理下一个样本，每个样本只遍历一次，算法的学习时间比批量梯度下降快很多。但是，随机梯度下降可能永远不会收敛到全局最优值，而是在成本函数$J(\theta)$最优值周围附近摇摆。但是在实际问题中，接近最优值的参数值可能已经是足够好的结果了，特别是对于数据量非常大的训练集来说，随机梯度下降是比批量梯度下降更好的选择。&lt;/p&gt;
+
+&lt;h2 id=&#34;正规方程-the-normal-equations:b33d274e87081502d65882ed2d51cd57&#34;&gt;正规方程(The normal equations)&lt;/h2&gt;
+
+&lt;p&gt;梯度下降是最小化$J(\theta)$的一种方式，正规方程是另一种求解参数$\theta$的方法，这种方法可以直接求出最优值参数结果，不需要迭代更新。这种方法实际上是直接求出$J(\theta)$的导数，并令其为0。&lt;/p&gt;
+
+&lt;div&gt;
+$$J(\theta)=\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)}))^2=\frac12(X\theta-\overrightarrow y)^T(X\theta-\overrightarrow y)$$
+
+$$\nabla_{\theta}J(\theta)=0$$ 
+&lt;/div&gt;
+
+&lt;p&gt;解之，&lt;/p&gt;
+
+&lt;div&gt;
+$$\nabla_{\theta}J(\theta) = X^TX\theta-X^T\overrightarrow y=0$$
+&lt;/div&gt;
+
+&lt;p&gt;得到正规方程：&lt;/p&gt;
+
+&lt;div&gt;
+$$X^TX\theta=X^T\overrightarrow y$$
+&lt;/div&gt;
+
+&lt;p&gt;求解$\theta$：&lt;/p&gt;
+
+&lt;div&gt;
+$$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
+&lt;/div&gt;
 </description>
     </item>
     
