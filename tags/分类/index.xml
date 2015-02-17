@@ -21,7 +21,7 @@
 
 &lt;h1 id=&#34;分类问题:662363920bb15b8d466d06a6774c21df&#34;&gt;分类问题&lt;/h1&gt;
 
-&lt;p&gt;分类问题和回归问题不同的是，分类问题的预测值$y$只能取离散值，而非连续值。首先来看一个二类分类问题，预测值$y$只能取0或1。0又被称作负例(negative class)，1被称作正例(positive class)。通常也有&amp;rdquo;-&amp;ldquo;,&amp;rdquo;+&amp;ldquo;符号来表示。对于一个样本集输入$x^{(i)}$，对应的目标值$y^{(i)}$也被为标注(lable)。&lt;/p&gt;
+&lt;p&gt;分类问题和回归问题不同的是，分类问题的预测值$y$只能取离散值，而非连续值。首先来看一个二类分类问题，预测值$y$只能取0或1。0又被称作负例(negative class)，1被称作正例(positive class)。通常也用&amp;rdquo;-&amp;ldquo;,&amp;rdquo;+&amp;ldquo;符号来表示。对于一个样本集输入$x^{(i)}$，对应的目标值$y^{(i)}$也被为标注(lable)。&lt;/p&gt;
 
 &lt;h2 id=&#34;logistic回归:662363920bb15b8d466d06a6774c21df&#34;&gt;logistic回归&lt;/h2&gt;
 
@@ -44,7 +44,7 @@ $$g(z)=\frac1{1+e^{-z}}$$
 
 &lt;/p&gt;
 
-&lt;p&gt;当$z\rightarrow \inf$时，$g(z)$趋近于1；当$z\rightarrow -\inf$时，$g(z)$趋近于0。因此$h(x)$的取值在0到1范围内。&lt;/p&gt;
+&lt;p&gt;当$z\rightarrow \infty$时，$g(z)$趋近于1；当$z\rightarrow -\infty$时，$g(z)$趋近于0。因此$h(x)$的取值在0到1范围内。&lt;/p&gt;
 
 &lt;p&gt;求$g(z)$的导数可得：&lt;/p&gt;
 
@@ -52,7 +52,7 @@ $$g(z)=\frac1{1+e^{-z}}$$
 $$g&#39;(z)=g(z)(1-g(z))$$
 &lt;/div&gt;
 
-&lt;p&gt;下面是对分类问题作出的一些假设，预测函数$h_\theta(x)$将给出分类为1的概率：&lt;/p&gt;
+&lt;p&gt;下面是对分类问题作出的一些假设，预测函数$h_\theta(x)$将给出样本目标值分类为1的概率：&lt;/p&gt;
 
 &lt;div&gt;
 $$P(y=1|x;\theta) = h_{\theta}(x)$$

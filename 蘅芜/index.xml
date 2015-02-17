@@ -7,7 +7,132 @@
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
-    <updated>Thu, 12 Feb 2015 00:00:00 UTC</updated>
+    <updated>Tue, 17 Feb 2015 00:00:00 UTC</updated>
+    
+    <item>
+      <title>机器学习笔记4 正则化</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04_%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_logistic%E5%9B%9E%E5%BD%92_%E6%AD%A3%E8%A7%84%E5%8C%96/</link>
+      <pubDate>Tue, 17 Feb 2015 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04_%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_logistic%E5%9B%9E%E5%BD%92_%E6%AD%A3%E8%A7%84%E5%8C%96/</guid>
+      <description>
+
+&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
+
+&lt;h1 id=&#34;正则化-regularization:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;正则化 Regularization&lt;/h1&gt;
+
+&lt;p&gt;为了和正规方程(normal equation)里&amp;rdquo;正规&amp;rdquo;区分开来，这里Regularization都译作“正则化”，有些地方也用的是“正规化”。以下内容来自&lt;a href=&#34;http://en.wikipedia.org/w/index.php?title=Regularization_(mathematics&#34;&gt;wikipedia&lt;/a&gt;)：&lt;/p&gt;
+
+&lt;p&gt;正则化是指通过引入额外新信息来解决机器学习中过拟合问题的一种方法。这种额外信息通常的形式是模型复杂性带来的惩罚度。正则化的一种理论解释是它试图引入&lt;a href=&#34;http://en.wikipedia.org/wiki/Occam%27s_razor&#34;&gt;奥卡姆剃刀原则&lt;/a&gt;。而从贝叶斯的观点来看，正则化则是在模型参数上引入了某种先验的分布。&lt;/p&gt;
+
+&lt;p&gt;机器学习中最常见的正则化是$L_1$和$L_2$正则化。正则化是在学习算法的损失(成本)函数$E(X,Y)$的基础上在加上一项正则化参数项：$E(X,Y)+\alpha|w|$，其中$w$是参数向量，$\alpha$是正则项的参数值，需要在实际训练中调整。正则化在许多模型中都适用，对于线性回归模型来说，采用$L_1$正则化的模型叫作lasso回归，采用$L_2$的叫作ridge回归。对于logistic回归，神经网络，支持向量机，随机条件场和一些矩阵分解方法，正则化也适用。在神经网络中，$L_2$正则化又叫作“权重衰减”(weight decay)。$L_1$正则化能产生稀疏模型，因此在特征选择中很有用，但是$L_1$范式不可微，所以需要在学习算法中修改，特别是基于梯度下降的算法。&lt;/p&gt;
+
+&lt;h1 id=&#34;过拟合问题:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;过拟合问题&lt;/h1&gt;
+
+&lt;p&gt;欠拟合(也叫做高偏差(high bias))是指不能很好地拟合数据，一般是因为模型函数太简单或者特征较少。过拟合问题是指过于完美拟合了训练集数据，而对新的样本失去了一般性，不能有效预测新样本，这个问题也叫做高方差(high variances)。造成过拟合的原因可能是特征量太多或者模型函数过于复杂。线性回归和logistic回归都存在欠拟合和过拟合的问题。&lt;/p&gt;
+
+&lt;p&gt;要解决过拟合的问题，通常有两种方法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;减少特征数量&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;手动筛选特征&lt;/li&gt;
+&lt;li&gt;采用特征筛选算法&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;正则化&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;保留所有的特征，但尽可能使参数$\theta_j$尽量小。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;正则化在很多特征变量对目标值只有很小影响的情况下非常有用。&lt;/p&gt;
+
+&lt;h1 id=&#34;成本函数:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;成本函数&lt;/h1&gt;
+
+&lt;p&gt;在原有的成本函数的基础上加上使参数$\theta_j$正则化的项：&lt;/p&gt;
+
+&lt;div&gt;
+$$\min \frac1{2m}(\sum_{i=1}^m (h_{\theta}(x^{(i)}-y^{(i)}) + \lambda \sum_{j=1}^n \theta_j^2))$$
+&lt;/div&gt;
+
+&lt;p&gt;其中$\lambda$叫做正则化参数，决定了参数正则化项的影响大小。引入正则化参数项，可以避免模型过拟合的问题。如果$\lambda$的值设置过大，可能会使模型函数出现欠拟合的问题。&lt;/p&gt;
+
+&lt;h1 id=&#34;正则化线性回归:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;正则化线性回归&lt;/h1&gt;
+
+&lt;h2 id=&#34;梯度下降法:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;梯度下降法&lt;/h2&gt;
+
+&lt;p&gt;常数项$\theta_0$不用正则化，因此更新策略为：&lt;/p&gt;
+
+&lt;div&gt;
+\begin{align*}
+&amp; \text{Repeat}\ \lbrace \newline
+&amp; \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline
+&amp; \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &amp;\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline
+&amp; \rbrace
+\end{align*}
+&lt;/div&gt;
+
+&lt;p&gt;上面的式子可以写成：&lt;/p&gt;
+
+&lt;div&gt;
+$$\theta_j:=\theta_j(1 - \alpha \frac{\lambda}m)-\alpha (\frac1m \sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)})x_j^{(i)}) $$
+&lt;/div&gt;
+
+&lt;p&gt;注意到$(1 - \alpha \frac{\lambda}m) &amp;lt; 1$，直观上可以理解为将式子中第一项$\theta_j$值减小了一点，第二项还是和无正则化的更新策略的第二项一致。&lt;/p&gt;
+
+&lt;h2 id=&#34;正规方程:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;正规方程&lt;/h2&gt;
+
+&lt;p&gt;正则化正规方程求解$\theta$为：&lt;/p&gt;
+
+&lt;div&gt;
+\begin{align*}
+&amp; \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline
+&amp; \text{where}\ \ L = 
+\begin{bmatrix}
+ 0 &amp; &amp; &amp; &amp; \newline
+ &amp; 1 &amp; &amp; &amp; \newline
+ &amp; &amp; 1 &amp; &amp; \newline
+ &amp; &amp; &amp; \ddots &amp; \newline
+ &amp; &amp; &amp; &amp; 1 \newline
+\end{bmatrix}
+\end{align*}
+&lt;/div&gt;
+
+&lt;p&gt;$L$是(n+1)*(n+1)的矩阵，除了右上角的值为0外，对角线上其他值都为1。直观上理解，不包括右上角$X_0$项，$L$是一个单位矩阵。&lt;/p&gt;
+
+&lt;p&gt;当$m\leq n$时，$X^TX$不可逆，但加入$\lambda L$后，$X^TX$也变得可逆了。&lt;/p&gt;
+
+&lt;h1 id=&#34;正则化logistic回归:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;正则化logistic回归&lt;/h1&gt;
+
+&lt;h2 id=&#34;成本函数-1:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;成本函数&lt;/h2&gt;
+
+&lt;p&gt;加上正则化参数$\theta$项：&lt;/p&gt;
+
+&lt;div&gt;
+$$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$
+&lt;/div&gt;
+
+&lt;p&gt;注意$\sum_{j=1}^n \theta_j^2$中参数的下标时从1到n，没有包括常数项$\theta_0$&lt;/p&gt;
+
+&lt;h2 id=&#34;梯度下降:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;梯度下降&lt;/h2&gt;
+
+&lt;p&gt;和线性回归一样，$\theta_0$和其他参数要分开更新：&lt;/p&gt;
+
+&lt;div&gt;
+    $$\begin{align*}
+&amp; \text{Repeat}\ \lbrace \newline
+&amp; \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline
+&amp; \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &amp;\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline
+&amp; \rbrace
+\end{align*}$$
+&lt;/div&gt;
+
+&lt;p&gt;这和正则化线性回归的更新策略是一样的。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>机器学习笔记3 有监督学习 分类 logistic回归</title>
@@ -21,7 +146,7 @@
 
 &lt;h1 id=&#34;分类问题:662363920bb15b8d466d06a6774c21df&#34;&gt;分类问题&lt;/h1&gt;
 
-&lt;p&gt;分类问题和回归问题不同的是，分类问题的预测值$y$只能取离散值，而非连续值。首先来看一个二类分类问题，预测值$y$只能取0或1。0又被称作负例(negative class)，1被称作正例(positive class)。通常也有&amp;rdquo;-&amp;ldquo;,&amp;rdquo;+&amp;ldquo;符号来表示。对于一个样本集输入$x^{(i)}$，对应的目标值$y^{(i)}$也被为标注(lable)。&lt;/p&gt;
+&lt;p&gt;分类问题和回归问题不同的是，分类问题的预测值$y$只能取离散值，而非连续值。首先来看一个二类分类问题，预测值$y$只能取0或1。0又被称作负例(negative class)，1被称作正例(positive class)。通常也用&amp;rdquo;-&amp;ldquo;,&amp;rdquo;+&amp;ldquo;符号来表示。对于一个样本集输入$x^{(i)}$，对应的目标值$y^{(i)}$也被为标注(lable)。&lt;/p&gt;
 
 &lt;h2 id=&#34;logistic回归:662363920bb15b8d466d06a6774c21df&#34;&gt;logistic回归&lt;/h2&gt;
 
@@ -44,7 +169,7 @@ $$g(z)=\frac1{1+e^{-z}}$$
 
 &lt;/p&gt;
 
-&lt;p&gt;当$z\rightarrow \inf$时，$g(z)$趋近于1；当$z\rightarrow -\inf$时，$g(z)$趋近于0。因此$h(x)$的取值在0到1范围内。&lt;/p&gt;
+&lt;p&gt;当$z\rightarrow \infty$时，$g(z)$趋近于1；当$z\rightarrow -\infty$时，$g(z)$趋近于0。因此$h(x)$的取值在0到1范围内。&lt;/p&gt;
 
 &lt;p&gt;求$g(z)$的导数可得：&lt;/p&gt;
 
@@ -52,7 +177,7 @@ $$g(z)=\frac1{1+e^{-z}}$$
 $$g&#39;(z)=g(z)(1-g(z))$$
 &lt;/div&gt;
 
-&lt;p&gt;下面是对分类问题作出的一些假设，预测函数$h_\theta(x)$将给出分类为1的概率：&lt;/p&gt;
+&lt;p&gt;下面是对分类问题作出的一些假设，预测函数$h_\theta(x)$将给出样本目标值分类为1的概率：&lt;/p&gt;
 
 &lt;div&gt;
 $$P(y=1|x;\theta) = h_{\theta}(x)$$
@@ -155,8 +280,8 @@ $$H_{ij}=\frac{\delta^2 l(\theta)}{\delta \theta_i \delta \theta_j}$$
 &lt;p&gt;特征选择对参数学习算法非常重要，否则会出现下面的问题：&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;欠拟合(underfitting)：特征过少，模型过于简单&lt;/li&gt;
-&lt;li&gt;过拟合(overfitting)：特征过多，模型过于复杂&lt;/li&gt;
+&lt;li&gt;欠拟合(underfitting)：特征过少，模型过于简单，高偏差(high bias)，不能很好拟合训练集&lt;/li&gt;
+&lt;li&gt;过拟合(overfitting)：特征过多，模型过于复杂，高方差(high variance)，过于拟合训练集，不能很好预测新样本&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;对于非参数学习算法来说，并不需要进行精心的特征选择，局部加权线性回归就是这样。&lt;/p&gt;
@@ -337,7 +462,7 @@ $$\theta_j:=\theta_j+\alpha(y^{(i)}-h_{\theta}(x^{(i)}))*x_j^{(i)}$$
 
 &lt;p&gt;Repeat until convergence{&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;$\theta_j:=\theta_j+\alpha\sum_{i=1}^m(y^{(i)}-h_\theta(x^{(i)}x_j^{(i)}))$&lt;/code&gt; (for every j)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$\theta_j:=\theta_j+\alpha\sum_{i=1}^m(y^{(i)}-h_\theta(x^{(i)})x_j^{(i)})$&lt;/code&gt; (for every j)&lt;/p&gt;
 
 &lt;p&gt;}&lt;/p&gt;
 
@@ -359,7 +484,7 @@ $$\theta_j:=\theta_j+\alpha(y^{(i)}-h_{\theta}(x^{(i)}))*x_j^{(i)}$$
 
 &lt;p&gt;随机梯度下降和批量梯度下降不同点在于，批量梯度下降每一步更新$\theta$值，都需要遍历全部的训练样本，而随机梯度下降在遇到每个训练样本时，更新$\theta$之后继续处理下一个样本，每个样本只遍历一次，算法的学习时间比批量梯度下降快很多。但是，随机梯度下降可能永远不会收敛到全局最优值，而是在成本函数$J(\theta)$最优值周围附近摇摆。但是在实际问题中，接近最优值的参数值可能已经是足够好的结果了，特别是对于数据量非常大的训练集来说，随机梯度下降是比批量梯度下降更好的选择。&lt;/p&gt;
 
-&lt;p&gt;在实际使用梯度下降算法时，将输入变量归一到同一取值范围，能够加速算法的运行。这是因为$\theta$在小的取值范围内会下降很快，但在大的取值范围内会下降较慢。并且当输入变量取值范围不够均衡时，$\theta$更容易在最优值周围波动。采用特征缩放(feature scaling)和均值归一化(mean normalization)可以避免这些问题。选择学习率$\alpha$的值，要观察$J(\theta)$值在每次迭代后的变化。已经证明了如果$\alpha$的取值足够小，则$J(\theta)$每次迭代后的值都会减少。如果$J(\theta)$在某次迭代后反而增加了，说明学习率$\alpha$的值应该减小，因为错过了最优值。Andrew Ng推荐的一个经验是每次将$\alpha$减少3倍。&lt;/p&gt;
+&lt;p&gt;在实际使用梯度下降算法时，将输入变量归一到同一取值范围，能够减少算法的迭代次数。这是因为$\theta$在小的取值范围内会下降很快，但在大的取值范围内会下降较慢。并且当输入变量取值范围不够均衡时，$\theta$更容易在最优值周围波动。采用特征缩放(feature scaling)和均值归一化(mean normalization)可以避免这些问题。选择学习率$\alpha$的值，要观察$J(\theta)$值在每次迭代后的变化。已经证明了如果$\alpha$的取值足够小，则$J(\theta)$每次迭代后的值都会减少。如果$J(\theta)$在某次迭代后反而增加了，说明学习率$\alpha$的值应该减小，因为错过了最优值。Andrew Ng推荐的一个经验是每次将$\alpha$减少3倍。&lt;/p&gt;
 
 &lt;h2 id=&#34;正规方程-the-normal-equations:b33d274e87081502d65882ed2d51cd57&#34;&gt;正规方程(The normal equations)&lt;/h2&gt;
 

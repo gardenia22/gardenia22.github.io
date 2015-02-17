@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>正规化 on Nanshu&#39;s blog </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://localhost:1313/tags/%E6%AD%A3%E8%A7%84%E5%8C%96/</link>
+    <language>en-us</language>
+    <author>Nanshu Wang</author>
+    <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
+    <updated>Tue, 17 Feb 2015 00:00:00 UTC</updated>
+    
+    <item>
+      <title>机器学习笔记4 有监督学习 logistic回归 正规化</title>
+      <link>http://localhost:1313/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04_%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_logistic%E5%9B%9E%E5%BD%92_%E6%AD%A3%E8%A7%84%E5%8C%96/</link>
+      <pubDate>Tue, 17 Feb 2015 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://localhost:1313/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04_%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_logistic%E5%9B%9E%E5%BD%92_%E6%AD%A3%E8%A7%84%E5%8C%96/</guid>
+      <description>
+
+&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
+
+&lt;h1 id=&#34;过拟合问题:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;过拟合问题&lt;/h1&gt;
+
+&lt;p&gt;欠拟合(也叫做高偏差(high bias))是指不能很好地拟合数据，一般是因为模型函数太简单或者特征较少。过拟合问题是指过于完美拟合了训练集数据，而对新的样本失去了一般性，不能有效预测新样本，这个问题也叫做高偏差(high variances)。造成过拟合的原因可能是特征量太多或者模型函数过于复杂。线性回归和logistic回归都存在欠拟合和过拟合的问题。&lt;/p&gt;
+
+&lt;p&gt;要解决过拟合的问题，通常有两种方法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;减少特征数量&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;手动筛选特征&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;采用特征筛选算法&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;正规化&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;保留所有的特征，但尽可能使参数$\theta_j$尽量小。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;正规化在很多特征变量对目标值只有很小影响的情况下非常有用。&lt;/p&gt;
+
+&lt;h1 id=&#34;正规化线性回归:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;正规化线性回归&lt;/h1&gt;
+
+&lt;h1 id=&#34;正规化logistic回归:e5cda6b6e7686a83e2d03b1aaf88c83b&#34;&gt;正规化logistic回归&lt;/h1&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
