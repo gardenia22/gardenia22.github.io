@@ -10,31 +10,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="keywords" content="">
+<meta name="keywords" content="机器学习, 有监督学习, 神经网络, ">
 
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="404 Page not found : nanshu.wang"/>
+<meta property="og:title" content="机器学习笔记5 神经网络 : nanshu.wang"/>
 <meta property="og:site_name" content="nanshu wang blog"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://nanshu.wang/404/">
+<meta property="og:url" content="http://localhost:1313/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2015-03-03"/>
 <meta property="article:modified_time" content="2015-03-03"/>
 
 
 
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="有监督学习">
+<meta property="article:tag" content="神经网络">
 
 
 
-    <base href="http://nanshu.wang">
-    <title> 404 Page not found - nanshu.wang </title>
-    <link rel="canonical" href="http://nanshu.wang/404/">
-    <link href="http://nanshu.wang/index.xml" rel="alternate" type="application/rss+xml" title="404 Page not found" />
+
+
+    <base href="http://localhost:1313">
+    <title> 机器学习笔记5 神经网络 - nanshu.wang </title>
+    <link rel="canonical" href="http://localhost:1313/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+    
 
     <link href='http://fonts.useso.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -53,6 +58,7 @@
 
 </head>
 
+<body lang="en" itemscope itemtype="http://schema.org/Article">
 <header id="header">
 	<nav id="nav">
 	<div id="title"><a href="/">Nanshu Wang</a></div>
@@ -127,11 +133,69 @@
 </header>
 
 
+
 <section id="main">
+  <h1 itemprop="name" >机器学习笔记5 神经网络</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Tue Mar 3, 2015 </h4>
+          
+        </section>
+        
+        <ul id="tags">
+          
+            <li> <a href="http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a> </li>
+          
+            <li> <a href="http://localhost:1313/tags/%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0">有监督学习</a> </li>
+          
+            <li> <a href="http://localhost:1313/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">神经网络</a> </li>
+          
+        </ul>
+    </div>
+
+</aside>
+
+<meta itemprop="wordCount" content="8">
+<meta itemprop="datePublished" content="2015-03-03">
+<meta itemprop="url" content="http://localhost:1313/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+
+
   <div>
-   <h1 id="title">404 Page not found</h1>
+        <article itemprop="articleBody" id="content">
+           
+
+<p>Andrew Ng cs229 Machine Learning 笔记</p>
+
+<h1 id="神经网络:8ebfc59e6b916bb47d8c4c4f0578d3c8">神经网络</h1>
+
+<h2 id="非线性假设:8ebfc59e6b916bb47d8c4c4f0578d3c8">非线性假设</h2>
+
+        </article>
   </div>
 </section>
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'nanshuwang';
+    var disqus_identifier = 'http:\/\/localhost:1313\/%E8%98%85%E8%8A%9C\/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C\/';
+    var disqus_title = '机器学习笔记5 神经网络';
+    var disqus_url = 'http:\/\/localhost:1313\/%E8%98%85%E8%8A%9C\/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
 
 <footer>
   <div>
@@ -150,3 +214,34 @@ fitText(document.getElementById('title'), 1)
 
 </body>
 </html>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+</body>
