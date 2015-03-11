@@ -43,11 +43,6 @@
   </url>
   
   <url>
-    <loc>http://nanshu.wang/about/</loc>
-    <lastmod>2015-01-30T15:33:51+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</loc>
     <lastmod>2014-12-02T00:00:00+00:00</lastmod>
   </url>
@@ -155,6 +150,11 @@
   <url>
     <loc>http://nanshu.wang/%E6%BD%87%E6%B9%98/2013%E7%AC%AC%E4%B8%80%E7%AF%87/</loc>
     <lastmod>2012-01-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://nanshu.wang/about/</loc>
+    <lastmod>0001-01-01T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>
