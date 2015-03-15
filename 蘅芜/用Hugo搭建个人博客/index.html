@@ -165,7 +165,7 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="556">
+<meta itemprop="wordCount" content="564">
 <meta itemprop="datePublished" content="2015-01-31">
 <meta itemprop="url" content="http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
@@ -213,12 +213,12 @@
 
 <p>如果说速度快是Hugo的第一大优点，那么安装简单应该就是Hugo的第二大优点。对于Mac用户，没有brew的话先安装brew，在命令行里敲：</p>
 
-<pre><code>$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+<pre><code>$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
 </code></pre>
 
 <p>然后再敲一行安装Hugo:</p>
 
-<pre><code>$brew new Hugo
+<pre><code>$ brew new Hugo
 </code></pre>
 
 <p>当然你也可以在<a href="https://github.com/spf13/hugo/releases">这里</a>直接下载对应系统的binary文件，解压就行了。</p>
@@ -227,12 +227,12 @@
 
 <p>首先建立自己的网站，mysite是网站的路径</p>
 
-<pre><code>$hugo new site mysite
+<pre><code>$ hugo new site mysite
 </code></pre>
 
 <p>然后进入该路径</p>
 
-<pre><code>$cd mysite
+<pre><code>$ cd mysite
 </code></pre>
 
 <p>在该目录下你可以看到以下几个目录和<code>config.toml</code>文件</p>
@@ -264,7 +264,7 @@
 
 <p>现在我们先熟悉一下Hugo，创建新页面：</p>
 
-<pre><code>$ Hugo new about.md
+<pre><code>$ hugo new about.md
 </code></pre>
 
 <p>进入<code>content/</code>文件夹可以看到，此时多了一个markdown格式的文件<code>about.md</code>，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。</p>
@@ -284,7 +284,7 @@ title = &quot;about&quot;
 
 <p>我在页面中加入了一些内容，然后运行Hugo:</p>
 
-<pre><code>$Hugo server -t hyde --buildDrafts
+<pre><code>$ Hugo server -t hyde --buildDrafts
 </code></pre>
 
 <p><code>-t</code>参数的意思是使用hyde主题渲染我们的页面，注意到<code>about.md</code>目前是作为草稿，即<code>draft</code>参数设置为<code>true</code>，运行Hugo时要加上<code>--buildDrafts</code>参数才会生成被标记为草稿的页面。
@@ -313,7 +313,7 @@ title = &quot;about&quot;
 
 <p>把项目中的<code>static/</code>和<code>layouts/</code>文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:</p>
 
-<pre><code>$Hugo server --buildDrafts -w
+<pre><code>$ Hugo server --buildDrafts -w
 </code></pre>
 
 <p>这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数<code>-w</code>意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：</p>
@@ -330,20 +330,17 @@ title = &quot;about&quot;
 
 <p>我们尝试在他的主题基础上修改，找到<code>/layouts/partials/subheader.html</code>文件:</p>
 
-<p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;header</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;header&quot;</span><span style="color: #f92672">&gt;</span>
-    <span style="color: #f92672">&lt;figure&gt;</span>
-      <span style="color: #f92672">&lt;a</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;/&quot;</span> <span style="color: #a6e22e">border=</span><span style="color: #e6db74">0</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;logolink&quot;</span><span style="color: #f92672">&gt;&lt;div</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;icon-spf13-3&quot;</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;logo&quot;</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">&lt;/div&gt;&lt;/a&gt;</span>
-    <span style="color: #f92672">&lt;/figure&gt;</span>
-    <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;byline&quot;</span><span style="color: #f92672">&gt;</span>by Steve Francia<span style="color: #f92672">&lt;/div&gt;</span>
-    <span style="color: #f92672">&lt;nav</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;nav&quot;</span><span style="color: #f92672">&gt;</span>
+<pre><code class="language-html">&lt;header id=&quot;header&quot;&gt;
+    &lt;figure&gt;
+      &lt;a href=&quot;/&quot; border=0 id=&quot;logolink&quot;&gt;&lt;div class=&quot;icon-spf13-3&quot; id=&quot;logo&quot;&gt; &lt;/div&gt;&lt;/a&gt;
+    &lt;/figure&gt;
+    &lt;div id=&quot;byline&quot;&gt;by Steve Francia&lt;/div&gt;
+    &lt;nav id=&quot;nav&quot;&gt;
     {{ partial &quot;nav.html&quot; . }}
     {{ partial &quot;social.html&quot; . }}
-    <span style="color: #f92672">&lt;/nav&gt;</span>
-<span style="color: #f92672">&lt;/header&gt;</span>
-</pre></div>
-
-</p>
+    &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
 
 <p>将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css, html。</p>
 
@@ -391,12 +388,12 @@ title = &quot;about&quot;
 
 <p>安装Pygments：</p>
 
-<pre><code>$pip install Pygments
+<pre><code class="language-shell">$ pip install Pygments
 </code></pre>
 
 <p>没有pip的先下载 <a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> ，然后安装pip：</p>
 
-<pre><code>$python get-pip.py
+<pre><code class="language-shell">$ python get-pip.py
 </code></pre>
 
 <p>Pygments的调用采用shortcodes实现，spf13里也写好了，在<code>/layouts/shortcode/highlight.html</code>里</p>
@@ -416,13 +413,9 @@ your code here.
 
 <p>第二种方法比较简单，在<code>layouts/partials/header_includes.html</code>中加上：</p>
 
-<p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;https://yandex.st/highlightjs/8.0/highlight.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
-<span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&quot;</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f92672">&lt;script&gt;</span><span style="color: #a6e22e">hljs</span><span style="color: #f8f8f2">.</span><span style="color: #a6e22e">initHighlightingOnLoad</span><span style="color: #f8f8f2">();</span><span style="color: #f92672">&lt;/script&gt;</span>
-</pre></div>
-
-</p>
+<p><script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+  <script>hljs.initHighlightingOnLoad();</script></p>
 
 <p>这里使用了<a href="http://yandex.ru/">Yandex</a>的<a href="http://highlightjs.org/">Highlight.js</a>。</p>
 
@@ -448,13 +441,10 @@ your code here.
 
 <p>在需要渲染公式的页面加入以下代码，比如<code>layouts/_default/single.html</code>文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入<code>layouts/partials/footer.html</code>文件里，保证所有生成的页面都有这几行代码。</p>
 
-<p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">type=</span><span style="color: #e6db74">&quot;text/javascript&quot;</span>
-  <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f92672">&lt;/script&gt;</span>
-</pre></div>
-
-</p>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;
+  src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+&lt;/script&gt;
+</code></pre>
 
 <p>Mathjax和Markdown会有冲突问题，<a href="http://doswa.com/2011/07/20/mathjax-in-markdown.html">这里</a>提供了解决方案。</p>
 
@@ -474,28 +464,28 @@ your code here.
 <li>clone your-project</li>
 </ol>
 
-<pre><code>git clone &lt;&lt;your-project&gt;-hugo-url&gt;
+<pre><code>$ git clone &lt;&lt;your-project&gt;-hugo-url&gt;
 </code></pre>
 
 <ol>
 <li>进入your-project 目录</li>
 </ol>
 
-<pre><code>cd &lt;your-project&gt;-hugo
+<pre><code>$ cd &lt;your-project&gt;-hugo
 </code></pre>
 
 <ol>
 <li>删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）</li>
 </ol>
 
-<pre><code>rm -rf public
+<pre><code>$ rm -rf public
 </code></pre>
 
 <ol>
 <li>把public/目录添加为submodule 与<username>.github.io同步</li>
 </ol>
 
-<pre><code>git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public
+<pre><code>$ git submodule add git@github.com:&lt;username&gt;/&lt;username&gt;.github.io.git public
 </code></pre>
 
 <ol>
@@ -503,7 +493,7 @@ your code here.
 <li>下面是写好的一个script <code>deploy.sh</code>，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。</li>
 </ol>
 
-<pre><code>#!/bin/bash
+<pre><code class="language-bash">#!/bin/bash
 echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
 
 msg=&quot;rebuilding site `date`&quot;
@@ -546,7 +536,7 @@ cd ..
 <li>记下<a href="http://username.github.io/">http://username.github.io/</a> 的ip地址。</li>
 </ol>
 
-<pre><code>$ping username.github.io
+<pre><code>$ ping username.github.io
 </code></pre>
 
 <ol>
@@ -558,11 +548,8 @@ cd ..
 <p>我的博客模版里用的字体是从googleapis里获取的，国内访问会下载失败，把字体库改成360的。
 找到<code>layouts/partials/head_includes.html</code>文件：</p>
 
-<p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;p&gt;&lt;link</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&#39;http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300&#39;</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&#39;stylesheet&#39;</span> <span style="color: #a6e22e">type=</span><span style="color: #e6db74">&#39;text/css&#39;</span><span style="color: #f92672">&gt;&lt;/p&gt;</span>
-</pre></div>
-
-</p>
+<pre><code class="language-html">&lt;link href='http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'&gt;
+</code></pre>
 
 <p>将其中的googleapis替换为useso就行了。</p>
 
@@ -625,6 +612,10 @@ fitText(document.getElementById('title'), 1)
     }
 });
 </script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>

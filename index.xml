@@ -7,7 +7,66 @@
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
-    <updated>Tue, 03 Mar 2015 00:00:00 UTC</updated>
+    <updated>Sun, 15 Mar 2015 00:00:00 UTC</updated>
+    
+    <item>
+      <title>python numpy 计算自相关系数</title>
+      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/python-numpy%E8%AE%A1%E7%AE%97%E8%87%AA%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
+      <pubDate>Sun, 15 Mar 2015 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/python-numpy%E8%AE%A1%E7%AE%97%E8%87%AA%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
+      <description>&lt;p&gt;在分析时间序列时，通常需要计算一个序列的自相关系数。自相关(&lt;a href=&#34;http://en.wikipedia.org/wiki/Autocorrelation&#34;&gt;Autocorrelation&lt;/a&gt;)又叫做序列相关，通常采用自相关系数来发现序列的重复规律，周期等信息。&lt;/p&gt;
+
+&lt;p&gt;我们有序列$X:x_1,x_2,x_3,&amp;hellip;,x_n$，设$X_{s,t}$为$s$时刻开始，$t$时刻结束的序列：$x_s,x_{s+1}&amp;hellip;,x_{t-1},x_t$。$\mu_{s,t}$为序列$X_{s,t}$的均值，$\sigma_{s,t}$为序列$X_{s,t}$的标准差。那么一阶自相关系数为：&lt;/p&gt;
+
+&lt;div&gt;
+
+$$R(1) = \frac{E(X_{2,n}-\mu_{2,n})(X_{1,n-1}-\mu_{1,n-1})}{\sigma_{2,n}\sigma_{1,n-1}}$$
+
+&lt;/div&gt;
+
+&lt;p&gt;同理$k$阶自相关系数为：&lt;/p&gt;
+
+&lt;div&gt;
+
+$$R(k) = \frac{E(X_{k+1,n}-\mu_{k+1,n})(X_{1,n-k}-\mu_{1,n-k})}{\sigma_{k+1,n}\sigma_{1,n-k}}$$
+
+&lt;/div&gt;
+
+&lt;p&gt;python的numpy库里没有直接计算序列自相关系数的函数，但有计算两个不同序列的相关系数函数： &lt;a href=&#34;http://docs.scipy.org/doc/numpy/reference/generated/numpy.correlate.html&#34;&gt;correlate&lt;/a&gt;。给定两个序列$X,Y$，correlation(X,Y) = $\sum XY$。可以利用correlate函数计算$X$的自相关性：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def autocorrelation(x,lags):#计算lags阶以内的自相关系数，返回lags个值，分别计算序列均值，标准差
+	n = len(x)
+	x = numpy.array(x)
+	result = [numpy.correlate(x[i:]-x[i:].mean(),x[:n-i]-x[:n-i].mean())[0]\
+		/(x[i:].std()*x[:n-i].std()*(n-i)) \
+		for i in range(1,lags+1)]
+	return result
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通常在实际中，很多时间序列的均值和标准受时间变化的影响较小，可以看作是恒定的，此时：&lt;/p&gt;
+
+&lt;div&gt;
+
+$$R(k) = \frac{E(X_{k+1,n}-\mu)(X_{1,n-k}-\mu)}{\sigma^2}$$
+
+&lt;/div&gt;
+
+&lt;p&gt;同样可以利用correlate函数实现：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def autocorrelation(x,lags):#计算lags阶以内的自相关系数，返回lags个值，将序列均值、标准差视为不变
+	n = len(x)
+	x = numpy.array(x)
+	variance = x.var()
+	x = x-x.mean()
+	result = numpy.correlate(x, x, mode = &#39;full&#39;)[-n+1:-n+lags+1]/\
+		(variance*(numpy.arange(n-1,n-1-lags,-1)))
+	return result
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考：&lt;a href=&#34;http://stackoverflow.com/questions/643699/how-can-i-use-numpy-correlate-to-do-autocorrelation&#34;&gt;http://stackoverflow.com/questions/643699/how-can-i-use-numpy-correlate-to-do-autocorrelation&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>机器学习笔记5 神经网络1 模型表达</title>
@@ -1032,12 +1091,12 @@ $$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
 
 &lt;p&gt;如果说速度快是Hugo的第一大优点，那么安装简单应该就是Hugo的第二大优点。对于Mac用户，没有brew的话先安装brew，在命令行里敲：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;pre&gt;&lt;code&gt;$ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后再敲一行安装Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$brew new Hugo
+&lt;pre&gt;&lt;code&gt;$ brew new Hugo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;当然你也可以在&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;这里&lt;/a&gt;直接下载对应系统的binary文件，解压就行了。&lt;/p&gt;
@@ -1046,12 +1105,12 @@ $$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
 
 &lt;p&gt;首先建立自己的网站，mysite是网站的路径&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$hugo new site mysite
+&lt;pre&gt;&lt;code&gt;$ hugo new site mysite
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后进入该路径&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$cd mysite
+&lt;pre&gt;&lt;code&gt;$ cd mysite
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在该目录下你可以看到以下几个目录和&lt;code&gt;config.toml&lt;/code&gt;文件&lt;/p&gt;
@@ -1083,7 +1142,7 @@ $$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
 
 &lt;p&gt;现在我们先熟悉一下Hugo，创建新页面：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ Hugo new about.md
+&lt;pre&gt;&lt;code&gt;$ hugo new about.md
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;进入&lt;code&gt;content/&lt;/code&gt;文件夹可以看到，此时多了一个markdown格式的文件&lt;code&gt;about.md&lt;/code&gt;，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。&lt;/p&gt;
@@ -1103,7 +1162,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;我在页面中加入了一些内容，然后运行Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$Hugo server -t hyde --buildDrafts
+&lt;pre&gt;&lt;code&gt;$ Hugo server -t hyde --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;-t&lt;/code&gt;参数的意思是使用hyde主题渲染我们的页面，注意到&lt;code&gt;about.md&lt;/code&gt;目前是作为草稿，即&lt;code&gt;draft&lt;/code&gt;参数设置为&lt;code&gt;true&lt;/code&gt;，运行Hugo时要加上&lt;code&gt;--buildDrafts&lt;/code&gt;参数才会生成被标记为草稿的页面。
@@ -1132,7 +1191,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;把项目中的&lt;code&gt;static/&lt;/code&gt;和&lt;code&gt;layouts/&lt;/code&gt;文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$Hugo server --buildDrafts -w
+&lt;pre&gt;&lt;code&gt;$ Hugo server --buildDrafts -w
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数&lt;code&gt;-w&lt;/code&gt;意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
@@ -1149,20 +1208,17 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;我们尝试在他的主题基础上修改，找到&lt;code&gt;/layouts/partials/subheader.html&lt;/code&gt;文件:&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;header&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
-      &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;border=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;logolink&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;class=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;icon-spf13-3&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;logo&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/div&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;byline&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;by Steve Francia&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;nav&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;nav&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;header id=&amp;quot;header&amp;quot;&amp;gt;
+    &amp;lt;figure&amp;gt;
+      &amp;lt;a href=&amp;quot;/&amp;quot; border=0 id=&amp;quot;logolink&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;icon-spf13-3&amp;quot; id=&amp;quot;logo&amp;quot;&amp;gt; &amp;lt;/div&amp;gt;&amp;lt;/a&amp;gt;
+    &amp;lt;/figure&amp;gt;
+    &amp;lt;div id=&amp;quot;byline&amp;quot;&amp;gt;by Steve Francia&amp;lt;/div&amp;gt;
+    &amp;lt;nav id=&amp;quot;nav&amp;quot;&amp;gt;
     {{ partial &amp;quot;nav.html&amp;quot; . }}
     {{ partial &amp;quot;social.html&amp;quot; . }}
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+    &amp;lt;/nav&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css, html。&lt;/p&gt;
 
@@ -1210,12 +1266,12 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;安装Pygments：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$pip install Pygments
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ pip install Pygments
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;没有pip的先下载 &lt;a href=&#34;https://bootstrap.pypa.io/get-pip.py&#34;&gt;https://bootstrap.pypa.io/get-pip.py&lt;/a&gt; ，然后安装pip：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$python get-pip.py
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ python get-pip.py
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Pygments的调用采用shortcodes实现，spf13里也写好了，在&lt;code&gt;/layouts/shortcode/highlight.html&lt;/code&gt;里&lt;/p&gt;
@@ -1235,13 +1291,9 @@ your code here.
 
 &lt;p&gt;第二种方法比较简单，在&lt;code&gt;layouts/partials/header_includes.html&lt;/code&gt;中加上：&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script &lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;src=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://yandex.st/highlightjs/8.0/highlight.min.js&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;link&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;rel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;hljs&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;initHighlightingOnLoad&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;();&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+&lt;p&gt;&lt;script src=&#34;https://yandex.st/highlightjs/8.0/highlight.min.js&#34;&gt;&lt;/script&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yandex.st/highlightjs/8.0/styles/default.min.css&#34;&gt;
+  &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;这里使用了&lt;a href=&#34;http://yandex.ru/&#34;&gt;Yandex&lt;/a&gt;的&lt;a href=&#34;http://highlightjs.org/&#34;&gt;Highlight.js&lt;/a&gt;。&lt;/p&gt;
 
@@ -1267,13 +1319,10 @@ your code here.
 
 &lt;p&gt;在需要渲染公式的页面加入以下代码，比如&lt;code&gt;layouts/_default/single.html&lt;/code&gt;文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入&lt;code&gt;layouts/partials/footer.html&lt;/code&gt;文件里，保证所有生成的页面都有这几行代码。&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script &lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;type=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;
-  &lt;span style=&#34;color: #a6e22e&#34;&gt;src=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;
+  src=&amp;quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;&amp;gt;
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Mathjax和Markdown会有冲突问题，&lt;a href=&#34;http://doswa.com/2011/07/20/mathjax-in-markdown.html&#34;&gt;这里&lt;/a&gt;提供了解决方案。&lt;/p&gt;
 
@@ -1293,28 +1342,28 @@ your code here.
 &lt;li&gt;clone your-project&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;git clone &amp;lt;&amp;lt;your-project&amp;gt;-hugo-url&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ git clone &amp;lt;&amp;lt;your-project&amp;gt;-hugo-url&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;进入your-project 目录&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;cd &amp;lt;your-project&amp;gt;-hugo
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;your-project&amp;gt;-hugo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;rm -rf public
+&lt;pre&gt;&lt;code&gt;$ rm -rf public
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;把public/目录添加为submodule 与&lt;username&gt;.github.io同步&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;git submodule add git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
+&lt;pre&gt;&lt;code&gt;$ git submodule add git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
@@ -1322,7 +1371,7 @@ your code here.
 &lt;li&gt;下面是写好的一个script &lt;code&gt;deploy.sh&lt;/code&gt;，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
 echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
 
 msg=&amp;quot;rebuilding site `date`&amp;quot;
@@ -1365,7 +1414,7 @@ cd ..
 &lt;li&gt;记下&lt;a href=&#34;http://username.github.io/&#34;&gt;http://username.github.io/&lt;/a&gt; 的ip地址。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;$ping username.github.io
+&lt;pre&gt;&lt;code&gt;$ ping username.github.io
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
@@ -1377,11 +1426,8 @@ cd ..
 &lt;p&gt;我的博客模版里用的字体是从googleapis里获取的，国内访问会下载失败，把字体库改成360的。
 找到&lt;code&gt;layouts/partials/head_includes.html&lt;/code&gt;文件：&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;p&amp;gt;&amp;lt;link&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;rel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;stylesheet&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;type=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;text/css&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link href=&#39;http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300&#39; rel=&#39;stylesheet&#39; type=&#39;text/css&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;将其中的googleapis替换为useso就行了。&lt;/p&gt;
 
@@ -1395,6 +1441,37 @@ cd ..
 &lt;li&gt;&lt;a href=&#34;https://www.udemy.com/build-static-sites-in-seconds-with-hugo/&#34;&gt;Build Static Sites in Seconds with Hugo&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/&#34;&gt;Setting up a custom domain with GitHub Pages&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>http://nanshu.wang/about/</link>
+      <pubDate>Fri, 30 Jan 2015 15:33:51 CST</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/about/</guid>
+      <description>
+
+&lt;h2 id=&#34;关于我:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;关于我&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2010  HR@RUC&lt;/li&gt;
+&lt;li&gt;2014  CS@ICT, CAS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;坐标北京，90后，女。&lt;/p&gt;
+
+&lt;p&gt;本科的时候开始写博客，缘由是下定决心转CS专业，记录一下自己的学习和生活。现在看来，学习的内容有点太少了，生活的吐槽倒是一大堆。所以为了当一个好的程序媛，干脆弃掉原来的点点博客，折腾一个属于自己的地盘，记录一些学习笔记和自己的想法，就当督促自己吧。&lt;/p&gt;
+
+&lt;p&gt;电邮: nanshu.wang@gmail.com&lt;/p&gt;
+
+&lt;h2 id=&#34;喜欢:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;喜欢：&lt;/h2&gt;
+
+&lt;p&gt;过山车 童话 Modern Family 刘慈欣 羽毛球 凉面 马尔克斯 Wes Anderson 恋爱的犀牛 安房直子 栀子花 22 42 GEEK笑点 三重镇 郑渊洁 Battlestar Galactica 抹茶味八喜冰淇淋 关东煮的蟹粉包 茄子 滑滑梯 Pixar 宫崎骏 智力游戏 Dixit 德州扑克 搜索引擎 豆瓣 油茶 粤菜 回锅肉 排骨香肠 番茄鸡蛋炒饭 小吊梨汤 咖啡厅 苏格拉底 Markdown Manictime 纪念碑谷 Popcap 红楼梦 Shameless Mac 东区全日早餐 早茶 三明治 滑雪 长跑 Sublime Text 鱼豆腐 油泼面 王小波 蒋勋 Python 卜东波老师 李钟硕 Running man 颜文字 韩语 Aaron Swartz Wunderlist 番茄土豆 Wikipedia 集邮&lt;/p&gt;
+
+&lt;h2 id=&#34;不喜欢:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;不喜欢：&lt;/h2&gt;
+
+&lt;p&gt;大部分肉类 过分亲密 用office工作 恐怖片 孤独感 话不投机&lt;/p&gt;
 </description>
     </item>
     
@@ -1842,82 +1919,6 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
 &lt;/blockquote&gt;
 
 &lt;p&gt;Whole是需要两人在一起的，别固执也别强求。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Count Down</title>
-      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/Count%20Down/</link>
-      <pubDate>Tue, 31 Dec 2013 00:00:00 UTC</pubDate>
-      <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/Count%20Down/</guid>
-      <description>&lt;p&gt;直到昨晚东方突然问我“你记得去年的最后一天我们在干什么吗？”，我才发现一年的时间在记忆里的印象是如此短暂。2012年最后一天，是我大学第一次参加班级活动，在教室里玩游戏，随后去聚餐吃饭。那天是默存同学在经历了电脑包被偷之后，从遥远的哥本哈根机场飞回北京的日子。去吃晚餐的路上我还清楚地记得我们说到了MDF和Alan show。下午的游戏我们还得到了一套很豪华的三国杀，吃过饭便和几个同学一起去知四玩三国杀到凌晨，在明亮的图书馆前愈显黑暗的路上，讲着恐怖的悬疑推理故事。&lt;/p&gt;
-
-&lt;p&gt;和一群小伙伴hang out的情节总是清晰，我甚至记得那天谁点了芒果绵绵冰，谁拍了一张大合照说新年快乐，谁后来走了又来了，谁坐在我的旁边我的对面。但如果不是东方的那一句话，我可能永远不会再回忆起那天的细节。在这个快毕业的关头想起这些无忧无虑的瞬间总是有些伤感，就像昨天去澡堂的路上对璇琦说以后毕业了我们肯定会慢慢不联系，我是那种从来不主动的人，所以你一定要主动联系我啊。璇琦却很无奈地回答我，可我也是那种从来不主动人啊……人际关系是一件很奇妙却也很自然的一件事，多亏朋友圈和点赞，好久不联系的朋友最近又恢复了互动，也经常能大洋彼岸的朋友说上几句话聊以安慰。&lt;/p&gt;
-
-&lt;p&gt;自己曾经说过，享受独处，不享受孤独。然而许久的独处会慢慢变成孤独，不知道是不是因为大四毕业这些词语让我们整天神经紧张，还是因为最终在意料之外自己settle down下来不用为未来发愁的空虚，我越来越感到自己是一个孤岛，就像无法搜索找到的长微博图片，虽然存在，却主动了断了一切连接。Epic里说，我们就像是一颗大树上的树叶，互相独立，却又息息相关。所以，好像时刻能够Proactive一点都不是坏事，对于自己和别人都不是坏事，要是毕业之后像我和璇琦估计的那样都不主动的话，不是就太可悲了吗，别人在等待你的行动时，就不要犹犹豫豫畏手畏脚了。至少心理学的实证研究告诉我们，Proactive的人在各种时机都更有绩效……&lt;/p&gt;
-
-&lt;p&gt;2013年的意义是开始做自己，慢慢开始独立思考，独立决策。这里的思考和决策的动力大部分来自于毕业的压力，但很庆幸的是没有在这个过程中失去自我。这一年也开始理解，要去接受自认为无意义的事物，要去接受不合理，接受却不要妥协。&lt;/p&gt;
-
-&lt;p&gt;一年前的我不会知道现在心中的无奈和妥协是什么，也不知道一年后的年末最后一天，我那时的Mindset又是怎样。不管是正还是负，都值得小小期待一下。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;做完导师给的任务&lt;/li&gt;
-&lt;li&gt;去香港澳门&lt;/li&gt;
-&lt;li&gt;加油看Networking&lt;/li&gt;
-&lt;li&gt;学习jekyll和github&lt;/li&gt;
-&lt;li&gt;学习ruby&lt;/li&gt;
-&lt;li&gt;保持刷techcrunch和quora的习惯&lt;/li&gt;
-&lt;li&gt;坚持sit ups&lt;/li&gt;
-&lt;li&gt;读完手头剩下的书&lt;/li&gt;
-&lt;li&gt;学习如何放松却依然有生产力&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>软件自定义网络Software-Definded Networking</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/SDN%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C/</link>
-      <pubDate>Tue, 22 Oct 2013 00:00:00 UTC</pubDate>
-      <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/SDN%E8%BD%AF%E4%BB%B6%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C/</guid>
-      <description>
-
-&lt;p&gt;译自：&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking&#34;&gt;https://en.wikipedia.org/wiki/Software-defined_networking&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;软件定义网络（Software-Definded Networking, SDN）最初来源于2008年左右在加州大学伯克利分校和斯坦福大学的研究工作，而后演化成为一种新型的计算机网络。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-1&#34;&gt;1&lt;/a&gt; SDN允许网络管理员通过对低层功能的抽象来管理网络服务。具体实现是通过将决定流量从如何发送的系统（控制平面）从底层转发流量到指定目的的系统（数据平面）分离开来。这项技术的发明者们和系统的供应商们认为SDN可以达到简化网络的目的。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-white-2&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;SDN需要引入一些方法来实现控制平面与数据平面的通信。OpenFlow的作为其中的一种实现机制 ，经常被人误解为等同于SDN，实际上其他机制也可以实现SDN的概念。开放网络基金会的创立促进了SDN和OpenFlow市场的发展，云计算这一概念也开始流行。&lt;/p&gt;
-
-&lt;h2 id=&#34;背景:9256170d87d1564859db31c49448ee70&#34;&gt;背景：&lt;/h2&gt;
-
-&lt;p&gt;控制器充当的物理网络和SDN层的之间的界面基于互联网协议 （IP）的网络最初是建立在自治系统 （Autonomous Systems, AS）的概念基础上的。这一概念允许网络进行扩展和延伸，连接节点知道部分必须的路由信息，根据这些信息找到合理的下一跳，并转发数据包到下一跳。这种网络连接方法是简单的，并已被证明是有弹性的和可扩展的。考虑到报文递交的服务，AS的原则不允许指定转发目的在不改变自己标识的情况下移动。转发目的之间的拓扑位置正是它们所连接的网络接口，即它们的标识。此外，只使用基本的AS是很难得到其他标识的质量，比如逻辑分组，访问控制， 服务质量 ，中间的网络处理，也难以确定涉及到成为网络流或网络对话的数据包序列方面的内容。&lt;/p&gt;
-
-&lt;p&gt;互联网工程任务组 (Internet Engineering Task Force,IETF)实行了许多补充标准来扩大标识特定化的需求，如虚拟局域网和虚拟专用网络。这些增加的标准提高了网络元件规格和网络供应商配置接口的复杂度。&lt;/p&gt;
-
-&lt;p&gt;随着弹性的云架构和动态资源分配的发展，以及移动电脑操作系统和虚拟机使用的增长，软件定义网络（SDN）这一额外的分层需求出现了。这一额外分层允许网络运营商指定网络服务，而不用去耦合网络接口的规格。这使得实体之间可以在不改变标识也不违反规格的情况下移动。它也可以简化网络操作，因为每个标识的全局定义不必与每一个接口位置相匹配。这样一层也可以通过将标识和流量特征控制逻辑从基本的基于拓扑转发、桥接及路由中分离出来，从而重建网络元素内部的复杂设计。&lt;/p&gt;
-
-&lt;p&gt;全局软件定义控制还会基于源和目标识别来跟踪特定内容的流量。关于驱动网络硬件的一种机制已经被网络设备制造商采纳，目的是共享在软件定义边缘和供应商特定的桥接及路由之间运行的边缘。OpenFlow协议定义了一组关于转发的开放命令。OpenFlow协议运用全球感知软件控制器（集中式或分布式）来驱动网络边缘硬件，以便创造一个易编程的、基于标识的、覆盖在传统的IP核心上的网络。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-white-2&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;SDN是实现可编程化 主动互联网进程中的一步。SDN允许网络管理员通过控制器来实现对网络流量的可编程中央控制，而不需要访问物理层的网络交换机 。&lt;a href=&#34;https://en.wikipedia.org/wiki/Software-defined_networking#cite_note-4&#34;&gt;3&lt;/a&gt; SDN的配置可以创建起一个逻辑网络控制平面，其中硬件与数据转发平台硬件在物理上是分离的，即网络交换机可以转发数据包并且一个单独的服务器可以这个运行网络控制平面。 这种分离允许控制平面与数据平面在实现中使用不同的分布模型。控制平面的开发和运行环境的任务可以在不同的平台上运行（而不是硬件交换机和路由器上的低功率管理处理器）。&lt;/p&gt;
-
-&lt;p&gt;##SDN部署模型&lt;/p&gt;
-
-&lt;p&gt;###对称与非对称&lt;/p&gt;
-
-&lt;p&gt;在非对称模型中，SDN全局信息尽可能地集中化，边缘驱动时尽可能地分布化。这样做背后的考虑是清晰的，集中化使得全局整合轻松了许多，和分布化降低了SDN流量汇聚-封装的压力。然而，针对不同类型的SDN元素之间的确切关系，这种模型又产生了一系列问题，包括一致性，向外扩展的简化，多位置的高可用性，而在传统的基于AS的网络模型中，这些问题是不存在的。在对称分布的SDN模式中，需要增加全球的信息发布能力，提高SDN汇聚性能，使SDN元素基本上是一种类型的组件。只要在任意元素的子集中网络是可达的，在这样一组元素就可以在之上形成一个SDN覆盖网络。&lt;/p&gt;
-
-&lt;p&gt;###非泛洪与泛洪&lt;/p&gt;
-
-&lt;p&gt;在泛洪模型中，全局信息共享的相当一部分是通过广播和组播机制实现。这可以帮助SDN模型更加对称，它利用现有的透明桥接动态封装的原则，以实现全局意识和标识学习。这种方法的缺点之一是，随着越来越多的位置的加入，每个位置相应负载增加，从而降低了可扩展性。在非泛洪模型中，所有的转发是基于对全局的精确匹配，这通常采用分布式哈希和分布式缓存SDN查找表来实现。&lt;/p&gt;
-
-&lt;p&gt;###基于主机与网络中心化&lt;/p&gt;
-
-&lt;p&gt;在基于主机的模型中，关于SDN的数据中心中，假设很多的虚拟机通过可以移动来便增加弹性。在这个假设下，主机的虚拟机监视器代表本地虚拟机完成SDN封装。这种设计减少了SDN边缘的流量压力，并且根据每个主机上的空闲核心能力来“自由”处理。在网络中心化的设计中，一个更清晰的划分是在网络边缘和终端之间。这种SDN边缘与机柜设备顶端(TopOfRack)接口相连，并在主机端点之外。这是一种更传统的方法，网络互联并不依靠终端去执行任何路由的功能。&lt;/p&gt;
-
-&lt;p&gt;这些设计模型之间的界限划分并不明确。例如，在数据中心使用具有很多CPU“大型”主机计算结构有很多的CPU插件同样执行一些TopOfRack的接入功能，并可以代替一个机箱中所有的CPU插件，集中SDN边缘功能。这既是基于主机的设计，也是网络中心化的设计。也有可能是这些设计变量之间存在依赖关系，例如基于主机的实现通常会委托一个非对称集中查找或业务流程服务来协助组织庞大的分布。对称和非泛洪的模型通常会委托网络SDN汇聚来实现合理边缘点数量的查找分布。这样的集中度依赖于本地的OpenFlow的接口，以维持流量封装压力。&lt;/p&gt;
 </description>
     </item>
     

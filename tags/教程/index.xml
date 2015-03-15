@@ -56,12 +56,12 @@
 
 &lt;p&gt;如果说速度快是Hugo的第一大优点，那么安装简单应该就是Hugo的第二大优点。对于Mac用户，没有brew的话先安装brew，在命令行里敲：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
+&lt;pre&gt;&lt;code&gt;$ ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后再敲一行安装Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$brew new Hugo
+&lt;pre&gt;&lt;code&gt;$ brew new Hugo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;当然你也可以在&lt;a href=&#34;https://github.com/spf13/hugo/releases&#34;&gt;这里&lt;/a&gt;直接下载对应系统的binary文件，解压就行了。&lt;/p&gt;
@@ -70,12 +70,12 @@
 
 &lt;p&gt;首先建立自己的网站，mysite是网站的路径&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$hugo new site mysite
+&lt;pre&gt;&lt;code&gt;$ hugo new site mysite
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;然后进入该路径&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$cd mysite
+&lt;pre&gt;&lt;code&gt;$ cd mysite
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;在该目录下你可以看到以下几个目录和&lt;code&gt;config.toml&lt;/code&gt;文件&lt;/p&gt;
@@ -107,7 +107,7 @@
 
 &lt;p&gt;现在我们先熟悉一下Hugo，创建新页面：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ Hugo new about.md
+&lt;pre&gt;&lt;code&gt;$ hugo new about.md
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;进入&lt;code&gt;content/&lt;/code&gt;文件夹可以看到，此时多了一个markdown格式的文件&lt;code&gt;about.md&lt;/code&gt;，打开文件可以看到时间和文件名等信息已经自动加到文件开头，包括创建时间，页面名，是否为草稿等。&lt;/p&gt;
@@ -127,7 +127,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;我在页面中加入了一些内容，然后运行Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$Hugo server -t hyde --buildDrafts
+&lt;pre&gt;&lt;code&gt;$ Hugo server -t hyde --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;-t&lt;/code&gt;参数的意思是使用hyde主题渲染我们的页面，注意到&lt;code&gt;about.md&lt;/code&gt;目前是作为草稿，即&lt;code&gt;draft&lt;/code&gt;参数设置为&lt;code&gt;true&lt;/code&gt;，运行Hugo时要加上&lt;code&gt;--buildDrafts&lt;/code&gt;参数才会生成被标记为草稿的页面。
@@ -156,7 +156,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;把项目中的&lt;code&gt;static/&lt;/code&gt;和&lt;code&gt;layouts/&lt;/code&gt;文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$Hugo server --buildDrafts -w
+&lt;pre&gt;&lt;code&gt;$ Hugo server --buildDrafts -w
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数&lt;code&gt;-w&lt;/code&gt;意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
@@ -173,20 +173,17 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;我们尝试在他的主题基础上修改，找到&lt;code&gt;/layouts/partials/subheader.html&lt;/code&gt;文件:&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;header&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;header&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;figure&amp;gt;&lt;/span&gt;
-      &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;a&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;border=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;logolink&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;class=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;icon-spf13-3&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;logo&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/div&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;div&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;byline&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;by Steve Francia&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;nav&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;nav&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;header id=&amp;quot;header&amp;quot;&amp;gt;
+    &amp;lt;figure&amp;gt;
+      &amp;lt;a href=&amp;quot;/&amp;quot; border=0 id=&amp;quot;logolink&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;icon-spf13-3&amp;quot; id=&amp;quot;logo&amp;quot;&amp;gt; &amp;lt;/div&amp;gt;&amp;lt;/a&amp;gt;
+    &amp;lt;/figure&amp;gt;
+    &amp;lt;div id=&amp;quot;byline&amp;quot;&amp;gt;by Steve Francia&amp;lt;/div&amp;gt;
+    &amp;lt;nav id=&amp;quot;nav&amp;quot;&amp;gt;
     {{ partial &amp;quot;nav.html&amp;quot; . }}
     {{ partial &amp;quot;social.html&amp;quot; . }}
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+    &amp;lt;/nav&amp;gt;
+&amp;lt;/header&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;将by Steve Francia换成by myname，再次回到浏览器，可以看到左边侧栏已经发生变化了，你可以根据自己的需要修改对应的文件，当然得懂一点css, html。&lt;/p&gt;
 
@@ -234,12 +231,12 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;安装Pygments：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$pip install Pygments
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ pip install Pygments
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;没有pip的先下载 &lt;a href=&#34;https://bootstrap.pypa.io/get-pip.py&#34;&gt;https://bootstrap.pypa.io/get-pip.py&lt;/a&gt; ，然后安装pip：&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$python get-pip.py
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ python get-pip.py
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Pygments的调用采用shortcodes实现，spf13里也写好了，在&lt;code&gt;/layouts/shortcode/highlight.html&lt;/code&gt;里&lt;/p&gt;
@@ -259,13 +256,9 @@ your code here.
 
 &lt;p&gt;第二种方法比较简单，在&lt;code&gt;layouts/partials/header_includes.html&lt;/code&gt;中加上：&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script &lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;src=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://yandex.st/highlightjs/8.0/highlight.min.js&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;link&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;rel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;hljs&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;initHighlightingOnLoad&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;();&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+&lt;p&gt;&lt;script src=&#34;https://yandex.st/highlightjs/8.0/highlight.min.js&#34;&gt;&lt;/script&gt;
+  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yandex.st/highlightjs/8.0/styles/default.min.css&#34;&gt;
+  &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;这里使用了&lt;a href=&#34;http://yandex.ru/&#34;&gt;Yandex&lt;/a&gt;的&lt;a href=&#34;http://highlightjs.org/&#34;&gt;Highlight.js&lt;/a&gt;。&lt;/p&gt;
 
@@ -291,13 +284,10 @@ your code here.
 
 &lt;p&gt;在需要渲染公式的页面加入以下代码，比如&lt;code&gt;layouts/_default/single.html&lt;/code&gt;文件，这个文件是对于所有post进行页面生成的模版，如果你希望所有页面都对公式渲染的话，可以加入&lt;code&gt;layouts/partials/footer.html&lt;/code&gt;文件里，保证所有生成的页面都有这几行代码。&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;script &lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;type=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;
-  &lt;span style=&#34;color: #a6e22e&#34;&gt;src=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;
+  src=&amp;quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;&amp;gt;
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Mathjax和Markdown会有冲突问题，&lt;a href=&#34;http://doswa.com/2011/07/20/mathjax-in-markdown.html&#34;&gt;这里&lt;/a&gt;提供了解决方案。&lt;/p&gt;
 
@@ -317,28 +307,28 @@ your code here.
 &lt;li&gt;clone your-project&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;git clone &amp;lt;&amp;lt;your-project&amp;gt;-hugo-url&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ git clone &amp;lt;&amp;lt;your-project&amp;gt;-hugo-url&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;进入your-project 目录&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;cd &amp;lt;your-project&amp;gt;-hugo
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;your-project&amp;gt;-hugo
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;删掉public目录（这个目录每次运行Hugo都会再次生成，不用担心）&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;rm -rf public
+&lt;pre&gt;&lt;code&gt;$ rm -rf public
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
 &lt;li&gt;把public/目录添加为submodule 与&lt;username&gt;.github.io同步&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;git submodule add git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
+&lt;pre&gt;&lt;code&gt;$ git submodule add git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
@@ -346,7 +336,7 @@ your code here.
 &lt;li&gt;下面是写好的一个script &lt;code&gt;deploy.sh&lt;/code&gt;，拷贝过去直接就能用，记得chmod +x deploy.sh加上运行权限。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;#!/bin/bash
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
 echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
 
 msg=&amp;quot;rebuilding site `date`&amp;quot;
@@ -389,7 +379,7 @@ cd ..
 &lt;li&gt;记下&lt;a href=&#34;http://username.github.io/&#34;&gt;http://username.github.io/&lt;/a&gt; 的ip地址。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;pre&gt;&lt;code&gt;$ping username.github.io
+&lt;pre&gt;&lt;code&gt;$ ping username.github.io
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ol&gt;
@@ -401,11 +391,8 @@ cd ..
 &lt;p&gt;我的博客模版里用的字体是从googleapis里获取的，国内访问会下载失败，把字体库改成360的。
 找到&lt;code&gt;layouts/partials/head_includes.html&lt;/code&gt;文件：&lt;/p&gt;
 
-&lt;p&gt;
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;p&amp;gt;&amp;lt;link&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;href=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;rel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;stylesheet&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;type=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;text/css&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link href=&#39;http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans:300&#39; rel=&#39;stylesheet&#39; type=&#39;text/css&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;将其中的googleapis替换为useso就行了。&lt;/p&gt;
 
