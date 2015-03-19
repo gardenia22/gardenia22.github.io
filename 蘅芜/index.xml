@@ -70,10 +70,10 @@ $$R(k) = \frac{E(X_{k+1,n}-\mu)(X_{1,n-k}-\mu)}{\sigma^2}$$
     
     <item>
       <title>机器学习笔记5 神经网络1 模型表达</title>
-      <link>http://nanshu.wang/post/2015-03-03</link>
+      <link>http://nanshu.wang/post/2015-03-03-2</link>
       <pubDate>Tue, 03 Mar 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/post/2015-03-03</guid>
+      <guid>http://nanshu.wang/post/2015-03-03-2</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
