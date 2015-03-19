@@ -127,7 +127,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;我在页面中加入了一些内容，然后运行Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ Hugo server -t hyde --buildDrafts
+&lt;pre&gt;&lt;code&gt;$ hugo server -t hyde --buildDrafts
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;-t&lt;/code&gt;参数的意思是使用hyde主题渲染我们的页面，注意到&lt;code&gt;about.md&lt;/code&gt;目前是作为草稿，即&lt;code&gt;draft&lt;/code&gt;参数设置为&lt;code&gt;true&lt;/code&gt;，运行Hugo时要加上&lt;code&gt;--buildDrafts&lt;/code&gt;参数才会生成被标记为草稿的页面。
@@ -156,7 +156,7 @@ title = &amp;quot;about&amp;quot;
 
 &lt;p&gt;把项目中的&lt;code&gt;static/&lt;/code&gt;和&lt;code&gt;layouts/&lt;/code&gt;文件复制到自己网站的目录下替换原来的文件夹。再次运行Hugo:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ Hugo server --buildDrafts -w
+&lt;pre&gt;&lt;code&gt;$ hugo server --buildDrafts -w
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这次没有选择主题，如果选择了主题会将当前的主题覆盖掉。参数&lt;code&gt;-w&lt;/code&gt;意味监视watch，此时如果修改了网站内的信息，会直接显示在浏览器的页面上，不需要重新运行\$hugo server，方便我们进行修改。这是采用了spf13主题的页面：&lt;/p&gt;
