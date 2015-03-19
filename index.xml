@@ -11,10 +11,10 @@
     
     <item>
       <title>python numpy 计算自相关系数</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/python-numpy%E8%AE%A1%E7%AE%97%E8%87%AA%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
+      <link>http://nanshu.wang/post/2015-03-15</link>
       <pubDate>Sun, 15 Mar 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/python-numpy%E8%AE%A1%E7%AE%97%E8%87%AA%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
+      <guid>http://nanshu.wang/post/2015-03-15</guid>
       <description>&lt;p&gt;在分析时间序列时，通常需要计算一个序列的自相关系数。自相关(&lt;a href=&#34;http://en.wikipedia.org/wiki/Autocorrelation&#34;&gt;Autocorrelation&lt;/a&gt;)又叫做序列相关，通常采用自相关系数来发现序列的重复规律，周期等信息。&lt;/p&gt;
 
 &lt;p&gt;我们有序列$X:x_1,x_2,x_3,&amp;hellip;,x_n$，设$X_{s,t}$为$s$时刻开始，$t$时刻结束的序列：$x_s,x_{s+1}&amp;hellip;,x_{t-1},x_t$。$\mu_{s,t}$为序列$X_{s,t}$的均值，$\sigma_{s,t}$为序列$X_{s,t}$的标准差。那么一阶自相关系数为：&lt;/p&gt;
@@ -70,10 +70,10 @@ $$R(k) = \frac{E(X_{k+1,n}-\mu)(X_{1,n-k}-\mu)}{\sigma^2}$$
     
     <item>
       <title>机器学习笔记5 神经网络1 模型表达</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/</link>
+      <link>http://nanshu.wang/post/2015-03-03</link>
       <pubDate>Tue, 03 Mar 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/</guid>
+      <guid>http://nanshu.wang/post/2015-03-03</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
@@ -387,10 +387,10 @@ $$h_\Theta(x) =
     
     <item>
       <title>经过省察的人生The examined life</title>
-      <link>http://nanshu.wang/%E8%A7%82%E5%8F%B9/the_examined_life/</link>
+      <link>http://nanshu.wang/post/2015-03-03</link>
       <pubDate>Tue, 03 Mar 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%A7%82%E5%8F%B9/the_examined_life/</guid>
+      <guid>http://nanshu.wang/post/2015-03-03</guid>
       <description>
 
 &lt;p&gt;译自&lt;a href=&#34;http://books.google.lt/books?id=WwpZVuylPgYC&amp;amp;pg=PA228&amp;amp;hl=zh-CN&amp;amp;source=gbs_toc_r&amp;amp;cad=3#v=onepage&amp;amp;q&amp;amp;f=false&#34;&gt;《A companion to Socrates》第14章&lt;/a&gt;，作者Richard Kraut&lt;/p&gt;
@@ -507,10 +507,10 @@ $$h_\Theta(x) =
     
     <item>
       <title>机器学习笔记4 正则化</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04_%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_logistic%E5%9B%9E%E5%BD%92_%E6%AD%A3%E8%A7%84%E5%8C%96/</link>
+      <link>http://nanshu.wang/post/2015-02-17</link>
       <pubDate>Tue, 17 Feb 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04_%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_logistic%E5%9B%9E%E5%BD%92_%E6%AD%A3%E8%A7%84%E5%8C%96/</guid>
+      <guid>http://nanshu.wang/post/2015-02-17</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
@@ -632,10 +632,10 @@ $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ log (h_\theta (x^{(i)}
     
     <item>
       <title>机器学习笔记3 有监督学习 分类 logistic回归</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%20%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%20%E5%88%86%E7%B1%BB%20logistic%E5%9B%9E%E5%BD%92/</link>
+      <link>http://nanshu.wang/post/2015-02-12</link>
       <pubDate>Thu, 12 Feb 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03%20%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%20%E5%88%86%E7%B1%BB%20logistic%E5%9B%9E%E5%BD%92/</guid>
+      <guid>http://nanshu.wang/post/2015-02-12</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
@@ -757,10 +757,10 @@ $$H_{ij}=\frac{\delta^2 l(\theta)}{\delta \theta_i \delta \theta_j}$$
     
     <item>
       <title>机器学习笔记2 有监督学习 线性回归 局部加权回归 概率解释</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92_%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</link>
+      <link>http://nanshu.wang/post/2015-02-11</link>
       <pubDate>Wed, 11 Feb 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_%E5%B1%80%E9%83%A8%E5%8A%A0%E6%9D%83%E5%9B%9E%E5%BD%92_%E6%A6%82%E7%8E%87%E8%A7%A3%E9%87%8A/</guid>
+      <guid>http://nanshu.wang/post/2015-02-11</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
@@ -864,10 +864,10 @@ $$\frac12\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$$
     
     <item>
       <title>机器学习笔记1 有监督学习 线性回归 LMS算法 正规方程</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95_%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</link>
+      <link>http://nanshu.wang/post/2015-02-10</link>
       <pubDate>Tue, 10 Feb 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%E6%9C%89%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92_LMS%E7%AE%97%E6%B3%95_%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/</guid>
+      <guid>http://nanshu.wang/post/2015-02-10</guid>
       <description>
 
 &lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
@@ -1046,10 +1046,10 @@ $$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
     
     <item>
       <title>Hugo静态网站生成器中文教程</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://nanshu.wang/post/2015-01-31</link>
       <pubDate>Sat, 31 Jan 2015 00:30:03 CST</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/%E7%94%A8Hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://nanshu.wang/post/2015-01-31</guid>
       <description>
 
 &lt;h1 id=&#34;前言:d605f9890f3528aea462ac7515ece633&#34;&gt;前言&lt;/h1&gt;
@@ -1446,10 +1446,10 @@ cd ..
     
     <item>
       <title>about</title>
-      <link>http://nanshu.wang/about/</link>
+      <link>http://nanshu.wang/about</link>
       <pubDate>Fri, 30 Jan 2015 15:33:51 CST</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/about/</guid>
+      <guid>http://nanshu.wang/about</guid>
       <description>
 
 &lt;h2 id=&#34;关于我:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;关于我&lt;/h2&gt;
@@ -1477,10 +1477,10 @@ cd ..
     
     <item>
       <title>Scikit-Learn机器学习介绍（中文翻译）</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</link>
+      <link>http://nanshu.wang/post/2014-12-02</link>
       <pubDate>Tue, 02 Dec 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</guid>
+      <guid>http://nanshu.wang/post/2014-12-02</guid>
       <description>
 
 &lt;p&gt;翻译自：&lt;a href=&#34;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&#34;&gt;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&lt;/a&gt;&lt;/p&gt;
@@ -1654,10 +1654,10 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
     
     <item>
       <title>孤独的反思——读《孤独六讲》</title>
-      <link>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E5%AD%A4%E7%8B%AC%E7%9A%84%E5%8F%8D%E6%80%9D/</link>
+      <link>http://nanshu.wang/post/2014-09-15</link>
       <pubDate>Mon, 15 Sep 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E5%AD%A4%E7%8B%AC%E7%9A%84%E5%8F%8D%E6%80%9D/</guid>
+      <guid>http://nanshu.wang/post/2014-09-15</guid>
       <description>&lt;p&gt;第一次知道蒋勋，是默存同学送给我的一本《蒋勋的卢浮宫》。我对西方美术完全没有了解，这本书一开始我也很不以为然。蒋勋用他自己的美学视角，写的一本卢浮宫导游书。读一遍下来我一直以为蒋勋是一位年轻的艺术家，因为他的文字就像是一个人在你身旁慢慢说话，没有任何艰深难懂的地方，把我所以为很难懂的美术讲成了一个个平常的故事，不夸张也不造作，有一种原来美术是这样来理解的恍然大悟。&lt;/p&gt;
 
 &lt;p&gt;后来，开始慢慢听《蒋勋说红楼梦》，才知道他原来主要是研究文学。也多亏他，我才意识到《红楼梦》是多么精彩而伟大的小说，以前走马观花的阅读失去了多少趣味。他讲话，总是觉察不出他的年龄，常常诧异怎么年轻人的心态他这么懂。我几乎和上一辈的人没有过深入的交谈和对话，但读蒋勋的文字就常常很高兴，觉得上一辈的也有有趣的，懂我们的人。&lt;/p&gt;
@@ -1740,10 +1740,10 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
     
     <item>
       <title>离开学还有十一天</title>
-      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E7%A6%BB%E5%BC%80%E5%AD%A6%E8%BF%98%E6%9C%89%E5%8D%81%E4%B8%80%E5%A4%A9/</link>
+      <link>http://nanshu.wang/post/2014-08-19</link>
       <pubDate>Tue, 19 Aug 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E7%A6%BB%E5%BC%80%E5%AD%A6%E8%BF%98%E6%9C%89%E5%8D%81%E4%B8%80%E5%A4%A9/</guid>
+      <guid>http://nanshu.wang/post/2014-08-19</guid>
       <description>&lt;p&gt;最近过着一种十分规律的生活：早睡早起，早午晚都去同样的地方吃饭，走同样上下班的路，进同样的电梯，按下同样的7楼，和同样的同伴说同样的话题。头回开始觉得，重复同样的生活并没有什么不好，甚至有点不想离开，去面对新学期新课程新同学新宿舍的新鲜劲。毕业已经有快2个月了，朋友圈里充斥着大家新生活的状态，或兴奋或无奈或沮丧或否极泰来，总之都带有一种move on的气氛。而面对我的新生活，我却更愿意待在回忆里不肯走出来。大概是因为心中还有郁结堆在那里，没有和珍惜的人好好道别，更是被自己的话一语中的，像是karma一样，明明是高中的翻版，我的角色对调了而已。&lt;/p&gt;
 
 &lt;p&gt;好几个夜晚陷入了回忆而失眠，耳机里是将勋娓娓道来的红楼梦，再也回不去的曾经的美好如潮水般涌来。似乎人生的每个阶段都在惋惜上个阶段，初中惋惜童年，高中惋惜初中朋友，大学惋惜高中同学，大学毕业又开始惋惜大学最好的朋友。&lt;/p&gt;
@@ -1769,10 +1769,10 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
     
     <item>
       <title>大学42句</title>
-      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%A4%A7%E5%AD%A642%E5%8F%A5/</link>
+      <link>http://nanshu.wang/post/2014-03-29</link>
       <pubDate>Sat, 29 Mar 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E5%A4%A7%E5%AD%A642%E5%8F%A5/</guid>
+      <guid>http://nanshu.wang/post/2014-03-29</guid>
       <description>&lt;p&gt;3年前在&lt;a href=&#34;http://www.asyanyang.com/&#34;&gt;这个学姐&lt;/a&gt;的博客里看到反映我大学经历的50句话。就想着等我快毕业时，也要写这么一篇。最近失眠得厉害，必须到深夜大家都沉沉睡去时，才慢慢回忆起这些闪在脑海中的话。我一向觉得我长期记忆能力好差，要想凑够数量足够多的句子还要费上很长一段时间。但昨天的脑洞一开，这些句子简直是自己长了翅膀飞出来的一样，闭上眼睛，仿佛说话的人就在耳边。这些句子的主人，有最亲密的好友，也有仅一面之缘的陌生人，有老师，有同学，有父母，有朋友，有恋人，也有我自己。有的话恐怕当事人已经不再记得，只有我知道这些句子在当时是如何惊起心中的波澜，对我多么宝贵。本来也想凑够50句，但第42句已经是前几天毕业采访的时候了，况且42是一个多么符合GEEK气质的数字啊，凑不够也就作罢。&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1824,10 +1824,10 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
     
     <item>
       <title>近期计划</title>
-      <link>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E8%BF%91%E6%9C%9F%E8%AE%A1%E5%88%92/</link>
+      <link>http://nanshu.wang/post/2014-03-21</link>
       <pubDate>Fri, 21 Mar 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E6%BD%87%E6%B9%98/%E8%BF%91%E6%9C%9F%E8%AE%A1%E5%88%92/</guid>
+      <guid>http://nanshu.wang/post/2014-03-21</guid>
       <description>&lt;p&gt;说来惭愧，尘埃落定之后便抛弃了记录学习过程的习惯。最近实在是有点颓废，记一下好勉励自己。&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -1851,10 +1851,10 @@ joblib.dump返回一个文件名列表。每个包含在&lt;code&gt;clf&lt;/code
     
     <item>
       <title>《恋爱的犀牛》</title>
-      <link>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E6%81%8B%E7%88%B1%E7%9A%84%E7%8A%80%E7%89%9B/</link>
+      <link>http://nanshu.wang/post/2014-01-09</link>
       <pubDate>Thu, 09 Jan 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E6%81%8B%E7%88%B1%E7%9A%84%E7%8A%80%E7%89%9B/</guid>
+      <guid>http://nanshu.wang/post/2014-01-09</guid>
       <description>&lt;p&gt;看现场的话剧比书本上的对话明朗了许多，说到最后这也不过是一个“我爱你，你不爱我”的故事。用最近从《程序员的数学》上学来的分组方法，爱情的分组不外乎是一下三种：&lt;/p&gt;
 
 &lt;ol&gt;

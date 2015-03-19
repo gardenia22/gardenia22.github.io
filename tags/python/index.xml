@@ -11,10 +11,10 @@
     
     <item>
       <title>python numpy 计算自相关系数</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/python-numpy%E8%AE%A1%E7%AE%97%E8%87%AA%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</link>
+      <link>http://nanshu.wang/post/2015-03-15</link>
       <pubDate>Sun, 15 Mar 2015 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/python-numpy%E8%AE%A1%E7%AE%97%E8%87%AA%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/</guid>
+      <guid>http://nanshu.wang/post/2015-03-15</guid>
       <description>&lt;p&gt;在分析时间序列时，通常需要计算一个序列的自相关系数。自相关(&lt;a href=&#34;http://en.wikipedia.org/wiki/Autocorrelation&#34;&gt;Autocorrelation&lt;/a&gt;)又叫做序列相关，通常采用自相关系数来发现序列的重复规律，周期等信息。&lt;/p&gt;
 
 &lt;p&gt;我们有序列$X:x_1,x_2,x_3,&amp;hellip;,x_n$，设$X_{s,t}$为$s$时刻开始，$t$时刻结束的序列：$x_s,x_{s+1}&amp;hellip;,x_{t-1},x_t$。$\mu_{s,t}$为序列$X_{s,t}$的均值，$\sigma_{s,t}$为序列$X_{s,t}$的标准差。那么一阶自相关系数为：&lt;/p&gt;
@@ -70,10 +70,10 @@ $$R(k) = \frac{E(X_{k+1,n}-\mu)(X_{1,n-k}-\mu)}{\sigma^2}$$
     
     <item>
       <title>Scikit-Learn机器学习介绍（中文翻译）</title>
-      <link>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</link>
+      <link>http://nanshu.wang/post/2014-12-02</link>
       <pubDate>Tue, 02 Dec 2014 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/%E8%98%85%E8%8A%9C/scikit-learn-docs-translation-1/</guid>
+      <guid>http://nanshu.wang/post/2014-12-02</guid>
       <description>
 
 &lt;p&gt;翻译自：&lt;a href=&#34;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&#34;&gt;http://scikit-learn.org/stable/tutorial/basic/tutorial.html&lt;/a&gt;&lt;/p&gt;
