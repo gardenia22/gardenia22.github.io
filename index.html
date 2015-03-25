@@ -124,6 +124,22 @@
       
         <article class="post">
     <header>
+      <h2><a href="http://nanshu.wang/post/2015-03-23">机器学习笔记5 神经网络2 参数学习 </a> </h2>
+      <div class="post-meta">Thu, Mar 26, 2015 </div>
+    </header>
+    <article itemprop="articleBody" id="content">
+    	Andrew Ng cs229 Machine Learning 笔记 成本函数(Cost Function) 以下是我们会用到的一些变量： $L$表示神经网络的层数 $s_l$表示第$l$层的神经单元数(不包括偏差(bias)单元) $K$表示输出单元数(分类数) 当有多个输出类别时，采用$h_\Theta(x)_k$表示第$k$个输出的假设结果。 神经网络的成本函数是logistic回归中的成本函数更普遍的一种形式。 logistic回归中的成本函数为： $$J(\theta) = -\frac{1}{m} \left[ \sum_{i=1}^m y^{(i)}\log(h_{\theta}) + (1-y^{(i)}) \log(1-h_{\theta}(x^{(i)})) \right] + \frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2$$ 神经网络的成本函数稍微复杂一点： $$\begin{gather*} J(\Theta) = - \frac{1}{m} \left[ \sum_{i=1}^m \sum_{k=1}^K y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2 \end{gather*}$$ 和logistic回归相比，第一个方括号内多了一层累加求和，即对多类输出节点的成本函数进行累加，会遍历所有的输出节点。 正则化的部分则是将每一层的参数都考虑了进去(包括偏差单元相关的参数值)。和logistic回归一样，每一项都进行了平方。 注意: 双层累加中对于输出层所有单元的logistic回归的成本函数进行求和 三层累加中则是对于整个神经网络中单独的$\Theta$参数的平方进行求和 三层累加中的$i$和训练集中的$i$并不一样 向后传播(Backpropagation)算法 向后传播是神经网络中表示最小化成本函数的术语，就像logistic回归和线性回归中的梯度下降(gradient descent)一样。 我们的目标是计算： $$\min_\Theta J(\Theta)$$ 即我们想最小化成本函数$J$，得到最优化参数$\Theta$。 观察我们用于计算$J(\Theta)$偏导的等式：
+	</article>
+    <footer>
+        <a href='http://nanshu.wang/post/2015-03-23'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
+      
+    
+      
+        <article class="post">
+    <header>
       <h2><a href="http://nanshu.wang/post/2015-03-15">python numpy 计算自相关系数 </a> </h2>
       <div class="post-meta">Sun, Mar 15, 2015 </div>
     </header>
@@ -176,7 +192,7 @@ $$g(\theta_0 + \theta_1x_1^2 + \theta_2x_1x_2 + \theta_3x_1x_3  + \theta_4x_2^2 
       
         <article class="post">
     <header>
-      <h2><a href="http://nanshu.wang/post/2015-03-03">经过省察的人生The examined life </a> </h2>
+      <h2><a href="http://nanshu.wang/post/2015-03-03-1">经过省察的人生The examined life </a> </h2>
       <div class="post-meta">Tue, Mar 3, 2015 </div>
     </header>
     <article itemprop="articleBody" id="content">
@@ -188,7 +204,7 @@ $$g(\theta_0 + \theta_1x_1^2 + \theta_2x_1x_2 + \theta_3x_1x_3  + \theta_4x_2^2 
 
 	</article>
     <footer>
-        <a href='http://nanshu.wang/post/2015-03-03'><nobr>Read more →</nobr></a>
+        <a href='http://nanshu.wang/post/2015-03-03-1'><nobr>Read more →</nobr></a>
     </footer>
 </article>
 

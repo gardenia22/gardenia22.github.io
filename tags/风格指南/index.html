@@ -15,26 +15,26 @@
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="翻译 : nanshu.wang"/>
+<meta property="og:title" content="风格指南 : nanshu.wang"/>
 <meta property="og:site_name" content="nanshu wang blog"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://nanshu.wang/tags/e7bfbbe8af91/">
+<meta property="og:url" content="http://localhost:1313/tags/e9a38ee6a0bce68c87e58d97/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2015-03-03"/>
-<meta property="article:modified_time" content="2015-03-03"/>
+<meta property="article:published_time" content="2015-03-22"/>
+<meta property="article:modified_time" content="2015-03-22"/>
 
 
 
 
 
 
-    <base href="http://nanshu.wang">
-    <title> 翻译 - nanshu.wang </title>
-    <link rel="canonical" href="http://nanshu.wang/tags/e7bfbbe8af91/">
-    <link href="http://nanshu.wang/tags/%E7%BF%BB%E8%AF%91/index.xml" rel="alternate" type="application/rss+xml" title="翻译" />
+    <base href="http://localhost:1313">
+    <title> 风格指南 - nanshu.wang </title>
+    <link rel="canonical" href="http://localhost:1313/tags/e9a38ee6a0bce68c87e58d97/">
+    <link href="http://localhost:1313/tags/%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/index.xml" rel="alternate" type="application/rss+xml" title="风格指南" />
 
     <link href='http://fonts.useso.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -130,68 +130,18 @@
 
 <section id="main">
   <div>
-   <h1 id="title">翻译</h1>
+   <h1 id="title">风格指南</h1>
     
         <article class="post">
     <header>
-      <h2><a href="http://nanshu.wang/post/2015-03-03-1">经过省察的人生The examined life </a> </h2>
-      <div class="post-meta">Tue, Mar 3, 2015 </div>
+      <h2><a href="http://localhost:1313/post/2015-03-22">Python代码风格指南(Style Guide for Python Code中文翻译) :: DRAFT</a> </h2>
+      <div class="post-meta">Sun, Mar 22, 2015 </div>
     </header>
     <article itemprop="articleBody" id="content">
-    	<p>译自<a href="http://books.google.lt/books?id=WwpZVuylPgYC&amp;pg=PA228&amp;hl=zh-CN&amp;source=gbs_toc_r&amp;cad=3#v=onepage&amp;q&amp;f=false">《A companion to Socrates》第14章</a>，作者Richard Kraut</p>
-
-<h1 id="经过省察的人生:f856045648ed1256c7d09f14d1393f16">经过省察的人生</h1>
-
-<p>“未经省察过的人生是不值得过的人生”（《申辩》38a5-6）。这句苏格拉底耳熟能详的名言，也许是有史以来一个哲学家嘴中最肆无忌惮的话。苏格拉底的哲学思想和他的生活方式的本质也蕴含在这句话中。苏格拉底把自己的人生作为——或者更确切地说，柏拉图把他的人生作为——真正经过了省察的人生。要了解我们如何才能达到这种人生的要求，必须从柏拉图的作品出发，来好好学习苏格拉底给我们树立起来的好榜样。</p>
-
+    	翻译自：PEP 8 - Style Guide for Python Code 介绍 这篇文档说明了组成Python主要现行版中标准库的Python代码所遵守的一个规范。请参考用于实现Python的C代码风格的指南信息PEP。 这篇文档和PEP 257(Docstring Conventions)都改编自Guido(注：Python之父)最早的Python风格指南文章，并加入了Barry的风格指南里的内容。 语言自身在发生着改变，随着新的规范的出现和旧规范的过时，代码风格也会随着时间演变。 很多项目都有自己的一套风格指南。若和本指南有任何冲突，应该优先考虑其项目相关的那套指南。 保持盲目的一致是头脑简单的表现 (语出自Ralph Waldo Emerson, 原文：A Foolish Consistency is the Hobgoblin of Little Minds，Hobgolin意指民间故事中友好但常制造麻烦的动物角色。) Guido的一个重要观点是代码被读的次数远多于被写的次数。这篇指南意在于提高代码的可读性，使浩瀚如烟的Python代码风格能保持一致。正如PEP 20那首《Zen of Python》的小诗里所说的：“可读性很重要(Readability counts)”。 一本风格指南是关于一致性的。同风格指南保持一致性是重要的，同项目保持一致性则更加重要，同一个模块和一个函数保持一致性则最为重要。 但最最重要的是：要知道何时去违反一致性——有时风格指南并不适用。当存有疑虑时，采用你的最佳判断。参考别的例子，决定什么才是最好的。不要犹豫，尽管提问。 特别的：千万不要为了遵守这篇PEP而破坏向后兼容性！ 一些可以忽略一份指南的其他好理由： 当采用指南时会让代码更难读，甚至对于习惯阅读遵循这篇PEP的代码的人来说也是如此。 需要和周围的代码保持一致性，但这些代码违反了指南中的风格（可是时历史原因造成的）——尽管这可能也是一个收拾别人烂摊子的机会（True in XP style?）。 若是有问题的某段代码早于引入指南的时间，那么没有必要去修改这段代码。 代码需要和更老的版本的Python保持兼容，而老版本的Python不支持风格指南所推荐的特性。 Code lay-out Indentation Use 4 spaces per indentation level. Continuation lines should align wrapped elements either vertically using Python&rsquo;s implicit line joining inside parentheses, brackets and braces, or using a hanging indent [#fn-hi]_.
 	</article>
     <footer>
-        <a href='http://nanshu.wang/post/2015-03-03-1'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://nanshu.wang/post/2014-12-02">Scikit-Learn机器学习介绍（中文翻译） </a> </h2>
-      <div class="post-meta">Tue, Dec 2, 2014 </div>
-    </header>
-    <article itemprop="articleBody" id="content">
-    	<p>翻译自：<a href="http://scikit-learn.org/stable/tutorial/basic/tutorial.html">http://scikit-learn.org/stable/tutorial/basic/tutorial.html</a></p>
-
-<p>以后可能会根据自己的学习慢慢翻译其他的章节，水平有限，不足之处请指正。</p>
-
-<blockquote>
-<p>本章内容
-在本章中，我们会介绍在使用scikit-learn中遇到的[机器学习]<a href="machine learning">1</a>术语，以及一个简单的机器学习例子。</p>
-</blockquote>
-
-<h2 id="机器学习-问题设定:935e1a74f960fd04b26b502f6058f057">机器学习：问题设定</h2>
-
-<hr />
-
-<p>一般来说，机器学习问题可以这样来理解：我们有n个[样本]<a href="sample">2</a>的数据集，想要预测未知数据的属性。</p>
-
-	</article>
-    <footer>
-        <a href='http://nanshu.wang/post/2014-12-02'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://nanshu.wang/post/2013-10-22">软件自定义网络Software-Definded Networking </a> </h2>
-      <div class="post-meta">Tue, Oct 22, 2013 </div>
-    </header>
-    <article itemprop="articleBody" id="content">
-    	<p>译自：<a href="https://en.wikipedia.org/wiki/Software-defined_networking">https://en.wikipedia.org/wiki/Software-defined_networking</a></p>
-
-<p>软件定义网络（Software-Definded Networking, SDN）最初来源于2008年左右在加州大学伯克利分校和斯坦福大学的研究工作，而后演化成为一种新型的计算机网络。[1] SDN允许网络管理员通过对低层功能的抽象来管理网络服务。具体实现是通过将决定流量从如何发送的系统（控制平面）从底层转发流量到指定目的的系统（数据平面）分离开来。这项技术的发明者们和系统的供应商们认为SDN可以达到简化网络的目的。[2]</p>
-
-	</article>
-    <footer>
-        <a href='http://nanshu.wang/post/2013-10-22'><nobr>Read more →</nobr></a>
+        <a href='http://localhost:1313/post/2015-03-22'><nobr>Read more →</nobr></a>
     </footer>
 </article>
 
