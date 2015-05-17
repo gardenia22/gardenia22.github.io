@@ -256,9 +256,10 @@ your code here.
 
 &lt;p&gt;第二种方法比较简单，在&lt;code&gt;layouts/partials/header_includes.html&lt;/code&gt;中加上：&lt;/p&gt;
 
-&lt;p&gt;&lt;script src=&#34;https://yandex.st/highlightjs/8.0/highlight.min.js&#34;&gt;&lt;/script&gt;
-  &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yandex.st/highlightjs/8.0/styles/default.min.css&#34;&gt;
-  &lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script src=&amp;quot;https://yandex.st/highlightjs/8.0/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://yandex.st/highlightjs/8.0/styles/default.min.css&amp;quot;&amp;gt;
+&amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这里使用了&lt;a href=&#34;http://yandex.ru/&#34;&gt;Yandex&lt;/a&gt;的&lt;a href=&#34;http://highlightjs.org/&#34;&gt;Highlight.js&lt;/a&gt;。&lt;/p&gt;
 
@@ -397,6 +398,10 @@ cd ..
 &lt;p&gt;将其中的googleapis替换为useso就行了。&lt;/p&gt;
 
 &lt;p&gt;教程会根据我的博客遇到的问题继续更新。&lt;/p&gt;
+
+&lt;h1 id=&#34;增加网站分析:d605f9890f3528aea462ac7515ece633&#34;&gt;增加网站分析&lt;/h1&gt;
+
+&lt;p&gt;使用网站分析可以帮助我们更好地了解博客的读者和流量来源，我使用了&lt;a href=&#34;http://tongji.baidu.com&#34;&gt;百度统计&lt;/a&gt;和&lt;a href=&#34;http://www.google.cn/webmasters/&#34;&gt;谷歌统计&lt;/a&gt;，注册帐号后只需要按照提示在模板中加入相应的script代码就可以了。&lt;/p&gt;
 
 &lt;h1 id=&#34;参考:d605f9890f3528aea462ac7515ece633&#34;&gt;参考&lt;/h1&gt;
 
