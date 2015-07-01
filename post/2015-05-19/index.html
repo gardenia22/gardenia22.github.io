@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="keywords" content="机器学习, , 最优化, ">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content="机器学习中的最优化问题 : nanshu.wang"/>
+<meta property="og:site_name" content="nanshu wang blog"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="http://localhost:1313/post/2015-05-19">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-05-19"/>
+<meta property="article:modified_time" content="2015-05-19"/>
+
+
+
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="">
+<meta property="article:tag" content="最优化">
+
+
+
+
+
+    <base href="http://localhost:1313">
+    <title> 机器学习中的最优化问题 - nanshu.wang </title>
+    <link rel="canonical" href="http://localhost:1313/post/2015-05-19">
+    
+
+    <link href='http://fonts.useso.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/css/style.css">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?a79535ca63291dc820e3ecefa615aad1";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+	<nav id="nav">
+	<div id="title"><a href="/">Nanshu Wang</a></div>
+    <div><a href=mailto: nanshu.wang@gmail.com target="_blank" class="mailto"> </span> <span class="icon-mail"></span>gardenia22</a></div>
+	</nav>
+    <nav id="nav">
+    	        <ul id="mainnav">
+            <li>
+                <a href="/蘅芜/">
+                <span class="icon"> <i aria-hidden="true" class="icon-pencil"></i></span>
+                <span> 蘅芜 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/潇湘/">
+                <span class="icon"> <i aria-hidden="true" class="icon-quill"></i></span>
+                <span> 潇湘 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/观叹/">
+                <span class="icon"> <i aria-hidden="true" class="icon-leaf"></i></span>
+                <span> 观叹 </span>
+            </a>
+            </li>
+            <li>
+            <a href="/about">
+                <span class="icon"> <i aria-hidden="true" class="icon-heart"></i></span>
+                <span> 关于 </span>
+            </a>
+            </li>
+        </ul>
+
+    </nav>
+    <nav id="nav">
+       	        <ul id="social">
+            
+            <li id="share">
+                <span class="title"> 友链 </span>
+                <div class="dropdown share">
+                    <ul class="social">
+                      <li> <a href="http://xgezhang.com" target="_blank" title="xge技术博客" class="twitter">xge</a> </li>
+                      <li> <a href="http://spf13.com" target="_blank" title="spf13 is Steve Francis" class="facebook">spf13</a> </li>
+                      <li> <a href="http://libaier.net" target="_blank" title="Libaier" class="rss">Libaier</a> </li>
+                      <li> <a href="http://read.douban.com/column/195295/" target="_blank" title="100个故事" class="douban">一百个故事</a></li>
+                      <li> <a href="http://zhangwenli.com/blog/" target="_blank" title="羡辙杂俎" class="yangzhe">羡辙杂俎</a></li>
+                    </ul>
+                <span class="icon icon-bubbles"> </span> <span class="subcount"></span> </div>
+            </li>
+    
+            <li id="follow">
+                <span class="title"> 驻留地 </span>
+                <div class="dropdown follow">
+                    <ul class="social">
+                        
+
+                        <li> <a href="http://weibo.com/gardenia22/" target="_blank" title="微博" class="weibo">微博</a> </li>
+                        <li> <a href="http://www.douban.com/people/gardenia22" target="_blank"
+                        title="豆瓣" class="douban">豆瓣</a> </li>
+                        <li> <a href="http://www.zhihu.com/people/gardenia" target="_blank" title="知乎" class="zhihu">知乎</a> </li>
+                        <li> <a href="http://github.com/gardenia22" target="_blank" title="GitHub" class="github">GitHub</a> </li>                         
+                        <li> <a href="http://www.facebook.com/gardenia.nanshu.wang" target="_blank" title="Facebook" class="facebook"> Facebook</a></li>
+                        <li> <a href="http://instagram.com/ainedrag22" target="_blank" title="Instagram" class="instagram">Instagram</a> </li>
+                                                                       
+                        
+                    </ul>
+                <span class="icon icon-rocket"> </span> <span class="subcount"></span> </div>
+            </li>
+
+        </ul>
+
+	</nav>
+</header>
+
+
+
+<section id="main">
+  <h1 itemprop="name" >机器学习中的最优化问题</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Tue May 19, 2015 </h4>
+          
+        </section>
+        
+        <ul id="tags">
+          
+            <li> <a href="http://localhost:1313/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a> </li>
+          
+            <li> <a href="http://localhost:1313/tags/"></a> </li>
+          
+            <li> <a href="http://localhost:1313/tags/%E6%9C%80%E4%BC%98%E5%8C%96">最优化</a> </li>
+          
+        </ul>
+    </div>
+
+</aside>
+
+<meta itemprop="wordCount" content="295">
+<meta itemprop="datePublished" content="2015-05-19">
+<meta itemprop="url" content="http://localhost:1313/post/2015-05-19">
+
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           
+
+<p>最优化问题是机器学习中很重要的一部分，事实上机器学习中的学习算法的本质就是一个最优化问题。比如我们都熟悉的线性回归问题，使用最小二乘法来构建目标函数，参数学习的过程就是最优化这个目标函数的过程。而机器学习的实际问题中，数据的维度通常很高，目标函数中的参数很多，每一步迭代的计算量也较大，因此机器学习问题中对于数据量较大的问题通常采用单次迭代计算量较小的算法。比如Stochastic回归，就是降低了单次迭代的计算量，从而可以处理大规模的数据学习问题。因此，和最优化问题不同的是，机器学习中最优化目标函数根本不是其最终目标。机器学习的定义是：&rdquo;A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.&ldquo;(Tom Mitchell)。 从这个定义中可以知道，机器学习的目标是提高经验E，因此，机器学习需要考虑到模型泛化，训练时间等等问题，这和单纯地求解最优化问题实际上构成了一个trade-off的问题。《Optimization for Machine Learning》一书中的第十三章The tradeoffs of Large-Scale Learning讨论了大规模数据的机器学习问题中的一些tradeoffs，本文是阅读这部分内容后的一个总结。</p>
+
+<p>这篇文章的作者是Léon Bottou和Olivier Bousquet。Léon Bottou提出了Stochastic gradient descent这个最基本的机器学习算法，这个算法本身就是一种近似最优化算法，他也是DjVu图像压缩技术的发明者之一。Olivier Bousquet任职于Google，从事机器学习的相关研究。</p>
+
+<p>这篇文章主要提出了一种理论框架，来衡量机器学习中近似最优化方法的效果。分析结论发现，对于小规模数据和大规模数据，近似最优化算法的tradeoff是不相同的。</p>
+
+<p>机器学习算法的计算复杂度很长一段时间被忽略了，但随着训练集大小的增长，计算复杂度成为了一个瓶颈。作者给出了两个例子：</p>
+
+<ol>
+<li>数据挖掘的竞争优势在于分析描述我们这个可计算社会的大规模数据。每一台电脑都产生数据，因此数据量是和现有的计算能力成正比的。因此我们需要时间复杂度和数据总量增长成正比的一种机器学习方法。</li>
+<li>人工智能试图模仿人类的认知能力。我们的生理大脑只需消耗有限的糖分和水分，就能从我们的六个感官产生的数据中有效地学习。这个发现意味着存在一种学习算法，其计算时间和数据总量也是线性关系。</li>
+</ol>
+
+<p>基于以上两点，很有可能近似最优化算法对于机器学习问题已经足够用了。文章第一部分提出了一种分解测试误差的方法，增加了一项代表近似最优化误差的项。在小规模学习问题中，这种分解也就导致了近似误差和估计误差之间的一个trade-off。在大规模学习问题中，需要trade-off的更加复杂，因为要考虑到计算复杂度的问题。第二部分探讨了大规模学习问题对于各种学习算法原型的渐进性质。这部分显示了最优的最优化算法对于得到最优的机器学习结果可能并不需要。</p>
+
+<h1 id="一-近似最优化:3461546ae96d9376984b841eaed7fa7f">一、近似最优化</h1>
+
+<h2 id="1-过量误差分解:3461546ae96d9376984b841eaed7fa7f">1. 过量误差分解</h2>
+
+<p>考虑训练集由输入输出对$(x,y)\in X \times Y$组成，并且满足分布$P(x,y)$。其中$P(y|x)$表示输入$x$和输出$y$之间的未知概率关系。用损失函数$l(\hat{y},y)$表示预测值$\hat{y}$和真实输出$y$之间的差异。那么我们的衡量基准是能够最小化期望的损失的函数$f^*$：</p>
+
+<p>$$E(f) = \int l(\hat{y},y)dP(x,y) = \mathbb{E}[l(f(x),y)]$$</p>
+
+<p>$$f^*(x) = \underset{x}{\operatorname{argmin}} \mathbb{E}[l(\hat{y},y)]$$</p>
+
+<p>虽然分布$P(x,y)$未知，但我们可以认为每个样本的出现都是独立等概率的，那么定义经验损失：</p>
+
+<div>
+$$E_n(f) = \frac1n \sum_{i=1}^n l(f(x_i),y_i) = \mathbb{E}_n[l(f(x),y)]$$
+</div>
+
+<p>设F是预测函数的集合，定义$f_n = argmin_{f \in F}E_n(f)$，即$f_n$是使经验损失最小的那个预测函数。定义$f^*_F = argmin_{f \in F}E(f)$，即$f^*_F$是F中使期望损失最小的预测函数。注意$f^*_F$和$f^*$是不同的，因为$f^*$并不属于函数集合F。那么可以将过量误差进行一下分解：</p>
+
+<div>
+$$\mathbb{E}[E(f_n)-E(f^*)] = \mathbb{E}[E(f^*_F)-E(f^*)]+\mathbb{E}[E(f_n)-E(f^*_F)] = \epsilon_{app} + \epsilon_{est}$$
+</div>
+
+<p>其中$\epsilon_{app}$表示近似误差(approximation error)，用来估计F集合的函数和最优化函数$f^*$的近似程度。$\epsilon_{est}$表示估计误差(estimation error)，用来表示假设样本独立等概率出现带来的误差。</p>
+
+<h2 id="2-增加最优化误差项:3461546ae96d9376984b841eaed7fa7f">2. 增加最优化误差项</h2>
+
+<p>在实际中，通过最优化$E_n(f)$来找到$f_n$的计算量很大。实际中很可能并没有真正求解出$f_n$，而是得到一个近似解$\check{f}_n$。比如，可以在最优化求解时，在目标函数收敛之前就停止计算。</p>
+
+<div>
+$$E_n(\check(f)_n) < E_n(f_n) + \rho$$
+</div>
+
+<p>这里$\rho$是一个提前定义的容忍度(最优化精度)。那么，可以增加一项最优化误差$\epsilon_{opt} = \mathbb{E}[E(\check(f)_n)-E(f_n)]$。那么从$\check{f}_n$到$f^*$的误差可以分解成三部分：</p>
+
+<div>
+$$\epsilon = \mathbb{E}[E(f^*_F)-E(f^*)]+\mathbb{E}[E(f_n)-E(f*_F)] + \mathbb{E}[E(\check(f)_n)-E(f_n)]= \epsilon_{app} + \epsilon_{est} + \epsilon_{opt}$$
+</div>
+
+<p>最优化误差受近似最优化求解的影响，和$\rho$的大小有关。</p>
+
+<h2 id="3-近似误差-估计误差和最优化误差的trade-off:3461546ae96d9376984b841eaed7fa7f">3. 近似误差，估计误差和最优化误差的trade-off</h2>
+
+<p>以上对误差的分解导致了更为复杂的trade-off情形。其中包括了三个变量和两个约束。三个变量分别是函数集合$F$的大小，最优化精度$\rho$和训练样本数$n$；两个约束是训练集样本数的最大值和训练时间的最大值。</p>
+
+<p>这里训练样本数$n$也是一个其中一个变量，因为在实际中我们可以只选择一部分样本进行训练，从而可以再分配的时间内解决最优化问题。下表总结了三个变量和三种不同误差之间的数量关系。</p>
+
+<p>注意这个最优化问题必须考虑到最大样本数和最大时间的约束。</p>
+
+<ul>
+<li>对于小规模训练问题，其约束在于最大样本数。因为训练时间没有显示，因此最优化问题也容易求解，因此最优化误差会很小。那么过量误差主要是由近似误差和估计误差造成的。</li>
+<li>对于大规模训练问题，其约束在于最大训练时间。在近似最优化的过程中，选择一个恰当的最优化精度$\rho&gt;0$，不在精确求解最优化问题上浪费过多的时间。这样可能会使得到的训练模型有更好地泛化能力，因为这样可以在分配的时间内处理更多地训练样本。</li>
+</ul>
+
+<h1 id="二-大规模学习的渐进性质:3461546ae96d9376984b841eaed7fa7f">二、大规模学习的渐进性质</h1>
+
+<h2 id="1-估计误差和最优化误差的收敛性质:3461546ae96d9376984b841eaed7fa7f">1. 估计误差和最优化误差的收敛性质</h2>
+
+<p>这里假设$F$中的预测函数是参数$w \in \mathbb{R}^d$。那么</p>
+
+<div>
+$$\mathbb{E}[sup_{f \in F}|E(f)-E_n(f)|] \leq c \sqrt{\frac dn}$$
+</div>
+
+<p>这里的期望值是针对训练集的随机选择。那么对于估计误差，其上界为：</p>
+
+<div
+$$\Epsilon_{est} \leq 2 \mathbb{E}[sup_{f \in F}|E(f)-E_n(f)|] \leq c \sqrt{\frac dn}$$
+</div>
+
+<p>对于估计误差和最优化误差同样也有一个上界：</p>
+
+<div>
+$$\epsilon_{est} + \epsilon_{opt} \leq c \sqrt{\frac dn} + \rho + 0 + c \sqrt{\frac dn} = c(\rho + \sqrt{\frac dn})$$
+</div>
+
+<p>当损失函数$l(\hat y,y)$在对任意$\tau &gt;0$时，有$1-E^{-\tau}$的概率为正时，有</p>
+
+<div>
+$$sup_{f \in F} \frac {E(f)-E_n(f)}{\sqrt{E(f)}} \leq c\sqrt{\frac dn \log {\frac nd} + \frac {\tau} n}$$
+</div>
+
+<p>那么，可以得到估计误差和最优化误差的一个更好地上界估计</p>
+
+<div>
+$$\epsilon_{est}+\epsilon_{opt} \leq \mathbb{E}[E(\check(f)_n)] = c(\rho + \frac dn \log \frac nd+ \rho)$$
+</div>
+
+<h2 id="2-梯度最优化算法:3461546ae96d9376984b841eaed7fa7f">2. 梯度最优化算法</h2>
+
+<p>假设损失函数为凸函数并且二阶连续可微。凸函数的性质可以保证所求目标函数只有一个最优解。</p>
+
+<p>这篇文章的讨论根本成本函数的梯度迭代更新参数$w(t)$。</p>
+
+<ul>
+<li>梯度下降法 Gradient Descent (GD)</li>
+</ul>
+
+<div>
+$$w(t+1) = w(t)-\eta \frac{\delta C}{\delta w}(w(t)) = w(t) - \eta \frac 1n \sum_{i=1}^{n} \frac{\delta}{\delta w}l(f_{w(t)(x_i),y_i})$$
+</div>
+
+<p>其中$\eta&gt;0$，梯度下降收敛速度是线性的。当$\eta = 1/\lambda_{max}$时，算法需要迭代$O(k \log (1/\rho))$次达到精度$\rho$。精确的迭代次数取决于初始参数的设定。</p>
+
+<ul>
+<li>二阶梯度下降法Second Order Gradient Descent (2GD)</li>
+</ul>
+
+<div>
+$$w(t+1) = w(t)- H^{-1} \frac {\delta C}{\delta w}(w(t)) = w(t) - \frac 1n H^{-1} \sum_{i=1}^{n} \frac{\delta}{\delta w}l(f_{w(t)(x_i),y_i})$$
+</div>
+
+<p>其中，$H^{-1}$是Hessian矩阵的逆矩阵。二次梯度下降法比牛顿法要好，因为我们并不计算每次迭代时的Hessian矩阵，而是简单假设我们提前知道了最有点处的Hessian矩阵。二次梯度下降法是一种超线性的最优化算法，但拥有二次收敛速度。当成本函数是二次时，只需要一次迭代就能到达最优解。更普遍的情况下，需要$O(\log \log (1/\rho))$次迭代就能达到精度$\rho$。</p>
+
+<ul>
+<li>随机梯度下降法Stochastic Gradient Descent (SGD)</li>
+</ul>
+
+<p>随机梯度下降法每次迭代选择一个随机的样本，仅仅根据这一个样本更新参数$w$。</p>
+
+<div>
+$$w(t+1) = w(t) - \frac {\eta}t \frac {\delta}{\delta w} l(f_{w(t)(x_t),y_t})$$
+</div>
+
+<p>随机梯度下降法需要迭代$vk^2/\rho + o(1/\rho)$次达到精度$\rho$。随机梯度下降的收敛性受每次迭代的随机样本选择所产生的噪声的限制。参数的初始值和训练及样本数都不能影响迭代次数的上界。当训练集很大时，也有可能没有遍历完所有的训练集就可以达到精度$\rho$。这实际上是一种泛化的上界。</p>
+
+<ul>
+<li>二阶随机梯度下降法Second Order Stochastic Gradient Descent (2SGD)</li>
+</ul>
+
+<p>二阶随机梯度下降法将$\eta$替换为Hessian矩阵的逆矩阵。</p>
+
+<div>
+$$w(t+1) = w(t) - \frac 1t H^{-1} \frac {\delta}{\delta w} l(f_{w(t)(x_t),y_t})$$
+</div>
+
+<p>和标准的梯度下降法不一样，使用二阶信息并没有影响$\rho$对收敛性的影响，不过优化了收敛的常数项。达到精度$\rho$的迭代次数为$v/p + p(1/p)$</p>
+
+<p>下表比较了四种算法的渐进性质。其中n表示训练集样本数，d表示参数的维度。</p>
+
+<p>表中的四列分别表示了这四种算法的单步迭代时间，到达精度$\rho$的迭代次数，到达精度$\rho$的时间，使过量误差$\epsilon$小于$c(\epsilon_{app}+\epsilon)$。</p>
+
+<p>结果表示，对于大规模学习系统的泛化性能，取决于估计的统计性质和最优化算法的计算性质。</p>
+
+<ul>
+<li>SGD和2SGD算法与估计速率$\alpha$无关。当估计速率$\alpha$的值并不好时，没必要对最优化问题精确求解。那么可以节约下来时间去处理更多的训练集，而这已经被认为是一种提升模型泛化能力的方法。</li>
+<li>二阶算法对$\epsilon$的提升作用很少。虽然超线性2GD算法优化了对数项，但四种算法都主要受$(1/\epsilon)$的影响。</li>
+<li>随机算法(SGD,2SGD)虽然是最差的优化算法，但却有最好的泛化能力。</li>
+</ul>
+
+<h1 id="三-结论:3461546ae96d9376984b841eaed7fa7f">三、结论</h1>
+
+<p>将训练集数量和计算时间纳入考虑，发现了小规模学习系统和大规模学习系统的泛化能力之间存在着质的不同。大规模学习系统的泛化性质同时取决于估计的统计性质和最优化算法的计算性质。</p>
+
+<h1 id="四-读后感:3461546ae96d9376984b841eaed7fa7f">四、读后感</h1>
+
+<p>这篇论文介绍了在大规模机器学习的问题中，非精确的最优化算法反而比精确的最优化算法更加有效，因为其一可以提升模型的泛化能力，其二可以使问题在更快的时间内求解。这也说明最优化算法在实际应用中的形式不是固定的，需要根据问题的特殊性来找到最优的解法。机器学习问题虽然最终形式是作为最优化问题呈现，但其最终目标并不是求解最优化问题，而是面向一个现实问题，需要考虑到问题的规模、复杂性、时间成本等等因素。因此，不能简单地将最优化问题和机器学习问题等同起来，特别是面对在实际问题，要综合考虑各种因素。</p>
+
+        </article>
+  </div>
+</section>
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'nanshuwang';
+    var disqus_identifier = 'http:\/\/localhost:1313\/post\/2015-05-19';
+    var disqus_title = '机器学习中的最优化问题';
+    var disqus_url = 'http:\/\/localhost:1313\/post\/2015-05-19';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
+
+<footer>
+  <div>
+    <p>
+    &copy; 2015 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Nanshu Wang.</span></span>
+        Powered by <a href="http://hugo.spf13.com">Hugo</a>.
+        Theme by <a href="http://spf13.com">Steve Francia</a>.
+    </p>
+  </div>
+</footer>
+<script type="text/javascript">
+(function(){var j=function(a,b){return window.getComputedStyle?getComputedStyle(a).getPropertyValue(b):a.currentStyle[b]};var k=function(a,b,c){if(a.addEventListener)a.addEventListener(b,c,false);else a.attachEvent('on'+b,c)};var l=function(a,b){for(key in b)if(b.hasOwnProperty(key))a[key]=b[key];return a};window.fitText=function(d,e,f){var g=l({'minFontSize':-1/0,'maxFontSize':1/0},f);var h=function(a){var b=e||1;var c=function(){a.style.fontSize=Math.max(Math.min(a.clientWidth/(b*10),parseFloat(g.maxFontSize)),parseFloat(g.minFontSize))+'px'};c();k(window,'resize',c)};if(d.length)for(var i=0;i<d.length;i++)h(d[i]);else h(d);return d}})();
+fitText(document.getElementById('title'), 1)
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+</body>

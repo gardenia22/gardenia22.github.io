@@ -105,6 +105,7 @@
                       <li> <a href="http://spf13.com" target="_blank" title="spf13 is Steve Francis" class="facebook">spf13</a> </li>
                       <li> <a href="http://libaier.net" target="_blank" title="Libaier" class="rss">Libaier</a> </li>
                       <li> <a href="http://read.douban.com/column/195295/" target="_blank" title="100个故事" class="douban">一百个故事</a></li>
+                      <li> <a href="http://zhangwenli.com/blog/" target="_blank" title="羡辙杂俎" class="yangzhe">羡辙杂俎</a></li>
                     </ul>
                 <span class="icon icon-bubbles"> </span> <span class="subcount"></span> </div>
             </li>
@@ -162,7 +163,7 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="6099">
+<meta itemprop="wordCount" content="5311">
 <meta itemprop="datePublished" content="2015-03-22">
 <meta itemprop="url" content="http://localhost:1313/post/2015-03-22">
 
@@ -173,19 +174,19 @@
 
 <p>翻译自：<a href="https://www.python.org/dev/peps/pep-0008/">PEP 8 - Style Guide for Python Code</a></p>
 
-<h1 id="介绍:d170b02105789167c0bcdde4c2997e31">介绍</h1>
+<h1 id="介绍-introduction:d170b02105789167c0bcdde4c2997e31">介绍(Introduction)</h1>
 
 <p>这篇文档说明了组成Python主要现行版中标准库的Python代码所遵守的一个规范。请参考用于实现Python的C代码风格的指南信息PEP。</p>
 
-<p>这篇文档和PEP 257(Docstring Conventions)都改编自Guido(注：Python之父)最早的Python风格指南文章，并加入了Barry的风格指南里的内容。</p>
+<p>这篇文档和PEP 257(Docstring Conventions)都改编自Guido(译注：Python之父)最早的Python风格指南文章，并加入了Barry的风格指南里的内容。</p>
 
 <p>语言自身在发生着改变，随着新的规范的出现和旧规范的过时，代码风格也会随着时间演变。</p>
 
 <p>很多项目都有自己的一套风格指南。若和本指南有任何冲突，应该优先考虑其项目相关的那套指南。</p>
 
-<h1 id="保持盲目的一致是头脑简单的表现:d170b02105789167c0bcdde4c2997e31">保持盲目的一致是头脑简单的表现</h1>
+<h1 id="保持盲目的一致是头脑简单的表现-a-foolish-consistency-is-the-hobgoblin-of-little-minds:d170b02105789167c0bcdde4c2997e31">保持盲目的一致是头脑简单的表现(A Foolish Consistency is the Hobgoblin of Little Minds)</h1>
 
-<p>(语出自Ralph Waldo Emerson, 原文：A Foolish Consistency is the Hobgoblin of Little Minds，Hobgolin意指民间故事中友好但常制造麻烦的动物角色。)</p>
+<p>(注：标题语出自Ralph Waldo Emerson, Hobgolin意指民间故事中友好但常制造麻烦的动物角色。)</p>
 
 <p>Guido的一个重要观点是代码被读的次数远多于被写的次数。这篇指南意在于提高代码的可读性，使浩瀚如烟的Python代码风格能保持一致。正如PEP 20那首《Zen of Python》的小诗里所说的：“可读性很重要(Readability counts)”。</p>
 
@@ -207,55 +208,50 @@
 <li><p>代码需要和更老的版本的Python保持兼容，而老版本的Python不支持风格指南所推荐的特性。</p></li>
 </ol>
 
-<h1 id="code-lay-out:d170b02105789167c0bcdde4c2997e31">Code lay-out</h1>
+<h1 id="代码设计-code-lay-out:d170b02105789167c0bcdde4c2997e31">代码设计(Code lay-out)</h1>
 
-<h2 id="indentation:d170b02105789167c0bcdde4c2997e31">Indentation</h2>
+<h2 id="缩进-indentation:d170b02105789167c0bcdde4c2997e31">缩进(Indentation)</h2>
 
-<p>Use 4 spaces per indentation level.</p>
+<p>每个缩进级别采用4个空格。</p>
 
-<p>Continuation lines should align wrapped elements either vertically
-using Python&rsquo;s implicit line joining inside parentheses, brackets and
-braces, or using a <em>hanging indent</em> [#fn-hi]_.  When using a hanging
-indent the following considerations should be applied; there should be
-no arguments on the first line and further indentation should be used
-to clearly distinguish itself as a continuation line.</p>
+<p>连续行应该将包装的元素要么采用Python隐式续行垂直对齐于圆括号、方括号和花括号，要么采用*悬挂缩进(hanging indent)*。采用悬挂缩进时需考虑以下两点：第一行不应该包括参数，并且在续行中需要再缩进一级以便清楚表示。</p>
 
-<p>Yes::</p>
+<p>正确的例子::</p>
 
-<pre><code># Aligned with opening delimiter.
+<pre><code># 同开始分界符(左括号)对齐
 foo = long_function_name(var_one, var_two,
                          var_three, var_four)
 
-# More indentation included to distinguish this from the rest.
+# 续行多缩进一级以同其他代码区别
 def long_function_name(
         var_one, var_two, var_three,
         var_four):
     print(var_one)
 
-# Hanging indents should add a level.
+# 悬挂缩进需要多缩进一级
 foo = long_function_name(
     var_one, var_two,
     var_three, var_four)
 </code></pre>
 
-<p>No::</p>
+<p>错误的例子::</p>
 
-<pre><code># Arguments on first line forbidden when not using vertical alignment.
+<pre><code># 采用垂直对齐时第一行不应该有参数
 foo = long_function_name(var_one, var_two,
     var_three, var_four)
 
-# Further indentation required as indentation is not distinguishable.
+# 续行并没有被区分开，因此需要再缩进一级
 def long_function_name(
     var_one, var_two, var_three,
     var_four):
     print(var_one)
 </code></pre>
 
-<p>The 4-space rule is optional for continuation lines.</p>
+<p>对于续行来说，4空格的规则可以不遵守。</p>
 
-<p>Optional::</p>
+<p>同样可行的例子::</p>
 
-<pre><code># Hanging indents *may* be indented to other than 4 spaces.
+<pre><code># 悬挂缩进可以不采用4空格的缩进方法。
 foo = long_function_name(
   var_one, var_two,
   var_three, var_four)
@@ -263,38 +259,29 @@ foo = long_function_name(
 
 <p>.. _<code>multiline if-statements</code>:</p>
 
-<p>When the conditional part of an <code>if</code>-statement is long enough to require
-that it be written across multiple lines, it&rsquo;s worth noting that the
-combination of a two character keyword (i.e. <code>if</code>), plus a single space,
-plus an opening parenthesis creates a natural 4-space indent for the
-subsequent lines of the multiline conditional.  This can produce a visual
-conflict with the indented suite of code nested inside the <code>if</code>-statement,
-which would also naturally be indented to 4 spaces.  This PEP takes no
-explicit position on how (or whether) to further visually distinguish such
-conditional lines from the nested suite inside the <code>if</code>-statement.
-Acceptable options in this situation include, but are not limited to::</p>
+<p><code>多行if语句</code></p>
 
-<pre><code># No extra indentation.
+<p>如果<code>if</code>语句太长，需要用多行书写，2个字符(例如,<code>if</code>)加上一个空格和一个左括号的组合刚好是4空格的缩进，但这对多行条件语句的续行是没用的。因为这会和<code>if</code>语句中嵌套的其他的缩进的语句产生视觉上的冲突。这份PEP中并没有做出明确的说明应该怎样来区分条件语句和<code>if</code>语句中所嵌套的语句。以下几种方法都是可行的，但不仅仅只限于这几种方法：</p>
+
+<pre><code># 不采用额外缩进
 if (this_is_one_thing and
     that_is_another_thing):
     do_something()
 
-# Add a comment, which will provide some distinction in editors
+# 增加一行注释，在编辑器中显示时能有所区分
 # supporting syntax highlighting.
 if (this_is_one_thing and
     that_is_another_thing):
     # Since both conditions are true, we can frobnicate.
     do_something()
 
-# Add some extra indentation on the conditional continuation line.
+# 在条件语句的续行增加一级缩进
 if (this_is_one_thing
         and that_is_another_thing):
     do_something()
 </code></pre>
 
-<p>The closing brace/bracket/parenthesis on multi-line constructs may
-either line up under the first non-whitespace character of the last
-line of list, as in::</p>
+<p>多行的结束右圆/方/花括号可以单独一行书写，和上一行的缩进对齐：</p>
 
 <pre><code>my_list = [
     1, 2, 3,
@@ -306,8 +293,7 @@ result = some_function_that_takes_arguments(
     )
 </code></pre>
 
-<p>or it may be lined up under the first character of the line that
-starts the multi-line construct, as in::</p>
+<p>也可以和多行开始的第一行的第一个字符对齐：</p>
 
 <pre><code>my_list = [
     1, 2, 3,
@@ -319,74 +305,46 @@ result = some_function_that_takes_arguments(
 )
 </code></pre>
 
-<h2 id="tabs-or-spaces:d170b02105789167c0bcdde4c2997e31">Tabs or Spaces?</h2>
+<h2 id="tab还是空格-tab-or-space:d170b02105789167c0bcdde4c2997e31">Tab还是空格？(Tab or space?)</h2>
 
-<p>Spaces are the preferred indentation method.</p>
+<p>推荐使用空格来进行缩进。</p>
 
-<p>Tabs should be used solely to remain consistent with code that is
-already indented with tabs.</p>
+<p>Tab应该只在现有代码已经使用tab进行缩进的情况下使用，以便和现有代码保持一致。</p>
 
-<p>Python 3 disallows mixing the use of tabs and spaces for indentation.</p>
+<p>Python 3不允许tab和空格混合使用。</p>
 
-<p>Python 2 code indented with a mixture of tabs and spaces should be
-converted to using spaces exclusively.</p>
+<p>Python 2的代码若有tab和空格混合使用的情况，应该把tab全部转换为只有空格。</p>
 
-<p>When invoking the Python 2 command line interpreter with
-the <code>-t</code> option, it issues warnings about code that illegally mixes
-tabs and spaces.  When using <code>-tt</code> these warnings become errors.
-These options are highly recommended!</p>
+<p>当使用命令行运行Python 2时，使用<code>-t</code>选项，会出现非法混用tab和空格的警告。当使用<code>-tt</code>选项时，这些警告会变成错误。强烈推荐使用这些选项！</p>
 
-<h2 id="maximum-line-length:d170b02105789167c0bcdde4c2997e31">Maximum Line Length</h2>
+<h2 id="每行最大长度-maximum-line-length:d170b02105789167c0bcdde4c2997e31">每行最大长度(Maximum Line Length)</h2>
 
-<p>Limit all lines to a maximum of 79 characters.</p>
+<p>将所有行都限制在79个字符长度以内。</p>
 
-<p>For flowing long blocks of text with fewer structural restrictions
-(docstrings or comments), the line length should be limited to 72
-characters.</p>
+<p>对于连续的大段文字（文档字符串(docstring)或注释），其结构上的限制更少，这些行应该被限制在72个字符长度内。</p>
 
-<p>Limiting the required editor window width makes it possible to have
-several files open side-by-side, and works well when using code
-review tools that present the two versions in adjacent columns.</p>
+<p>限制编辑器的窗口宽度能让好几个文件同时打开在屏幕上显示，在使用代码评审(code review)工具时在两个相邻窗口显示两个版本的代码效果很好。</p>
 
-<p>The default wrapping in most tools disrupts the visual structure of the
-code, making it more difficult to understand. The limits are chosen to
-avoid wrapping in editors with the window width set to 80, even
-if the tool places a marker glyph in the final column when wrapping
-lines. Some web based tools may not offer dynamic line wrapping at all.</p>
+<p>很多工具的默认自动换行会破坏代码的结构，使代码更难以理解。在窗口大小设置为80个字符的编辑器中，为避免自动换行而需要限制每行字符长度，即使编辑器可能在换行时在最后一列会放置一个记号。一些基于web的工具可能根本没有自动换行的功能。</p>
 
-<p>Some teams strongly prefer a longer line length.  For code maintained
-exclusively or primarily by a team that can reach agreement on this
-issue, it is okay to increase the nominal line length from 80 to
-100 characters (effectively increasing the maximum length to 99
-characters), provided that comments and docstrings are still wrapped
-at 72 characters.</p>
+<p>一些团队强烈偏好更长的行长度。当代码仅仅只由一个团队维护时，可以达成一致让行长度增加到80到100字符(实际上最大行长是99字符)，注释和文档字符串仍然是以72字符换行。</p>
 
-<p>The Python standard library is conservative and requires limiting
-lines to 79 characters (and docstrings/comments to 72).</p>
+<p>Python标准库比较传统，将行长限制在79个字符以内（文档字符串/注释为72个字符）。</p>
 
-<p>The preferred way of wrapping long lines is by using Python&rsquo;s implied
-line continuation inside parentheses, brackets and braces.  Long lines
-can be broken over multiple lines by wrapping expressions in
-parentheses. These should be used in preference to using a backslash
-for line continuation.</p>
+<p>一种推荐的换行方式是利用Python圆括号、方括号和花括号中的隐式续行。长行可以通过在括号内换行来分成多行。应该最好加上反斜杠来区别续行。</p>
 
-<p>Backslashes may still be appropriate at times.  For example, long,
-multiple <code>with</code>-statements cannot use implicit continuation, so
-backslashes are acceptable::</p>
+<p>有时续行只有反斜杠才适用。例如，长的多个<code>with</code>语句不能采用隐式续行，只能接受反斜杠表示换行：</p>
 
 <pre><code>with open('/path/to/some/file/you/want/to/read') as file_1, \
      open('/path/to/some/file/being/written', 'w') as file_2:
     file_2.write(file_1.read())
 </code></pre>
 
-<p>(See the previous discussion on <code>multiline if-statements</code>_ for further
-thoughts on the indentation of such multiline <code>with</code>-statements.)</p>
+<p>（参照前面关于 <code>多行if语句</code>的讨论来进一步考虑这里<code>with</code>语句的缩进。）</p>
 
-<p>Another such case is with <code>assert</code> statements.</p>
+<p>另一个这样的例子是<code>assert</code>语句。</p>
 
-<p>Make sure to indent the continued line appropriately.  The preferred
-place to break around a binary operator is <em>after</em> the operator, not
-before it.  Some examples::</p>
+<p>要确保续行的缩进适当。逻辑运算符附近的换行处最好是在运算符*之后*，而不是在其之前。来看一些例子：</p>
 
 <pre><code>class Rectangle(Blob):
 
@@ -404,58 +362,38 @@ before it.  Some examples::</p>
                       color, emphasis, highlight)
 </code></pre>
 
-<h2 id="blank-lines:d170b02105789167c0bcdde4c2997e31">Blank Lines</h2>
+<h2 id="空行-blank-line:d170b02105789167c0bcdde4c2997e31">空行(Blank line)</h2>
 
-<p>Separate top-level function and class definitions with two blank
-lines.</p>
+<p>使用2个空行来分隔最高级的函数(function)和类(class)定义。</p>
 
-<p>Method definitions inside a class are separated by a single blank
-line.</p>
+<p>使用1个空行来分隔类中的方法(method)定义。</p>
 
-<p>Extra blank lines may be used (sparingly) to separate groups of
-related functions.  Blank lines may be omitted between a bunch of
-related one-liners (e.g. a set of dummy implementations).</p>
+<p>（尽量少地）使用额外的空行来分隔一组相关的函数。在一系列相关的只有一行的函数之间，空格也可以被省略，比如一组dummy实现。</p>
 
-<p>Use blank lines in functions, sparingly, to indicate logical sections.</p>
+<p>在函数内（尽量少地）使用空行使代码逻辑更清晰。</p>
 
-<p>Python accepts the control-L (i.e. ^L) form feed character as
-whitespace; Many tools treat these characters as page separators, so
-you may use them to separate pages of related sections of your file.
-Note, some editors and web-based code viewers may not recognize
-control-L as a form feed and will show another glyph in its place.</p>
+<p>Python支持control-L（如:^L）换页符作为空格；许多工具将这些符号作为分页符，因此你可以使用这些符号来分页或者区分文件中的相关区域。注意，一些编辑器和基于web的代码预览器可能不会将control-L识别为分页符，而是显示成其他符号。</p>
 
-<h2 id="source-file-encoding:d170b02105789167c0bcdde4c2997e31">Source File Encoding</h2>
+<h2 id="源文件编码-source-file-encoding:d170b02105789167c0bcdde4c2997e31">源文件编码(Source File Encoding)</h2>
 
-<p>Code in the core Python distribution should always use UTF-8 (or ASCII
-in Python 2).</p>
+<p>Python核心发行版中的代码应该一直使用UTF-8（Python 2中使用ASCII）。</p>
 
-<p>Files using ASCII (in Python 2) or UTF-8 (in Python 3) should not have
-an encoding declaration.</p>
+<p>使用ASCII（Python 2）或者UTF-8（Python 3）的文件不应该添加编码声明。</p>
 
-<p>In the standard library, non-default encodings should be used only for
-test purposes or when a comment or docstring needs to mention an author
-name that contains non-ASCII characters; otherwise, using <code>\x</code>,
-<code>\u</code>, <code>\U</code>, or <code>\N</code> escapes is the preferred way to include
-non-ASCII data in string literals.</p>
+<p>再标准库中，只有用作测试目的，或者注释或文档字符串需要提及作者名字不得不使用非ASCII字符时，才能使用非默认的编码。否则，在字符串文字中包括非ASCII数据时，推荐使用<code>\x</code>, <code>\u</code>, <code>\U</code>或<code>\N</code>等转义符。</p>
 
-<p>For Python 3.0 and beyond, the following policy is prescribed for the
-standard library (see PEP 3131): All identifiers in the Python
-standard library MUST use ASCII-only identifiers, and SHOULD use
-English words wherever feasible (in many cases, abbreviations and
-technical terms are used which aren&rsquo;t English). In addition, string
-literals and comments must also be in ASCII. The only exceptions are
-(a) test cases testing the non-ASCII features, and
-(b) names of authors. Authors whose names are not based on the
-latin alphabet MUST provide a latin transliteration of their
-names.</p>
+<p>对于Python 3.0及其以后的版本中，标准库遵循以下原则（参见PEP 3131）：Python标准库中的所有标识符都<strong>必须</strong>只采用ASCII编码的标识符，在可行的条件下也<strong>应当</strong>使用英文词（很多情况下，使用的缩写和技术术语词都不是英文）。此外，字符串文字和注释应该只包括ASCII编码。只有两种例外：
+(a) 测试情况下为了测试非ASCII编码的特性
+(b) 作者名字。作者名字不是由拉丁字母组成的也<strong>必须</strong>提供一个拉丁音译名。</p>
 
-<p>Open source projects with a global audience are encouraged to adopt a
-similar policy.</p>
+<p>鼓励面向全世界的开源项目都采用类似的原则。</p>
 
 <h2 id="imports:d170b02105789167c0bcdde4c2997e31">Imports</h2>
 
 <ul>
-<li><p>Imports should usually be on separate lines, e.g.::</p>
+<li>Imports should usually be on separate lines, e.g.::</li>
+
+<li><p>Imports应该分行写，而不是都写在一行，例如：</p>
 
 <p>Yes: import os
        import sys</p>
@@ -463,7 +401,8 @@ similar policy.</p>
 <p>No:  import sys, os</p></li>
 </ul>
 
-<p>It&rsquo;s okay to say this though::</p>
+<p>It&rsquo;s okay to say this though::
+  但这样写也是可以的：</p>
 
 <pre><code>  from subprocess import Popen, PIPE
 </code></pre>
@@ -471,25 +410,34 @@ similar policy.</p>
 <ul>
 <li>Imports are always put at the top of the file, just after any module
 comments and docstrings, and before module globals and constants.</li>
+<li>Imports应该写在代码文件的开头，位于module注释和文档字符串之后，module全局变量(globals)和常量(constants)声明之前。</li>
 </ul>
 
-<p>Imports should be grouped in the following order:</p>
+<p>Imports should be grouped in the following order:
+  Imports应该按照下面的顺序分组来写：</p>
 
 <ol>
 <li>standard library imports</li>
 <li>related third party imports</li>
 <li>local application/library specific imports</li>
+<li>标准库imports</li>
+<li>相关第三方imports</li>
+<li>本地应用/库的具体imports</li>
 </ol>
 
-<p>You should put a blank line between each group of imports.</p>
+<p>You should put a blank line between each group of imports.
+  不同组的imports之前用空格隔开。</p>
 
-<p>Put any relevant <code>__all__</code> specification after the imports.</p>
+<p>Put any relevant <code>__all__</code> specification after the imports.
+  将任何相关的<code>__all__</code>说明(specification)放在imports之后。</p>
 
 <ul>
-<li><p>Absolute imports are recommended, as they are usually more readable
+<li>Absolute imports are recommended, as they are usually more readable
 and tend to be better behaved (or at least give better error
 messages) if the import system is incorrectly configured (such as
-when a directory inside a package ends up on <code>sys.path</code>)::</p>
+when a directory inside a package ends up on <code>sys.path</code>)::</li>
+
+<li><p>推荐使用绝对(absolute)imports，因为这样通常更易读，在import系统没有正确配置（比如中的路径以<code>sys.path</code>结束）的情况下，也会有更好的表现（或者至少会给出错误信息）：</p>
 
 <p>import mypkg.sibling
 from mypkg import sibling
@@ -498,33 +446,40 @@ from mypkg.sibling import example</p></li>
 
 <p>However, explicit relative imports are an acceptable alternative to
   absolute imports, especially when dealing with complex package layouts
-  where using absolute imports would be unnecessarily verbose::</p>
+  where using absolute imports would be unnecessarily verbose::
+  然而，除了绝对imports，显式的相对imports也是一种可以接受的替代方式。特别是当处理复杂的包布局(package layouts)时，采用绝对imports会显得啰嗦。</p>
 
 <pre><code>from . import sibling
 from .sibling import example
 </code></pre>
 
 <p>Standard library code should avoid complex package layouts and always
-  use absolute imports.</p>
+  use absolute imports.
+  标准库代码应当避免复杂的包布局，一直使用绝对imports。</p>
 
 <p>Implicit relative imports should <em>never</em> be used and have been removed
-  in Python 3.</p>
+  in Python 3.
+  隐式的相对imports应该<strong>永不</strong>使用，并且Python 3中已经被去掉了。</p>
 
 <ul>
-<li><p>When importing a class from a class-containing module, it&rsquo;s usually
-okay to spell this::</p>
+<li>When importing a class from a class-containing module, it&rsquo;s usually
+okay to spell this::</li>
+
+<li><p>当从一个包括类的模块中import一个类时，通常可以这样写：</p>
 
 <p>from myclass import MyClass
   from foo.bar.yourclass import YourClass</p></li>
 </ul>
 
-<p>If this spelling causes local name clashes, then spell them ::</p>
+<p>If this spelling causes local name clashes, then spell them ::
+  如果和本地命名的拼写产生了冲突，应当直接import模块：</p>
 
 <pre><code>  import myclass
   import foo.bar.yourclass
 </code></pre>
 
-<p>and use &ldquo;myclass.MyClass&rdquo; and &ldquo;foo.bar.yourclass.YourClass&rdquo;.</p>
+<p>and use &ldquo;myclass.MyClass&rdquo; and &ldquo;foo.bar.yourclass.YourClass&rdquo;.
+  然后使用&rdquo;myclass.MyClass&rdquo;和&rdquo;foo.bar.yourclass.YourClass&rdquo;.</p>
 
 <ul>
 <li>Wildcard imports (<code>from &lt;module&gt; import *</code>) should be avoided, as
@@ -535,35 +490,50 @@ internal interface as part of a public API (for example, overwriting
 a pure Python implementation of an interface with the definitions
 from an optional accelerator module and exactly which definitions
 will be overwritten isn&rsquo;t known in advance).</li>
+<li>避免使用通配符imports(<code>from &lt;module&gt; import *</code>)，因为会造成在当前命名空间出现的命名含义不清晰，给读者和许多自动化工具造成困扰。有一个可以正当使用通配符import的情形，即将一个内部接口重新发布成公共API的一部分。比如，使用备选的加速模块中的定义去覆盖纯Python实现的接口，将被覆盖的定义恰好在不能提前知晓。</li>
 </ul>
 
 <p>When republishing names this way, the guidelines below regarding
-  public and internal interfaces still apply.</p>
+  public and internal interfaces still apply.
+  当使用这种方式重新发布命名时，以下关于公共和内部接口的指南仍然适用。</p>
 
-<h1 id="string-quotes:d170b02105789167c0bcdde4c2997e31">String Quotes</h1>
+<p>String Quotes</p>
+
+<h1 id="字符串引用:d170b02105789167c0bcdde4c2997e31">字符串引用</h1>
 
 <p>In Python, single-quoted strings and double-quoted strings are the
 same.  This PEP does not make a recommendation for this.  Pick a rule
 and stick to it.  When a string contains single or double quote
 characters, however, use the other one to avoid backslashes in the
-string. It improves readability.</p>
+string. It improves readability.
+在Python中，用单引号和双引号来表示字符串是一样的。但在这里不推荐将这两种方式看作一样。选择一种规则并坚持使用。当字符串中包含单引号（双引号）时，采用双引号（单引号）来表示字符串，避免使用反斜杠。这样使代码更易读。</p>
 
 <p>For triple-quoted strings, always use double quote characters to be
-consistent with the docstring convention in PEP 257.</p>
+consistent with the docstring convention in PEP 257.
+对于三引号表示的字符串，永远在其中使用双引号字符来和PEP 257的文档字符串规则保持一致。</p>
 
-<h1 id="whitespace-in-expressions-and-statements:d170b02105789167c0bcdde4c2997e31">Whitespace in Expressions and Statements</h1>
+<p>Whitespace in Expressions and Statements</p>
 
-<h2 id="pet-peeves:d170b02105789167c0bcdde4c2997e31">Pet Peeves</h2>
+<h1 id="表达式和语句中的空格:d170b02105789167c0bcdde4c2997e31">表达式和语句中的空格</h1>
 
-<p>Avoid extraneous whitespace in the following situations:</p>
+<p>Pet Peeves</p>
+
+<h2 id="一些痛点:d170b02105789167c0bcdde4c2997e31">一些痛点</h2>
+
+<p>Avoid extraneous whitespace in the following situations:
+在下列情形中避免使用过多的空白：</p>
 
 <ul>
-<li><p>Immediately inside parentheses, brackets or braces. ::</p>
+<li>Immediately inside parentheses, brackets or braces. ::</li>
+
+<li><p>方括号，圆括号和花括号之后：</p>
 
 <p>Yes: spam(ham[1], {eggs: 2})
   No:  spam( ham[ 1 ], { eggs: 2 } )</p></li>
 
-<li><p>Immediately before a comma, semicolon, or colon::</p>
+<li><p>Immediately before a comma, semicolon, or colon::</p></li>
+
+<li><p>逗号，分号或冒号之前：</p>
 
 <p>Yes: if x == 4: print x, y; x, y = y, x
   No:  if x == 4 : print x , y ; x , y = y , x</p></li>
@@ -573,16 +543,16 @@ should have equal amounts on either side (treating it as the
 operator with the lowest priority).  In an extended slice, both
 colons must have the same amount of spacing applied.  Exception:
 when a slice parameter is omitted, the space is omitted.</p></li>
-</ul>
 
-<p>Yes::</p>
+<li><p>不过，在分片操作时，冒号和二元运算符是一样的，应该在其左右两边有相同数量的空格（就像对待优先级最低的运算符一样）。在扩展的分片操作中，所有的冒号的左右两边的空格数都应该相等。也有例外：当切片操作中的参数被省略时，应该也忽略空格。
+Yes::</p>
 
-<pre><code>  ham[1:9], ham[1:9:3], ham[:9:3], ham[1::3], ham[1:9:]
+<p>ham[1:9], ham[1:9:3], ham[:9:3], ham[1::3], ham[1:9:]
   ham[lower:upper], ham[lower:upper:], ham[lower::step]
   ham[lower+offset : upper+offset]
   ham[: upper_fn(x) : step_fn(x)], ham[:: step_fn(x)]
-  ham[lower + offset : upper + offset]
-</code></pre>
+  ham[lower + offset : upper + offset]</p></li>
+</ul>
 
 <p>No::</p>
 
@@ -593,20 +563,26 @@ when a slice parameter is omitted, the space is omitted.</p></li>
 </code></pre>
 
 <ul>
-<li><p>Immediately before the open parenthesis that starts the argument
-list of a function call::</p>
+<li>Immediately before the open parenthesis that starts the argument
+list of a function call::</li>
+
+<li><p>在调用函数时传递参数list的括号之前：</p>
 
 <p>Yes: spam(1)
   No:  spam (1)</p></li>
 
 <li><p>Immediately before the open parenthesis that starts an indexing or
-slicing::</p>
+slicing::</p></li>
+
+<li><p>在索引和切片操作的左括号之前：</p>
 
 <p>Yes: dct[&lsquo;key&rsquo;] = lst[index]
   No:  dct [&lsquo;key&rsquo;] = lst [index]</p></li>
 
 <li><p>More than one space around an assignment (or other) operator to
 align it with another.</p></li>
+
+<li><p>赋值(或其他)运算符周围使用多个空格来和其他语句对齐：</p></li>
 </ul>
 
 <p>Yes::</p>
@@ -623,20 +599,29 @@ align it with another.</p></li>
   long_variable = 3
 </code></pre>
 
-<h2 id="other-recommendations:d170b02105789167c0bcdde4c2997e31">Other Recommendations</h2>
+<p>Other Recommendations</p>
+
+<h2 id="其他建议:d170b02105789167c0bcdde4c2997e31">其他建议</h2>
 
 <ul>
-<li><p>Always surround these binary operators with a single space on either
+<li>Always surround these binary operators with a single space on either
 side: assignment (<code>=</code>), augmented assignment (<code>+=</code>, <code>-=</code>
 etc.), comparisons (<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>!=</code>, <code>&lt;&gt;</code>, <code>&lt;=</code>,
 <code>&gt;=</code>, <code>in</code>, <code>not in</code>, <code>is</code>, <code>is not</code>), Booleans (<code>and</code>,
-<code>or</code>, <code>not</code>).</p></li>
+<code>or</code>, <code>not</code>).</li>
+
+<li><p>在二元云算符的两边都使用一个空格：赋值运算符(<code>=</code>)，增量赋值运算符(<code>+=</code>, <code>-=</code>
+etc.)，比较运算符(<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>!=</code>, <code>&lt;&gt;</code>, <code>&lt;=</code>,
+<code>&gt;=</code>, <code>in</code>, <code>not in</code>, <code>is</code>, <code>is not</code>)，布尔运算符(<code>and</code>,
+<code>or</code>, <code>not</code>)。</p></li>
 
 <li><p>If operators with different priorities are used, consider adding
 whitespace around the operators with the lowest priority(ies). Use
 your own judgment; however, never use more than one space, and
 always have the same amount of whitespace on both sides of a binary
 operator.</p></li>
+
+<li><p>如果使用了优先级不同的运算符，则在优先级较低的操作符周围增加空白。请你自行判断，不过永远不要用超过1个空格，永远保持二元运算符两侧的空白数量一样。</p></li>
 </ul>
 
 <p>Yes::</p>
@@ -660,6 +645,7 @@ operator.</p></li>
 <ul>
 <li>Don&rsquo;t use spaces around the <code>=</code> sign when used to indicate a
 keyword argument or a default parameter value.</li>
+<li>使用<code>=</code>符号来表示关键字参数或默认参数值时，不要在其周围使用空格。</li>
 </ul>
 
 <p>Yes::</p>
@@ -678,6 +664,7 @@ keyword argument or a default parameter value.</li>
 <li>Do use spaces around the <code>=</code> sign  of an annotated function definition.
 Additionally, use a single space after the <code>:</code>, as well as a single space
 on either side of the <code>-&gt;</code> sign representing an annotated return value.</li>
+<li>在带注释的函数定义中需要在<code>=</code>符号周围加上空格。此外, 在<code>:</code>后使用一个空格，在<code>-&gt;</code>表示带注释的返回值时，其两侧各使用一个空格。</li>
 </ul>
 
 <p>Yes::</p>
@@ -698,6 +685,7 @@ on either side of the <code>-&gt;</code> sign representing an annotated return v
 <ul>
 <li>Compound statements (multiple statements on the same line) are
 generally discouraged.</li>
+<li>复合语句（即将多行语句写在一行）一般是不鼓励使用的。</li>
 </ul>
 
 <p>Yes::</p>
@@ -719,14 +707,14 @@ generally discouraged.</li>
 <li>While sometimes it&rsquo;s okay to put an if/for/while with a small body
 on the same line, never do this for multi-clause statements.  Also
 avoid folding such long lines!</li>
-</ul>
 
-<p>Rather not::</p>
+<li><p>有时也可以将短小的if/for/while中的语句写在一行，但对于有多个分句的语句永远不要这样做。也要避免将多行都写在一起。
+Rather not::</p>
 
-<pre><code>  if foo == 'blah': do_blah_thing()
+<p>if foo == &lsquo;blah&rsquo;: do_blah_thing()
   for x in lst: total += x
-  while t &lt; 10: t = delay()
-</code></pre>
+  while t &lt; 10: t = delay()</p></li>
+</ul>
 
 <p>Definitely not::</p>
 
@@ -742,72 +730,97 @@ avoid folding such long lines!</li>
   if foo == 'blah': one(); two(); three()
 </code></pre>
 
-<h1 id="comments:d170b02105789167c0bcdde4c2997e31">Comments</h1>
+<p>Comments</p>
+
+<h1 id="注释:d170b02105789167c0bcdde4c2997e31">注释</h1>
 
 <p>Comments that contradict the code are worse than no comments.  Always
 make a priority of keeping the comments up-to-date when the code
-changes!</p>
+changes!
+和代码矛盾的注释还不如没有。当代码有改动时，一定要优先更改注释使保持更新。</p>
 
 <p>Comments should be complete sentences.  If a comment is a phrase or
 sentence, its first word should be capitalized, unless it is an
 identifier that begins with a lower case letter (never alter the case
-of identifiers!).</p>
+of identifiers!).
+注释应该是完整的几个句子。如果注释是一个短语或一个句子，其首字母应该大写，除非开头是一个以小写字母开头的标识符（永远不要更改标识符的大小写）。</p>
 
 <p>If a comment is short, the period at the end can be omitted.  Block
 comments generally consist of one or more paragraphs built out of
-complete sentences, and each sentence should end in a period.</p>
+complete sentences, and each sentence should end in a period.
+如果注释很短，结束的句号可以被忽略。块注释通常由一段或几段完整的句子组成，每个句子都应该以句号结束。</p>
 
-<p>You should use two spaces after a sentence-ending period.</p>
+<p>You should use two spaces after a sentence-ending period.
+你应该在句尾的句号后再加上2个空格。</p>
 
-<p>When writing English, follow Strunk and White.</p>
+<p>When writing English, follow Strunk and White.
+使用英文写作，参考Strunk和White的《The Elements of Style》</p>
 
 <p>Python coders from non-English speaking countries: please write your
 comments in English, unless you are 120% sure that the code will never
-be read by people who don&rsquo;t speak your language.</p>
+be read by people who don&rsquo;t speak your language.
+来自非英语国家的Python程序员们，请使用英文来写注释，除非你120%确定你的代码永远不会被不使用你所用语言的人阅读到。</p>
 
-<h2 id="block-comments:d170b02105789167c0bcdde4c2997e31">Block Comments</h2>
+<p>Block Comments</p>
+
+<h2 id="块注释:d170b02105789167c0bcdde4c2997e31">块注释</h2>
 
 <p>Block comments generally apply to some (or all) code that follows
 them, and are indented to the same level as that code.  Each line of a
 block comment starts with a <code>#</code> and a single space (unless it is
-indented text inside the comment).</p>
+indented text inside the comment).
+块注释一般写在对应代码之前，并且和对应代码有同样的缩进级别。块注释的每一行都应该以<code>#</code>和一个空格开头（除非这在注释内缩进对齐的文本）。</p>
 
 <p>Paragraphs inside a block comment are separated by a line containing a
-single <code>#</code>.</p>
+single <code>#</code>.
+块注释中的段落应该用只含有单个<code>#</code>的一行隔开。</p>
 
-<h2 id="inline-comments:d170b02105789167c0bcdde4c2997e31">Inline Comments</h2>
+<p>Inline Comments</p>
 
-<p>Use inline comments sparingly.</p>
+<h2 id="行内注释:d170b02105789167c0bcdde4c2997e31">行内注释</h2>
+
+<p>Use inline comments sparingly.
+尽量少用行内注释。</p>
 
 <p>An inline comment is a comment on the same line as a statement.
 Inline comments should be separated by at least two spaces from the
-statement.  They should start with a # and a single space.</p>
+statement.  They should start with a # and a single space.
+行内注释是和代码语句写在一行内的注释。行内注释应该至少和代码语句之间有两个空格的间隔，并且以<code>#</code>和一个空格开始。</p>
 
 <p>Inline comments are unnecessary and in fact distracting if they state
-the obvious.  Don&rsquo;t do this::</p>
+the obvious.  Don&rsquo;t do this::
+行内注释不是必要的，在代码含义很明显时甚至会让人分心。请不要这样做：</p>
 
 <pre><code>x = x + 1                 # Increment x
 </code></pre>
 
-<p>But sometimes, this is useful::</p>
+<p>But sometimes, this is useful::
+但这样做是有用的：</p>
 
 <pre><code>x = x + 1                 # Compensate for border
 </code></pre>
 
-<h2 id="documentation-strings:d170b02105789167c0bcdde4c2997e31">Documentation Strings</h2>
+<p>Documentation Strings</p>
+
+<h2 id="文档字符串:d170b02105789167c0bcdde4c2997e31">文档字符串</h2>
 
 <p>Conventions for writing good documentation strings
-(a.k.a. &ldquo;docstrings&rdquo;) are immortalized in PEP 257.</p>
+(a.k.a. &ldquo;docstrings&rdquo;) are immortalized in PEP 257.
+要知道如何写出好的文档字符串（docstring），请参考PEP 257。</p>
 
 <ul>
-<li><p>Write docstrings for all public modules, functions, classes, and
+<li>Write docstrings for all public modules, functions, classes, and
 methods.  Docstrings are not necessary for non-public methods, but
 you should have a comment that describes what the method does.  This
-comment should appear after the <code>def</code> line.</p></li>
+comment should appear after the <code>def</code> line.</li>
+
+<li><p>所有的公共模块，函数，类和方法都应该有文档字符串。对于非公共方法，文档字符串不是必要的，但你应该留有注释说明该方法的功能，该注释应当出现在<code>def</code>的下一行。</p></li>
 
 <li><p>PEP 257 describes good docstring conventions.  Note that most
 importantly, the <code>&quot;&quot;&quot;</code> that ends a multiline docstring should be
-on a line by itself, e.g.::</p>
+on a line by itself, e.g.::</p></li>
+
+<li><p>PEP 257描述了好的文档字符应该遵循的规则。其中最重要的是，多行文档字符串以单行<code>&quot;&quot;&quot;</code>结尾，不能有其他字符，例如：</p>
 
 <p>&rdquo;&ldquo;&ldquo;Return a foobang</p>
 
@@ -816,60 +829,77 @@ on a line by itself, e.g.::</p>
 
 <li><p>For one liner docstrings, please keep the closing <code>&quot;&quot;&quot;</code> on
 the same line.</p></li>
+
+<li><p>对于仅有一行的文档字符串，结尾处的<code>&quot;&quot;&quot;</code>应该也写在这一行里。</p></li>
 </ul>
 
-<h1 id="version-bookkeeping:d170b02105789167c0bcdde4c2997e31">Version Bookkeeping</h1>
+<p>Version Bookkeeping</p>
+
+<h1 id="版本注记:d170b02105789167c0bcdde4c2997e31">版本注记</h1>
 
 <p>If you have to have Subversion, CVS, or RCS crud in your source file,
-do it as follows. ::</p>
+do it as follows. ::
+如果你必须在源代码中包含Subversion, CVS或RCS crud，请这样做：</p>
 
 <pre><code>__version__ = &quot;$Revision$&quot;
 # $Source$
 </code></pre>
 
 <p>These lines should be included after the module&rsquo;s docstring, before
-any other code, separated by a blank line above and below.</p>
+any other code, separated by a blank line above and below.
+以上几行的内容应当在模块的文档字符串之后，在其他代码之前，并且在其开始和结束都使用一个空行隔开。</p>
 
-<h1 id="naming-conventions:d170b02105789167c0bcdde4c2997e31">Naming Conventions</h1>
+<p>Naming Conventions</p>
+
+<h1 id="命名约定:d170b02105789167c0bcdde4c2997e31">命名约定</h1>
 
 <p>The naming conventions of Python&rsquo;s library are a bit of a mess, so
 we&rsquo;ll never get this completely consistent &ndash; nevertheless, here are
 the currently recommended naming standards.  New modules and packages
 (including third party frameworks) should be written to these
 standards, but where an existing library has a different style,
-internal consistency is preferred.</p>
+internal consistency is preferred.
+Python标准库的命名约定有一些混乱，所以我们永远都无法保持一致。不过，还是有一些现在推荐的命名标准。新的模块和包（包括第三方框架）应该采用这些标准，但若是已经存在的库有另一套风格的话，还是应当与原有的风格保持内部一致。</p>
 
-<h2 id="overriding-principle:d170b02105789167c0bcdde4c2997e31">Overriding Principle</h2>
+<p>Overriding Principle</p>
+
+<h2 id="重写原则:d170b02105789167c0bcdde4c2997e31">重写原则</h2>
 
 <p>Names that are visible to the user as public parts of the API should
-follow conventions that reflect usage rather than implementation.</p>
+follow conventions that reflect usage rather than implementation.
+用户可见的公共部分API的命名应当展示其功能而非其实现。</p>
 
-<h2 id="descriptive-naming-styles:d170b02105789167c0bcdde4c2997e31">Descriptive: Naming Styles</h2>
+<p>Descriptive: Naming Styles</p>
+
+<h2 id="描述性-命名风格:d170b02105789167c0bcdde4c2997e31">描述性：命名风格</h2>
 
 <p>There are a lot of different naming styles.  It helps to be able to
 recognize what naming style is being used, independently from what
-they are used for.</p>
+they are used for.
+有很多不同的命名风格，能够独立地从命名对象的用途看出采用了哪种命名风格，将是很有帮助的。</p>
 
-<p>The following naming styles are commonly distinguished:</p>
+<p>The following naming styles are commonly distinguished:
+以下是常用于区分的命名风格：</p>
 
 <ul>
-<li><code>b</code> (single lowercase letter)</li>
-<li><code>B</code> (single uppercase letter)</li>
+<li><code>b</code> (single lowercase letter单个小写字母)</li>
+<li><code>B</code> (single uppercase letter单个大写字母)</li>
 <li><code>lowercase</code></li>
 <li><code>lower_case_with_underscores</code></li>
 <li><code>UPPERCASE</code></li>
 <li><code>UPPER_CASE_WITH_UNDERSCORES</code></li>
 <li><code>CapitalizedWords</code> (or CapWords, or CamelCase &ndash; so named because
-of the bumpy look of its letters [3]_).  This is also sometimes known
-as StudlyCaps.</li>
+of the bumpy look of its letters [3]_也叫做CapWords或者CamelCase &ndash; 因为单词字母大写看起来很像驼峰).  This is also sometimes known
+as StudlyCaps. 也被称作StudlyCaps。</li>
 </ul>
 
 <p>Note: When using abbreviations in CapWords, capitalize all the
   letters of the abbreviation.  Thus HTTPServerError is better than
   HttpServerError.
+  注意：当CapWords里包含缩写时，将缩写部分的字母都大写。HTTPServerError比HttpServerError要好。
 - <code>mixedCase</code> (differs from CapitalizedWords by initial lowercase
-  character!)
-- <code>Capitalized_Words_With_Underscores</code> (ugly!)</p>
+  character!和CapitalizedWords不同在于其首字母小写！)
+- <code>Capitalized_Words_With_Underscores</code> (ugly!超丑！)</p>
 
 <p>There&rsquo;s also the style of using a short unique prefix to group related
 names together.  This is not used much in Python, but it is mentioned
@@ -877,24 +907,32 @@ for completeness.  For example, the <code>os.stat()</code> function returns a
 tuple whose items traditionally have names like <code>st_mode</code>,
 <code>st_size</code>, <code>st_mtime</code> and so on.  (This is done to emphasize the
 correspondence with the fields of the POSIX system call struct, which
-helps programmers familiar with that.)</p>
+helps programmers familiar with that.)
+也有风格使用短小唯一的前缀来表示一组相关的命名。这在Python中并不常见，但为了完整起见这里也捎带提一下。比如，<code>os.stat()</code>函数返回一个tuple，其中的元素名原本为<code>st_mode</code>,<code>st-size</code>,<code>st_mtime</code>等等。（这样做是为了强调和POSIX系统调用结构之间的关系，可以帮助程序员更好熟悉。）</p>
 
 <p>The X11 library uses a leading X for all its public functions.  In
 Python, this style is generally deemed unnecessary because attribute
 and method names are prefixed with an object, and function names are
-prefixed with a module name.</p>
+prefixed with a module name.
+X11库中的公共函数名都以X开头。在Python中这样的风格一般被认为是不必要的，因为属性和方法名之前已经有了对象名的前缀，而函数名前也有了模块名的前缀。</p>
 
 <p>In addition, the following special forms using leading or trailing
 underscores are recognized (these can generally be combined with any
-case convention):</p>
+case convention):
+此外，要区别以下划线开始或结尾的特殊形式（可以和气其它的规则结合起来）：</p>
 
 <ul>
-<li><p><code>_single_leading_underscore</code>: weak &ldquo;internal use&rdquo; indicator.
+<li><code>_single_leading_underscore</code>: weak &ldquo;internal use&rdquo; indicator.
 E.g. <code>from M import *</code> does not import objects whose name starts
-with an underscore.</p></li>
+with an underscore.</li>
+
+<li><p><code>_single_leading_underscore</code>: 以单个下划线开头是&rdquo;内部使用&rdquo;的弱指示符。
+E.g. <code>from M import *</code>不会import以下划线开头的对象。</p></li>
 
 <li><p><code>single_trailing_underscore_</code>: used by convention to avoid
-conflicts with Python keyword, e.g. ::</p>
+conflicts with Python keyword, e.g. ::</p></li>
+
+<li><p><code>single_trailing_underscore_</code>: 以单个下划线结尾用来避免和Python关键词产生冲突，例如:</p>
 
 <p>Tkinter.Toplevel(master, class_=&lsquo;ClassName&rsquo;)</p></li>
 
@@ -902,102 +940,134 @@ conflicts with Python keyword, e.g. ::</p>
 invokes name mangling (inside class FooBar, <code>__boo</code> becomes
 <code>_FooBar__boo</code>; see below).</p></li>
 
+<li><p><code>__double_leading_underscore</code>: 以双下划线开头的风格命名类属性表示采用命名修饰（在FooBar类中，<code>__boo</code>命名会被修饰成<code>_FooBar__boo</code>; 见下）。</p></li>
+
 <li><p><code>__double_leading_and_trailing_underscore__</code>: &ldquo;magic&rdquo; objects or
 attributes that live in user-controlled namespaces.
 E.g. <code>__init__</code>, <code>__import__</code> or <code>__file__</code>.  Never invent
 such names; only use them as documented.</p></li>
+
+<li><p><code>__double_leading_and_trailing_underscore__</code>: 以双下划线开头和结尾的命名风格表示生存在用户控制的命名空间里“魔法的”对象或属性。
+E.g. <code>__init__</code>, <code>__import__</code> 或 <code>__file__</code>。请依照文档描述来使用这些命名，千万不要自己发明。</p></li>
 </ul>
 
-<h2 id="prescriptive-naming-conventions:d170b02105789167c0bcdde4c2997e31">Prescriptive: Naming Conventions</h2>
+<p>Prescriptive: Naming Conventions</p>
 
-<p>Names to Avoid</p>
+<h2 id="规范性-命名约定:d170b02105789167c0bcdde4c2997e31">规范性：命名约定</h2>
+
+<p>Names to Avoid
+需要避免的命名</p>
 
 <pre><code>
 Never use the characters 'l' (lowercase letter el), 'O' (uppercase
 letter oh), or 'I' (uppercase letter eye) as single character variable
 names.
+不要使用字符'l'（小写的字母el），'O'（大写的字母oh），或者'I'（大写的字母eye）来作为单个字符的变量名。
 
 In some fonts, these characters are indistinguishable from the
 numerals one and zero.  When tempted to use 'l', use 'L' instead.
+在一些字体中，这些字符和数字1和0无法区别开来。当想使用'l'时，使用'L'代替。
 
 Package and Module Names
+包和模块命名
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Modules should have short, all-lowercase names.  Underscores can be
 used in the module name if it improves readability.  Python packages
 should also have short, all-lowercase names, although the use of
 underscores is discouraged.
+模块命名应短小，且为全小写。若下划线能提高可读性，也可以在模块名中使用。Python包命名也应该短小，且为全小写，但不应使用下划线。
 
 Since module names are mapped to file names, and some file systems are
 case insensitive and truncate long names, it is important that module
 names be chosen to be fairly short -- this won't be a problem on Unix,
 but it may be a problem when the code is transported to older Mac or
 Windows versions, or DOS.
+模块名是对应到文件名的，一些文件系统会区分大小写并且会将长的文件名截断。因此模块名应该尽量短小，这个问题在Unix系统上是不存在的，但把代码移植到较旧的Mac，Windows版本或DOS系统上时，可能会出现问题。
 
 When an extension module written in C or C++ has an accompanying
 Python module that provides a higher level (e.g. more object oriented)
 interface, the C/C++ module has a leading underscore
 (e.g. ``_socket``).
+当使用C或C++写的扩展模块有相应的Python模块提供更高级的接口时（e.g. 更加面向对象），C/C++模块名以下划线开头（e.g. ``_sociket``）。
 
 Class Names
+类命名
 ~~~~~~~~~~~
 
 Class names should normally use the CapWords convention.
+类命名应该使用单词字母大写（CapWords）的命名约定。
 
 The naming convention for functions may be used instead in cases where
 the interface is documented and used primarily as a callable.
+当接口已有文档说明且主要是被用作调用时，也可以使用函数的命名约定。
 
 Note that there is a separate convention for builtin names: most builtin
 names are single words (or two words run together), with the CapWords
 convention used only for exception names and builtin constants.
+注意对于内建命名有一个特殊的约定：大部分内建名都是一个单词（或者两个一起使用的单词），单词首字母大写(CapWords)的约定只对异常命名和内建常量使用。
 
 Exception Names
+异常命名
 ~~~~~~~~~~~~~~~
 
 Because exceptions should be classes, the class naming convention
 applies here.  However, you should use the suffix &quot;Error&quot; on your
 exception names (if the exception actually is an error).
+由于异常实际上也是类，因此类命名约定也适用与异常。不同的是，如果异常实际上是抛出错误的话，异常名前应该加上&quot;Error&quot;的前缀。
 
 Global Variable Names
+全局变量命名
 ~~~~~~~~~~~~~~~~~~~~~
 
 (Let's hope that these variables are meant for use inside one module
 only.)  The conventions are about the same as those for functions.
+（在此之前，我们先假定这些变量都仅在同一个模块内使用。）这些约定同样也适用于函数命名。
 
 Modules that are designed for use via ``from M import *`` should use
 the ``__all__`` mechanism to prevent exporting globals, or use the
 older convention of prefixing such globals with an underscore (which
 you might want to do to indicate these globals are &quot;module
 non-public&quot;).
+对于引用方式设计为``from M import *``的模块，应该使用``__all__``机制来避免引入全局变量，或者采用下划线前缀的旧约定来命名全局变量，从而表明这些变量是“模块私有的”。
 
 Function Names
+函数命名
 </code></pre>
 
 <p>Function names should be lowercase, with words separated by
-underscores as necessary to improve readability.</p>
+underscores as necessary to improve readability.
+函数命名应该都是小写，必要时使用下划线来提高可读性。</p>
 
 <p>mixedCase is allowed only in contexts where that&rsquo;s already the
 prevailing style (e.g. threading.py), to retain backwards
-compatibility.</p>
+compatibility.
+只有当已有代码风格已经是混合大小写时（比如threading.py），为了保留向后兼容性才使用混合大小写。</p>
 
 <p>Function and method arguments
+函数和方法参数
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
 
-<p>Always use <code>self</code> for the first argument to instance methods.</p>
+<p>Always use <code>self</code> for the first argument to instance methods.
+实例方法的第一参数永远都是<code>self</code>。</p>
 
-<p>Always use <code>cls</code> for the first argument to class methods.</p>
+<p>Always use <code>cls</code> for the first argument to class methods.
+类方法的第一个参数永远都是<code>cls</code>。</p>
 
 <p>If a function argument&rsquo;s name clashes with a reserved keyword, it is
 generally better to append a single trailing underscore rather than
 use an abbreviation or spelling corruption.  Thus <code>class_</code> is better
 than <code>clss</code>.  (Perhaps better is to avoid such clashes by using a
-synonym.)</p>
+synonym.)
+在函数参数名和保留关键字冲突时，相对于使用缩写或拼写简化，使用以下划线结尾的命名一般更好。比如，<code>class_</code>比<code>clss</code>更好。（或许使用同义词避免这样的冲突是更好的方式。）</p>
 
 <p>Method Names and Instance Variables
+方法命名和实例变量
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
 
 <p>Use the function naming rules: lowercase with words separated by
-underscores as necessary to improve readability.</p>
+underscores as necessary to improve readability.
+使用函数命名的规则：必要时小写单词使用下划线分开以提高可读性。</p>
 
 <p>Use one leading underscore only for non-public methods and instance
 variables.</p>

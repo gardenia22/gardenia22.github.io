@@ -15,26 +15,26 @@
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="风格指南 : nanshu.wang"/>
+<meta property="og:title" content=" : nanshu.wang"/>
 <meta property="og:site_name" content="nanshu wang blog"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://localhost:1313/tags/e9a38ee6a0bce68c87e58d97/">
+<meta property="og:url" content="http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E3%80%8A%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2015-03-22"/>
-<meta property="article:modified_time" content="2015-03-22"/>
+<meta property="article:published_time" content="0001-01-01"/>
+<meta property="article:modified_time" content="0001-01-01"/>
 
 
 
 
 
 
-    <base href="http://localhost:1313">
-    <title> 风格指南 - nanshu.wang </title>
-    <link rel="canonical" href="http://localhost:1313/tags/e9a38ee6a0bce68c87e58d97/">
-    <link href="http://localhost:1313/tags/%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/index.xml" rel="alternate" type="application/rss+xml" title="风格指南" />
+    <base href="http://nanshu.wang">
+    <title>  - nanshu.wang </title>
+    <link rel="canonical" href="http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E3%80%8A%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+    
 
     <link href='http://fonts.useso.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -53,7 +53,7 @@
 
 </head>
 
-<body lang="en">
+<body lang="en" itemscope itemtype="http://schema.org/Article">
 <header id="header">
 	<nav id="nav">
 	<div id="title"><a href="/">Nanshu Wang</a></div>
@@ -129,28 +129,76 @@
 </header>
 
 
-<section id="main">
-  <div>
-   <h1 id="title">风格指南</h1>
-    
-        <article class="post">
-    <header>
-      <h2><a href="http://localhost:1313/post/2015-03-22">Python代码风格指南(Style Guide for Python Code中文翻译) :: DRAFT</a> </h2>
-      <div class="post-meta">Sun, Mar 22, 2015 </div>
-    </header>
-    <article itemprop="articleBody" id="content">
-    	翻译自：PEP 8 - Style Guide for Python Code 介绍(Introduction) 这篇文档说明了组成Python主要现行版中标准库的Python代码所遵守的一个规范。请参考用于实现Python的C代码风格的指南信息PEP。 这篇文档和PEP 257(Docstring Conventions)都改编自Guido(译注：Python之父)最早的Python风格指南文章，并加入了Barry的风格指南里的内容。 语言自身在发生着改变，随着新的规范的出现和旧规范的过时，代码风格也会随着时间演变。 很多项目都有自己的一套风格指南。若和本指南有任何冲突，应该优先考虑其项目相关的那套指南。 保持盲目的一致是头脑简单的表现(A Foolish Consistency is the Hobgoblin of Little Minds) (注：标题语出自Ralph Waldo Emerson, Hobgolin意指民间故事中友好但常制造麻烦的动物角色。) Guido的一个重要观点是代码被读的次数远多于被写的次数。这篇指南意在于提高代码的可读性，使浩瀚如烟的Python代码风格能保持一致。正如PEP 20那首《Zen of Python》的小诗里所说的：“可读性很重要(Readability counts)”。 一本风格指南是关于一致性的。同风格指南保持一致性是重要的，同项目保持一致性则更加重要，同一个模块和一个函数保持一致性则最为重要。 但最最重要的是：要知道何时去违反一致性——有时风格指南并不适用。当存有疑虑时，采用你的最佳判断。参考别的例子，决定什么才是最好的。不要犹豫，尽管提问。 特别的：千万不要为了遵守这篇PEP而破坏向后兼容性！ 一些可以忽略一份指南的其他好理由： 当采用指南时会让代码更难读，甚至对于习惯阅读遵循这篇PEP的代码的人来说也是如此。 需要和周围的代码保持一致性，但这些代码违反了指南中的风格（可是时历史原因造成的）——尽管这可能也是一个收拾别人烂摊子的机会（True in XP style?）。 若是有问题的某段代码早于引入指南的时间，那么没有必要去修改这段代码。 代码需要和更老的版本的Python保持兼容，而老版本的Python不支持风格指南所推荐的特性。 代码设计(Code lay-out) 缩进(Indentation) 每个缩进级别采用4个空格。 连续行应该将包装的元素要么采用Python隐式续行垂直对齐于圆括号、方括号和花括号，要么采用*悬挂缩进(hanging indent)*。采用悬挂缩进时需考虑以下两点：第一行不应该包括参数，并且在续行中需要再缩进一级以便清楚表示。 正确的例子:: # 同开始分界符(左括号)对齐 foo = long_function_name(var_one, var_two, var_three, var_four) # 续行多缩进一级以同其他代码区别 def long_function_name( var_one, var_two, var_three, var_four): print(var_one) # 悬挂缩进需要多缩进一级 foo = long_function_name( var_one, var_two, var_three, var_four) 错误的例子:: # 采用垂直对齐时第一行不应该有参数 foo = long_function_name(var_one, var_two, var_three, var_four) # 续行并没有被区分开，因此需要再缩进一级 def long_function_name( var_one, var_two, var_three, var_four): print(var_one) 对于续行来说，4空格的规则可以不遵守。 同样可行的例子:: # 悬挂缩进可以不采用4空格的缩进方法。 foo = long_function_name( var_one, var_two, var_three, var_four) ..
-	</article>
-    <footer>
-        <a href='http://localhost:1313/post/2015-03-22'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
 
-    
+<section id="main">
+  <h1 itemprop="name" ></h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Mon Jan 1, 0001 </h4>
+          
+        </section>
+        
+        <ul id="tags">
+          
+        </ul>
+    </div>
+
+</aside>
+
+<meta itemprop="wordCount" content="14">
+<meta itemprop="datePublished" content="0001-01-01">
+<meta itemprop="url" content="http://nanshu.wang/%E8%A7%82%E5%8F%B9/%E3%80%8A%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           <p>最近读了想读已久的《黑客与画家》，好书无疑，更是警醒我需要靠读书而不是靠网络上碎片性的文字来获取知识和观点。这本书有15个章节，各个章节间基本上是独立的，每章都标新立异，挑战了一些在大部分人脑中根深蒂固的观点，收获颇丰。</p>
+
+<p>##为什么书呆子不受欢迎</p>
+
+<p>第一章Paul Graham探讨了美国高中的一种常见现象：学习好的学生会受到排挤。常年看美剧对于这种这种情节并不陌生，Modern Family里的两姐妹Hayley和Alex，一个长得漂亮，一个学习好。前者是学校最受欢迎的女生，后者则是格格不入吃饭也坐冷板凳的书呆子；The Carrie Diaries里最受欢迎的女生为了保证自己受欢迎的地位，还必须向大家隐瞒自己是学霸的事实，因为受欢迎的学生默认了不能成绩好。</p>
+
+<p>然而，就我的成长经历来看，高中并没有这种特别的现象，相反学习好的同学更容易受欢迎。和美国高中不同的是，智力、相貌、运动中，智力是大家最渴望得到的。一方面是家庭和学校对学习成绩的强调，二是所有人都看重成绩的时候，不看中成绩反而会使你孤立起来。我在高中时身边常有同学装作出一副不认真学习的样子，私底下偷偷用功，给大家一种看我不努力也能考很好地印象，显得自己很聪明一样。为什么这两种现象截然不同？</p>
+
+<p>我认为原因有三。第一，中国的高中学校比美国高中更强调学习成绩的重要性，老师甚至把成绩当做衡量好学生的唯一标准。别忘了Paul Graham就读的是一所美国公立学校，给他的感觉就是学校在敷衍了事，学校只不过是将青春期的小孩关起来给他们找事做的一所“监狱”，并非学习知识的场所。而我读的学校，是把升学率看得比命还重的省重点，课业压力相当大，老师横不得把你的每分钟榨干来让你做题。第二，中国家长大多认为学习是通往世俗成功的唯一道路，而美国家长却更加开明，学习成绩无所谓。我不是说美国家长的观点更好，事实上，在中国读书确实是一条风险低，回报率有保证的路子，大多是独生家庭的家长当然“望子成龙”。第三，和书中提到的原因一样，处于青春期的人会对等级有一种满足感，因此孤立和欺负不受欢迎的人让他们获得了一种内心的满足，因此被认为是成绩不好的“差生”会自然受到孤立。然而这也不是绝对的，有相貌的差生也不会受到孤立（所以还是看脸）。</p>
+
+<p>Paul在书里说“对于书呆子来说，意识到学校并非全部的人生，也是很重要的事情。学校是一个很奇怪的、人为设计出来的体系，一半像是无菌室，一半像是蛮野洪荒之地。它就像人生一样，里面无所不包，但又不是事物的真实样子。它只是一个暂时的过程，只要你向前看，你就能超越它，哪怕现在你还是身处其中。”我很想把这段话反过来，告诉高中时期成绩不那么好的学生，因为对于他们来说，高中是一段黑暗的时间，因为对于“差生”来说，意识到学校并非全部的人生，也是很重要的事情。</p>
+
+<p>##黑客与画家</p>
+
+<p>我认为这一章是书中最有趣的一章，也是对我启发最大的一章。作者把黑客和画家做了一个类比：</p>
+
+<ol>
+<li>黑客与画家都是创作者，都试图创作出优秀的作品。</li>
+<li></li>
+</ol>
+
+        </article>
   </div>
 </section>
 
-<aside id="meta"> </aside>
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'nanshuwang';
+    var disqus_identifier = 'http:\/\/nanshu.wang\/%E8%A7%82%E5%8F%B9\/%E3%80%8A%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0\/';
+    var disqus_title = '';
+    var disqus_url = 'http:\/\/nanshu.wang\/%E8%A7%82%E5%8F%B9\/%E3%80%8A%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
 
 <footer>
   <div>
@@ -185,3 +233,22 @@ fitText(document.getElementById('title'), 1)
 </body>
 </html>
 
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+</body>

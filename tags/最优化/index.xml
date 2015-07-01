@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title> on Nanshu&#39;s blog </title>
+      <title>最优化 on Nanshu&#39;s blog </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:1313/tags/%E6%9C%80%E4%BC%98%E5%8C%96/</link>
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
