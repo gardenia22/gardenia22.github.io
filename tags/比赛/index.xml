@@ -193,11 +193,11 @@ bhv_idx, behavior_type,user_geohash,item_category,time
 &lt;h2 id=&#34;模型学习-调参:e22b26d8c6b3a4529619561860cf7538&#34;&gt;模型学习+调参&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;逻辑回归
+&lt;li&gt;&lt;strong&gt;逻辑回归&lt;/strong&gt;
 逻辑回归（Logistic Regression）训练速度预测速度很快，预测效果较差，可以用来进行负样本筛选，模型融合也有用。&lt;/li&gt;
-&lt;li&gt;随机森林
+&lt;li&gt;&lt;strong&gt;随机森林&lt;/strong&gt;
 随机森林学习速度一般，预测速度很慢，主要用于模型融合。&lt;/li&gt;
-&lt;li&gt;GBDT二分类
+&lt;li&gt;&lt;strong&gt;GBDT二分类&lt;/strong&gt;
 GBDT训练速度慢，预测速度一般，单模型的效果最优。唯一的调参经验是：树越多越好，但速度也越慢。并且特征不一样，最优的参数也不一样，调参时注意每次最好只改变一个参数值，否则不容易看出参数的影响。不要使用枚举参数的办法调参，太浪费时间。&lt;/li&gt;
 &lt;/ol&gt;
 
