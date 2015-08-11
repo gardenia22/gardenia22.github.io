@@ -15,26 +15,26 @@
  
 <meta property="og:type" content="article"/>
 <meta property="og:description" content=""/>
-<meta property="og:title" content="404 Page not found : nanshu.wang"/>
+<meta property="og:title" content="字符串引用 : nanshu.wang"/>
 <meta property="og:site_name" content="nanshu wang blog"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="http://nanshu.wang/404/">
+<meta property="og:url" content="http://localhost:1313/tags/e5ad97e7aca6e4b8b2e5bc95e794a8/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2015-08-11"/>
-<meta property="article:modified_time" content="2015-08-11"/>
+<meta property="article:published_time" content="2015-07-05"/>
+<meta property="article:modified_time" content="2015-07-05"/>
 
 
 
 
 
 
-    <base href="http://nanshu.wang">
-    <title> 404 Page not found - nanshu.wang </title>
-    <link rel="canonical" href="http://nanshu.wang/404/">
-    <link href="http://nanshu.wang/index.xml" rel="alternate" type="application/rss+xml" title="404 Page not found" />
+    <base href="http://localhost:1313">
+    <title> 字符串引用 - nanshu.wang </title>
+    <link rel="canonical" href="http://localhost:1313/tags/e5ad97e7aca6e4b8b2e5bc95e794a8/">
+    <link href="http://localhost:1313/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%95%E7%94%A8/index.xml" rel="alternate" type="application/rss+xml" title="字符串引用" />
 
     <link href='http://fonts.useso.com/css?family=Fjalla+One|Open+Sans:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/static/css/style.css">
@@ -53,6 +53,7 @@
 
 </head>
 
+<body lang="en">
 <header id="header">
 	<nav id="nav">
 	<div id="title"><a href="/">Nanshu Wang</a></div>
@@ -130,9 +131,26 @@
 
 <section id="main">
   <div>
-   <h1 id="title">404 Page not found</h1>
+   <h1 id="title">字符串引用</h1>
+    
+        <article class="post">
+    <header>
+      <h2><a href="http://localhost:1313/post/2015-07-05">Python代码风格指南（二）字符串引用 表达式和语句中的空格(Style Guide for Python Code中文翻译) </a> </h2>
+      <div class="post-meta">Sun, Jul 5, 2015 </div>
+    </header>
+    <article itemprop="articleBody" id="content">
+    	字符串引用(String Quotes) 在Python中，用单引号和双引号来表示字符串是一样的。但是不推荐将这两种方式看作一样。最好选择一种规则并坚持使用。当字符串中包含单引号时，采用双引号来表示字符串，反之也是一样，这样可以避免使用反斜杠，使代码更易读。 对于三引号表示的字符串，使用双引号字符来表示，这样可以和PEP 257的文档字符串规则保持一致。 表达式和语句中的空格(Whitespace in Expressions and Statements) 一些痛点(Pet peeves) 在下列情形中避免使用过多的空白： 方括号，圆括号和花括号之后： Yes: spam(ham[1], {eggs: 2}) No: spam( ham[ 1 ], { eggs: 2 } ) 逗号，分号或冒号之前： Yes: if x == 4: print x, y; x, y = y, x No: if x == 4 : print x , y ; x , y = y , x 不过，在分片操作时，冒号和二元运算符是一样的，应该在其左右两边有相同数量的空格（就像对待优先级最低的运算符一样）。在扩展的分片操作中，所有冒号的左右两边空格数都应该相等。不过也有例外，当切片操作中的参数被省略时，应该也忽略空格。 Yes: ham[1:9], ham[1:9:3], ham[:9:3], ham[1::3], ham[1:9:] ham[lower:upper], ham[lower:upper:], ham[lower::step] ham[lower+offset : upper+offset] ham[: upper_fn(x) : step_fn(x)], ham[:: step_fn(x)] ham[lower + offset : upper + offset] No: ham[lower + offset:upper + offset] ham[1: 9], ham[1 :9], ham[1:9 :3] ham[lower : : upper] ham[ : upper] 在调用函数时传递参数list的括号之前： Yes: spam(1) No: spam (1) 在索引和切片操作的左括号之前： Yes: dct[&lsquo;key&rsquo;] = lst[index] No: dct [&lsquo;key&rsquo;] = lst [index] 赋值(或其他)运算符周围使用多个空格来和其他语句对齐： Yes:: x = 1 y = 2 long_variable = 3 No:: x = 1 y = 2 long_variable = 3 其他建议 在二元云算符的两边都使用一个空格：赋值运算符(=)，增量赋值运算符(+=, -= etc.)，比较运算符(==, &lt;, &gt;, !=, &lt;&gt;, &lt;=, &gt;=, in, not in, is, is not)，布尔运算符(and, or, not)。 如果使用了优先级不同的运算符，则在优先级较低的操作符周围增加空白。请你自行判断，不过永远不要用超过1个空格，永远保持二元运算符两侧的空白数量一样。 Yes:: i = i + 1 submitted += 1 x = x*2 - 1 hypot2 = x*x + y*y c = (a+b) * (a-b) No:: i=i+1 submitted +=1 x = x * 2 - 1 hypot2 = x * x + y * y c = (a + b) * (a - b) 使用=符号来表示关键字参数或默认参数值时，不要在其周围使用空格。 Yes:: def complex(real, imag=0.0): return magic(r=real, i=imag) No:: def complex(real, imag = 0.0): return magic(r = real, i = imag) 在带注释的函数定义中需要在=符号周围加上空格。此外, 在:后使用一个空格，在-&gt;表示带注释的返回值时，其两侧各使用一个空格。 Yes:: def munge(input: AnyStr): def munge(sep: AnyStr = None): def munge() -&gt; AnyStr: def munge(input: AnyStr, sep: AnyStr = None, limit=1000): No:: def munge(input: AnyStr=None): def munge(input:AnyStr): def munge(input: AnyStr)-&gt;PosInt: 复合语句（即将多行语句写在一行）一般是不鼓励使用的。 Yes:: if foo == 'blah': do_blah_thing() do_one() do_two() do_three() Rather not:: if foo == 'blah': do_blah_thing() do_one(); do_two(); do_three() 有时也可以将短小的if/for/while中的语句写在一行，但对于有多个分句的语句永远不要这样做。也要避免将多行都写在一起。 Rather not:: if foo == 'blah': do_blah_thing() for x in lst: total += x while t &lt; 10: t = delay() Definitely not:: if foo == 'blah': do_blah_thing() else: do_non_blah_thing() try: something() finally: cleanup() do_one(); do_two(); do_three(long, argument, list, like, this) if foo == 'blah': one(); two(); three() 注释(Comments) Comments that contradict the code are worse than no comments.
+	</article>
+    <footer>
+        <a href='http://localhost:1313/post/2015-07-05'><nobr>Read more →</nobr></a>
+    </footer>
+</article>
+
+    
   </div>
 </section>
+
+<aside id="meta"> </aside>
 
 <footer>
   <div>
@@ -166,3 +184,4 @@ fitText(document.getElementById('title'), 1)
 
 </body>
 </html>
+
