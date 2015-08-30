@@ -21,7 +21,7 @@
 
 &lt;p&gt;在Python中表示字符串时，不管用单引号还是双引号都是一样的。但是不推荐将这两种方式看作一样并且混用。最好选择一种规则并坚持使用。当字符串中包含单引号时，采用双引号来表示字符串，反之也是一样，这样可以避免使用反斜杠，代码也更易读。&lt;/p&gt;
 
-&lt;p&gt;对于三引号表示的字符串，使用双引号字符来表示（译注：即用&amp;rdquo;&amp;ldquo;&amp;ldquo;而不是&amp;rdquo;&amp;lsquo;），这样可以和PEP 257的文档字符串（docstring）规则保持一致。&lt;/p&gt;
+&lt;p&gt;对于三引号表示的字符串，使用双引号字符来表示（译注：即用&lt;code&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/code&gt;而不是&lt;code&gt;&#39;&#39;&#39;&lt;/code&gt;），这样可以和PEP 257的文档字符串（docstring）规则保持一致。&lt;/p&gt;
 
 &lt;h1 id=&#34;表达式和语句中的空格-whitespace-in-expressions-and-statements:4f740b0dc79b8c0d748c37b6117fb209&#34;&gt;表达式和语句中的空格(Whitespace in Expressions and Statements)&lt;/h1&gt;
 
