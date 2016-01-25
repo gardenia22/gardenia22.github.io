@@ -134,7 +134,7 @@ v1 if condition else v2 #one-line if else
 condition and v1 or v2 #dangerous bool expression substitute
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;this substitute is dangerous because it is actually &lt;strong&gt;&lt;em&gt;wrong&lt;/em&gt;&lt;/strong&gt; when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
+&lt;p&gt;This substitute is dangerous because it is actually &lt;strong&gt;&lt;em&gt;wrong&lt;/em&gt;&lt;/strong&gt; when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;(condition and [v1] or [v2])[0]. 
 &lt;/code&gt;&lt;/pre&gt;
