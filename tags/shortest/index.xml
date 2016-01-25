@@ -131,10 +131,10 @@ MatchingParentheses(&amp;quot;)(&amp;quot;) = false
 
 &lt;pre&gt;&lt;code&gt;(condition)? v1:v2 #ternary expression
 v1 if condition else v2 #one-line if else
-condition and v1 or v2 #dangerous bool expression
+condition and v1 or v2 #dangerous bool expression substitute
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This is dangerous because this substitute is actually &lt;strong&gt;&lt;em&gt;wrong&lt;/em&gt;&lt;/strong&gt; when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
+&lt;p&gt;this substitute is dangerous because it is actually &lt;strong&gt;&lt;em&gt;wrong&lt;/em&gt;&lt;/strong&gt; when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;(condition and [v1] or [v2])[0]. 
 &lt;/code&gt;&lt;/pre&gt;
