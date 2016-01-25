@@ -160,32 +160,41 @@
 
 </aside>
 
-<meta itemprop="wordCount" content="749">
+<meta itemprop="wordCount" content="760">
 <meta itemprop="datePublished" content="2016-01-25">
 <meta itemprop="url" content="http://nanshu.wang/post/2016-01-25">
 
 
   <div>
         <article itemprop="articleBody" id="content">
-           <p>I was so enthralled by the <a href="https://codefights.com">Codefights</a> Challenges of writing shortest code last weekend. After several attempts, I finally managed to rank #1 in this <a href="https://codefights.com/challenge/vjxo2WFyex6a85BrH">MatchingParentheses</a> problem with one-line solution of only 77 chars(excludes whitespace).</p>
+           
+
+<p>I was so enthralled by the <a href="https://codefights.com">Codefights</a> Challenges of writing shortest code last weekend. After several attempts, I finally managed to rank #1 in this <a href="https://codefights.com/challenge/vjxo2WFyex6a85BrH">MatchingParentheses</a> problem with one-line solution of only 77 chars(excludes whitespace).</p>
 
 <p>Curtailing chars of solution is fun with little tricks. In the following I will show the tricks I used in this problem.</p>
 
-<p>Here is the problem description:</p>
+<h2 id="problem-description:01142340acbed3b627390853b05f1e3e">Problem Description:</h2>
 
-<pre><code>Given a string para, consisting of symbols '(', '[', '{', ')', ']', '}' and ' ', find out if it is a correct bracket sequence (CBS in short) with occasional whitespace (' ') characters. A CBS can be defined as follows:
-empty string (&quot;&quot;) is a CBS;
-if S is a CBS, then (S), [S], {S} are CBSs;
-if S1, S2 are CBS, then S1S2 is a CBS.
+<p>Given a string para, consisting of symbols <code>'('</code>, <code>'['</code>, <code>'{'</code>, <code>')'</code>, <code>']'</code>, <code>'}'</code> and <code>' '</code>, find out if it is a correct bracket sequence (CBS in short) with occasional whitespace <code>(' ')</code> characters. A CBS can be defined as follows:</p>
 
-Example:
-MatchingParentheses(&quot;( )(( )){([( )])}&quot;) = true
-MatchingParentheses(&quot;)(&quot;) = false
-[input] string para
-A string of symbols '(', '[', '{', ')', ']', '}' and ' '.
-[output] boolean
-true if the given string is CBS, false otherwise.
+<pre><code>- empty string (&quot;&quot;) is a CBS;
+- if S is a CBS, then (S), \[S\], {S} are CBSs;
+- if S1, S2 are CBS, then S1S2 is a CBS.
 </code></pre>
+
+<h3 id="example:01142340acbed3b627390853b05f1e3e">Example:</h3>
+
+<pre><code>MatchingParentheses(&quot;( )(( )){([( )])}&quot;) = true
+MatchingParentheses(&quot;)(&quot;) = false
+</code></pre>
+
+<h3 id="input-string-para:01142340acbed3b627390853b05f1e3e">input: string para</h3>
+
+<p>A string of symbols  <code>'('</code>, <code>'['</code>, <code>'{'</code>, <code>')'</code>, <code>']'</code>, <code>'}'</code> and <code>' '</code>.</p>
+
+<h3 id="output-boolean:01142340acbed3b627390853b05f1e3e">output: boolean</h3>
+
+<p><code>true</code> if the given string is CBS, <code>false</code> otherwise.</p>
 
 <p>Let me put my solution here. It is short and hard to understand. I will explain step by step how I get there.</p>
 
@@ -212,7 +221,7 @@ true if the given string is CBS, false otherwise.
 
 <p>This solution is easy to understand with 125 chars. Then let&rsquo;s cut down the chars.</p>
 
-<p>##Lessen the return statement</p>
+<h2 id="lessen-the-return-statement:01142340acbed3b627390853b05f1e3e">Lessen the return statement</h2>
 
 <p>We can absolutely lose the if-else statement and write just:</p>
 
@@ -224,7 +233,7 @@ true if the given string is CBS, false otherwise.
 <pre><code>return not p
 </code></pre>
 
-<p>##use subn() instead of sub</p>
+<h2 id="use-subn-instead-of-sub:01142340acbed3b627390853b05f1e3e">Use subn() instead of sub()</h2>
 
 <p>subn() return 2 arguments, first is the modified string and second is the times of modification. Then this solution becomes:</p>
 
@@ -250,7 +259,7 @@ true if the given string is CBS, false otherwise.
 
 <p>Now we have reduce this solution to 79 chars, but we still have room to go even further.</p>
 
-<p>##Lambda function</p>
+<h2 id="lambda-function:01142340acbed3b627390853b05f1e3e">Lambda function</h2>
 
 <p>Let&rsquo;s translate the whole function into lambda expression. Because lambda can only have one-line, we need to use recursion as an alternative to while loop.</p>
 
@@ -268,16 +277,33 @@ true if the given string is CBS, false otherwise.
 
 <p>Answer is still YES!</p>
 
-<p>##Ternary in Python</p>
+<h2 id="ternary-in-python:01142340acbed3b627390853b05f1e3e">Ternary in Python</h2>
 
-<p>There is no ternary expression in Python like <code>(condition)? v1:v2</code>, instead we have <code>v1 if condition else v2</code>. But there is a <strong>dangerous</strong> way to use bool operation as a proxy of ternary expression: <code>condition and v1 or v2</code>. This is dangerous because this proxy is wrong when <code>v1</code> has possible <code>0</code> value. The right bool expression is: <code>(condition and [v1] or [v2])[0]</code>. In this problem, <code>v1 = f(*re.subn('\(\)|{}|\[\]| ','',p))</code> is a tuple of 2 values, so there is no chance <code>v1</code> equals to <code>0</code>. So we take a risk here and get our <strong>final solution</strong>:</p>
+<p>There is no ternary expression in Python, instead we have one-line if else. But there is a <strong>dangerous</strong> way to use bool operation as a proxy of ternary expression.</p>
+
+<pre><code>(condition)? v1:v2 #ternary expression
+v1 if condition else v2 #one-line if else
+condition and v1 or v2 #dangerous bool expression
+</code></pre>
+
+<p>This is dangerous because this proxy is wrong when v1 has possible 0 value. The right bool expression is:</p>
+
+<pre><code>(condition and [v1] or [v2])[0]. 
+</code></pre>
+
+<p>In this problem,</p>
+
+<pre><code>v1 = f(*re.subn('\(\)|{}|\[\]| ','',p))
+</code></pre>
+
+<p>v1 is a tuple of 2 values, so there is no chance v1 equals to 0. So we take a risk here and get our <strong>final solution</strong>:</p>
 
 <pre><code>MatchingParentheses = f = lambda p,n=1:n and f(*re.subn('\(\)|{}|\[\]| ','',p)) or not p
 </code></pre>
 
 <p>Fortunately, this trick saves one more char for us. The final solution has 77 chars in total.</p>
 
-<p>##Some takeaway</p>
+<h2 id="some-takeaway:01142340acbed3b627390853b05f1e3e">Some takeaway</h2>
 
 <ol>
 <li>Never pursue writing shortest code in real practice.</li>

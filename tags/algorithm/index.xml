@@ -15,25 +15,34 @@
       <pubDate>Mon, 25 Jan 2016 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
       <guid>http://nanshu.wang/post/2016-01-25</guid>
-      <description>&lt;p&gt;I was so enthralled by the &lt;a href=&#34;https://codefights.com&#34;&gt;Codefights&lt;/a&gt; Challenges of writing shortest code last weekend. After several attempts, I finally managed to rank #1 in this &lt;a href=&#34;https://codefights.com/challenge/vjxo2WFyex6a85BrH&#34;&gt;MatchingParentheses&lt;/a&gt; problem with one-line solution of only 77 chars(excludes whitespace).&lt;/p&gt;
+      <description>
+
+&lt;p&gt;I was so enthralled by the &lt;a href=&#34;https://codefights.com&#34;&gt;Codefights&lt;/a&gt; Challenges of writing shortest code last weekend. After several attempts, I finally managed to rank #1 in this &lt;a href=&#34;https://codefights.com/challenge/vjxo2WFyex6a85BrH&#34;&gt;MatchingParentheses&lt;/a&gt; problem with one-line solution of only 77 chars(excludes whitespace).&lt;/p&gt;
 
 &lt;p&gt;Curtailing chars of solution is fun with little tricks. In the following I will show the tricks I used in this problem.&lt;/p&gt;
 
-&lt;p&gt;Here is the problem description:&lt;/p&gt;
+&lt;h2 id=&#34;problem-description:01142340acbed3b627390853b05f1e3e&#34;&gt;Problem Description:&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;Given a string para, consisting of symbols &#39;(&#39;, &#39;[&#39;, &#39;{&#39;, &#39;)&#39;, &#39;]&#39;, &#39;}&#39; and &#39; &#39;, find out if it is a correct bracket sequence (CBS in short) with occasional whitespace (&#39; &#39;) characters. A CBS can be defined as follows:
-empty string (&amp;quot;&amp;quot;) is a CBS;
-if S is a CBS, then (S), [S], {S} are CBSs;
-if S1, S2 are CBS, then S1S2 is a CBS.
+&lt;p&gt;Given a string para, consisting of symbols &lt;code&gt;&#39;(&#39;&lt;/code&gt;, &lt;code&gt;&#39;[&#39;&lt;/code&gt;, &lt;code&gt;&#39;{&#39;&lt;/code&gt;, &lt;code&gt;&#39;)&#39;&lt;/code&gt;, &lt;code&gt;&#39;]&#39;&lt;/code&gt;, &lt;code&gt;&#39;}&#39;&lt;/code&gt; and &lt;code&gt;&#39; &#39;&lt;/code&gt;, find out if it is a correct bracket sequence (CBS in short) with occasional whitespace &lt;code&gt;(&#39; &#39;)&lt;/code&gt; characters. A CBS can be defined as follows:&lt;/p&gt;
 
-Example:
-MatchingParentheses(&amp;quot;( )(( )){([( )])}&amp;quot;) = true
-MatchingParentheses(&amp;quot;)(&amp;quot;) = false
-[input] string para
-A string of symbols &#39;(&#39;, &#39;[&#39;, &#39;{&#39;, &#39;)&#39;, &#39;]&#39;, &#39;}&#39; and &#39; &#39;.
-[output] boolean
-true if the given string is CBS, false otherwise.
+&lt;pre&gt;&lt;code&gt;- empty string (&amp;quot;&amp;quot;) is a CBS;
+- if S is a CBS, then (S), \[S\], {S} are CBSs;
+- if S1, S2 are CBS, then S1S2 is a CBS.
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;example:01142340acbed3b627390853b05f1e3e&#34;&gt;Example:&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;MatchingParentheses(&amp;quot;( )(( )){([( )])}&amp;quot;) = true
+MatchingParentheses(&amp;quot;)(&amp;quot;) = false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;input-string-para:01142340acbed3b627390853b05f1e3e&#34;&gt;input: string para&lt;/h3&gt;
+
+&lt;p&gt;A string of symbols  &lt;code&gt;&#39;(&#39;&lt;/code&gt;, &lt;code&gt;&#39;[&#39;&lt;/code&gt;, &lt;code&gt;&#39;{&#39;&lt;/code&gt;, &lt;code&gt;&#39;)&#39;&lt;/code&gt;, &lt;code&gt;&#39;]&#39;&lt;/code&gt;, &lt;code&gt;&#39;}&#39;&lt;/code&gt; and &lt;code&gt;&#39; &#39;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;output-boolean:01142340acbed3b627390853b05f1e3e&#34;&gt;output: boolean&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the given string is CBS, &lt;code&gt;false&lt;/code&gt; otherwise.&lt;/p&gt;
 
 &lt;p&gt;Let me put my solution here. It is short and hard to understand. I will explain step by step how I get there.&lt;/p&gt;
 
@@ -60,7 +69,7 @@ true if the given string is CBS, false otherwise.
 
 &lt;p&gt;This solution is easy to understand with 125 chars. Then let&amp;rsquo;s cut down the chars.&lt;/p&gt;
 
-&lt;p&gt;##Lessen the return statement&lt;/p&gt;
+&lt;h2 id=&#34;lessen-the-return-statement:01142340acbed3b627390853b05f1e3e&#34;&gt;Lessen the return statement&lt;/h2&gt;
 
 &lt;p&gt;We can absolutely lose the if-else statement and write just:&lt;/p&gt;
 
@@ -72,7 +81,7 @@ true if the given string is CBS, false otherwise.
 &lt;pre&gt;&lt;code&gt;return not p
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;##use subn() instead of sub&lt;/p&gt;
+&lt;h2 id=&#34;use-subn-instead-of-sub:01142340acbed3b627390853b05f1e3e&#34;&gt;Use subn() instead of sub()&lt;/h2&gt;
 
 &lt;p&gt;subn() return 2 arguments, first is the modified string and second is the times of modification. Then this solution becomes:&lt;/p&gt;
 
@@ -98,7 +107,7 @@ true if the given string is CBS, false otherwise.
 
 &lt;p&gt;Now we have reduce this solution to 79 chars, but we still have room to go even further.&lt;/p&gt;
 
-&lt;p&gt;##Lambda function&lt;/p&gt;
+&lt;h2 id=&#34;lambda-function:01142340acbed3b627390853b05f1e3e&#34;&gt;Lambda function&lt;/h2&gt;
 
 &lt;p&gt;Let&amp;rsquo;s translate the whole function into lambda expression. Because lambda can only have one-line, we need to use recursion as an alternative to while loop.&lt;/p&gt;
 
@@ -116,16 +125,33 @@ true if the given string is CBS, false otherwise.
 
 &lt;p&gt;Answer is still YES!&lt;/p&gt;
 
-&lt;p&gt;##Ternary in Python&lt;/p&gt;
+&lt;h2 id=&#34;ternary-in-python:01142340acbed3b627390853b05f1e3e&#34;&gt;Ternary in Python&lt;/h2&gt;
 
-&lt;p&gt;There is no ternary expression in Python like &lt;code&gt;(condition)? v1:v2&lt;/code&gt;, instead we have &lt;code&gt;v1 if condition else v2&lt;/code&gt;. But there is a &lt;strong&gt;dangerous&lt;/strong&gt; way to use bool operation as a proxy of ternary expression: &lt;code&gt;condition and v1 or v2&lt;/code&gt;. This is dangerous because this proxy is wrong when &lt;code&gt;v1&lt;/code&gt; has possible &lt;code&gt;0&lt;/code&gt; value. The right bool expression is: &lt;code&gt;(condition and [v1] or [v2])[0]&lt;/code&gt;. In this problem, &lt;code&gt;v1 = f(*re.subn(&#39;\(\)|{}|\[\]| &#39;,&#39;&#39;,p))&lt;/code&gt; is a tuple of 2 values, so there is no chance &lt;code&gt;v1&lt;/code&gt; equals to &lt;code&gt;0&lt;/code&gt;. So we take a risk here and get our &lt;strong&gt;final solution&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;There is no ternary expression in Python, instead we have one-line if else. But there is a &lt;strong&gt;dangerous&lt;/strong&gt; way to use bool operation as a proxy of ternary expression.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(condition)? v1:v2 #ternary expression
+v1 if condition else v2 #one-line if else
+condition and v1 or v2 #dangerous bool expression
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is dangerous because this proxy is wrong when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(condition and [v1] or [v2])[0]. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this problem,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;v1 = f(*re.subn(&#39;\(\)|{}|\[\]| &#39;,&#39;&#39;,p))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;v1 is a tuple of 2 values, so there is no chance v1 equals to 0. So we take a risk here and get our &lt;strong&gt;final solution&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;MatchingParentheses = f = lambda p,n=1:n and f(*re.subn(&#39;\(\)|{}|\[\]| &#39;,&#39;&#39;,p)) or not p
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Fortunately, this trick saves one more char for us. The final solution has 77 chars in total.&lt;/p&gt;
 
-&lt;p&gt;##Some takeaway&lt;/p&gt;
+&lt;h2 id=&#34;some-takeaway:01142340acbed3b627390853b05f1e3e&#34;&gt;Some takeaway&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Never pursue writing shortest code in real practice.&lt;/li&gt;
