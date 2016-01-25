@@ -109,9 +109,9 @@ There is no ternary expression in Python, instead we have one-line if else. But 
     
     (condition)? v1:v2 #ternary expression
     v1 if condition else v2 #one-line if else
-    condition and v1 or v2 #dangerous bool expression
+    condition and v1 or v2 #dangerous bool expression substitute
 
-This is dangerous because this substitute is actually ***wrong*** when v1 has possible 0 value. The right bool expression is: 
+this substitute is dangerous because it is actually ***wrong*** when v1 has possible 0 value. The right bool expression is: 
 
     (condition and [v1] or [v2])[0]. 
 
