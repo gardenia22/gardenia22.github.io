@@ -67,7 +67,7 @@ MatchingParentheses(&amp;quot;)(&amp;quot;) = false
         return False
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This solution is easy to understand with 125 chars. Then let&amp;rsquo;s cut down the chars.&lt;/p&gt;
+&lt;p&gt;This solution is easy to understand with 125 chars. Then let&amp;rsquo;s start to cut down the chars.&lt;/p&gt;
 
 &lt;h2 id=&#34;lessen-the-return-statement:01142340acbed3b627390853b05f1e3e&#34;&gt;Lessen the return statement&lt;/h2&gt;
 
@@ -83,7 +83,7 @@ MatchingParentheses(&amp;quot;)(&amp;quot;) = false
 
 &lt;h2 id=&#34;use-subn-instead-of-sub:01142340acbed3b627390853b05f1e3e&#34;&gt;Use subn() instead of sub()&lt;/h2&gt;
 
-&lt;p&gt;subn() return 2 arguments, first is the modified string and second is the times of modification. Then this solution becomes:&lt;/p&gt;
+&lt;p&gt;subn() return 2 arguments: first one is the modified string and second one is the times of modification. Then this solution becomes:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def MatchingParentheses(p):
     # d function deletes adjacent matching parentheses and whitespace
@@ -105,7 +105,7 @@ MatchingParentheses(&amp;quot;)(&amp;quot;) = false
     return not p
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now we have reduce this solution to 79 chars, but we still have room to go even further.&lt;/p&gt;
+&lt;p&gt;Now we have reduced this solution to 79 chars, but we still have rooms to go even further.&lt;/p&gt;
 
 &lt;h2 id=&#34;lambda-function:01142340acbed3b627390853b05f1e3e&#34;&gt;Lambda function&lt;/h2&gt;
 
@@ -127,14 +127,14 @@ MatchingParentheses(&amp;quot;)(&amp;quot;) = false
 
 &lt;h2 id=&#34;ternary-in-python:01142340acbed3b627390853b05f1e3e&#34;&gt;Ternary in Python&lt;/h2&gt;
 
-&lt;p&gt;There is no ternary expression in Python, instead we have one-line if else. But there is a &lt;strong&gt;dangerous&lt;/strong&gt; way to use bool operation as a proxy of ternary expression.&lt;/p&gt;
+&lt;p&gt;There is no ternary expression in Python, instead we have one-line if else. But there is a &lt;strong&gt;&lt;em&gt;dangerous&lt;/em&gt;&lt;/strong&gt; way to use bool operation as a substitute of ternary expression.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;(condition)? v1:v2 #ternary expression
 v1 if condition else v2 #one-line if else
 condition and v1 or v2 #dangerous bool expression
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This is dangerous because this proxy is wrong when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
+&lt;p&gt;This is dangerous because this substitute is actually &lt;strong&gt;&lt;em&gt;wrong&lt;/em&gt;&lt;/strong&gt; when v1 has possible 0 value. The right bool expression is:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;(condition and [v1] or [v2])[0]. 
 &lt;/code&gt;&lt;/pre&gt;
@@ -144,7 +144,7 @@ condition and v1 or v2 #dangerous bool expression
 &lt;pre&gt;&lt;code&gt;v1 = f(*re.subn(&#39;\(\)|{}|\[\]| &#39;,&#39;&#39;,p))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;v1 is a tuple of 2 values, so there is no chance v1 equals to 0. So we take a risk here and get our &lt;strong&gt;final solution&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;v1 is a tuple of 2 values, so there is no chance v1 equals to 0. So we take a risk here and get our &lt;strong&gt;&lt;em&gt;final solution&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;MatchingParentheses = f = lambda p,n=1:n and f(*re.subn(&#39;\(\)|{}|\[\]| &#39;,&#39;&#39;,p)) or not p
 &lt;/code&gt;&lt;/pre&gt;
