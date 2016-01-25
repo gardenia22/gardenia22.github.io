@@ -111,7 +111,7 @@ There is no ternary expression in Python, instead we have one-line if else. But 
     v1 if condition else v2 #one-line if else
     condition and v1 or v2 #dangerous bool expression substitute
 
-this substitute is dangerous because it is actually ***wrong*** when v1 has possible 0 value. The right bool expression is: 
+This substitute is dangerous because it is actually ***wrong*** when v1 has possible 0 value. The right bool expression is: 
 
     (condition and [v1] or [v2])[0]. 
 
