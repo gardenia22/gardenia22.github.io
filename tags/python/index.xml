@@ -993,7 +993,7 @@ $$R(k) = \frac{E(X_{k+1,n}-\mu)(X_{1,n-k}-\mu)}{\sigma^2}$$
 我们可以将学习问题分为以下几类：&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Supervised_learning&#34;&gt;有监督学习&lt;/a&gt;(unsupervised learning)是指数据中包括了我们想预测的属性，有监督学习问题有以下两类：&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Supervised_learning&#34;&gt;有监督学习&lt;/a&gt;(supervised learning)是指数据中包括了我们想预测的属性，有监督学习问题有以下两类：&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Classification_in_machine_learning&#34;&gt;分类&lt;/a&gt;（classification）:样本属于两个或多个类别，我们希望通过从已标记类别的数据学习，来预测未标记数据的分类。例如，识别手写数字就是一个分类问题，其目标是将每个输入向量对应到有穷的数字类别。从另一种角度来思考，分类是一种有监督学习的离散（相对于连续）形式，对于n个样本，一方有对应的有限个类别数量，另一方则试图标记样本并分配到正确的类别。&lt;/p&gt;&lt;/li&gt;
