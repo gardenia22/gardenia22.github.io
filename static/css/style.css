@@ -118,6 +118,8 @@ a.yangzhe { background: #fff; color: #22c3aa; }
 a.yangzhe:hover { background: #22c3aa; color: #fff; }
 a.tian { background: #fff; color: #ff1968; }
 a.tian:hover { background: #ff1968; color: #fff; }
+a.nat { background: #fff; color: #55cdf7; }
+a.nat:hover { background: #55cdf7; color: #fff; }
 
 .social li a:hover span{margin-left:0px;padding-left:6px}
 .social li a:hover .icon{font-size:100%}
