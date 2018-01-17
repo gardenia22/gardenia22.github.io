@@ -7,7 +7,66 @@
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
-    <updated>Thu, 04 May 2017 00:00:00 UTC</updated>
+    <updated>Wed, 17 Jan 2018 00:00:00 UTC</updated>
+    
+    <item>
+      <title>17 Fall SVSE 课程总结</title>
+      <link>http://nanshu.wang/post/2018-01-17</link>
+      <pubDate>Wed, 17 Jan 2018 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/post/2018-01-17</guid>
+      <description>
+
+&lt;p&gt;上学期一共选了4门课，分别是:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;18-652 Foundation of Software Engineering&lt;/li&gt;
+&lt;li&gt;18-601 Introduction to Machine Learning&lt;/li&gt;
+&lt;li&gt;18-781 Speech Recognition and Understanding&lt;/li&gt;
+&lt;li&gt;18-797 Machine Learning for Signal Process&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其中，除了18-652是我的专业Software Engineering (SE) 必修课之外，其他都是ECE学院下的选修，并且是从匹兹堡主校区同步视频教学到硅谷校区的形式。视频同步教学对课程效果还是有影响的，比如说不能很好跟老师进行提问互动，偶尔会被老师忽略，同步的音画质量也会时常出现问题。总体来说，我认为远程教学的课堂效果要比现场教学差20%左右。下面具体说说每门课。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-652-foundation-of-software-engineering:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-652 Foundation of Software Engineering&lt;/h1&gt;
+
+&lt;p&gt;这门课是SE专业的必修基础课，课程介绍了软件工程的基本概念，主要包括Agile, Lean, 以及对应的Scrum和Kanban。课程核心的内容是围绕Scrum和Kanban的实践，团队合作开发一套在紧急情况下使用的通讯web应用，包括用户登录验证，即时通信，聊天墙，用户权限管理，查找功能等等。和真实的Scrum和Kanban开发一样，需要每两周进行一次Demo展示进度，在Trello上进行项目的可视化管理分配调度任务，每周有固定会议讨论，所有的代码需要提交至Github并且用branch的方式进行incremental delivery。每周有固定的feature需要实现并且上线，根据课程的进度不同，还需要进行额外的实践，比如pair programming, code review, unit test, continuous integration等等。&lt;/p&gt;
+
+&lt;p&gt;Project规定使用的语言是Javascript, 采用Express框架，其他的技术栈可以随意选择。我们组选择了Vue前端，MangoDB数据库，Mocha测试。采用了MVC框架来组织代码，前端和后端完全分开。还要求我们用Heroku部署，CircleCI进行Continuous Integration，BetterCode和CodeClimate监控代码质量。此外，项目还包括了REST API和SOCKET IO两种前后端通信方式，Postman和Selenium进行Integration Test。&lt;/p&gt;
+
+&lt;p&gt;这是我第一次参与到系统的、有指导的团队协作开发中，总体收获还是很大的。科学的管理协作方法在现代的大型软件开发中尤其重要，特别是在现阶段的软件开发项目中，通常都是几十人甚至上百人的团队一起进行协作，独立开发已经不具有经济规模效益。这跟我在此之前进行的几乎是独立的开发项目完全不同，在团队中工作时，会更多地考虑到代码的质量，必要时进行重构，使用更多的外部工具进行监测和管理更加保证了代码质量和可靠。而且我也非常清楚地认识到自己在团队协作中有什么地方需要改进，怎么样做可以给团队和自己带来更多的贡献。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-601-introduction-to-machine-learning:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-601 Introduction to Machine Learning&lt;/h1&gt;
+
+&lt;p&gt;这门课是由大名鼎鼎的Tom Mitchell主讲，据说他是非常难得才能讲一次课，能赶上实在是太幸运了。这门课程毫无疑问是我这学期上的最好的一门课。其实这门课的难度并不大，Tom把ML的概念和原理都用最简单易懂的方式讲了出来，作业的难度也还好，大部分是概念和计算题，有几次作业需要编程但难度都不大。期中和期末考试的卷子题目出得尤其好，题目灵活，涵盖知识面广，难度有区分度，需要思考的题目也很有趣，绝对不是死记硬背就能得高分，而是考察你是否真的理解透彻，对大神级别的老师实在是不服不行。&lt;/p&gt;
+
+&lt;p&gt;这门课从决策树开始讲起，同时引入信息熵/互信息的概念。接着过渡到Machine Learning的基本概念，包括过拟合欠拟合、方差偏差、什么叫概率学习(Probabilistic learning)。然后讲了在概率学习中非常重要的MLE和MAP，并且用这两种方法训练朴素贝叶斯，同时引入条件独立假设、模型评估的方法(测试集和验证集，N fold交叉验证)。再从朴素贝叶斯讲到高斯朴素贝叶斯，以及其和逻辑回归之间的数学关系。这里的推导简单又巧妙，把看起来截然不同的模型再数学意义上竟然联系了起来，这是我之前再怎么自学也掌握不了的。第一个编程的大作业是实现朴素贝叶斯进行文本分类。&lt;/p&gt;
+
+&lt;p&gt;课程然后进入了神经网络的部分，从向后传播算法开始讲，这里真的是Tom花了整整一节课的实际用了一个两层的网络手把手讲解梯度怎么算，怎么更新参数，不错过任何一个细节。并且作业里再次出了需要一步一步手算梯度更新的题目，非常麻烦，需要很大的耐心，一个数字算错了后面就全错。很多的作业都是这种复杂麻烦的手算题，其实这种题目可能当时觉得很讨厌，但其实在计算的每一步都加深了对算法的理解，不得不说作业的质量之高和老师的用心之深。神经网络还讲了卷积网络，这里有一个编程的作业是完善一份卷积网络的代码，代码大部分都写好了，只需要补几个中间层的实现，只是一些简单的矩阵操作。这个作业我感觉过于简单了，只是做了forward运算，backward propagation完全没有涉及。课上还涉及到了一些神经网络的内容，比如autoencoder, RNN, sequence model, batch normalization, gradient clipping, LSTM, GRU等等，但都不深入，只是提了一下原理。&lt;/p&gt;
+
+&lt;p&gt;接着是Graph model部分，主要讲了贝叶斯网络表示条件概率分布：如何通过贝叶斯网络计算给定的条件概率，涉及到了Markov Blanket；如何根据贝叶斯网络进行sampling，涉及到了Gibbs Sampling；如何用EM估计贝叶斯网络的参数，包括利用非完整的数据以及估计Graph本身的结构(Chow-Liu Algorithm)。&lt;/p&gt;
+
+&lt;p&gt;以上是前半学期的内容，后半学期主要讲了机器学习的理论基础，公式推导和证明偏多，也更加抽象难懂。首先是PAC Learning理论，这里的概念包括Version Space, $\epsilon$-exhausted, VC Dimension等等。接着是Kernel regression和SVM，引出了Kernel function。然后简单介绍了Reinforcement Learning, Semi-supervised Learning。再学习了ensemble的方法，着重讲了adaboost，还比较了SVM、LR、Adaboost的loss function之间的联系。最后还介绍了PCA，ICA，CCA等Representation Learning的方法。&lt;/p&gt;
+
+&lt;p&gt;因为这门课是作为ML的基础入门课，涉及的知识面广，但比较深入的话题特别是后半学期的内容，很多只是点到为止。作为自学了大多数机器学习内容的人来说，这门课很好地串起来了我对ML的理解，并且补漏了很多我以前忽略了和不太明白的地方。特别是实际动手完成作业的部分，不但加深了理解，更是让我明白什么样的学习方式才是正确的。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-797-machine-learning-for-signal-process:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-797 Machine Learning for Signal Process&lt;/h1&gt;
+
+&lt;p&gt;这门课是我学起来最吃力的一门，特点是干货多、作业难、全是公式和数学推导。幸好这门课没有考试，只有三次大作业+每周quiz+course project。因为这门课是远程教学，经常出现老师不带麦，完全听不见的情况，所以课堂效果大打折扣。而且这门课如果不跟着老师听，自己下来自学一遍的代价非常大。一开始每周的只有10道选择的quiz我都要花大半天的时间才能做完，到最后都是连猜带蒙糊弄。&lt;/p&gt;
+
+&lt;p&gt;也是由于这门课涉及的内容和另外两门课有不少重复的，所以对我来说难度又小了一些。一开始是从线性代数开始讲，补了一些基础知识，最重要的是Eigen Decomposition和SVD，贯穿了整个课程。然后讲了最优化的内容，梯度下降，有全局最优解的最优化方法，朗格朗日乘子等等。因为这门课主要是针对Signal，还包括了傅里叶变换，Signal representation。然后重点讲了Representation Learning的几个方法，恰好是18-601提到但没有深入的内容，包括PCA, ICA, NMF, CCA, LDA。对于Machine Learning的部分，涉及到了Adaboost, Image classification应用, SVM, Naive Bayes, Gaussian classifiers, HMM的三个问题, Kalman filters, Neural Network。和18-601不同的是，这里的每个内容都非常深入，具体到所以细节的公式和推导，老师对每个话题的理解都是从线性代数和矩阵运算的角度来讲的。&lt;/p&gt;
+
+&lt;p&gt;值得一提的是这门课的三次大作业，全部使用Matlab完成，几乎都是矩阵运算，需要费点脑筋才能写出比较高效的代码，而且往往给的数据集是实际的图片或者声音，跑完的结果一眼就能看出好坏，所以还比较有趣。其中我感觉最有趣的是用EM来训练一个提前建好的概率模型，数据集是有左右抖动的图片，最后用模型还原出非抖动的图片，其实也就是一个抖动图片还原的题目，最后看到用EM一次次迭代收敛图片一点点还原出来的也是很神奇。&lt;/p&gt;
+
+&lt;p&gt;这门课的course project我们组做了voice conversion，也就是把一个人的声音转换为另一个人的声音，采用的是比较传统的GMM方法，用了Full conversion，最后的效果还不错。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-781-speech-recognition-and-understanding:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-781 Speech Recognition and Understanding&lt;/h1&gt;
+
+&lt;p&gt;这门语音识别和理解是抱着极大的兴趣听，但最后还挺失望的一门课。主要涉及到的内容有声音信号处理，声学知识，Acoustic model, Language model, End-to-end model, Adaption等等。内容不少，涵盖了关于语言识别的几乎所有话题，但是老师的讲课能力一般，PPT的质量不高，往往一节课听到一半就失去了兴趣。老师并且往往对于基础的知识点一带而过，导致作业全靠自己去琢磨理解。&lt;/p&gt;
+
+&lt;p&gt;这门课包括一个course project，我们组用Denoise Autoencoder的representation来作为输入训练End-to-end model，和传统的MFCC进行比较。但是最后的效果很差，被MFCC完虐，也是水水就过去了。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>17Fall计算机CS硕士TOP30申请总结</title>
@@ -2696,188 +2755,6 @@ $$\frac12\sum_{i=1}^m(y^{(i)}-\theta^Tx^{(i)})^2$$
 &lt;/div&gt;
 
 &lt;p&gt;这个式子刚好是最小二乘法中定义的成本函数$J(\theta)$。总结一下，最小二乘回归模型刚好就是在假设了误差独立同服从正态分布后，得到的最大似然估计。注意到，正态分布中的方差$\sigma^2$的取值对模型并没有影响。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>机器学习笔记1 有监督学习 线性回归 LMS算法 正规方程</title>
-      <link>http://nanshu.wang/post/2015-02-10</link>
-      <pubDate>Tue, 10 Feb 2015 00:00:00 UTC</pubDate>
-      <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/post/2015-02-10</guid>
-      <description>
-
-&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
-
-&lt;h1 id=&#34;有监督学习:b33d274e87081502d65882ed2d51cd57&#34;&gt;有监督学习&lt;/h1&gt;
-
-&lt;p&gt;先理清几个概念：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;$x^{(i)}$表示&amp;rdquo;输入&amp;rdquo;变量(&amp;ldquo;input&amp;rdquo; variables)，也称为特征值(features)。&lt;/li&gt;
-&lt;li&gt;$y^{(i)}$表示&amp;rdquo;输出&amp;rdquo;变量(&amp;ldquo;output&amp;rdquo; variables)，也称为目标值(target)。&lt;/li&gt;
-&lt;li&gt;一对$(x^{(i)},y^{(i)})$称为一个训练样本(training example)，用作训练的数据集就是就是一组$m$个训练样本${(x^{(i)},y^{(i)});i=1,&amp;hellip;,m}$，被称为训练集(training set)。&lt;/li&gt;
-&lt;li&gt;$X$表示输入变量的取值空间，$Y$表示输出变量的取值空间。那么$h:X \rightarrow Y$是训练得到的映射函数，对于每个取值空间X的取值，都能给出取值空间Y上的一个预测值。函数$h$的含义为假设(hypothesis)。&lt;/li&gt;
-&lt;li&gt;图形化表示整个过程：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://nanshu.wang/media/supervised-learning.png&#34; alt=&#34;supervised-learning&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;当预测值y为连续值时，则有监督学习问题是回归(regression)问题；预测值y为离散值时，则为分类(classification)问题。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;线性回归-linear-regression:b33d274e87081502d65882ed2d51cd57&#34;&gt;线性回归(Linear Regression)&lt;/h2&gt;
-
-&lt;p&gt;先简单将y表示为x的线性函数：&lt;/p&gt;
-
-&lt;div&gt;
-$$h(x) = \sum_{i=0}^{n}\theta _ix_i=\theta^Tx$$
-&lt;/div&gt;
-
-&lt;ul&gt;
-&lt;li&gt;$\theta$ 称为参数(parameters)，也叫做权重(weights)，参数决定了$X$到$Y$的射映空间。&lt;/li&gt;
-&lt;li&gt;用$x_0=1$来表示截距项(intercept term)。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;有了训练集，如果通过学习得到参数$\theta$？&lt;/p&gt;
-
-&lt;p&gt;一种方法是，让预测值$h(x)$尽量接近真实值y，定义成本函数(cost function):&lt;/p&gt;
-
-&lt;div&gt;
-$$J(\theta) = \frac12\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$$
-&lt;/div&gt;
-
-&lt;p&gt;这实际上就是最小二乘成本函数，我们把这个回归模型叫做普通最小二乘回归模型(ordinary least squares regression model)。&lt;/p&gt;
-
-&lt;h2 id=&#34;lms算法:b33d274e87081502d65882ed2d51cd57&#34;&gt;LMS算法&lt;/h2&gt;
-
-&lt;p&gt;为了找到使成本函数$J(\theta)$最小的参数$\theta$，采用搜索算法：给定一个$\theta$的初值，然后不断改进，每次改进都使$J(\theta)$更小，直到最小化$J(\theta)$的$\theta$的值收敛。&lt;/p&gt;
-
-&lt;p&gt;考虑梯度下降(gradient descent)算法：从初始$\theta$开始，不断更新：&lt;/p&gt;
-
-&lt;p&gt;$$\theta_j:=\theta_j-\alpha \frac{\delta}{\delta\theta_j}J(\theta)$$&lt;/p&gt;
-
-&lt;p&gt;注意，更新是同时对所有$j=0,&amp;hellip;,n$的$\theta_j$值进行。$\alpha$被称作学习率(learning rate)，也是梯度下降的长度，若$\alpha$取值较小，则收敛的时间较长；相反，若$\alpha$取值较大，则可能错过最优值。&lt;/p&gt;
-
-&lt;p&gt;假设我们只有一个训练样本$(x,y)$，此时$J(\theta) = \frac12(h_{\theta}(x)-y)^2$，求偏导项得到：&lt;/p&gt;
-
-&lt;div&gt;
-$$\begin{equation}
-\begin{split}
-\frac{\delta}{\delta\theta_j}J(\theta) =&amp; \frac{\delta}{\delta\theta_j}\frac12(h_{\theta}(x)-y)^2\\
-=&amp; (h_{\theta}(x)-y)*\frac{\delta}{\delta\theta_j}(h_{\theta}(x)-y)\\
-=&amp; ((h_{\theta}(x)-y))*\frac{\delta}{\delta\theta_j}(\sum_{i=0}^{n}\theta_ix_i-y)\\
-=&amp; (h_{\theta}(x)-y)*x_j
-\end{split}
-\end{equation}$$
-&lt;/div&gt;
-
-&lt;p&gt;每次按照以下式子更新$\theta_j$的值：&lt;/p&gt;
-
-&lt;div&gt;
-$$\theta_j:=\theta_j+\alpha(y^{(i)}-h_{\theta}(x^{(i)}))*x_j^{(i)}$$
-&lt;/div&gt;
-
-&lt;p&gt;这种更新方法叫做LMS更新策略(Least Mean Squares update rule)，也叫做Widrow-Hoff 学习策略。&lt;/p&gt;
-
-&lt;p&gt;采用LMS方法，参数更新的次数和误差项$(y^{(i)}-h_{\theta}(x^{(i)}))$成正比。也就是说，如果预测值与真实值的误差项较小，则参数调整改变不会很大，相反，如果误差项较大，参数进行的调整更大。&lt;/p&gt;
-
-&lt;p&gt;如果训练集不只一个训练样本，可以采用以下方法更新参数：&lt;/p&gt;
-
-&lt;p&gt;Repeat until convergence{&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$\theta_j:=\theta_j+\alpha\sum_{i=1}^m(y^{(i)}-h_\theta(x^{(i)})x_j^{(i)})$&lt;/code&gt; (for every j)&lt;/p&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;p&gt;实际上，这里的求和刚好是$\frac{\delta J(\theta)}{\delta\theta_j}$的值。这种方法每一步更新都会遍历每所有的训练样本，因此被称作批量梯度下降(batch gradient descent)。&lt;/p&gt;
-
-&lt;p&gt;梯度下降法通常容易受局部最优值的影响，但这里的最优问题只有一个全局最优值，没有局部最优值。因此梯度下降总是收敛到全局最优解（学习率$\alpha$不能取太大，否则错过最优值）。&lt;/p&gt;
-
-&lt;p&gt;除了批量梯度下降，还有一种方法叫做随机梯度下降(stochastic gradient descent)，也叫做增量梯度下降(incremental gradient descent)。其更新策略为：&lt;/p&gt;
-
-&lt;p&gt;Loop{&lt;/p&gt;
-
-&lt;p&gt;for i=1 to m,{&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;$\theta_j:=\theta_j+\alpha(y^{(i)}-h_{\theta}(x^{(i)}))x_j^{(i)}$&lt;/code&gt; (for every j).&lt;/p&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;p&gt;}&lt;/p&gt;
-
-&lt;p&gt;随机梯度下降和批量梯度下降不同点在于，批量梯度下降每一步更新$\theta$值，都需要遍历全部的训练样本，而随机梯度下降在遇到每个训练样本时，更新$\theta$之后继续处理下一个样本，每个样本只遍历一次，算法的学习时间比批量梯度下降快很多。但是，随机梯度下降可能永远不会收敛到全局最优值，而是在成本函数$J(\theta)$最优值周围附近摇摆。但是在实际问题中，接近最优值的参数值可能已经是足够好的结果了，特别是对于数据量非常大的训练集来说，随机梯度下降是比批量梯度下降更好的选择。&lt;/p&gt;
-
-&lt;p&gt;在实际使用梯度下降算法时，将输入变量归一到同一取值范围，能够减少算法的迭代次数。这是因为$\theta$在小的取值范围内会下降很快，但在大的取值范围内会下降较慢。并且当输入变量取值范围不够均衡时，$\theta$更容易在最优值周围波动。采用特征缩放(feature scaling)和均值归一化(mean normalization)可以避免这些问题。选择学习率$\alpha$的值，要观察$J(\theta)$值在每次迭代后的变化。已经证明了如果$\alpha$的取值足够小，则$J(\theta)$每次迭代后的值都会减少。如果$J(\theta)$在某次迭代后反而增加了，说明学习率$\alpha$的值应该减小，因为错过了最优值。Andrew Ng推荐的一个经验是每次将$\alpha$减少3倍。&lt;/p&gt;
-
-&lt;h2 id=&#34;正规方程-the-normal-equations:b33d274e87081502d65882ed2d51cd57&#34;&gt;正规方程(The normal equations)&lt;/h2&gt;
-
-&lt;p&gt;梯度下降是最小化$J(\theta)$的一种方式，正规方程是另一种求解参数$\theta$的方法，这种方法可以直接求出最优值参数结果，不需要迭代更新，也不需要事先对数据进行归一化预处理。这种方法实际上是直接求出$J(\theta)$的导数，并令其为0。&lt;/p&gt;
-
-&lt;div&gt;
-$$J(\theta)=\sum_{i=1}^m(h_{\theta}(x^{(i)}-y^{(i)}))^2=\frac12(X\theta-\overrightarrow y)^T(X\theta-\overrightarrow y)$$
-
-$$\nabla_{\theta}J(\theta)=0$$ 
-&lt;/div&gt;
-
-&lt;p&gt;解之，&lt;/p&gt;
-
-&lt;div&gt;
-$$\nabla_{\theta}J(\theta) = X^TX\theta-X^T\overrightarrow y=0$$
-&lt;/div&gt;
-
-&lt;p&gt;得到正规方程：&lt;/p&gt;
-
-&lt;div&gt;
-$$X^TX\theta=X^T\overrightarrow y$$
-&lt;/div&gt;
-
-&lt;p&gt;求解$\theta$：&lt;/p&gt;
-
-&lt;div&gt;
-$$\theta=(X^TX)^{-1}X^T\overrightarrow y$$
-&lt;/div&gt;
-
-&lt;p&gt;正规方程求解$\theta$的时间复杂度为$O(n^3)$，n是特征数量。当特征数量很大时，正规方程求解会很慢。Andrew Ng给出的一个经验参考是：当n&amp;gt;10,000时，采用梯度下降比正规方程更好。&lt;/p&gt;
-
-&lt;p&gt;比较一下正规方程和梯度下降：&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;正规方程&lt;/th&gt;
-&lt;th&gt;梯度下降&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;不需要调整参数&lt;/td&gt;
-&lt;td&gt;需要调整参数$\alpha$&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;不需要迭代&lt;/td&gt;
-&lt;td&gt;需要迭代更新$\theta$值&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;n较大时效率低&lt;/td&gt;
-&lt;td&gt;n较大时效率也不错&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;正规方程还会遇到$X^TX$不可逆的情况，通常这是因为输入变量中存在线性相关的变量或者是因为特征太多($n\geq m$)。解决方法是去掉线性相关的冗余变量，或者删掉一些特征。&lt;/p&gt;
 </description>
     </item>
     
