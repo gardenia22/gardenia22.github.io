@@ -7,7 +7,50 @@
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
-    <updated>Wed, 17 Jan 2018 00:00:00 UTC</updated>
+    <updated>Thu, 17 May 2018 00:00:00 UTC</updated>
+    
+    <item>
+      <title>18 Spring CMU SVSE 课程总结</title>
+      <link>http://nanshu.wang/post/2018-05-17</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>http://nanshu.wang/post/2018-05-17</guid>
+      <description>
+
+&lt;p&gt;学期已经结束了两周，本来想偷懒不写这学期的课程总结。主要是因为这学期的课程选择太少，选上的课并不是自己喜欢的，而是必须要上才能够毕业的。然而又觉得既然已经写过上学期的课程，这学期也最好有始有终。这学期的课的4门课是：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;18-659 Software Engineering Methods&lt;/li&gt;
+&lt;li&gt;18-600 Foundation of Computer System&lt;/li&gt;
+&lt;li&gt;18-657 Decision Analysis and Engineering Economics&lt;/li&gt;
+&lt;li&gt;18-843 Mobile and Pervasive Computing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;18-659-software-engineering-methods:be5864d1f279194aae89d02345c46981&#34;&gt;18-659 Software Engineering Methods&lt;/h1&gt;
+
+&lt;p&gt;这门课是上学期Foundation of Software Engineering 的升级版。升级的含义有两层：1. 需要协同合作的人数从4人升级到全班的15人；2. 需要开发的功能更加复杂。这门课采用了Scaled Agile 来作为协作的方法，主要采用了LeSS框架里的流程，方法和会议。开发的产品依然是Emergency Social Network，是一个在紧急情况下使用的社交产品，在上学期的基础上增加了报警出警，医疗急救，火灾急救等等相关的功能。全班15个人分成了三个feature team，每个组在2周的sprint里一起开发相应的功能。feature team之间相对比较独立，但也有很多feature是相互有dependency的，需要组之间互相沟通解决。这门课还是略有收获，体验了真实的开发流程，对Scaled Agile也算有了更多的了解。缺点是要在上学期一个组的代码上进行修改，然而改别人的代码是相当痛苦的。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-600-foundation-of-computer-system:be5864d1f279194aae89d02345c46981&#34;&gt;18-600 Foundation of Computer System&lt;/h1&gt;
+
+&lt;p&gt;这是CMU的神课之一，搭配神书CSAPP非常虐，也是收获最大的一门课。首先这门课非常花时间，lab不但多还个个都难，两次考试也需要花很多时间复习，贯穿整个学期简直不要太酸爽。特别是我还选了4门课，时间的原因并没有学得那么尽善尽美。不过也是很感谢有这门课，让我真的有了CS科班出身的感觉。虽然我以前也学过操作系统，但是都仅仅是一些皮毛，很多底层的细节都没有去抠一遍。这门课是按照CSAPP的顺序来讲的：机器表示、机器语言、处理器、存储结构、内存、缓存、程序执行、异常控制流、虚拟内存、I/O、网络编程、并行编程。这门课的精华在于7个lab作业，每个作业都是非常精心设计的，难度都不小。每次交完作业可以看自己的分数排名，总有一些大神同学乐此不疲地抢排名第一。7个lab分别是：Data lab（二进制数表示）, Bomb lab（逆向分析汇编语言）, Arch lab（模拟处理器），Shell lab（写一个Unix shell），Cache lab(模拟缓存)，Malloc lab（写一个Malloc管理堆的内存分配），Proxy lab（写一个网络代理）。除了Bomb lab是跟汇编语言打交道外，其他的lab都是用C语言实现，因为需要调用system call。&lt;/p&gt;
+
+&lt;p&gt;虽然我并不是不会写C，但真的写起来还是会发憷。每次有新的lab，望着十几页长的write up，迟迟不敢开头。终于鼓起勇气读一遍，却发现仍然无法开始。这时候才乖乖拿出课件，打开书，仔细研究课上讲过的内容。然后渐渐进入佳境，一口气写完自以为没问题的代码。却不知真正的挑战才刚刚开始，写code一时爽，debug十小时。这里printf一下，那里gdb一下，把开头那块内存打印出来，再改掉后面数组的非法访问。终于代码跑通了，分数到位了，Scoreboard榜上有名了，却还不是收工的时候。这会儿，代码风格已经乱成了一锅粥，每行超过80个字符的快换行，函数前面没有申明的赶紧加上，多余的printf该删就删，注释要写得工整，斜杠和星号对齐了吗？搞完这一切，终于满意地看着自己那份干干净净的代码，急迫地上传，心里暗暗发誓这一定是最终版本再也不改了。可是往往事与愿违，不一会课程论坛Piazza里出了一个新的discussion，心里咯噔一声想这个情况我没有考虑到啊，一百个不情愿又重新打开Sublime Text，再默默地写code, debug&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;虽然我只用了上面短短的几百个字描写了一段典型的lab作业完成过程，但实际情况中这个过程往往长达十几二十几个小时，做到最后觉没睡，头没洗，眼睛直勾勾盯着屏幕，像是要钻进去一样。过程虽然漫长痛苦自我怀疑，但最后提交的那一刻心情无比舒畅，简直就像脱离苦海立地成佛了。&lt;/p&gt;
+
+&lt;p&gt;有同学会疑惑我为什么要选18-600，已经4门课了不是给自己找虐吗。可我认为只有上这种课每学期2.3w的学费没有白交，如果都是水水地过去了，我真的很心疼自己的学费和时间。这门课的老师也是相当大牛，John Paul Shen和Bill Nace，学术界和业界都相当厉害。去年在CMU SVSE和CMU MSIN这两个项目之间犹豫的时候，还专门咨询了Prof. Nace的意见，他既是MSIN的老师也参与设计了SVSE的课程，开玩笑说不管去哪个项目，你都可以选我的18-600！感谢他把18-600放入了SVSE的核心课，不然我还真的有可能选不上。这门课是SV和匹兹堡同时开的，两位老师为了更好的教学体验经常两地跑，课后请我们吃披萨聊天，课完了之后追着我们要课程评价，对教学非常上心。大家都抱怨这门课的workload太大，远远超过了每周12小时的限制，但是每学期仍然前赴后继地选，也是跟积累的好口碑还有老师的努力有关。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-657-decision-analysis-and-engineering-economics:be5864d1f279194aae89d02345c46981&#34;&gt;18-657 Decision Analysis and Engineering Economics&lt;/h1&gt;
+
+&lt;p&gt;这是一门跟编程最不相关的一门课了，更像是一门经济课或者财务管理课。这门课主要是教你如何分析数据，如何用数据来评价一个软件开发中的决策或者一个项目。会教你假设检验、常用统计分布、算NPV、用Decision tree或者更高级的RNV算Dynamic NPV、Monte Carlo Simulation、Analytic Hierarchy Process、Unility Theory. 内容其实并不多，大部分的概念我都在本科的统计学、经济学、财务学的课程中见过，所以学起来还算轻松。这门课会有一个project，给一个背景和对应的数据，需要我们对数据分析最后给出推荐的决策。平时的课要么讲解概念，要么是用Excel做练习。还是学到了不少Excel和Google Sheet的小技巧。&lt;/p&gt;
+
+&lt;h1 id=&#34;18-843-mobile-and-pervasive-computing:be5864d1f279194aae89d02345c46981&#34;&gt;18-843 Mobile and Pervasive Computing&lt;/h1&gt;
+
+&lt;p&gt;这大概是我上过的最不寻常的一门课了：没有讲义、没有固定作业、没有TA、没有专业知识。每周需要看7篇论文，课前有关于论文的quiz，课上是老师跟你互动讨论这些论文，关于它们的movitation，creativity等等，类似一个思维发散的过程。这个课还有一个project，会做presentation，最后要交一个论文。上到期末的时候才有同学跟我讲，匹兹堡也有一个一模一样的课，也是读论文，但是跟我们读的十几年前的论文不一样，他们的论文是每年都有更新的&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;以上是一个非常不认真的总结，CMU短短的9个学期也结束了，人生中最辛苦的一个阶段要过去了，为了新生活干杯~&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>17 Fall CMU SVSE 课程总结</title>
