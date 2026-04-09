@@ -56,5 +56,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Blog</title>
+      <link>https://nanshu.wang/blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>https://nanshu.wang/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CV</title>
+      <link>https://nanshu.wang/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+      <author>Nanshu Wang</author>
+      <guid>https://nanshu.wang/cv/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
