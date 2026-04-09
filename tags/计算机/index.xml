@@ -1,150 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
       <title>计算机 on Nanshu&#39;s blog </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://nanshu.wang/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+    <link>https://nanshu.wang/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
     <language>en-us</language>
     <author>Nanshu Wang</author>
     <copyright>Copyright (c) 2015, Nanshu Wang; all rights reserved.</copyright>
-    <updated>Thu, 17 May 2018 00:00:00 UTC</updated>
-    
-    <item>
-      <title>18 Spring CMU SVSE 课程总结</title>
-      <link>http://nanshu.wang/post/2018-05-17</link>
-      <pubDate>Thu, 17 May 2018 00:00:00 UTC</pubDate>
-      <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/post/2018-05-17</guid>
-      <description>
-
-&lt;p&gt;学期已经结束了两周，本来想偷懒不写这学期的课程总结。主要是因为这学期的课程选择太少，选上的课并不是自己喜欢的，而是必须要上才能够毕业的。然而又觉得既然已经写过上学期的课程，这学期也最好有始有终。这学期的课的4门课是：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;18-659 Software Engineering Methods&lt;/li&gt;
-&lt;li&gt;18-600 Foundation of Computer System&lt;/li&gt;
-&lt;li&gt;18-657 Decision Analysis and Engineering Economics&lt;/li&gt;
-&lt;li&gt;18-843 Mobile and Pervasive Computing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;18-659-software-engineering-methods:be5864d1f279194aae89d02345c46981&#34;&gt;18-659 Software Engineering Methods&lt;/h1&gt;
-
-&lt;p&gt;这门课是上学期Foundation of Software Engineering 的升级版。升级的含义有两层：1. 需要协同合作的人数从4人升级到全班的15人；2. 需要开发的功能更加复杂。这门课采用了Scaled Agile 来作为协作的方法，主要采用了LeSS框架里的流程，方法和会议。开发的产品依然是Emergency Social Network，是一个在紧急情况下使用的社交产品，在上学期的基础上增加了报警出警，医疗急救，火灾急救等等相关的功能。全班15个人分成了三个feature team，每个组在2周的sprint里一起开发相应的功能。feature team之间相对比较独立，但也有很多feature是相互有dependency的，需要组之间互相沟通解决。这门课还是略有收获，体验了真实的开发流程，对Scaled Agile也算有了更多的了解。缺点是要在上学期一个组的代码上进行修改，然而改别人的代码是相当痛苦的。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-600-foundation-of-computer-system:be5864d1f279194aae89d02345c46981&#34;&gt;18-600 Foundation of Computer System&lt;/h1&gt;
-
-&lt;p&gt;这是CMU的神课之一，搭配神书CSAPP非常虐，也是收获最大的一门课。首先这门课非常花时间，lab不但多还个个都难，两次考试也需要花很多时间复习，贯穿整个学期简直不要太酸爽。特别是我还选了4门课，时间的原因并没有学得那么尽善尽美。不过也是很感谢有这门课，让我真的有了CS科班出身的感觉。虽然我以前也学过操作系统，但是都仅仅是一些皮毛，很多底层的细节都没有去抠一遍。这门课是按照CSAPP的顺序来讲的：机器表示、机器语言、处理器、存储结构、内存、缓存、程序执行、异常控制流、虚拟内存、I/O、网络编程、并行编程。这门课的精华在于7个lab作业，每个作业都是非常精心设计的，难度都不小。每次交完作业可以看自己的分数排名，总有一些大神同学乐此不疲地抢排名第一。7个lab分别是：Data lab（二进制数表示）, Bomb lab（逆向分析汇编语言）, Arch lab（模拟处理器），Shell lab（写一个Unix shell），Cache lab(模拟缓存)，Malloc lab（写一个Malloc管理堆的内存分配），Proxy lab（写一个网络代理）。除了Bomb lab是跟汇编语言打交道外，其他的lab都是用C语言实现，因为需要调用system call。&lt;/p&gt;
-
-&lt;p&gt;虽然我并不是不会写C，但真的写起来还是会发憷。每次有新的lab，望着十几页长的write up，迟迟不敢开头。终于鼓起勇气读一遍，却发现仍然无法开始。这时候才乖乖拿出课件，打开书，仔细研究课上讲过的内容。然后渐渐进入佳境，一口气写完自以为没问题的代码。却不知真正的挑战才刚刚开始，写code一时爽，debug十小时。这里printf一下，那里gdb一下，把开头那块内存打印出来，再改掉后面数组的非法访问。终于代码跑通了，分数到位了，Scoreboard榜上有名了，却还不是收工的时候。这会儿，代码风格已经乱成了一锅粥，每行超过80个字符的快换行，函数前面没有申明的赶紧加上，多余的printf该删就删，注释要写得工整，斜杠和星号对齐了吗？搞完这一切，终于满意地看着自己那份干干净净的代码，急迫地上传，心里暗暗发誓这一定是最终版本再也不改了。可是往往事与愿违，不一会课程论坛Piazza里出了一个新的discussion，心里咯噔一声想这个情况我没有考虑到啊，一百个不情愿又重新打开Sublime Text，再默默地写code, debug&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;虽然我只用了上面短短的几百个字描写了一段典型的lab作业完成过程，但实际情况中这个过程往往长达十几二十几个小时，做到最后觉没睡，头没洗，眼睛直勾勾盯着屏幕，像是要钻进去一样。过程虽然漫长痛苦自我怀疑，但最后提交的那一刻心情无比舒畅，简直就像脱离苦海立地成佛了。&lt;/p&gt;
-
-&lt;p&gt;有同学会疑惑我为什么要选18-600，已经4门课了不是给自己找虐吗。可我认为只有上这种课每学期2.3w的学费没有白交，如果都是水水地过去了，我真的很心疼自己的学费和时间。这门课的老师也是相当大牛，John Paul Shen和Bill Nace，学术界和业界都相当厉害。去年在CMU SVSE和CMU MSIN这两个项目之间犹豫的时候，还专门咨询了Prof. Nace的意见，他既是MSIN的老师也参与设计了SVSE的课程，开玩笑说不管去哪个项目，你都可以选我的18-600！感谢他把18-600放入了SVSE的核心课，不然我还真的有可能选不上。这门课是SV和匹兹堡同时开的，两位老师为了更好的教学体验经常两地跑，课后请我们吃披萨聊天，课完了之后追着我们要课程评价，对教学非常上心。大家都抱怨这门课的workload太大，远远超过了每周12小时的限制，但是每学期仍然前赴后继地选，也是跟积累的好口碑还有老师的努力有关。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-657-decision-analysis-and-engineering-economics:be5864d1f279194aae89d02345c46981&#34;&gt;18-657 Decision Analysis and Engineering Economics&lt;/h1&gt;
-
-&lt;p&gt;这是一门跟编程最不相关的一门课了，更像是一门经济课或者财务管理课。这门课主要是教你如何分析数据，如何用数据来评价一个软件开发中的决策或者一个项目。会教你假设检验、常用统计分布、算NPV、用Decision tree或者更高级的RNV算Dynamic NPV、Monte Carlo Simulation、Analytic Hierarchy Process、Unility Theory. 内容其实并不多，大部分的概念我都在本科的统计学、经济学、财务学的课程中见过，所以学起来还算轻松。这门课会有一个project，给一个背景和对应的数据，需要我们对数据分析最后给出推荐的决策。平时的课要么讲解概念，要么是用Excel做练习。还是学到了不少Excel和Google Sheet的小技巧。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-843-mobile-and-pervasive-computing:be5864d1f279194aae89d02345c46981&#34;&gt;18-843 Mobile and Pervasive Computing&lt;/h1&gt;
-
-&lt;p&gt;这大概是我上过的最不寻常的一门课了：没有讲义、没有固定作业、没有TA、没有专业知识。每周需要看7篇论文，课前有关于论文的quiz，课上是老师跟你互动讨论这些论文，关于它们的movitation，creativity等等，类似一个思维发散的过程。这个课还有一个project，会做presentation，最后要交一个论文。上到期末的时候才有同学跟我讲，匹兹堡也有一个一模一样的课，也是读论文，但是跟我们读的十几年前的论文不一样，他们的论文是每年都有更新的&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;以上是一个非常不认真的总结，CMU短短的9个学期也结束了，人生中最辛苦的一个阶段要过去了，为了新生活干杯~&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>17 Fall CMU SVSE 课程总结</title>
-      <link>http://nanshu.wang/post/2018-01-17</link>
-      <pubDate>Wed, 17 Jan 2018 00:00:00 UTC</pubDate>
-      <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/post/2018-01-17</guid>
-      <description>
-
-&lt;p&gt;上学期一共选了4门课，分别是:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;18-652 Foundation of Software Engineering&lt;/li&gt;
-&lt;li&gt;18-601 Introduction to Machine Learning&lt;/li&gt;
-&lt;li&gt;18-781 Speech Recognition and Understanding&lt;/li&gt;
-&lt;li&gt;18-797 Machine Learning for Signal Process&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;其中，除了18-652是我的专业Software Engineering (SE) 必修课之外，其他都是ECE学院下的选修，并且是从匹兹堡主校区同步视频教学到硅谷校区的形式。视频同步教学对课程效果还是有影响的，比如说不能很好跟老师进行提问互动，偶尔会被老师忽略，同步的音画质量也会时常出现问题。总体来说，我认为远程教学的课堂效果要比现场教学差20%左右。下面具体说说每门课。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-652-foundation-of-software-engineering:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-652 Foundation of Software Engineering&lt;/h1&gt;
-
-&lt;p&gt;这门课是SE专业的必修基础课，课程介绍了软件工程的基本概念，主要包括Agile, Lean, 以及对应的Scrum和Kanban。课程核心的内容是围绕Scrum和Kanban的实践，团队合作开发一套在紧急情况下使用的通讯web应用，包括用户登录验证，即时通信，聊天墙，用户权限管理，查找功能等等。和真实的Scrum和Kanban开发一样，需要每两周进行一次Demo展示进度，在Trello上进行项目的可视化管理分配调度任务，每周有固定会议讨论，所有的代码需要提交至Github并且用branch的方式进行incremental delivery。每周有固定的feature需要实现并且上线，根据课程的进度不同，还需要进行额外的实践，比如pair programming, code review, unit test, continuous integration等等。&lt;/p&gt;
-
-&lt;p&gt;Project规定使用的语言是Javascript, 采用Express框架，其他的技术栈可以随意选择。我们组选择了Vue前端，MangoDB数据库，Mocha测试。采用了MVC框架来组织代码，前端和后端完全分开。还要求我们用Heroku部署，CircleCI进行Continuous Integration，BetterCode和CodeClimate监控代码质量。此外，项目还包括了REST API和SOCKET IO两种前后端通信方式，Postman和Selenium进行Integration Test。&lt;/p&gt;
-
-&lt;p&gt;这是我第一次参与到系统的、有指导的团队协作开发中，总体收获还是很大的。科学的管理协作方法在现代的大型软件开发中尤其重要，特别是在现阶段的软件开发项目中，通常都是几十人甚至上百人的团队一起进行协作，独立开发已经不具有经济规模效益。这跟我在此之前进行的几乎是独立的开发项目完全不同，在团队中工作时，会更多地考虑到代码的质量，必要时进行重构，使用更多的外部工具进行监测和管理更加保证了代码质量和可靠。而且我也非常清楚地认识到自己在团队协作中有什么地方需要改进，怎么样做可以给团队和自己带来更多的贡献。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-601-introduction-to-machine-learning:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-601 Introduction to Machine Learning&lt;/h1&gt;
-
-&lt;p&gt;这门课是由大名鼎鼎的Tom Mitchell主讲，据说他是非常难得才能讲一次课，能赶上实在是太幸运了。这门课程毫无疑问是我这学期上的最好的一门课。其实这门课的难度并不大，Tom把ML的概念和原理都用最简单易懂的方式讲了出来，作业的难度也还好，大部分是概念和计算题，有几次作业需要编程但难度都不大。期中和期末考试的卷子题目出得尤其好，题目灵活，涵盖知识面广，难度有区分度，需要思考的题目也很有趣，绝对不是死记硬背就能得高分，而是考察你是否真的理解透彻，对大神级别的老师实在是不服不行。&lt;/p&gt;
-
-&lt;p&gt;这门课从决策树开始讲起，同时引入信息熵/互信息的概念。接着过渡到Machine Learning的基本概念，包括过拟合欠拟合、方差偏差、什么叫概率学习(Probabilistic learning)。然后讲了在概率学习中非常重要的MLE和MAP，并且用这两种方法训练朴素贝叶斯，同时引入条件独立假设、模型评估的方法(测试集和验证集，N fold交叉验证)。再从朴素贝叶斯讲到高斯朴素贝叶斯，以及其和逻辑回归之间的数学关系。这里的推导简单又巧妙，把看起来截然不同的模型再数学意义上竟然联系了起来，这是我之前再怎么自学也掌握不了的。第一个编程的大作业是实现朴素贝叶斯进行文本分类。&lt;/p&gt;
-
-&lt;p&gt;课程然后进入了神经网络的部分，从向后传播算法开始讲，这里真的是Tom花了整整一节课的实际用了一个两层的网络手把手讲解梯度怎么算，怎么更新参数，不错过任何一个细节。并且作业里再次出了需要一步一步手算梯度更新的题目，非常麻烦，需要很大的耐心，一个数字算错了后面就全错。很多的作业都是这种复杂麻烦的手算题，其实这种题目可能当时觉得很讨厌，但其实在计算的每一步都加深了对算法的理解，不得不说作业的质量之高和老师的用心之深。神经网络还讲了卷积网络，这里有一个编程的作业是完善一份卷积网络的代码，代码大部分都写好了，只需要补几个中间层的实现，只是一些简单的矩阵操作。这个作业我感觉过于简单了，只是做了forward运算，backward propagation完全没有涉及。课上还涉及到了一些神经网络的内容，比如autoencoder, RNN, sequence model, batch normalization, gradient clipping, LSTM, GRU等等，但都不深入，只是提了一下原理。&lt;/p&gt;
-
-&lt;p&gt;接着是Graph model部分，主要讲了贝叶斯网络表示条件概率分布：如何通过贝叶斯网络计算给定的条件概率，涉及到了Markov Blanket；如何根据贝叶斯网络进行sampling，涉及到了Gibbs Sampling；如何用EM估计贝叶斯网络的参数，包括利用非完整的数据以及估计Graph本身的结构(Chow-Liu Algorithm)。&lt;/p&gt;
-
-&lt;p&gt;以上是前半学期的内容，后半学期主要讲了机器学习的理论基础，公式推导和证明偏多，也更加抽象难懂。首先是PAC Learning理论，这里的概念包括Version Space, $\epsilon$-exhausted, VC Dimension等等。接着是Kernel regression和SVM，引出了Kernel function。然后简单介绍了Reinforcement Learning, Semi-supervised Learning。再学习了ensemble的方法，着重讲了adaboost，还比较了SVM、LR、Adaboost的loss function之间的联系。最后还介绍了PCA，ICA，CCA等Representation Learning的方法。&lt;/p&gt;
-
-&lt;p&gt;因为这门课是作为ML的基础入门课，涉及的知识面广，但比较深入的话题特别是后半学期的内容，很多只是点到为止。作为自学了大多数机器学习内容的人来说，这门课很好地串起来了我对ML的理解，并且补漏了很多我以前忽略了和不太明白的地方。特别是实际动手完成作业的部分，不但加深了理解，更是让我明白什么样的学习方式才是正确的。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-797-machine-learning-for-signal-process:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-797 Machine Learning for Signal Process&lt;/h1&gt;
-
-&lt;p&gt;这门课是我学起来最吃力的一门，特点是干货多、作业难、全是公式和数学推导。幸好这门课没有考试，只有三次大作业+每周quiz+course project。因为这门课是远程教学，经常出现老师不戴麦，完全听不见的情况，所以课堂效果大打折扣。而且这门课如果不跟着老师听，自己下来自学一遍的代价非常大。一开始每周的只有10道选择的quiz我都要花大半天的时间才能做完，到最后都是连猜带蒙糊弄。&lt;/p&gt;
-
-&lt;p&gt;也是由于这门课涉及的内容和另外两门课有不少重复的，所以对我来说难度又小了一些。一开始是从线性代数开始讲，补了一些基础知识，最重要的是Eigen Decomposition和SVD，贯穿了整个课程。然后讲了最优化的内容，梯度下降，有全局最优解的最优化方法，朗格朗日乘子等等。因为这门课主要是针对Signal，还包括了傅里叶变换，Signal representation。然后重点讲了Representation Learning的几个方法，恰好是18-601提到但没有深入的内容，包括PCA, ICA, NMF, CCA, LDA。对于Machine Learning的部分，涉及到了Adaboost, Image classification应用, SVM, Naive Bayes, Gaussian classifiers, HMM的三个问题, Kalman filters, Neural Network。和18-601不同的是，这里的每个内容都非常深入，具体到所以细节的公式和推导，老师对每个话题的理解都是从线性代数和矩阵运算的角度来讲的。&lt;/p&gt;
-
-&lt;p&gt;值得一提的是这门课的三次大作业，全部使用Matlab完成，几乎都是矩阵运算，需要费点脑筋才能写出比较高效的代码，而且往往给的数据集是实际的图片或者声音，跑完的结果一眼就能看出好坏，所以还比较有趣。其中我感觉最有趣的是用EM来训练一个提前建好的概率模型，数据集是有左右抖动的图片，最后用模型还原出非抖动的图片，其实也就是一个抖动图片还原的题目，最后看到用EM一次次迭代收敛图片一点点还原出来的也是很神奇。&lt;/p&gt;
-
-&lt;p&gt;这门课的course project我们组做了voice conversion，也就是把一个人的声音转换为另一个人的声音，采用的是比较传统的GMM方法，用了Full conversion，最后的效果还不错。&lt;/p&gt;
-
-&lt;h1 id=&#34;18-781-speech-recognition-and-understanding:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;18-781 Speech Recognition and Understanding&lt;/h1&gt;
-
-&lt;p&gt;这门语音识别和理解是抱着极大的兴趣听，但最后还挺失望的一门课。主要涉及到的内容有声音信号处理，声学知识，Acoustic model, Language model, End-to-end model, Adaption等等。内容不少，涵盖了关于语言识别的几乎所有话题，但是老师的讲课能力一般，PPT的质量不高，往往一节课听到一半就失去了兴趣。老师并且往往对于基础的知识点一带而过，导致作业全靠自己去琢磨理解。&lt;/p&gt;
-
-&lt;p&gt;这门课包括一个course project，我们组用Denoise Autoencoder的representation来作为输入训练End-to-end model，和传统的MFCC进行比较。但是最后的效果很差，被MFCC完虐，也是水水就过去了。&lt;/p&gt;
-
-&lt;h1 id=&#34;总体感受:d893ccabacad59aa36e8a15d71dd58cc&#34;&gt;总体感受&lt;/h1&gt;
-
-&lt;p&gt;和国内的研究生课程相比，外国的课程特点是作业多，LOAD大，注重培养实际编程能力，老师功底深厚。课堂老师讲课的效果可能有些层次不齐，但是所有课的作业都体现了课程的精华和老师的用心。CMU一学期4门课的Load还是非常大的，需要花大量时间，最忙的那几周甚至周末全天都在写作业。因为我选课的内容大部分是我还算比较熟悉的机器学习，课程之间也有部分的内容重合，所以相对还好，还没有到通宵赶作业的程度。&lt;/p&gt;
-
-&lt;p&gt;除了作业多，和国内的课程相比，国外的期末考试反而相对没有太痛苦，可能是平时的进度很紧凑不敢落下什么内容，到期末复习的时候反而很轻松。有些课考试允许带一张cheat sheet，可以把自认为重要的知识点写上去参考，这点还挺人性化的，也有助于复习整理知识脉络。&lt;/p&gt;
-
-&lt;p&gt;贴一张我的18601最后整理的cheat sheet:&lt;/p&gt;
-
-&lt;p&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://nanshu.wang/media/cheatsheet.png&#34; alt=&#34;cheetsheet&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-&lt;/p&gt;
-
-&lt;p&gt;这学期的课相对要轻松一点了，希望被虐地轻一点。&lt;/p&gt;
-</description>
-    </item>
+    <updated>Thu, 04 May 2017 00:00:00 UTC</updated>
     
     <item>
       <title>17Fall计算机CS硕士TOP30申请总结</title>
-      <link>http://nanshu.wang/post/2017-05-04</link>
+      <link>https://nanshu.wang/post/2017-05-04/</link>
       <pubDate>Thu, 04 May 2017 00:00:00 UTC</pubDate>
       <author>Nanshu Wang</author>
-      <guid>http://nanshu.wang/post/2017-05-04</guid>
-      <description>
-
-&lt;p&gt;还剩下两个pending的项目，不过结果也不会影响我最后的选择。申请季算是告一段落了，记录一下申请季的经验教训。&lt;/p&gt;
-
-&lt;h1 id=&#34;申请条件:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;申请条件&lt;/h1&gt;
-
+      <guid>https://nanshu.wang/post/2017-05-04/</guid>
+      <description>&lt;p&gt;还剩下两个pending的项目，不过结果也不会影响我最后的选择。申请季算是告一段落了，记录一下申请季的经验教训。&lt;/p&gt;
+&lt;h1 id=&#34;申请条件&#34;&gt;申请条件&lt;/h1&gt;
 &lt;p&gt;【!重要!】没有做WES认证后悔哭了，人大的同学请一定不怕麻烦做WES，会涨至少0.1的&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;本科：人力资源管理@人大 | GPA:3.72 / 4 | 89 / 100&lt;/li&gt;
 &lt;li&gt;研究生：CS@中科院计算所 | GPA:88 / 100&lt;/li&gt;
@@ -153,103 +25,65 @@
 &lt;li&gt;论文：网络方向非一作3篇，其中顶会2篇&lt;/li&gt;
 &lt;li&gt;推荐信：研究生期间导师一篇，算法课老师一篇（后来去当了助教），创业公司实习老板一篇&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h1 id=&#34;申请结果:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;申请结果&lt;/h1&gt;
-
+&lt;h1 id=&#34;申请结果&#34;&gt;申请结果&lt;/h1&gt;
 &lt;p&gt;一共申请了15个项目，5个录取，8个被拒，2个Pending中。&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;AD(5): SV-SE@CMU, MSIN@CMU, CS@Columbia, CS@UT@Austin, CIT-MSE@Upenn&lt;/li&gt;
 &lt;li&gt;REJ(8): CSE@Harvard, CS@Yale, Stats(DS)@Stanford, CS@Uwisc, MSML@CMU, CS- Meng@Berkeley, CS@UCSD, CS@UCSB&lt;/li&gt;
 &lt;li&gt;Pending(2): CS@Purdue, CS-Meng@Cornell&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h1 id=&#34;申请方向-选校:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;申请方向+选校&lt;/h1&gt;
-
+&lt;h1 id=&#34;申请方向选校&#34;&gt;申请方向+选校&lt;/h1&gt;
 &lt;p&gt;我本身在国内已经是硕士在读，虽然是网络方向，研究生也在积极地往机器学习/数据科学的方向转，申请学校的时候首选纯CS项目，有track的也都是选了ML/DS方向的。也申请了一些非CS的项目，比如Harvard的CSE和Stanford的Data Science。&lt;/p&gt;
-
 &lt;p&gt;选校的时候做了一个excel表格，把TOP30的学校都放了进去，综合考虑了排名、地理位置、学费、项目时间等信息，顺便收集了各个学校的课程、Track、官网链接、截止日期、托福GRE代码等信息。最终去掉了一些不合适的项目，包括：&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;学费天价&lt;/li&gt;
 &lt;li&gt;MS基本不招人&lt;/li&gt;
 &lt;li&gt;有硕士的Duplicate degree限制&lt;/li&gt;
 &lt;li&gt;时间超过一年半的&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;p&gt;这里的条件也不是那么死，很多有Duplicate degree限制的学校我也申请了，比如加州的那几个（实在太想去加州，甚至之前只想申请加州的学校，了解到有硕士限制的时候真的心凉了半截）。时间超过一年半的项目不想申请是因为自己本身已经读了硕士（国内坑爹的三年），考虑时间成本同时也不想落后同龄（级）人太多。&lt;/p&gt;
-
-&lt;h1 id=&#34;duplicate-degree:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;Duplicate degree&lt;/h1&gt;
-
+&lt;h1 id=&#34;duplicate-degree&#34;&gt;Duplicate degree&lt;/h1&gt;
 &lt;p&gt;说到Duplicate degree这个可以好好总结一下，我了解到的TOP30里的情况是:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;明确不可以申请的有：Stanford, Umich, UCSD, UCLA&lt;/li&gt;
 &lt;li&gt;不倾向录取已有硕士的有：UIUC, UT-Austin, Purdue, UCI, Berkeley&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;这里面的学校我放弃了Umich, UCLA, UIUC, UCI,其它几个学校依然强申：&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Stanford申请了统计学院下的Data Science，避开了申请CS。&lt;/li&gt;
 &lt;li&gt;Berkeley申请了Meng项目，因为实在太想去了。&lt;/li&gt;
 &lt;li&gt;UCSD比较奇怪，官网上说卡Master of Science硕士，不卡Master of Engineering。因为我本身是专硕，加之非常想去加州，也就当碰运气申了。&lt;/li&gt;
 &lt;li&gt;UT-Austin和Purdue强申，主要是看它们学费便宜。&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;以上这些有Duplicate degree限制的项目里，只有UT-Austin给我发了AD，Purdue还在Pending，其他都被拒了。我知道UT-Austin也有给别的国内在读硕士的同学发了申请，所以它应该也不是说的那么严格。&lt;/p&gt;
-
-&lt;h1 id=&#34;三维哪个重要:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;三维哪个重要?&lt;/h1&gt;
-
+&lt;h1 id=&#34;三维哪个重要&#34;&gt;三维哪个重要?&lt;/h1&gt;
 &lt;p&gt;自我感觉申请最大的短板在于本科的GPA。一开始收到连续4连拒，每天刷录取播报就没有看到GPA低于3.8的。所以非常后悔没有去做WES认证，人大的GPA给分比较保守，身边的同学基本做了WES的都涨了0.1。我没有做的原因是因为懒且真的没有学校强行要求做WES(USC好像是需要的，所以懒得申了)。当时也觉得GPA也就那样，3.7和3.8好像也没差多少，如果当时知道GPA有如此大作用的话，肯定再麻烦都会去做的。人大的师弟师妹请一定要去WES认证，血泪教训。&lt;/p&gt;
-
 &lt;p&gt;GT没必要太纠结分数，过线就可以。CS申请的话保守的线是100+320，如果想稳一点105+325。口语尽量23，数学尽量满分，作文尽量3.5。有部分藤校会很在意分数，比如Upenn和Cornell。&lt;/p&gt;
-
-&lt;h1 id=&#34;ps怎么写:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;PS怎么写?&lt;/h1&gt;
-
+&lt;h1 id=&#34;ps怎么写&#34;&gt;PS怎么写?&lt;/h1&gt;
 &lt;p&gt;CS申请和其他的学科特别是人文类的申请还是有一些区别的。CS申请重点还是讲“干货”，描述自己做过的项目和经历，课程+比赛+实习+科研分别一段就差不多了。不用讲太多情怀的东西，比如你小时候有什么梦想，你爸妈对你的影响和看法，这些基本不重要（个人观点）。&lt;/p&gt;
-
 &lt;p&gt;如果申请某一个方向，可以花几句话讲讲你对这个方向的认识，以及你是怎么被motivate的。我当时准备了两份PS，一份是针对ML/DS方向的，一份是比较General的。为了让人读起来有连贯性，可以找一个“点”把整篇PS串起来，前后呼应。《The elements of style》是一本教写作非常棒的书，可以避免踩很多英文写作的雷，非常建议阅读。&lt;/p&gt;
-
 &lt;p&gt;PS修改也非常重要，我找了大概5、6个申请过的同学修改了我的PS，有CS的也有非CS背景的。每修改一次，我会改一版再拿给下一个同学看。最终自己觉得改到满意了之后，再找专业的native speaker修改，推荐大家找国外的文书机构，帮你修改的老师都能查到简历资料。帮我改文书的是一个Stanford的姐姐，在语言表达上帮我做了不少修改建议。&lt;/p&gt;
-
-&lt;h1 id=&#34;diy-or-中介:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;DIY or 中介?&lt;/h1&gt;
-
+&lt;h1 id=&#34;diy-or-中介&#34;&gt;DIY or 中介?&lt;/h1&gt;
 &lt;p&gt;DIY。&lt;/p&gt;
-
 &lt;p&gt;整个网申的过程还是挺复杂挺累的，搞15遍的寄成绩+网申+填推荐信说真的还是很崩溃，特别是有的网申系统做得很容易让人崩溃。所以把这些这么容易让人崩溃的事情交给中介做还是别了吧，我是觉得挺危险的。&lt;/p&gt;
-
 &lt;p&gt;过程中最好能找到一个靠谱细心的好伙伴帮忙check一下。&lt;/p&gt;
-
-&lt;h1 id=&#34;录取选择:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;录取选择&lt;/h1&gt;
-
+&lt;h1 id=&#34;录取选择&#34;&gt;录取选择&lt;/h1&gt;
 &lt;p&gt;做决定的过程还是有点纠结。收到四连拒的时候赶紧去雍和宫拜了拜文殊菩萨，接着收到了Columbia和CMU的MSIN的录取。一开始偏向Columbia，它催得着急还交了1000刀的定金（肉疼）。中途去了CMU INI的Open House后又偏向去CMU（被糖衣炮弹收买）。再之后又收到了SV-SE和UT-Austin的录取，因为我一开始只想去加州，拿到CMU的SV-SE基本就决定了。但是SV-SE选课和我想学的ML/DS差得实在有点远，Austin学费便宜还是AI的track。犹豫到了4.15号还是选了SV-SE，这个项目对我的好处在于：1.可以一年毕业；2.在加州；3.毕竟CMU。再之后收到了Upenn第二轮的AD，不过也不会影响我的选择了。&lt;/p&gt;
-
 &lt;p&gt;还有一点想说的，其实申请的bar高或低不应该成为一个选校的因素。因为1.有些项目的bar本来就比较奇怪，称之为玄学；2.同档次的学校其实差不太多，不用一定要争哪个项目更好。申请是一个你match学校的过程，选校是看学校match自己。没有更好的项目，只有更适合自己的项目。&lt;/p&gt;
-
-&lt;h1 id=&#34;cs申请趋势:cff1a13474bf246868fee41d10e4a2b2&#34;&gt;CS申请趋势&lt;/h1&gt;
-
+&lt;h1 id=&#34;cs申请趋势&#34;&gt;CS申请趋势&lt;/h1&gt;
 &lt;p&gt;最后多说一点关于CS申请的趋势，总之一句话：&lt;/p&gt;
-
 &lt;p&gt;&lt;em&gt;水涨船高，越来越难。&lt;/em&gt;&lt;/p&gt;
-
 &lt;p&gt;除了科班本科CS申请的比率越来越大之外，还有很多跟我一样国内在读研究生申请的、工作毕业了好几年申请的、跨专业申请的……&lt;/p&gt;
-
 &lt;p&gt;那么为什么这么多人出国读CS啊？&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;首先国内国外薪资差距大。湾区硕士毕业10k+是很正常的，国内的硕士毕业薪资每年虽然也在涨，今年还出现了很多倒挂的现象，我在申请前也很幸运拿到了猪厂做算法30w+的offer，但差距还是明显的。&lt;/li&gt;
 &lt;li&gt;对人的尊重。对人的尊重这一点国内还是差很多的，国内三巨头也频繁爆出负面新闻，以及压榨青春的加班文化，在国内面试找工作的时候也有遇到过一些“奇葩”的面试官加深了我的排斥。美帝在这点上还是好非常多的，整个互联网公司的价值观里就是尊重个体和差异的，而且劳动者的权利保护制度也更加完善。&lt;/li&gt;
 &lt;li&gt;很多工作几年的人容易感觉到瓶颈期，或者是工作太轻松没有挑战，或者是觉得目前的行业不景气，或者仅仅是加班太多难以忍受，给自己一个break再读个书充个电也很合理，换个专业转CS就更合理了。&lt;/li&gt;
 &lt;li&gt;国内的生存压力。国内一线大城市的房价和雾霾，住房和空气这两个刚需足以逼走大部分人了。明显感觉逃离北上广这句话不是说说而已，我这一届硕士毕业的四川同学，大部分选择了成都和杭州。&lt;/li&gt;
 &lt;/ol&gt;
-
 &lt;p&gt;当然美帝也不是全部都好，比如湾区的税、就业的天花板、空虚寂寞吃不好等等……但也挡不住大家猛烈的申请势头。&lt;/p&gt;
-
 &lt;p&gt;最终的结果就是今年知乎上已经在流行晒全聚德的拒信了……&lt;/p&gt;
-
-&lt;p&gt;越来越多的人开始挤CS出国大坑了，目测明年申请形势更难，也不知道这个泡沫什么时候会破……&lt;/p&gt;
-</description>
+&lt;p&gt;越来越多的人开始挤CS出国大坑了，目测明年申请形势更难，也不知道这个泡沫什么时候会破……&lt;/p&gt;</description>
     </item>
     
   </channel>
